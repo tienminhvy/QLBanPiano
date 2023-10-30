@@ -1,6 +1,6 @@
 ﻿namespace DoAn
 {
-    partial class Add
+    partial class Add : Form
     {
         /// <summary>
         /// Required designer variable.

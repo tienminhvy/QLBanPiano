@@ -52,16 +52,18 @@
             // 
             mainPanel.Controls.Add(panel1);
             mainPanel.Controls.Add(headerPanel);
-            mainPanel.Location = new Point(5, 4);
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1087, 684);
+            mainPanel.Size = new Size(1076, 720);
             mainPanel.TabIndex = 0;
             // 
             // panel1
             // 
-            panel1.Location = new Point(4, 132);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 126);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1076, 539);
+            panel1.Size = new Size(1076, 594);
             panel1.TabIndex = 1;
             // 
             // headerPanel
@@ -79,13 +81,15 @@
             headerPanel.Controls.Add(textBox1);
             headerPanel.Controls.Add(label2);
             headerPanel.Controls.Add(txtID);
-            headerPanel.Location = new Point(3, 0);
+            headerPanel.Dock = DockStyle.Top;
+            headerPanel.Location = new Point(0, 0);
             headerPanel.Name = "headerPanel";
-            headerPanel.Size = new Size(1077, 126);
+            headerPanel.Size = new Size(1076, 126);
             headerPanel.TabIndex = 0;
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top;
             button2.BackColor = Color.FromArgb(255, 255, 192);
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Location = new Point(979, 73);
@@ -97,6 +101,7 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top;
             button1.BackColor = Color.FromArgb(192, 255, 192);
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(903, 73);
@@ -108,6 +113,7 @@
             // 
             // comboBox2
             // 
+            comboBox2.Anchor = AnchorStyles.Top;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(741, 73);
             comboBox2.Name = "comboBox2";
@@ -116,6 +122,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.Anchor = AnchorStyles.Top;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(480, 73);
             comboBox1.Name = "comboBox1";
@@ -124,9 +131,10 @@
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.Top;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(366, 5);
+            label8.Location = new Point(408, 9);
             label8.Name = "label8";
             label8.Size = new Size(277, 41);
             label8.TabIndex = 17;
@@ -134,6 +142,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Location = new Point(637, 76);
             label5.Name = "label5";
@@ -143,6 +152,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Location = new Point(440, 76);
             label3.Name = "label3";
@@ -152,6 +162,7 @@
             // 
             // textBox3
             // 
+            textBox3.Anchor = AnchorStyles.Top;
             textBox3.Location = new Point(309, 73);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(125, 27);
@@ -159,6 +170,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Location = new Point(273, 76);
             label1.Name = "label1";
@@ -168,6 +180,7 @@
             // 
             // textBox2
             // 
+            textBox2.Anchor = AnchorStyles.Top;
             textBox2.Location = new Point(142, 73);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(125, 27);
@@ -175,6 +188,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top;
             textBox1.Location = new Point(34, 73);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(67, 27);
@@ -182,6 +196,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Location = new Point(107, 76);
             label2.Name = "label2";
@@ -191,6 +206,7 @@
             // 
             // txtID
             // 
+            txtID.Anchor = AnchorStyles.Top;
             txtID.AutoSize = true;
             txtID.Location = new Point(4, 76);
             txtID.Name = "txtID";
@@ -198,13 +214,14 @@
             txtID.TabIndex = 0;
             txtID.Text = "ID:";
             // 
-            // Form1
+            // Product
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1097, 687);
+            ClientSize = new Size(1076, 720);
             Controls.Add(mainPanel);
-            Name = "Form1";
+            MinimumSize = new Size(1094, 767);
+            Name = "Product";
             Text = "Form1";
             mainPanel.ResumeLayout(false);
             headerPanel.ResumeLayout(false);

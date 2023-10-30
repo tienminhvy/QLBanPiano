@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             toolStrip1 = new ToolStrip();
+            toolStripButton1 = new ToolStripButton();
             btnTaoMoi = new ToolStripSplitButton();
             taoMoiPianoToolStripMenuItem = new ToolStripMenuItem();
             taoMoiPhieuNhapToolStripMenuItem = new ToolStripMenuItem();
@@ -57,12 +58,22 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnTaoMoi, toolStripSplitButton1, thaoTactoolStripSplitButton, btnGioiThieu, dangXuatBtn });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, btnTaoMoi, toolStripSplitButton1, thaoTactoolStripSplitButton, btnGioiThieu, dangXuatBtn });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 27);
+            toolStrip1.Size = new Size(827, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(75, 24);
+            toolStripButton1.Text = "Bán hàng";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // btnTaoMoi
             // 
@@ -114,6 +125,7 @@
             dsPianoToolStripMenuItem.Name = "dsPianoToolStripMenuItem";
             dsPianoToolStripMenuItem.Size = new Size(234, 26);
             dsPianoToolStripMenuItem.Text = "Sản phẩm Piano";
+            dsPianoToolStripMenuItem.Click += dsPianoToolStripMenuItem_Click;
             // 
             // dsPhieuNhapToolStripMenuItem
             // 
@@ -187,7 +199,7 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 27);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(800, 423);
+            mainPanel.Size = new Size(827, 423);
             mainPanel.TabIndex = 1;
             // 
             // statusStrip1
@@ -196,7 +208,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { lblThongTinDangNhap });
             statusStrip1.Location = new Point(0, 397);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 26);
+            statusStrip1.Size = new Size(827, 26);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -210,7 +222,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(827, 450);
             Controls.Add(mainPanel);
             Controls.Add(toolStrip1);
             Name = "MainForm";
@@ -247,5 +259,6 @@
         private ToolStripButton dangXuatBtn;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblThongTinDangNhap;
+        private ToolStripButton toolStripButton1;
     }
 }
