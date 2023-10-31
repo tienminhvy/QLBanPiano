@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
@@ -22,5 +23,12 @@ namespace Piano
         public static string soLuongTextBox = "Theo số lượng";
         public static Font textBoxFont = new Font("Times New Roman", 10);
         public static Color textColor = Color.FromArgb(171, 171, 171);
+        //Cons của form login
+        //start here//
+        public static string userText = "Tên đăng nhập";
+        public static string pwdText = "Mật khẩu ";
+        public static Font loginFont = new Font("Times New Roman",10);
+        public static Color loginColor = Color.FromArgb(223, 223, 223);
+        //end here//
     }
 }
