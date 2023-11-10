@@ -157,6 +157,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
