@@ -12,5 +12,10 @@ namespace QLBanPiano
             About about = new About();
             about.Show();
         }
+
+        private void btnTaoMoi_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

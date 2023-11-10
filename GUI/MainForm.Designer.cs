@@ -30,25 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             toolStrip1 = new ToolStrip();
-            btnTaoMoi = new ToolStripSplitButton();
-            taoMoiPianoToolStripMenuItem = new ToolStripMenuItem();
-            taoMoiPhieuNhapToolStripMenuItem = new ToolStripMenuItem();
-            taoMoiKHToolStripMenuItem = new ToolStripMenuItem();
-            taoMoiNVToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSplitButton1 = new ToolStripSplitButton();
-            dsPianoToolStripMenuItem = new ToolStripMenuItem();
-            dsPhieuNhapToolStripMenuItem = new ToolStripMenuItem();
-            dsHDToolStripMenuItem = new ToolStripMenuItem();
-            dsKHToolStripMenuItem1 = new ToolStripMenuItem();
-            dsNVToolStripMenuItem1 = new ToolStripMenuItem();
-            thaoTactoolStripSplitButton = new ToolStripSplitButton();
-            nhapDuLieuToolStripMenuItem = new ToolStripMenuItem();
-            xuatDuLieuToolStripMenuItem = new ToolStripMenuItem();
             btnGioiThieu = new ToolStripButton();
             dangXuatBtn = new ToolStripButton();
             mainPanel = new Panel();
             statusStrip1 = new StatusStrip();
             lblThongTinDangNhap = new ToolStripStatusLabel();
+            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            pianoToolStripMenuItem = new ToolStripMenuItem();
+            kháchHàngToolStripMenuItem = new ToolStripMenuItem();
+            nhânViênToolStripMenuItem = new ToolStripMenuItem();
+            phiếuNhậpToolStripMenuItem = new ToolStripMenuItem();
+            hoáĐơnToolStripMenuItem = new ToolStripMenuItem();
+            vaiTròToolStripMenuItem = new ToolStripMenuItem();
+            toolStripButton1 = new ToolStripButton();
             toolStrip1.SuspendLayout();
             mainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -57,109 +51,12 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnTaoMoi, toolStripSplitButton1, thaoTactoolStripSplitButton, btnGioiThieu, dangXuatBtn });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripDropDownButton1, btnGioiThieu, dangXuatBtn });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
-            // 
-            // btnTaoMoi
-            // 
-            btnTaoMoi.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnTaoMoi.DropDownItems.AddRange(new ToolStripItem[] { taoMoiPianoToolStripMenuItem, taoMoiPhieuNhapToolStripMenuItem, taoMoiKHToolStripMenuItem, taoMoiNVToolStripMenuItem });
-            btnTaoMoi.Image = (Image)resources.GetObject("btnTaoMoi.Image");
-            btnTaoMoi.ImageTransparentColor = Color.Magenta;
-            btnTaoMoi.Name = "btnTaoMoi";
-            btnTaoMoi.Size = new Size(83, 24);
-            btnTaoMoi.Text = "Tạo mới";
-            btnTaoMoi.ToolTipText = "Tạo mới";
-            // 
-            // taoMoiPianoToolStripMenuItem
-            // 
-            taoMoiPianoToolStripMenuItem.Name = "taoMoiPianoToolStripMenuItem";
-            taoMoiPianoToolStripMenuItem.Size = new Size(234, 26);
-            taoMoiPianoToolStripMenuItem.Text = "Sản phẩm Piano";
-            // 
-            // taoMoiPhieuNhapToolStripMenuItem
-            // 
-            taoMoiPhieuNhapToolStripMenuItem.Name = "taoMoiPhieuNhapToolStripMenuItem";
-            taoMoiPhieuNhapToolStripMenuItem.Size = new Size(234, 26);
-            taoMoiPhieuNhapToolStripMenuItem.Text = "Phiếu nhập";
-            // 
-            // taoMoiKHToolStripMenuItem
-            // 
-            taoMoiKHToolStripMenuItem.Name = "taoMoiKHToolStripMenuItem";
-            taoMoiKHToolStripMenuItem.Size = new Size(234, 26);
-            taoMoiKHToolStripMenuItem.Text = "Thông tin khách hàng";
-            // 
-            // taoMoiNVToolStripMenuItem
-            // 
-            taoMoiNVToolStripMenuItem.Name = "taoMoiNVToolStripMenuItem";
-            taoMoiNVToolStripMenuItem.Size = new Size(234, 26);
-            taoMoiNVToolStripMenuItem.Text = "Nhân viên";
-            // 
-            // toolStripSplitButton1
-            // 
-            toolStripSplitButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripSplitButton1.DropDownItems.AddRange(new ToolStripItem[] { dsPianoToolStripMenuItem, dsPhieuNhapToolStripMenuItem, dsHDToolStripMenuItem, dsKHToolStripMenuItem1, dsNVToolStripMenuItem1 });
-            toolStripSplitButton1.Image = (Image)resources.GetObject("toolStripSplitButton1.Image");
-            toolStripSplitButton1.ImageTransparentColor = Color.Magenta;
-            toolStripSplitButton1.Name = "toolStripSplitButton1";
-            toolStripSplitButton1.Size = new Size(128, 24);
-            toolStripSplitButton1.Text = "Xem danh sách";
-            // 
-            // dsPianoToolStripMenuItem
-            // 
-            dsPianoToolStripMenuItem.Name = "dsPianoToolStripMenuItem";
-            dsPianoToolStripMenuItem.Size = new Size(234, 26);
-            dsPianoToolStripMenuItem.Text = "Sản phẩm Piano";
-            // 
-            // dsPhieuNhapToolStripMenuItem
-            // 
-            dsPhieuNhapToolStripMenuItem.Name = "dsPhieuNhapToolStripMenuItem";
-            dsPhieuNhapToolStripMenuItem.Size = new Size(234, 26);
-            dsPhieuNhapToolStripMenuItem.Text = "Phiếu nhập";
-            // 
-            // dsHDToolStripMenuItem
-            // 
-            dsHDToolStripMenuItem.Name = "dsHDToolStripMenuItem";
-            dsHDToolStripMenuItem.Size = new Size(234, 26);
-            dsHDToolStripMenuItem.Text = "Hoá đơn";
-            // 
-            // dsKHToolStripMenuItem1
-            // 
-            dsKHToolStripMenuItem1.Name = "dsKHToolStripMenuItem1";
-            dsKHToolStripMenuItem1.Size = new Size(234, 26);
-            dsKHToolStripMenuItem1.Text = "Thông tin khách hàng";
-            // 
-            // dsNVToolStripMenuItem1
-            // 
-            dsNVToolStripMenuItem1.Name = "dsNVToolStripMenuItem1";
-            dsNVToolStripMenuItem1.Size = new Size(234, 26);
-            dsNVToolStripMenuItem1.Text = "Nhân viên";
-            // 
-            // thaoTactoolStripSplitButton
-            // 
-            thaoTactoolStripSplitButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            thaoTactoolStripSplitButton.DropDownItems.AddRange(new ToolStripItem[] { nhapDuLieuToolStripMenuItem, xuatDuLieuToolStripMenuItem });
-            thaoTactoolStripSplitButton.Image = (Image)resources.GetObject("thaoTactoolStripSplitButton.Image");
-            thaoTactoolStripSplitButton.ImageTransparentColor = Color.Magenta;
-            thaoTactoolStripSplitButton.Name = "thaoTactoolStripSplitButton";
-            thaoTactoolStripSplitButton.Size = new Size(85, 24);
-            thaoTactoolStripSplitButton.Text = "Thao tác";
-            // 
-            // nhapDuLieuToolStripMenuItem
-            // 
-            nhapDuLieuToolStripMenuItem.Name = "nhapDuLieuToolStripMenuItem";
-            nhapDuLieuToolStripMenuItem.Size = new Size(178, 26);
-            nhapDuLieuToolStripMenuItem.Text = "Nhập dữ liệu";
-            // 
-            // xuatDuLieuToolStripMenuItem
-            // 
-            xuatDuLieuToolStripMenuItem.Name = "xuatDuLieuToolStripMenuItem";
-            xuatDuLieuToolStripMenuItem.Size = new Size(178, 26);
-            xuatDuLieuToolStripMenuItem.Text = "Xuất dữ liệu";
             // 
             // btnGioiThieu
             // 
@@ -206,6 +103,61 @@
             lblThongTinDangNhap.Size = new Size(200, 20);
             lblThongTinDangNhap.Text = "Bạn đang đăng nhập với tên ";
             // 
+            // toolStripDropDownButton1
+            // 
+            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { pianoToolStripMenuItem, kháchHàngToolStripMenuItem, nhânViênToolStripMenuItem, phiếuNhậpToolStripMenuItem, hoáĐơnToolStripMenuItem, vaiTròToolStripMenuItem });
+            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
+            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new Size(123, 24);
+            toolStripDropDownButton1.Text = "Xem danh sách";
+            // 
+            // pianoToolStripMenuItem
+            // 
+            pianoToolStripMenuItem.Name = "pianoToolStripMenuItem";
+            pianoToolStripMenuItem.Size = new Size(224, 26);
+            pianoToolStripMenuItem.Text = "Piano";
+            // 
+            // kháchHàngToolStripMenuItem
+            // 
+            kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
+            kháchHàngToolStripMenuItem.Size = new Size(224, 26);
+            kháchHàngToolStripMenuItem.Text = "Khách hàng";
+            // 
+            // nhânViênToolStripMenuItem
+            // 
+            nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
+            nhânViênToolStripMenuItem.Size = new Size(224, 26);
+            nhânViênToolStripMenuItem.Text = "Nhân viên";
+            // 
+            // phiếuNhậpToolStripMenuItem
+            // 
+            phiếuNhậpToolStripMenuItem.Name = "phiếuNhậpToolStripMenuItem";
+            phiếuNhậpToolStripMenuItem.Size = new Size(224, 26);
+            phiếuNhậpToolStripMenuItem.Text = "Phiếu nhập";
+            // 
+            // hoáĐơnToolStripMenuItem
+            // 
+            hoáĐơnToolStripMenuItem.Name = "hoáĐơnToolStripMenuItem";
+            hoáĐơnToolStripMenuItem.Size = new Size(224, 26);
+            hoáĐơnToolStripMenuItem.Text = "Hoá đơn";
+            // 
+            // vaiTròToolStripMenuItem
+            // 
+            vaiTròToolStripMenuItem.Name = "vaiTròToolStripMenuItem";
+            vaiTròToolStripMenuItem.Size = new Size(224, 26);
+            vaiTròToolStripMenuItem.Text = "Vai trò";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(75, 24);
+            toolStripButton1.Text = "Bán hàng";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -230,22 +182,16 @@
         private ToolStrip toolStrip1;
         private ToolStripButton btnGioiThieu;
         private Panel mainPanel;
-        private ToolStripSplitButton btnTaoMoi;
-        private ToolStripMenuItem taoMoiPianoToolStripMenuItem;
-        private ToolStripMenuItem taoMoiPhieuNhapToolStripMenuItem;
-        private ToolStripMenuItem taoMoiKHToolStripMenuItem;
-        private ToolStripMenuItem taoMoiNVToolStripMenuItem;
-        private ToolStripSplitButton toolStripSplitButton1;
-        private ToolStripMenuItem dsPianoToolStripMenuItem;
-        private ToolStripMenuItem dsPhieuNhapToolStripMenuItem;
-        private ToolStripMenuItem dsHDToolStripMenuItem;
-        private ToolStripMenuItem dsKHToolStripMenuItem1;
-        private ToolStripMenuItem dsNVToolStripMenuItem1;
-        private ToolStripSplitButton thaoTactoolStripSplitButton;
-        private ToolStripMenuItem nhapDuLieuToolStripMenuItem;
-        private ToolStripMenuItem xuatDuLieuToolStripMenuItem;
         private ToolStripButton dangXuatBtn;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblThongTinDangNhap;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripMenuItem pianoToolStripMenuItem;
+        private ToolStripMenuItem kháchHàngToolStripMenuItem;
+        private ToolStripMenuItem nhânViênToolStripMenuItem;
+        private ToolStripMenuItem phiếuNhậpToolStripMenuItem;
+        private ToolStripMenuItem hoáĐơnToolStripMenuItem;
+        private ToolStripMenuItem vaiTròToolStripMenuItem;
+        private ToolStripButton toolStripButton1;
     }
 }
