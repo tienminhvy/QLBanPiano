@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace QLBanPiano.DAO
+namespace QLBanPiano.DAL
 {
-    internal class DB
+    class DB
     {
         SqlConnection sqlConn; //Doi tuong ket noi CSDL
         SqlDataAdapter da;//Bo dieu phoi du lieu
