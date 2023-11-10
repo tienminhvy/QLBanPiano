@@ -13,37 +13,42 @@ namespace QLBanPiano.DTO
         private string ten;
         private string dacDiemNoiBat;
         private string moTaChiTiet;
-        private int gia;
+        private long gia;
         private string hinhAnh;
+        private int soLuong;
 
         public int Id { get { return id; } set {  id = value; } }
         public string Ma { get { return ma; } set { ma = value; } }
         public string Ten { get { return ten; } set { ten = value; } }
         public string DacDiemNoiBat { get {  return dacDiemNoiBat; } set {  dacDiemNoiBat = value; } }
         public string MoTaChiTiet { get { return moTaChiTiet; } set { moTaChiTiet = value; } }
-        public int Gia { get { return gia; } set {  gia = value; } }
+        public long Gia { get { return gia; } set {  gia = value; } }
         public string HinhAnh { get {  return hinhAnh; } set {  hinhAnh = value; } }
+        public int SoLuong { get { return soLuong; } set { soLuong = value; } }
+
 
         public NhacCu()
         {
-            this.id = -1;
-            this.ma = "";
-            this.ten = "";
-            this.dacDiemNoiBat = "";
-            this.moTaChiTiet = "";
-            this.gia = 0;
-            this.hinhAnh = "";
+            Id = -1;
+            Ma = "";
+            Ten = "";
+            DacDiemNoiBat = "";
+            MoTaChiTiet = "";
+            Gia = 0;
+            HinhAnh = "";
+            SoLuong = 0;
         }
         public NhacCu(int id, string ma, string ten, string dacDiemNoiBat,
-            string moTaChiTiet, int gia, string hinhAnh)
+            string moTaChiTiet, long gia, string hinhAnh, int soLuong)
         {
-            this.id = id;
-            this.ma = ma;
-            this.ten = ten;
-            this.dacDiemNoiBat = dacDiemNoiBat;
-            this.moTaChiTiet = moTaChiTiet;
-            this.gia = gia;
-            this.hinhAnh = hinhAnh;
+            Id = id;
+            Ma = ma;
+            Ten = ten;
+            DacDiemNoiBat = dacDiemNoiBat;
+            MoTaChiTiet = moTaChiTiet;
+            Gia = gia;
+            HinhAnh = hinhAnh;
+            SoLuong = soLuong;
         }
     }
 }

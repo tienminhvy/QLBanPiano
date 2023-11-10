@@ -8,5 +8,33 @@ namespace QLBanPiano.DTO
 {
     public class KhachHang
     {
+        // gồm các thuộc tính họ lót, tên, địa chỉ, số điện thoại
+        private int id;
+        private string hoLot;
+        private string ten;
+        private string diaChi;
+        private string soDienThoai;
+
+        public int Id { get => id; set => id = value; }
+        public string HoLot { get => hoLot; set => hoLot = value; }
+        public string Ten { get => ten;set => ten = value;}
+        public string DiaChi { get => diaChi; set => diaChi = value; }
+        public string SoDienThoai { get => soDienThoai; set => soDienThoai = value; }
+        public KhachHang() {
+            id = -1;
+            hoLot = "";
+            ten = "";
+            diaChi = "";
+            soDienThoai = "";
+        }
+
+        public KhachHang(int id, string hoLot, string ten, string diaChi, string soDienThoai)
+        {
+            Id = id;
+            HoLot = hoLot;
+            Ten = ten;
+            DiaChi = diaChi;
+            SoDienThoai = soDienThoai;
+        }
     }
 }
