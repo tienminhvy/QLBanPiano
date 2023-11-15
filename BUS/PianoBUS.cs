@@ -130,6 +130,12 @@ namespace QLBanPiano.BUS
             string hinhAnh = dsTruong[5];
             string phanLoai = dsTruong[6];
             string idThuongHieu = dsTruong[7];
+
+            if (db.GetCount("nhaccu", "ma = '" + ma + "' AND trangthai = 1") == 0)
+            {
+                MessageBox.Show("Mã nhạc cụ đã tồn tại");
+                return false;
+            }    
             
             string nhaccu_id = db.Insert(string.Format("INSERT INTO nhaccu " +
                 "(ma, ten, dacDiemNoiBat, moTaChiTiet, gia," +

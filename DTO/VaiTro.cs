@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.DTO
 {
-    public class VaiTro
+    public class VaiTro : DoiTuong
     {
         // gồm các trường id, tên, danh sách quyền
         private int id;

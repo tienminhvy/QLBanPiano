@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dsVaiTro = new ListBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             txtTimTK = new TextBox();
             btnTimTK = new Button();
-            dsVaiTro = new ListBox();
             panel2 = new Panel();
-            groupBox1 = new GroupBox();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox6 = new CheckBox();
-            checkBox7 = new CheckBox();
-            button1 = new Button();
             label1 = new Label();
+            button1 = new Button();
+            groupBox1 = new GroupBox();
+            checkBox7 = new CheckBox();
+            checkBox6 = new CheckBox();
+            checkBox5 = new CheckBox();
+            checkBox4 = new CheckBox();
+            checkBox3 = new CheckBox();
+            checkBox2 = new CheckBox();
+            checkBox1 = new CheckBox();
+            btnTaoMoi = new Button();
+            btnXoa = new Button();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -59,6 +61,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 450);
             panel1.TabIndex = 0;
+            // 
+            // dsVaiTro
+            // 
+            dsVaiTro.Dock = DockStyle.Fill;
+            dsVaiTro.FormattingEnabled = true;
+            dsVaiTro.ItemHeight = 20;
+            dsVaiTro.Location = new Point(0, 36);
+            dsVaiTro.Name = "dsVaiTro";
+            dsVaiTro.Size = new Size(250, 414);
+            dsVaiTro.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -114,18 +126,10 @@
             btnTimTK.Text = "Tìm";
             btnTimTK.UseVisualStyleBackColor = true;
             // 
-            // dsVaiTro
-            // 
-            dsVaiTro.Dock = DockStyle.Fill;
-            dsVaiTro.FormattingEnabled = true;
-            dsVaiTro.ItemHeight = 20;
-            dsVaiTro.Location = new Point(0, 36);
-            dsVaiTro.Name = "dsVaiTro";
-            dsVaiTro.Size = new Size(250, 414);
-            dsVaiTro.TabIndex = 1;
-            // 
             // panel2
             // 
+            panel2.Controls.Add(btnXoa);
+            panel2.Controls.Add(btnTaoMoi);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(groupBox1);
@@ -134,6 +138,25 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(562, 450);
             panel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(133, 20);
+            label1.TabIndex = 2;
+            label1.Text = "Vai trò đang chọn: ";
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.Location = new Point(456, 409);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Cập nhật";
+            button1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -152,55 +175,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách quyền";
             // 
-            // checkBox1
+            // checkBox7
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(23, 35);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(93, 24);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Bán hàng";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(23, 65);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(155, 24);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "Quản lý nhập hàng";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(23, 95);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(140, 24);
-            checkBox3.TabIndex = 2;
-            checkBox3.Text = "Quản lý hoá đơn";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(23, 125);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(176, 24);
-            checkBox4.TabIndex = 3;
-            checkBox4.Text = "Quản lý nhạc cụ Piano";
-            checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(23, 155);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(224, 24);
-            checkBox5.TabIndex = 4;
-            checkBox5.Text = "Quản lý thông tin khách hàng";
-            checkBox5.UseVisualStyleBackColor = true;
+            checkBox7.AutoSize = true;
+            checkBox7.Location = new Point(23, 215);
+            checkBox7.Name = "checkBox7";
+            checkBox7.Size = new Size(149, 24);
+            checkBox7.TabIndex = 6;
+            checkBox7.Text = "Nhập xuất dữ liệu";
+            checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox6
             // 
@@ -212,36 +195,75 @@
             checkBox6.Text = "Quản lý thông tin nhân viên (kèm tài khoản)";
             checkBox6.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // checkBox5
             // 
-            checkBox7.AutoSize = true;
-            checkBox7.Location = new Point(23, 215);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(149, 24);
-            checkBox7.TabIndex = 6;
-            checkBox7.Text = "Nhập xuất dữ liệu";
-            checkBox7.UseVisualStyleBackColor = true;
+            checkBox5.AutoSize = true;
+            checkBox5.Location = new Point(23, 155);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(224, 24);
+            checkBox5.TabIndex = 4;
+            checkBox5.Text = "Quản lý thông tin khách hàng";
+            checkBox5.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // checkBox4
             // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.Location = new Point(456, 409);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Cập nhật";
-            button1.UseVisualStyleBackColor = true;
+            checkBox4.AutoSize = true;
+            checkBox4.Location = new Point(23, 125);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(176, 24);
+            checkBox4.TabIndex = 3;
+            checkBox4.Text = "Quản lý nhạc cụ Piano";
+            checkBox4.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // checkBox3
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(133, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Vai trò đang chọn: ";
+            checkBox3.AutoSize = true;
+            checkBox3.Location = new Point(23, 95);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(140, 24);
+            checkBox3.TabIndex = 2;
+            checkBox3.Text = "Quản lý hoá đơn";
+            checkBox3.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(23, 65);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(155, 24);
+            checkBox2.TabIndex = 1;
+            checkBox2.Text = "Quản lý nhập hàng";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(23, 35);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(93, 24);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "Bán hàng";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // btnTaoMoi
+            // 
+            btnTaoMoi.Location = new Point(446, 5);
+            btnTaoMoi.Name = "btnTaoMoi";
+            btnTaoMoi.Size = new Size(104, 29);
+            btnTaoMoi.TabIndex = 3;
+            btnTaoMoi.Text = "Thêm vai trò";
+            btnTaoMoi.UseVisualStyleBackColor = true;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Location = new Point(356, 409);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(94, 29);
+            btnXoa.TabIndex = 4;
+            btnXoa.Text = "Xoá vai trò";
+            btnXoa.UseVisualStyleBackColor = true;
+            // 
+            // PhanQuyen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -250,7 +272,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
+            Name = "PhanQuyen";
             Text = "Form1";
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
@@ -281,5 +303,7 @@
         private CheckBox checkBox2;
         private Button button1;
         private Label label1;
+        private Button btnXoa;
+        private Button btnTaoMoi;
     }
 }
