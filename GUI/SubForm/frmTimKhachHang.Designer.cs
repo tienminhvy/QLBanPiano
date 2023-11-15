@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI.SubForm
 {
-    partial class TimKhachHang
+    partial class frmTimKhachHang
     {
         /// <summary>
         /// Required designer variable.

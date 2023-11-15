@@ -8,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.SubForm
+namespace QLBanPiano
 {
-    public partial class EmployeeFrm : Form
+    public partial class frmDangNhap : Form
     {
-        public EmployeeFrm()
+        public frmDangNhap()
         {
             InitializeComponent();
-        }
-
-        private void btn_reset_Click(object sender, EventArgs e)
-        {
-            LinkAccount linkAccount = new LinkAccount();
-            linkAccount.Show();
-
         }
     }
 }

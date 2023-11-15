@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace QLBanPiano
 {
-    partial class About : Form
+    partial class frmGioiThieu : Form
     {
-        public About()
+        public frmGioiThieu()
         {
             InitializeComponent();
             this.Text = String.Format("Giới thiệu");

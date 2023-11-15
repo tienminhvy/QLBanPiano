@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLBanPiano.GUI.SubForm
 {
-    public partial class LinkAccount : Form
+    public partial class frmTimKhachHang : Form
     {
-        public LinkAccount()
+        public frmTimKhachHang()
         {
             InitializeComponent();
         }

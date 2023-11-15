@@ -1,15 +1,15 @@
 namespace QLBanPiano
 {
-    public partial class MainForm : Form
+    public partial class frmChinh : Form
     {
-        public MainForm()
+        public frmChinh()
         {
             InitializeComponent();
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
         {
-            About about = new About();
+            frmGioiThieu about = new frmGioiThieu();
             about.Show();
         }
     }

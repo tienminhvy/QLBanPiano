@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano
 {
-    partial class MainForm
+    partial class frmChinh
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChinh));
             toolStrip1 = new ToolStrip();
             btnTaoMoi = new ToolStripSplitButton();
             taoMoiPianoToolStripMenuItem = new ToolStripMenuItem();

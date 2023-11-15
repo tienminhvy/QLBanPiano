@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI
 {
-    partial class PhanQuyen
+    partial class frmPhanQuyen
     {
         /// <summary>
         /// Required designer variable.

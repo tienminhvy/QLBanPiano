@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI.SubForm
 {
-    partial class EmployeeFrm
+    partial class frmQLNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            columnHeader6 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader1 = new ColumnHeader();
-            listView1 = new ListView();
-            columnHeader5 = new ColumnHeader();
             btn_reset = new Button();
             btn_delete = new Button();
             btn_update = new Button();
@@ -59,50 +52,13 @@
             groupBoxInfor = new GroupBox();
             groupBoxSearch = new GroupBox();
             label_title = new Label();
+            panel1 = new Panel();
+            dgvNhanVien = new DataGridView();
             groupBoxInfor.SuspendLayout();
             groupBoxSearch.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvNhanVien).BeginInit();
             SuspendLayout();
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Địa chỉ";
-            columnHeader6.Width = 200;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Ngày vào làm";
-            columnHeader4.Width = 200;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Tên";
-            columnHeader3.Width = 100;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Họ lót";
-            columnHeader2.Width = 200;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 100;
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
-            listView1.GridLines = true;
-            listView1.Location = new Point(-1, 323);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(985, 228);
-            listView1.TabIndex = 7;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Số điện thoại";
-            columnHeader5.Width = 180;
             // 
             // btn_reset
             // 
@@ -289,6 +245,7 @@
             // 
             // groupBoxInfor
             // 
+            groupBoxInfor.Anchor = AnchorStyles.Top;
             groupBoxInfor.Controls.Add(btn_reset);
             groupBoxInfor.Controls.Add(btn_delete);
             groupBoxInfor.Controls.Add(btn_update);
@@ -305,7 +262,7 @@
             groupBoxInfor.Controls.Add(label_midName);
             groupBoxInfor.Controls.Add(txt_id);
             groupBoxInfor.Controls.Add(label_id);
-            groupBoxInfor.Location = new Point(363, 49);
+            groupBoxInfor.Location = new Point(369, 49);
             groupBoxInfor.Name = "groupBoxInfor";
             groupBoxInfor.Size = new Size(607, 268);
             groupBoxInfor.TabIndex = 6;
@@ -314,12 +271,13 @@
             // 
             // groupBoxSearch
             // 
+            groupBoxSearch.Anchor = AnchorStyles.Top;
             groupBoxSearch.Controls.Add(btnSearch);
             groupBoxSearch.Controls.Add(cbbTypeSearch);
             groupBoxSearch.Controls.Add(label_type);
             groupBoxSearch.Controls.Add(txtSearch);
             groupBoxSearch.Controls.Add(label_input);
-            groupBoxSearch.Location = new Point(16, 61);
+            groupBoxSearch.Location = new Point(22, 61);
             groupBoxSearch.Name = "groupBoxSearch";
             groupBoxSearch.Size = new Size(335, 256);
             groupBoxSearch.TabIndex = 5;
@@ -339,16 +297,40 @@
             label_title.TabIndex = 4;
             label_title.Text = "QUẢN LÝ THÔNG TIN NHÂN VIÊN";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(dgvNhanVien);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 344);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(995, 209);
+            panel1.TabIndex = 7;
+            // 
+            // dgvNhanVien
+            // 
+            dgvNhanVien.AllowUserToAddRows = false;
+            dgvNhanVien.AllowUserToDeleteRows = false;
+            dgvNhanVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNhanVien.Dock = DockStyle.Fill;
+            dgvNhanVien.Location = new Point(0, 0);
+            dgvNhanVien.Name = "dgvNhanVien";
+            dgvNhanVien.ReadOnly = true;
+            dgvNhanVien.RowHeadersWidth = 51;
+            dgvNhanVien.RowTemplate.Height = 29;
+            dgvNhanVien.Size = new Size(995, 209);
+            dgvNhanVien.TabIndex = 0;
+            // 
             // EmployeeFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 553);
-            Controls.Add(listView1);
+            ClientSize = new Size(995, 553);
+            Controls.Add(panel1);
             Controls.Add(groupBoxInfor);
             Controls.Add(groupBoxSearch);
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MinimumSize = new Size(1013, 600);
             Name = "EmployeeFrm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EmployeeFrm";
@@ -356,19 +338,13 @@
             groupBoxInfor.PerformLayout();
             groupBoxSearch.ResumeLayout(false);
             groupBoxSearch.PerformLayout();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvNhanVien).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader1;
-        private ListView listView1;
-        private ColumnHeader columnHeader5;
         private Button btn_reset;
         private Button btn_delete;
         private Button btn_update;
@@ -393,5 +369,7 @@
         private GroupBox groupBoxInfor;
         private GroupBox groupBoxSearch;
         private Label label_title;
+        private Panel panel1;
+        private DataGridView dgvNhanVien;
     }
 }
