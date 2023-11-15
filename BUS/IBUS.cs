@@ -12,8 +12,8 @@ namespace QLBanPiano.BUS
     {
         public abstract DataTable LayToanBoDS();
         public abstract List<DoiTuong> LayDS(string dieukien);
-        public abstract int SoLuong();
-        public abstract object GiaTriTruong(string tenTruong);
+        public abstract int SoLuong(string dieuKien);
+        public abstract object GiaTriTruong(string tenTruong, string dieuKien);
         public abstract bool Them(params string[] dsTruong);
         public abstract bool Sua(params string[] dsTruong);
         public abstract bool Xoa(string tieuChi);

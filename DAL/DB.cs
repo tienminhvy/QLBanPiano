@@ -93,5 +93,23 @@ namespace QLBanPiano.DAL
                 return null;
             }
         }
+
+        public int Insert(string sqlString)
+        {
+            try
+            {
+                SqlCommand sqlcmd = new SqlCommand(sqlString, sqlConn);
+                sqlConn.Open(); //Mo ket noi
+                int result = (int)sqlcmd.ExecuteScalar(); // Lenh hien lenh Them/Xoa/Sua
+                sqlConn.Close();//Dong ket noi
+                return result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
     }
 }

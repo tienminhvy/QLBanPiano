@@ -16,6 +16,7 @@ namespace QLBanPiano.DTO
         private long gia;
         private string hinhAnh;
         private int soLuong;
+        private ThuongHieu thuongHieu;
 
         public int Id { get { return id; } set {  id = value; } }
         public string Ma { get { return ma; } set { ma = value; } }
@@ -25,7 +26,7 @@ namespace QLBanPiano.DTO
         public long Gia { get { return gia; } set {  gia = value; } }
         public string HinhAnh { get {  return hinhAnh; } set {  hinhAnh = value; } }
         public int SoLuong { get { return soLuong; } set { soLuong = value; } }
-
+        public ThuongHieu ThuongHieu { get { return thuongHieu; } set { thuongHieu = value; } }
 
         public NhacCu()
         {
@@ -37,9 +38,10 @@ namespace QLBanPiano.DTO
             Gia = 0;
             HinhAnh = "";
             SoLuong = 0;
+            ThuongHieu = null;
         }
         public NhacCu(int id, string ma, string ten, string dacDiemNoiBat,
-            string moTaChiTiet, long gia, string hinhAnh, int soLuong)
+            string moTaChiTiet, long gia, string hinhAnh, int soLuong, ThuongHieu thuongHieu)
         {
             Id = id;
             Ma = ma;
@@ -49,6 +51,7 @@ namespace QLBanPiano.DTO
             Gia = gia;
             HinhAnh = hinhAnh;
             SoLuong = soLuong;
+            ThuongHieu = thuongHieu;
         }
     }
 }
