@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace QLBanPiano.GUI.SubForm
 {
-    public partial class TimPhieuNhap : Form
+    public partial class frmQLNhanVien : Form
     {
-        public TimPhieuNhap()
+        public frmQLNhanVien()
         {
             InitializeComponent();
+        }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            frmLienKetTK linkAccount = new frmLienKetTK();
+            linkAccount.Show();
+
         }
     }
 }

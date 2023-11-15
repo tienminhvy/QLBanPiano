@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.SubForm
+namespace DoAn
 {
-    public partial class TimNhacCu : Form
+    public partial class Add : Form
     {
-        public TimNhacCu()
+        public Add()
         {
             InitializeComponent();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano
 {
-    partial class LoginForm
+    partial class frmDangNhap
     {
         /// <summary>
         /// Required designer variable.

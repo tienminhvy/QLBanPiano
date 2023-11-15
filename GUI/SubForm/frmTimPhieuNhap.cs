@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI
+namespace QLBanPiano.GUI.SubForm
 {
-    public partial class PhanQuyen : Form
+    public partial class frmTimPhieuNhap : Form
     {
-        public PhanQuyen()
+        public frmTimPhieuNhap()
         {
             InitializeComponent();
         }
