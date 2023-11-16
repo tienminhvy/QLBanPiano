@@ -29,22 +29,8 @@
         private void InitializeComponent()
         {
             mainPanel = new Panel();
-            panel1 = new Panel();
-            headerPanel = new Panel();
-            button2 = new Button();
-            button1 = new Button();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            label8 = new Label();
-            label5 = new Label();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            txtID = new Label();
             panel2 = new Panel();
+            btnSua = new Button();
             btnXoa = new Button();
             btnNhapLai = new Button();
             btnThemSP = new Button();
@@ -66,13 +52,27 @@
             txtIDSP = new TextBox();
             label13 = new Label();
             label14 = new Label();
-            btnSua = new Button();
+            panel1 = new Panel();
             listView1 = new ListView();
+            headerPanel = new Panel();
+            btnDatLai = new Button();
+            btnTim = new Button();
+            cbThuongHieuTimKiem = new ComboBox();
+            cbGiaTimKiem = new ComboBox();
+            label8 = new Label();
+            label5 = new Label();
+            label3 = new Label();
+            txtTenTimKiem = new TextBox();
+            label1 = new Label();
+            txtMaTimKiem = new TextBox();
+            txtIDTimKiem = new TextBox();
+            label2 = new Label();
+            txtID = new Label();
             mainPanel.SuspendLayout();
-            panel1.SuspendLayout();
-            headerPanel.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).BeginInit();
+            panel1.SuspendLayout();
+            headerPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
@@ -84,161 +84,6 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1373, 720);
             mainPanel.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(listView1);
-            panel1.Location = new Point(0, 126);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(980, 594);
-            panel1.TabIndex = 1;
-            // 
-            // headerPanel
-            // 
-            headerPanel.Controls.Add(button2);
-            headerPanel.Controls.Add(button1);
-            headerPanel.Controls.Add(comboBox2);
-            headerPanel.Controls.Add(comboBox1);
-            headerPanel.Controls.Add(label8);
-            headerPanel.Controls.Add(label5);
-            headerPanel.Controls.Add(label3);
-            headerPanel.Controls.Add(textBox3);
-            headerPanel.Controls.Add(label1);
-            headerPanel.Controls.Add(textBox2);
-            headerPanel.Controls.Add(textBox1);
-            headerPanel.Controls.Add(label2);
-            headerPanel.Controls.Add(txtID);
-            headerPanel.Location = new Point(0, 0);
-            headerPanel.Name = "headerPanel";
-            headerPanel.Size = new Size(980, 126);
-            headerPanel.TabIndex = 0;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Left;
-            button2.BackColor = Color.FromArgb(255, 255, 192);
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(897, 68);
-            button2.Name = "button2";
-            button2.Size = new Size(83, 38);
-            button2.TabIndex = 21;
-            button2.Text = "Đặt Lại";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Left;
-            button1.BackColor = Color.FromArgb(192, 255, 192);
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(821, 68);
-            button1.Name = "button1";
-            button1.Size = new Size(70, 38);
-            button1.TabIndex = 20;
-            button1.Text = "Tìm";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // comboBox2
-            // 
-            comboBox2.Anchor = AnchorStyles.Left;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(664, 73);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(151, 28);
-            comboBox2.TabIndex = 19;
-            // 
-            // comboBox1
-            // 
-            comboBox1.Anchor = AnchorStyles.Left;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(447, 73);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(107, 28);
-            comboBox1.TabIndex = 18;
-            // 
-            // label8
-            // 
-            label8.Anchor = AnchorStyles.Left;
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(423, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(277, 41);
-            label8.TabIndex = 17;
-            label8.Text = "Quản Lý Sản Phẩm";
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Left;
-            label5.AutoSize = true;
-            label5.Location = new Point(560, 76);
-            label5.Name = "label5";
-            label5.Size = new Size(98, 20);
-            label5.TabIndex = 10;
-            label5.Text = "Thương Hiệu:";
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.Location = new Point(407, 76);
-            label3.Name = "label3";
-            label3.Size = new Size(34, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Giá:";
-            // 
-            // textBox3
-            // 
-            textBox3.Anchor = AnchorStyles.Left;
-            textBox3.Location = new Point(276, 73);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.Location = new Point(235, 76);
-            label1.Name = "label1";
-            label1.Size = new Size(35, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Tên:";
-            // 
-            // textBox2
-            // 
-            textBox2.Anchor = AnchorStyles.Left;
-            textBox2.Location = new Point(157, 73);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(72, 27);
-            textBox2.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Left;
-            textBox1.Location = new Point(49, 73);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(67, 27);
-            textBox1.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Left;
-            label2.AutoSize = true;
-            label2.Location = new Point(122, 76);
-            label2.Name = "label2";
-            label2.Size = new Size(33, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Mã:";
-            // 
-            // txtID
-            // 
-            txtID.Anchor = AnchorStyles.Left;
-            txtID.AutoSize = true;
-            txtID.Location = new Point(19, 76);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(27, 20);
-            txtID.TabIndex = 0;
-            txtID.Text = "ID:";
             // 
             // panel2
             // 
@@ -269,6 +114,17 @@
             panel2.Size = new Size(381, 714);
             panel2.TabIndex = 2;
             // 
+            // btnSua
+            // 
+            btnSua.BackColor = Color.FromArgb(255, 255, 128);
+            btnSua.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSua.Location = new Point(143, 652);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(105, 53);
+            btnSua.TabIndex = 21;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = false;
+            // 
             // btnXoa
             // 
             btnXoa.BackColor = Color.Red;
@@ -279,6 +135,7 @@
             btnXoa.TabIndex = 20;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnNhapLai
             // 
@@ -290,6 +147,7 @@
             btnNhapLai.TabIndex = 19;
             btnNhapLai.Text = "Nhập Lại";
             btnNhapLai.UseVisualStyleBackColor = false;
+            btnNhapLai.Click += btnNhapLai_Click;
             // 
             // btnThemSP
             // 
@@ -453,16 +311,13 @@
             label14.TabIndex = 0;
             label14.Text = "ID:";
             // 
-            // btnSua
+            // panel1
             // 
-            btnSua.BackColor = Color.FromArgb(255, 255, 128);
-            btnSua.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSua.Location = new Point(143, 652);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(105, 53);
-            btnSua.TabIndex = 21;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = false;
+            panel1.Controls.Add(listView1);
+            panel1.Location = new Point(0, 126);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(980, 594);
+            panel1.TabIndex = 1;
             // 
             // listView1
             // 
@@ -471,6 +326,155 @@
             listView1.Size = new Size(972, 587);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // headerPanel
+            // 
+            headerPanel.Controls.Add(btnDatLai);
+            headerPanel.Controls.Add(btnTim);
+            headerPanel.Controls.Add(cbThuongHieuTimKiem);
+            headerPanel.Controls.Add(cbGiaTimKiem);
+            headerPanel.Controls.Add(label8);
+            headerPanel.Controls.Add(label5);
+            headerPanel.Controls.Add(label3);
+            headerPanel.Controls.Add(txtTenTimKiem);
+            headerPanel.Controls.Add(label1);
+            headerPanel.Controls.Add(txtMaTimKiem);
+            headerPanel.Controls.Add(txtIDTimKiem);
+            headerPanel.Controls.Add(label2);
+            headerPanel.Controls.Add(txtID);
+            headerPanel.Location = new Point(0, 0);
+            headerPanel.Name = "headerPanel";
+            headerPanel.Size = new Size(980, 126);
+            headerPanel.TabIndex = 0;
+            // 
+            // btnDatLai
+            // 
+            btnDatLai.Anchor = AnchorStyles.Left;
+            btnDatLai.BackColor = Color.FromArgb(255, 255, 192);
+            btnDatLai.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDatLai.Location = new Point(897, 68);
+            btnDatLai.Name = "btnDatLai";
+            btnDatLai.Size = new Size(83, 38);
+            btnDatLai.TabIndex = 21;
+            btnDatLai.Text = "Đặt Lại";
+            btnDatLai.UseVisualStyleBackColor = false;
+            btnDatLai.Click += btnDatLai_Click;
+            // 
+            // btnTim
+            // 
+            btnTim.Anchor = AnchorStyles.Left;
+            btnTim.BackColor = Color.FromArgb(192, 255, 192);
+            btnTim.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTim.Location = new Point(821, 68);
+            btnTim.Name = "btnTim";
+            btnTim.Size = new Size(70, 38);
+            btnTim.TabIndex = 20;
+            btnTim.Text = "Tìm";
+            btnTim.UseVisualStyleBackColor = false;
+            // 
+            // cbThuongHieuTimKiem
+            // 
+            cbThuongHieuTimKiem.Anchor = AnchorStyles.Left;
+            cbThuongHieuTimKiem.FormattingEnabled = true;
+            cbThuongHieuTimKiem.Location = new Point(664, 73);
+            cbThuongHieuTimKiem.Name = "cbThuongHieuTimKiem";
+            cbThuongHieuTimKiem.Size = new Size(151, 28);
+            cbThuongHieuTimKiem.TabIndex = 19;
+            // 
+            // cbGiaTimKiem
+            // 
+            cbGiaTimKiem.Anchor = AnchorStyles.Left;
+            cbGiaTimKiem.FormattingEnabled = true;
+            cbGiaTimKiem.Items.AddRange(new object[] { "< 2 triệu", "2 đến 5 triệu", "5 đến 10 triệu", "> 10 triệu" });
+            cbGiaTimKiem.Location = new Point(447, 73);
+            cbGiaTimKiem.Name = "cbGiaTimKiem";
+            cbGiaTimKiem.Size = new Size(107, 28);
+            cbGiaTimKiem.TabIndex = 18;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Left;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(423, 9);
+            label8.Name = "label8";
+            label8.Size = new Size(277, 41);
+            label8.TabIndex = 17;
+            label8.Text = "Quản Lý Sản Phẩm";
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Left;
+            label5.AutoSize = true;
+            label5.Location = new Point(560, 76);
+            label5.Name = "label5";
+            label5.Size = new Size(98, 20);
+            label5.TabIndex = 10;
+            label5.Text = "Thương Hiệu:";
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left;
+            label3.AutoSize = true;
+            label3.Location = new Point(407, 76);
+            label3.Name = "label3";
+            label3.Size = new Size(34, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Giá:";
+            // 
+            // txtTenTimKiem
+            // 
+            txtTenTimKiem.Anchor = AnchorStyles.Left;
+            txtTenTimKiem.Location = new Point(276, 73);
+            txtTenTimKiem.Name = "txtTenTimKiem";
+            txtTenTimKiem.Size = new Size(125, 27);
+            txtTenTimKiem.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Location = new Point(235, 76);
+            label1.Name = "label1";
+            label1.Size = new Size(35, 20);
+            label1.TabIndex = 4;
+            label1.Text = "Tên:";
+            // 
+            // txtMaTimKiem
+            // 
+            txtMaTimKiem.Anchor = AnchorStyles.Left;
+            txtMaTimKiem.Location = new Point(157, 73);
+            txtMaTimKiem.Name = "txtMaTimKiem";
+            txtMaTimKiem.Size = new Size(72, 27);
+            txtMaTimKiem.TabIndex = 3;
+            // 
+            // txtIDTimKiem
+            // 
+            txtIDTimKiem.Anchor = AnchorStyles.Left;
+            txtIDTimKiem.Location = new Point(49, 73);
+            txtIDTimKiem.Name = "txtIDTimKiem";
+            txtIDTimKiem.Size = new Size(67, 27);
+            txtIDTimKiem.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Left;
+            label2.AutoSize = true;
+            label2.Location = new Point(122, 76);
+            label2.Name = "label2";
+            label2.Size = new Size(33, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Mã:";
+            // 
+            // txtID
+            // 
+            txtID.Anchor = AnchorStyles.Left;
+            txtID.AutoSize = true;
+            txtID.Location = new Point(19, 76);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(27, 20);
+            txtID.TabIndex = 0;
+            txtID.Text = "ID:";
             // 
             // Product
             // 
@@ -483,12 +487,12 @@
             Name = "Product";
             Text = "Quản Lý Sản Phẩm";
             mainPanel.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            headerPanel.ResumeLayout(false);
-            headerPanel.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).EndInit();
+            panel1.ResumeLayout(false);
+            headerPanel.ResumeLayout(false);
+            headerPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -498,18 +502,18 @@
         private Panel headerPanel;
         private Label label2;
         private Label txtID;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txtIDTimKiem;
+        private TextBox txtMaTimKiem;
+        private TextBox txtTenTimKiem;
         private Label label1;
         private Label label3;
         private Label label5;
         private Label label8;
         private Panel panel1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private Button button1;
-        private Button button2;
+        private ComboBox cbGiaTimKiem;
+        private ComboBox cbThuongHieuTimKiem;
+        private Button btnTim;
+        private Button btnDatLai;
         private Panel panel2;
         private Button btnXoa;
         private Button btnNhapLai;
