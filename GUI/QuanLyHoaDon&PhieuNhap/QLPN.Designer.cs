@@ -201,6 +201,7 @@
             // 
             idPhieuNhapTxtBox.Location = new Point(149, 14);
             idPhieuNhapTxtBox.Name = "idPhieuNhapTxtBox";
+            idPhieuNhapTxtBox.ReadOnly = true;
             idPhieuNhapTxtBox.Size = new Size(292, 31);
             idPhieuNhapTxtBox.TabIndex = 3;
             // 
@@ -208,6 +209,7 @@
             // 
             idNhanVienTxtBox.Location = new Point(148, 105);
             idNhanVienTxtBox.Name = "idNhanVienTxtBox";
+            idNhanVienTxtBox.ReadOnly = true;
             idNhanVienTxtBox.Size = new Size(293, 31);
             idNhanVienTxtBox.TabIndex = 4;
             // 

@@ -32,8 +32,17 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            textBox4 = new TextBox();
+            label6 = new Label();
             panel5 = new Panel();
+            panel7 = new Panel();
+            searchBtn = new Button();
+            textBox5 = new TextBox();
             panel6 = new Panel();
+            filterBtn = new Button();
+            printBtn = new Button();
+            createBtn = new Button();
+            fixBtn = new Button();
             dateTimePicker1 = new DateTimePicker();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
@@ -44,22 +53,13 @@
             label2 = new Label();
             panel3 = new Panel();
             hoaDonGridView = new DataGridView();
-            createBtn = new Button();
-            fixBtn = new Button();
-            printBtn = new Button();
-            filterBtn = new Button();
-            panel7 = new Panel();
-            searchBtn = new Button();
-            textBox5 = new TextBox();
-            label6 = new Label();
-            textBox4 = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
+            panel7.SuspendLayout();
             panel6.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).BeginInit();
-            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -102,6 +102,23 @@
             panel2.Size = new Size(1016, 161);
             panel2.TabIndex = 1;
             // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(658, 116);
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(280, 31);
+            textBox4.TabIndex = 10;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(556, 122);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 25);
+            label6.TabIndex = 9;
+            label6.Text = "Tổng tiền :";
+            // 
             // panel5
             // 
             panel5.Controls.Add(panel7);
@@ -110,6 +127,34 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(460, 108);
             panel5.TabIndex = 8;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(searchBtn);
+            panel7.Controls.Add(textBox5);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(0, 50);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(460, 50);
+            panel7.TabIndex = 12;
+            // 
+            // searchBtn
+            // 
+            searchBtn.Dock = DockStyle.Right;
+            searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
+            searchBtn.Location = new Point(391, 0);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(69, 50);
+            searchBtn.TabIndex = 8;
+            searchBtn.TextAlign = ContentAlignment.MiddleLeft;
+            searchBtn.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(15, 9);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(367, 31);
+            textBox5.TabIndex = 9;
             // 
             // panel6
             // 
@@ -123,6 +168,42 @@
             panel6.Size = new Size(460, 50);
             panel6.TabIndex = 13;
             // 
+            // filterBtn
+            // 
+            filterBtn.Location = new Point(350, 0);
+            filterBtn.Name = "filterBtn";
+            filterBtn.Size = new Size(110, 50);
+            filterBtn.TabIndex = 16;
+            filterBtn.Text = "Lọc";
+            filterBtn.UseVisualStyleBackColor = true;
+            // 
+            // printBtn
+            // 
+            printBtn.Location = new Point(232, 0);
+            printBtn.Name = "printBtn";
+            printBtn.Size = new Size(110, 50);
+            printBtn.TabIndex = 15;
+            printBtn.Text = "In hóa đơn";
+            printBtn.UseVisualStyleBackColor = true;
+            // 
+            // createBtn
+            // 
+            createBtn.Location = new Point(0, 0);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(110, 50);
+            createBtn.TabIndex = 9;
+            createBtn.Text = "Tạo mới";
+            createBtn.UseVisualStyleBackColor = true;
+            // 
+            // fixBtn
+            // 
+            fixBtn.Location = new Point(116, 0);
+            fixBtn.Name = "fixBtn";
+            fixBtn.Size = new Size(110, 50);
+            fixBtn.TabIndex = 14;
+            fixBtn.Text = "Chỉnh sửa ";
+            fixBtn.UseVisualStyleBackColor = true;
+            // 
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(166, 117);
@@ -134,6 +215,7 @@
             // 
             textBox3.Location = new Point(166, 77);
             textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
             textBox3.Size = new Size(293, 31);
             textBox3.TabIndex = 6;
             // 
@@ -141,6 +223,7 @@
             // 
             textBox2.Location = new Point(166, 43);
             textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
             textBox2.Size = new Size(293, 31);
             textBox2.TabIndex = 5;
             // 
@@ -148,6 +231,7 @@
             // 
             textBox1.Location = new Point(166, 3);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(293, 31);
             textBox1.TabIndex = 4;
             // 
@@ -207,86 +291,6 @@
             hoaDonGridView.Size = new Size(1016, 359);
             hoaDonGridView.TabIndex = 0;
             // 
-            // createBtn
-            // 
-            createBtn.Location = new Point(0, 0);
-            createBtn.Name = "createBtn";
-            createBtn.Size = new Size(110, 50);
-            createBtn.TabIndex = 9;
-            createBtn.Text = "Tạo mới";
-            createBtn.UseVisualStyleBackColor = true;
-            // 
-            // fixBtn
-            // 
-            fixBtn.Location = new Point(116, 0);
-            fixBtn.Name = "fixBtn";
-            fixBtn.Size = new Size(110, 50);
-            fixBtn.TabIndex = 14;
-            fixBtn.Text = "Chỉnh sửa ";
-            fixBtn.UseVisualStyleBackColor = true;
-            // 
-            // printBtn
-            // 
-            printBtn.Location = new Point(232, 0);
-            printBtn.Name = "printBtn";
-            printBtn.Size = new Size(110, 50);
-            printBtn.TabIndex = 15;
-            printBtn.Text = "In hóa đơn";
-            printBtn.UseVisualStyleBackColor = true;
-            // 
-            // filterBtn
-            // 
-            filterBtn.Location = new Point(350, 0);
-            filterBtn.Name = "filterBtn";
-            filterBtn.Size = new Size(110, 50);
-            filterBtn.TabIndex = 16;
-            filterBtn.Text = "Lọc";
-            filterBtn.UseVisualStyleBackColor = true;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(searchBtn);
-            panel7.Controls.Add(textBox5);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 50);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(460, 50);
-            panel7.TabIndex = 12;
-            // 
-            // searchBtn
-            // 
-            searchBtn.Dock = DockStyle.Right;
-            searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
-            searchBtn.Location = new Point(391, 0);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(69, 50);
-            searchBtn.TabIndex = 8;
-            searchBtn.TextAlign = ContentAlignment.MiddleLeft;
-            searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(15, 9);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(367, 31);
-            textBox5.TabIndex = 9;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(556, 122);
-            label6.Name = "label6";
-            label6.Size = new Size(96, 25);
-            label6.TabIndex = 9;
-            label6.Text = "Tổng tiền :";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(658, 116);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(280, 31);
-            textBox4.TabIndex = 10;
-            // 
             // QLHD
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -303,11 +307,11 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel5.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel6.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).EndInit();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             ResumeLayout(false);
         }
 

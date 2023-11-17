@@ -15,6 +15,11 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
         public QLHD()
         {
             InitializeComponent();
+            Init();
+        }
+        void Init()
+        {
+
         }
     }
 }
