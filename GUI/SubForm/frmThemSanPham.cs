@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DoAn
+namespace QLBanPiano.GUI.SubForm
 {
-    public partial class Add : Form
+    public partial class frmThemSanPham : Form
     {
-        public Add()
+        public frmThemSanPham()
         {
             InitializeComponent();
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

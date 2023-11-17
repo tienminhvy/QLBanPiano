@@ -18,13 +18,13 @@ namespace QLBanPiano.DTO
         private int soLuong;
         private ThuongHieu thuongHieu;
 
-        public int Id { get { return id; } set {  id = value; } }
+        public int Id { get { return id; } set { id = value; } }
         public string Ma { get { return ma; } set { ma = value; } }
         public string Ten { get { return ten; } set { ten = value; } }
-        public string DacDiemNoiBat { get {  return dacDiemNoiBat; } set {  dacDiemNoiBat = value; } }
+        public string DacDiemNoiBat { get { return dacDiemNoiBat; } set { dacDiemNoiBat = value; } }
         public string MoTaChiTiet { get { return moTaChiTiet; } set { moTaChiTiet = value; } }
-        public long Gia { get { return gia; } set {  gia = value; } }
-        public string HinhAnh { get {  return hinhAnh; } set {  hinhAnh = value; } }
+        public long Gia { get { return gia; } set { gia = value; } }
+        public string HinhAnh { get { return hinhAnh; } set { hinhAnh = value; } }
         public int SoLuong { get { return soLuong; } set { soLuong = value; } }
         public ThuongHieu ThuongHieu { get { return thuongHieu; } set { thuongHieu = value; } }
 

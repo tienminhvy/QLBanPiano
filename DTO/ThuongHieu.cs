@@ -14,7 +14,7 @@ namespace QLBanPiano.DTO
         private string moTa;
 
         public int Id { get => id; set => id = value; }
-        public string Ma { get => ma;  set => ma = value; }
+        public string Ma { get => ma; set => ma = value; }
         public string Ten { get => ten; set => ten = value; }
         public string MoTa { get => moTa; set => moTa = value; }
 

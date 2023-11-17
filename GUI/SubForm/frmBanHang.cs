@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace DoAn
 {
-    public partial class BanHang : Form
+    public partial class frmBanHang : Form
     {
-        public BanHang()
+        public frmBanHang()
         {
             InitializeComponent();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

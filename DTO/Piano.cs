@@ -14,7 +14,8 @@ namespace QLBanPiano.DTO
         public int Id { get => id; set => id = value; }
         public string Phanloai { get => phanloai; set => phanloai = value; }
 
-        public Piano() {
+        public Piano()
+        {
             id = -1;
             phanloai = "";
         }

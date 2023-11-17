@@ -37,7 +37,7 @@ namespace QLBanPiano.BUS
                 "nhaccu.thuonghieu_id " +
                 "FROM piano, nhaccu, thuonghieu" +
                 "WHERE piano.nhaccu_id = nhaccu.id AND " +
-                "nhaccu.thuonghieu_id = thuonghieu.id AND "+dieukien;
+                "nhaccu.thuonghieu_id = thuonghieu.id AND " + dieukien;
 
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
@@ -108,12 +108,12 @@ namespace QLBanPiano.BUS
                             "gia = {4}, " +
                             "hinhAnh = {5}, " +
                             "thuonghieu_id = {6}" +
-                            "WHERE id = {7}", 
-                            ma, 
-                            ten, 
-                            dacDiemNoiBat, 
-                            moTaChiTiet, 
-                            gia, 
+                            "WHERE id = {7}",
+                            ma,
+                            ten,
+                            dacDiemNoiBat,
+                            moTaChiTiet,
+                            gia,
                             hinhAnh,
                             idThuongHieu,
                             idNhacCu));
@@ -135,13 +135,16 @@ namespace QLBanPiano.BUS
             {
                 MessageBox.Show("Mã nhạc cụ đã tồn tại");
                 return false;
-            }    
-            
+            }
+
             string nhaccu_id = db.Insert(string.Format("INSERT INTO nhaccu " +
                 "(ma, ten, dacDiemNoiBat, moTaChiTiet, gia," +
                 " hinhAnh, soLuong, thuonghieu_id, trangthai) " +
                 "VALUES ('{0}', N'{1}', N'{2}', N'{3}', {4}, {5}, 0, {6}, {7})",
                 ma, ten, dacDiemNoiBat, moTaChiTiet, gia, hinhAnh, idThuongHieu, 1)).ToString();
+
+            if(nhaccu_id == "-1") { return false; } // thêm nhạc cụ thất bại
+
             db.Insert(string.Format("INSERT INTO piano (phanLoai, nhaccu_id) " +
                 "VALUES ({0}, {1})", phanLoai, nhaccu_id));
             return true;

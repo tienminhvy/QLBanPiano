@@ -17,10 +17,11 @@ namespace QLBanPiano.DTO
 
         public int Id { get => id; set => id = value; }
         public string HoLot { get => hoLot; set => hoLot = value; }
-        public string Ten { get => ten;set => ten = value;}
+        public string Ten { get => ten; set => ten = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
         public string SoDienThoai { get => soDienThoai; set => soDienThoai = value; }
-        public KhachHang() {
+        public KhachHang()
+        {
             id = -1;
             hoLot = "";
             ten = "";

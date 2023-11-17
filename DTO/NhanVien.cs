@@ -23,7 +23,8 @@ namespace QLBanPiano.DTO
         public string SoDienThoai { get => soDienThoai; set => soDienThoai = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
 
-        public NhanVien() {
+        public NhanVien()
+        {
             Id = -1;
             HoLot = "";
             Ten = "";
