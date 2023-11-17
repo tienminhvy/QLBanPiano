@@ -1,6 +1,6 @@
 ﻿namespace DoAn
 {
-    partial class BanHang
+    partial class frmBanHang
     {
         /// <summary>
         /// Required designer variable.
@@ -757,7 +757,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(564, 0);
+            label1.Location = new Point(564, 7);
             label1.Name = "label1";
             label1.Size = new Size(155, 41);
             label1.TabIndex = 0;
