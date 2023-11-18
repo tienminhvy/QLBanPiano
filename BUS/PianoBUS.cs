@@ -24,22 +24,7 @@ namespace QLBanPiano.BUS
 
         public List<DoiTuong> LayDS(string dieukien)
         {
-            string sqlStr = "SELECT " +
-                "piano.id as 'id', " +
-                "nhaccu.ma as N'Mã nhạc cụ', " +
-                "nhaccu.ten as N'Tên', " +
-                "dacDiemNoiBat as N'Đặc điểm nổi bật', " +
-                "moTaChiTiet as N'Mô tả chi tiết', " +
-                "gia as N'Giá', " +
-                "soLuong as N'Số lượng', " +
-                "phanLoai as N'Phân loại', " +
-                "thuonghieu.ma, " +
-                "thuonghieu.ten, " +
-                "nhaccu.thuonghieu_id " +
-                "FROM piano, nhaccu, thuonghieu" +
-                "WHERE piano.nhaccu_id = nhaccu.id AND " +
-                "nhaccu.thuonghieu_id = thuonghieu.id AND " + dieukien;
-
+            string sqlStr = "SELECT  piano.id as 'id',  \r\nnhaccu.ma as N'Mã nhạc cụ',  \r\nnhaccu.ten as N'Tên',  \r\ndacDiemNoiBat as N'Đặc điểm nổi bật',  \r\nmoTaChiTiet as N'Mô tả chi tiết',  \r\ngia as N'Giá',  \r\nsoLuong as N'Số lượng',  \r\nphanLoai as N'Phân loại',  \r\nthuonghieu.ma as N'Mã Thương Hiệu',  \r\nthuonghieu.ten as N'Tên Thương Hiệu',  \r\nnhaccu.thuonghieu_id  \r\nFROM piano, nhaccu, thuonghieu \r\nWHERE piano.nhaccu_id = nhaccu.id AND  \r\nnhaccu.thuonghieu_id = thuonghieu.id AND " + dieukien;
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
@@ -55,8 +40,8 @@ namespace QLBanPiano.BUS
                 piano.SoLuong = int.Parse(row["Số lượng"].ToString());
                 piano.Phanloai = row["Phân loại"].ToString();
                 piano.ThuongHieu = new ThuongHieu();
-                piano.ThuongHieu.Ma = row["thuonghieu.ma"].ToString();
-                piano.ThuongHieu.Ten = row["thuonghieu.ten"].ToString();
+                piano.ThuongHieu.Ma = row["Mã Thương Hiệu"].ToString();
+                piano.ThuongHieu.Ten = row["Tên Thương Hiệu"].ToString();
                 ds.Add(piano);
             }
             return ds;
@@ -64,18 +49,9 @@ namespace QLBanPiano.BUS
 
         public DataTable LayToanBoDS()
         {
-            string sqlStr = "SELECT " +
-                "nhaccu.ma as N'Mã nhạc cụ', " +
-                "nhaccu.ten as N'Tên', " +
-                "dacDiemNoiBat as N'Đặc điểm nổi bật', " +
-                "moTaChiTiet as N'Mô tả chi tiết', " +
-                "gia as N'Giá', " +
-                "soLuong as N'Số lượng', " +
-                "FROM piano, nhaccu, thuonghieu" +
-                "WHERE piano.nhaccu_id = nhaccu.id AND " +
-                "nhaccu.thuonghieu_id = thuonghieu.id";
 
-            return db.Execute(sqlStr);
+            string sqlStr = "SELECT \r\nnhaccu.ma as N'Mã nhạc cụ', \r\nnhaccu.ten as N'Tên', \r\ndacDiemNoiBat as N'Đặc điểm nổi bật', \r\nmoTaChiTiet as N'Mô tả chi tiết', \r\ngia as N'Giá', \r\nsoLuong as N'Số lượng' \r\nFROM piano, nhaccu, thuonghieu\r\nWHERE piano.nhaccu_id = nhaccu.id AND \r\nnhaccu.thuonghieu_id = thuonghieu.id and nhaccu.trangthai = 1";
+                return db.Execute(sqlStr);
         }
 
         public int SoLuong(string dieuKien)

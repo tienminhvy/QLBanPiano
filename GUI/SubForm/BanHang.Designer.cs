@@ -155,7 +155,7 @@
             // 
             // btnXoaHet
             // 
-            btnXoaHet.BackColor = Color.Red;
+            btnXoaHet.BackColor = Color.DarkGray;
             btnXoaHet.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnXoaHet.Location = new Point(268, 82);
             btnXoaHet.Name = "btnXoaHet";
@@ -177,7 +177,7 @@
             // 
             // btnThanhToan
             // 
-            btnThanhToan.BackColor = Color.Fuchsia;
+            btnThanhToan.BackColor = SystemColors.ActiveCaption;
             btnThanhToan.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnThanhToan.Location = new Point(151, 553);
             btnThanhToan.Name = "btnThanhToan";

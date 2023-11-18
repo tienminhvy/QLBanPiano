@@ -53,7 +53,7 @@
             label13 = new Label();
             label14 = new Label();
             panel1 = new Panel();
-            listView1 = new ListView();
+            dgvSanPham = new DataGridView();
             headerPanel = new Panel();
             btnDatLai = new Button();
             btnTim = new Button();
@@ -65,13 +65,12 @@
             txtTenTimKiem = new TextBox();
             label1 = new Label();
             txtMaTimKiem = new TextBox();
-            txtIDTimKiem = new TextBox();
             label2 = new Label();
-            txtID = new Label();
             mainPanel.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             headerPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -82,7 +81,7 @@
             mainPanel.Controls.Add(headerPanel);
             mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1373, 720);
+            mainPanel.Size = new Size(1259, 720);
             mainPanel.TabIndex = 0;
             // 
             // panel2
@@ -109,7 +108,7 @@
             panel2.Controls.Add(txtIDSP);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label14);
-            panel2.Location = new Point(986, 3);
+            panel2.Location = new Point(873, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(381, 714);
             panel2.TabIndex = 2;
@@ -159,6 +158,7 @@
             btnThemSP.TabIndex = 18;
             btnThemSP.Text = "Thêm";
             btnThemSP.UseVisualStyleBackColor = false;
+            btnThemSP.Click += btnThemSP_Click;
             // 
             // txtMoTaSP
             // 
@@ -313,19 +313,25 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(listView1);
+            panel1.Controls.Add(dgvSanPham);
             panel1.Location = new Point(0, 126);
             panel1.Name = "panel1";
-            panel1.Size = new Size(980, 594);
+            panel1.Size = new Size(870, 594);
             panel1.TabIndex = 1;
             // 
-            // listView1
+            // dgvSanPham
             // 
-            listView1.Location = new Point(3, 3);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(972, 587);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
+            dgvSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSanPham.Location = new Point(0, 0);
+            dgvSanPham.MultiSelect = false;
+            dgvSanPham.Name = "dgvSanPham";
+            dgvSanPham.ReadOnly = true;
+            dgvSanPham.RowHeadersWidth = 51;
+            dgvSanPham.RowTemplate.Height = 29;
+            dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSanPham.Size = new Size(867, 594);
+            dgvSanPham.TabIndex = 0;
+            dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
             // 
             // headerPanel
             // 
@@ -339,20 +345,19 @@
             headerPanel.Controls.Add(txtTenTimKiem);
             headerPanel.Controls.Add(label1);
             headerPanel.Controls.Add(txtMaTimKiem);
-            headerPanel.Controls.Add(txtIDTimKiem);
             headerPanel.Controls.Add(label2);
-            headerPanel.Controls.Add(txtID);
             headerPanel.Location = new Point(0, 0);
             headerPanel.Name = "headerPanel";
-            headerPanel.Size = new Size(980, 126);
+            headerPanel.Size = new Size(870, 126);
             headerPanel.TabIndex = 0;
+            headerPanel.Paint += headerPanel_Paint;
             // 
             // btnDatLai
             // 
             btnDatLai.Anchor = AnchorStyles.Left;
             btnDatLai.BackColor = Color.FromArgb(255, 255, 192);
             btnDatLai.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDatLai.Location = new Point(897, 68);
+            btnDatLai.Location = new Point(787, 68);
             btnDatLai.Name = "btnDatLai";
             btnDatLai.Size = new Size(83, 38);
             btnDatLai.TabIndex = 21;
@@ -365,31 +370,34 @@
             btnTim.Anchor = AnchorStyles.Left;
             btnTim.BackColor = Color.FromArgb(192, 255, 192);
             btnTim.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTim.Location = new Point(821, 68);
+            btnTim.Location = new Point(711, 68);
             btnTim.Name = "btnTim";
             btnTim.Size = new Size(70, 38);
             btnTim.TabIndex = 20;
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = false;
+            btnTim.Click += btnTim_Click;
             // 
             // cbThuongHieuTimKiem
             // 
             cbThuongHieuTimKiem.Anchor = AnchorStyles.Left;
             cbThuongHieuTimKiem.FormattingEnabled = true;
-            cbThuongHieuTimKiem.Location = new Point(664, 73);
+            cbThuongHieuTimKiem.Location = new Point(554, 73);
             cbThuongHieuTimKiem.Name = "cbThuongHieuTimKiem";
             cbThuongHieuTimKiem.Size = new Size(151, 28);
             cbThuongHieuTimKiem.TabIndex = 19;
+            cbThuongHieuTimKiem.SelectedIndexChanged += cbThuongHieuTimKiem_SelectedIndexChanged;
             // 
             // cbGiaTimKiem
             // 
             cbGiaTimKiem.Anchor = AnchorStyles.Left;
             cbGiaTimKiem.FormattingEnabled = true;
-            cbGiaTimKiem.Items.AddRange(new object[] { "< 2 triệu", "2 đến 5 triệu", "5 đến 10 triệu", "> 10 triệu" });
-            cbGiaTimKiem.Location = new Point(447, 73);
+            cbGiaTimKiem.Items.AddRange(new object[] { "< 5 triệu", "5 đến 10 triệu", "10 đến 20 triệu", ">20 triệu" });
+            cbGiaTimKiem.Location = new Point(337, 73);
             cbGiaTimKiem.Name = "cbGiaTimKiem";
             cbGiaTimKiem.Size = new Size(107, 28);
             cbGiaTimKiem.TabIndex = 18;
+            cbGiaTimKiem.SelectedIndexChanged += cbGiaTimKiem_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -406,81 +414,69 @@
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Location = new Point(560, 76);
+            label5.Location = new Point(450, 76);
             label5.Name = "label5";
             label5.Size = new Size(98, 20);
             label5.TabIndex = 10;
             label5.Text = "Thương Hiệu:";
+            label5.Click += label5_Click;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Location = new Point(407, 76);
+            label3.Location = new Point(297, 76);
             label3.Name = "label3";
             label3.Size = new Size(34, 20);
             label3.TabIndex = 6;
             label3.Text = "Giá:";
+            label3.Click += label3_Click;
             // 
             // txtTenTimKiem
             // 
             txtTenTimKiem.Anchor = AnchorStyles.Left;
-            txtTenTimKiem.Location = new Point(276, 73);
+            txtTenTimKiem.Location = new Point(166, 73);
             txtTenTimKiem.Name = "txtTenTimKiem";
             txtTenTimKiem.Size = new Size(125, 27);
             txtTenTimKiem.TabIndex = 5;
+            txtTenTimKiem.TextChanged += txtTenTimKiem_TextChanged;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(235, 76);
+            label1.Location = new Point(125, 76);
             label1.Name = "label1";
             label1.Size = new Size(35, 20);
             label1.TabIndex = 4;
             label1.Text = "Tên:";
+            label1.Click += label1_Click;
             // 
             // txtMaTimKiem
             // 
             txtMaTimKiem.Anchor = AnchorStyles.Left;
-            txtMaTimKiem.Location = new Point(157, 73);
+            txtMaTimKiem.Location = new Point(47, 73);
             txtMaTimKiem.Name = "txtMaTimKiem";
             txtMaTimKiem.Size = new Size(72, 27);
             txtMaTimKiem.TabIndex = 3;
-            // 
-            // txtIDTimKiem
-            // 
-            txtIDTimKiem.Anchor = AnchorStyles.Left;
-            txtIDTimKiem.Location = new Point(49, 73);
-            txtIDTimKiem.Name = "txtIDTimKiem";
-            txtIDTimKiem.Size = new Size(67, 27);
-            txtIDTimKiem.TabIndex = 2;
+            txtMaTimKiem.TextChanged += txtMaTimKiem_TextChanged;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(122, 76);
+            label2.Location = new Point(12, 76);
             label2.Name = "label2";
             label2.Size = new Size(33, 20);
             label2.TabIndex = 1;
             label2.Text = "Mã:";
-            // 
-            // txtID
-            // 
-            txtID.Anchor = AnchorStyles.Left;
-            txtID.AutoSize = true;
-            txtID.Location = new Point(19, 76);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(27, 20);
-            txtID.TabIndex = 0;
-            txtID.Text = "ID:";
+            label2.Click += label2_Click;
             // 
             // Product
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1382, 720);
+            ClientSize = new Size(1258, 720);
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(1094, 767);
@@ -491,6 +487,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
             headerPanel.ResumeLayout(false);
             headerPanel.PerformLayout();
             ResumeLayout(false);
@@ -501,8 +498,6 @@
         private Panel mainPanel;
         private Panel headerPanel;
         private Label label2;
-        private Label txtID;
-        private TextBox txtIDTimKiem;
         private TextBox txtMaTimKiem;
         private TextBox txtTenTimKiem;
         private Label label1;
@@ -537,6 +532,6 @@
         private Label label13;
         private Label label14;
         private Button btnSua;
-        private ListView listView1;
+        private DataGridView dgvSanPham;
     }
 }
