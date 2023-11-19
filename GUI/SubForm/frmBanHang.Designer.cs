@@ -54,7 +54,7 @@
             label20 = new Label();
             txtDacDiemSP = new TextBox();
             label19 = new Label();
-            pictureBox1 = new PictureBox();
+            ptbAnh = new PictureBox();
             txtSoLuongCon = new TextBox();
             label15 = new Label();
             txtGiaSP = new TextBox();
@@ -65,7 +65,7 @@
             textBox7 = new TextBox();
             label10 = new Label();
             label11 = new Label();
-            comboBox2 = new ComboBox();
+            cbbTieuChiSanPham = new ComboBox();
             btnChonSanPham = new Button();
             txtThuongHieuSP = new TextBox();
             label13 = new Label();
@@ -81,7 +81,7 @@
             textBox6 = new TextBox();
             label9 = new Label();
             label8 = new Label();
-            comboBox1 = new ComboBox();
+            cbbTieuChiKhachHang = new ComboBox();
             btnThemKhachHang = new Button();
             txtSDTKH = new TextBox();
             label7 = new Label();
@@ -99,7 +99,7 @@
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ptbAnh).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -288,7 +288,7 @@
             panel3.Controls.Add(label20);
             panel3.Controls.Add(txtDacDiemSP);
             panel3.Controls.Add(label19);
-            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(ptbAnh);
             panel3.Controls.Add(txtSoLuongCon);
             panel3.Controls.Add(label15);
             panel3.Controls.Add(txtGiaSP);
@@ -299,7 +299,7 @@
             panel3.Controls.Add(textBox7);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(label11);
-            panel3.Controls.Add(comboBox2);
+            panel3.Controls.Add(cbbTieuChiSanPham);
             panel3.Controls.Add(btnChonSanPham);
             panel3.Controls.Add(txtThuongHieuSP);
             panel3.Controls.Add(label13);
@@ -368,14 +368,14 @@
             label19.TabIndex = 25;
             label19.Text = "Đặc Điểm:";
             // 
-            // pictureBox1
+            // ptbAnh
             // 
-            pictureBox1.Enabled = false;
-            pictureBox1.Location = new Point(328, 342);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(162, 165);
-            pictureBox1.TabIndex = 24;
-            pictureBox1.TabStop = false;
+            ptbAnh.Enabled = false;
+            ptbAnh.Location = new Point(328, 342);
+            ptbAnh.Name = "ptbAnh";
+            ptbAnh.Size = new Size(162, 165);
+            ptbAnh.TabIndex = 24;
+            ptbAnh.TabStop = false;
             // 
             // txtSoLuongCon
             // 
@@ -464,14 +464,15 @@
             label11.TabIndex = 14;
             label11.Text = "Tiêu Chí:";
             // 
-            // comboBox2
+            // cbbTieuChiSanPham
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "ID", "Mã", "Tên", "Thương Hiệu", "Loại" });
-            comboBox2.Location = new Point(89, 68);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(241, 28);
-            comboBox2.TabIndex = 13;
+            cbbTieuChiSanPham.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbTieuChiSanPham.FormattingEnabled = true;
+            cbbTieuChiSanPham.Items.AddRange(new object[] { "ID", "Mã", "Tên", "Thương Hiệu", "Loại" });
+            cbbTieuChiSanPham.Location = new Point(89, 68);
+            cbbTieuChiSanPham.Name = "cbbTieuChiSanPham";
+            cbbTieuChiSanPham.Size = new Size(241, 28);
+            cbbTieuChiSanPham.TabIndex = 13;
             // 
             // btnChonSanPham
             // 
@@ -562,7 +563,7 @@
             panel2.Controls.Add(textBox6);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label8);
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(cbbTieuChiKhachHang);
             panel2.Controls.Add(btnThemKhachHang);
             panel2.Controls.Add(txtSDTKH);
             panel2.Controls.Add(label7);
@@ -629,14 +630,15 @@
             label8.TabIndex = 14;
             label8.Text = "Tiêu Chí:";
             // 
-            // comboBox1
+            // cbbTieuChiKhachHang
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "ID", "SDT", "Tên" });
-            comboBox1.Location = new Point(89, 68);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(173, 28);
-            comboBox1.TabIndex = 13;
+            cbbTieuChiKhachHang.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbTieuChiKhachHang.FormattingEnabled = true;
+            cbbTieuChiKhachHang.Items.AddRange(new object[] { "ID", "SDT", "Tên" });
+            cbbTieuChiKhachHang.Location = new Point(89, 68);
+            cbbTieuChiKhachHang.Name = "cbbTieuChiKhachHang";
+            cbbTieuChiKhachHang.Size = new Size(173, 28);
+            cbbTieuChiKhachHang.TabIndex = 13;
             // 
             // btnThemKhachHang
             // 
@@ -763,13 +765,13 @@
             label1.TabIndex = 0;
             label1.Text = "Bán Hàng";
             // 
-            // BanHang
+            // frmBanHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1330, 757);
             Controls.Add(panel1);
-            Name = "BanHang";
+            Name = "frmBanHang";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -777,7 +779,7 @@
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ptbAnh).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -801,7 +803,7 @@
         private TextBox txtSDTKH;
         private Label label7;
         private Button btnThemKhachHang;
-        private ComboBox comboBox1;
+        private ComboBox cbbTieuChiKhachHang;
         private Label label8;
         private Label label9;
         private TextBox textBox6;
@@ -811,7 +813,7 @@
         private TextBox textBox7;
         private Label label10;
         private Label label11;
-        private ComboBox comboBox2;
+        private ComboBox cbbTieuChiSanPham;
         private Button btnChonSanPham;
         private TextBox txtThuongHieuSP;
         private Label label13;
@@ -828,7 +830,7 @@
         private Label label12;
         private TextBox txtSoLuongCon;
         private Label label15;
-        private PictureBox pictureBox1;
+        private PictureBox ptbAnh;
         private TextBox txtDacDiemSP;
         private Label label19;
         private TextBox txtMoTaSP;

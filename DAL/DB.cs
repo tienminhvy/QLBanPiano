@@ -33,6 +33,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return null;
             }
             return ds.Tables[0];
@@ -51,6 +52,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
             }
         }
 
@@ -70,6 +72,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return -1;
             }
         }
@@ -90,6 +93,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return null;
             }
         }
@@ -99,6 +103,7 @@ namespace QLBanPiano.DAL
             try
             {
                 SqlCommand sqlcmd = new SqlCommand(sqlString, sqlConn);
+                
                 sqlConn.Open(); //Mo ket noi
                 int result = (int)sqlcmd.ExecuteScalar(); // Lenh hien lenh Them/Xoa/Sua
                 sqlConn.Close();//Dong ket noi
@@ -108,6 +113,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return -1;
             }
         }

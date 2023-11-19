@@ -57,8 +57,8 @@
             headerPanel = new Panel();
             btnDatLai = new Button();
             btnTim = new Button();
-            cbThuongHieuTimKiem = new ComboBox();
-            cbGiaTimKiem = new ComboBox();
+            cbbThuongHieuTimKiem = new ComboBox();
+            cbbGiaTimKiem = new ComboBox();
             label8 = new Label();
             label5 = new Label();
             label3 = new Label();
@@ -110,7 +110,7 @@
             panel2.Controls.Add(label14);
             panel2.Location = new Point(873, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(381, 714);
+            panel2.Size = new Size(381, 715);
             panel2.TabIndex = 2;
             // 
             // btnSua
@@ -123,6 +123,7 @@
             btnSua.TabIndex = 21;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
             // 
             // btnXoa
             // 
@@ -165,8 +166,9 @@
             txtMoTaSP.Location = new Point(115, 403);
             txtMoTaSP.Multiline = true;
             txtMoTaSP.Name = "txtMoTaSP";
-            txtMoTaSP.Size = new Size(256, 94);
+            txtMoTaSP.Size = new Size(255, 95);
             txtMoTaSP.TabIndex = 17;
+            txtMoTaSP.KeyPress += txtMoTaSP_KeyPress;
             // 
             // label9
             // 
@@ -182,13 +184,14 @@
             txtDacDiemSP.Location = new Point(115, 287);
             txtDacDiemSP.Multiline = true;
             txtDacDiemSP.Name = "txtDacDiemSP";
-            txtDacDiemSP.Size = new Size(256, 94);
+            txtDacDiemSP.Size = new Size(255, 95);
             txtDacDiemSP.TabIndex = 15;
+            txtDacDiemSP.KeyPress += txtDacDiemSP_KeyPress;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 290);
+            label4.Location = new Point(13, 291);
             label4.Name = "label4";
             label4.Size = new Size(78, 20);
             label4.TabIndex = 14;
@@ -197,6 +200,7 @@
             // cbbLoaiSP
             // 
             cbbLoaiSP.FormattingEnabled = true;
+            cbbLoaiSP.Items.AddRange(new object[] { "điện", "Upright", "Grand" });
             cbbLoaiSP.Location = new Point(55, 215);
             cbbLoaiSP.Name = "cbbLoaiSP";
             cbbLoaiSP.Size = new Size(134, 28);
@@ -205,7 +209,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(13, 218);
+            label7.Location = new Point(13, 219);
             label7.Name = "label7";
             label7.Size = new Size(40, 20);
             label7.TabIndex = 12;
@@ -216,7 +220,7 @@
             cbbThuongHieuSP.FormattingEnabled = true;
             cbbThuongHieuSP.Location = new Point(115, 252);
             cbbThuongHieuSP.Name = "cbbThuongHieuSP";
-            cbbThuongHieuSP.Size = new Size(256, 28);
+            cbbThuongHieuSP.Size = new Size(255, 28);
             cbbThuongHieuSP.TabIndex = 11;
             // 
             // label6
@@ -230,18 +234,21 @@
             // 
             // ptbAnh
             // 
-            ptbAnh.Location = new Point(195, 73);
+            ptbAnh.Location = new Point(198, 73);
             ptbAnh.Name = "ptbAnh";
-            ptbAnh.Size = new Size(176, 173);
+            ptbAnh.Size = new Size(173, 173);
+            ptbAnh.SizeMode = PictureBoxSizeMode.Zoom;
             ptbAnh.TabIndex = 9;
             ptbAnh.TabStop = false;
+            ptbAnh.MouseClick += ptbAnh_MouseClick;
             // 
             // txtGiaSP
             // 
-            txtGiaSP.Location = new Point(55, 182);
+            txtGiaSP.Location = new Point(55, 181);
             txtGiaSP.Name = "txtGiaSP";
             txtGiaSP.Size = new Size(134, 27);
             txtGiaSP.TabIndex = 8;
+            txtGiaSP.KeyPress += txtGiaSP_KeyPress;
             // 
             // label10
             // 
@@ -258,6 +265,7 @@
             txtTenSP.Name = "txtTenSP";
             txtTenSP.Size = new Size(134, 27);
             txtTenSP.TabIndex = 6;
+            txtTenSP.KeyPress += txtTenSP_KeyPress;
             // 
             // label11
             // 
@@ -274,6 +282,7 @@
             txtMaSP.Name = "txtMaSP";
             txtMaSP.Size = new Size(78, 27);
             txtMaSP.TabIndex = 4;
+            txtMaSP.KeyPress += txtMaSP_KeyPress;
             // 
             // label12
             // 
@@ -314,9 +323,9 @@
             // panel1
             // 
             panel1.Controls.Add(dgvSanPham);
-            panel1.Location = new Point(0, 126);
+            panel1.Location = new Point(0, 125);
             panel1.Name = "panel1";
-            panel1.Size = new Size(870, 594);
+            panel1.Size = new Size(870, 595);
             panel1.TabIndex = 1;
             // 
             // dgvSanPham
@@ -329,7 +338,7 @@
             dgvSanPham.RowHeadersWidth = 51;
             dgvSanPham.RowTemplate.Height = 29;
             dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSanPham.Size = new Size(867, 594);
+            dgvSanPham.Size = new Size(867, 595);
             dgvSanPham.TabIndex = 0;
             dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
             // 
@@ -337,8 +346,8 @@
             // 
             headerPanel.Controls.Add(btnDatLai);
             headerPanel.Controls.Add(btnTim);
-            headerPanel.Controls.Add(cbThuongHieuTimKiem);
-            headerPanel.Controls.Add(cbGiaTimKiem);
+            headerPanel.Controls.Add(cbbThuongHieuTimKiem);
+            headerPanel.Controls.Add(cbbGiaTimKiem);
             headerPanel.Controls.Add(label8);
             headerPanel.Controls.Add(label5);
             headerPanel.Controls.Add(label3);
@@ -348,7 +357,7 @@
             headerPanel.Controls.Add(label2);
             headerPanel.Location = new Point(0, 0);
             headerPanel.Name = "headerPanel";
-            headerPanel.Size = new Size(870, 126);
+            headerPanel.Size = new Size(870, 125);
             headerPanel.TabIndex = 0;
             headerPanel.Paint += headerPanel_Paint;
             // 
@@ -359,7 +368,7 @@
             btnDatLai.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnDatLai.Location = new Point(787, 68);
             btnDatLai.Name = "btnDatLai";
-            btnDatLai.Size = new Size(83, 38);
+            btnDatLai.Size = new Size(83, 37);
             btnDatLai.TabIndex = 21;
             btnDatLai.Text = "Đặt Lại";
             btnDatLai.UseVisualStyleBackColor = false;
@@ -372,32 +381,34 @@
             btnTim.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnTim.Location = new Point(711, 68);
             btnTim.Name = "btnTim";
-            btnTim.Size = new Size(70, 38);
+            btnTim.Size = new Size(70, 37);
             btnTim.TabIndex = 20;
             btnTim.Text = "Tìm";
             btnTim.UseVisualStyleBackColor = false;
             btnTim.Click += btnTim_Click;
             // 
-            // cbThuongHieuTimKiem
+            // cbbThuongHieuTimKiem
             // 
-            cbThuongHieuTimKiem.Anchor = AnchorStyles.Left;
-            cbThuongHieuTimKiem.FormattingEnabled = true;
-            cbThuongHieuTimKiem.Location = new Point(554, 73);
-            cbThuongHieuTimKiem.Name = "cbThuongHieuTimKiem";
-            cbThuongHieuTimKiem.Size = new Size(151, 28);
-            cbThuongHieuTimKiem.TabIndex = 19;
-            cbThuongHieuTimKiem.SelectedIndexChanged += cbThuongHieuTimKiem_SelectedIndexChanged;
+            cbbThuongHieuTimKiem.Anchor = AnchorStyles.Left;
+            cbbThuongHieuTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbThuongHieuTimKiem.FormattingEnabled = true;
+            cbbThuongHieuTimKiem.Location = new Point(554, 73);
+            cbbThuongHieuTimKiem.Name = "cbbThuongHieuTimKiem";
+            cbbThuongHieuTimKiem.Size = new Size(151, 28);
+            cbbThuongHieuTimKiem.TabIndex = 19;
+            cbbThuongHieuTimKiem.SelectedIndexChanged += cbThuongHieuTimKiem_SelectedIndexChanged;
             // 
-            // cbGiaTimKiem
+            // cbbGiaTimKiem
             // 
-            cbGiaTimKiem.Anchor = AnchorStyles.Left;
-            cbGiaTimKiem.FormattingEnabled = true;
-            cbGiaTimKiem.Items.AddRange(new object[] { "< 5 triệu", "5 đến 10 triệu", "10 đến 20 triệu", ">20 triệu" });
-            cbGiaTimKiem.Location = new Point(337, 73);
-            cbGiaTimKiem.Name = "cbGiaTimKiem";
-            cbGiaTimKiem.Size = new Size(107, 28);
-            cbGiaTimKiem.TabIndex = 18;
-            cbGiaTimKiem.SelectedIndexChanged += cbGiaTimKiem_SelectedIndexChanged;
+            cbbGiaTimKiem.Anchor = AnchorStyles.Left;
+            cbbGiaTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbGiaTimKiem.FormattingEnabled = true;
+            cbbGiaTimKiem.Items.AddRange(new object[] { "< 5 triệu", "5 đến 10 triệu", "10 đến 20 triệu", "> 20 triệu" });
+            cbbGiaTimKiem.Location = new Point(337, 73);
+            cbbGiaTimKiem.Name = "cbbGiaTimKiem";
+            cbbGiaTimKiem.Size = new Size(107, 28);
+            cbbGiaTimKiem.TabIndex = 18;
+            cbbGiaTimKiem.SelectedIndexChanged += cbGiaTimKiem_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -440,6 +451,7 @@
             txtTenTimKiem.Size = new Size(125, 27);
             txtTenTimKiem.TabIndex = 5;
             txtTenTimKiem.TextChanged += txtTenTimKiem_TextChanged;
+            txtTenTimKiem.KeyPress += txtTenTimKiem_KeyPress;
             // 
             // label1
             // 
@@ -457,15 +469,16 @@
             txtMaTimKiem.Anchor = AnchorStyles.Left;
             txtMaTimKiem.Location = new Point(47, 73);
             txtMaTimKiem.Name = "txtMaTimKiem";
-            txtMaTimKiem.Size = new Size(72, 27);
+            txtMaTimKiem.Size = new Size(73, 27);
             txtMaTimKiem.TabIndex = 3;
             txtMaTimKiem.TextChanged += txtMaTimKiem_TextChanged;
+            txtMaTimKiem.KeyPress += txtMaTimKiem_KeyPress;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(12, 76);
+            label2.Location = new Point(11, 76);
             label2.Name = "label2";
             label2.Size = new Size(33, 20);
             label2.TabIndex = 1;
@@ -476,10 +489,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1258, 720);
+            ClientSize = new Size(1258, 728);
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MinimumSize = new Size(1094, 767);
+            MinimumSize = new Size(1093, 764);
             Name = "Product";
             Text = "Quản Lý Sản Phẩm";
             mainPanel.ResumeLayout(false);
@@ -505,8 +518,8 @@
         private Label label5;
         private Label label8;
         private Panel panel1;
-        private ComboBox cbGiaTimKiem;
-        private ComboBox cbThuongHieuTimKiem;
+        private ComboBox cbbGiaTimKiem;
+        private ComboBox cbbThuongHieuTimKiem;
         private Button btnTim;
         private Button btnDatLai;
         private Panel panel2;
