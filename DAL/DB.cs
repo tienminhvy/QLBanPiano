@@ -103,7 +103,7 @@ namespace QLBanPiano.DAL
             try
             {
                 SqlCommand sqlcmd = new SqlCommand(sqlString, sqlConn);
-                
+                MessageBox.Show(sqlString);
                 sqlConn.Open(); //Mo ket noi
                 int result = (int)sqlcmd.ExecuteScalar(); // Lenh hien lenh Them/Xoa/Sua
                 sqlConn.Close();//Dong ket noi
@@ -111,7 +111,7 @@ namespace QLBanPiano.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
+                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗiabs",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConn.Close();
                 return -1;

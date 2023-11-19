@@ -28,6 +28,7 @@ namespace QLBanPiano.GUI.SubForm
             cbbThuongHieu.DataSource = thuongHieuBUS.LayDSTenThuongHieu();
             cbbThuongHieu.SelectedIndex = 0;
             cbbLoai.SelectedIndex = 0;
+            ptbAnh.Image = null;
         }
 
         private void btnNhapLai_Click(object sender, EventArgs e)

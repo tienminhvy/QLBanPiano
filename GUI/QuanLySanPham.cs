@@ -205,6 +205,7 @@ namespace DoAn
             frmThemSanPham fThemSanPham = new frmThemSanPham();
             fThemSanPham.ShowDialog();
             LoadDanhSachSanPham();
+            LoadTrangThaiComponents();
             btnNhapLai_Click(null, null);
             btnDatLai_Click(null, null);
             txtIDSP.Text = string.Empty;
