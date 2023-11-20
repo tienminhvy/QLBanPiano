@@ -1,3 +1,5 @@
+using QLBanPiano.GUI;
+
 namespace QLBanPiano
 {
     internal static class Program
