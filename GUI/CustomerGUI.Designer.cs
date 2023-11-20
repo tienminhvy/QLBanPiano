@@ -349,6 +349,7 @@
             // 
             // colMaKH
             // 
+            colMaKH.DataPropertyName = "id";
             colMaKH.HeaderText = "Mã khách hàng";
             colMaKH.MinimumWidth = 6;
             colMaKH.Name = "colMaKH";
@@ -357,6 +358,7 @@
             // 
             // colHoLot
             // 
+            colHoLot.DataPropertyName = "hoLot";
             colHoLot.HeaderText = "Họ lót";
             colHoLot.MinimumWidth = 6;
             colHoLot.Name = "colHoLot";
@@ -365,6 +367,7 @@
             // 
             // colTen
             // 
+            colTen.DataPropertyName = "ten";
             colTen.HeaderText = "Tên";
             colTen.MinimumWidth = 6;
             colTen.Name = "colTen";
@@ -373,6 +376,7 @@
             // 
             // colDiaChi
             // 
+            colDiaChi.DataPropertyName = "diaChi";
             colDiaChi.HeaderText = "Địa chỉ";
             colDiaChi.MinimumWidth = 6;
             colDiaChi.Name = "colDiaChi";
@@ -381,6 +385,7 @@
             // 
             // colSoDienThoai
             // 
+            colSoDienThoai.DataPropertyName = "soDienThoai";
             colSoDienThoai.HeaderText = "Số điện thoại";
             colSoDienThoai.MinimumWidth = 6;
             colSoDienThoai.Name = "colSoDienThoai";
