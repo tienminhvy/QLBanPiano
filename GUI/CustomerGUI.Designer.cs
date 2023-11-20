@@ -402,6 +402,7 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "CustomerGUI";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
