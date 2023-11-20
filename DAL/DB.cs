@@ -103,7 +103,6 @@ namespace QLBanPiano.DAL
             try
             {
                 SqlCommand sqlcmd = new SqlCommand(sqlString, sqlConn);
-                MessageBox.Show(sqlString);
                 sqlConn.Open(); //Mo ket noi
                 int result = (int)sqlcmd.ExecuteScalar(); // Lenh hien lenh Them/Xoa/Sua
                 sqlConn.Close();//Dong ket noi
