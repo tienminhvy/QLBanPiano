@@ -34,6 +34,8 @@
             txtTimTK = new TextBox();
             btnTimTK = new Button();
             panel2 = new Panel();
+            btnXoa = new Button();
+            btnTaoMoi = new Button();
             label1 = new Label();
             button1 = new Button();
             groupBox1 = new GroupBox();
@@ -44,8 +46,6 @@
             checkBox3 = new CheckBox();
             checkBox2 = new CheckBox();
             checkBox1 = new CheckBox();
-            btnTaoMoi = new Button();
-            btnXoa = new Button();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -138,6 +138,24 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(562, 450);
             panel2.TabIndex = 1;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Location = new Point(356, 409);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(94, 29);
+            btnXoa.TabIndex = 4;
+            btnXoa.Text = "Xoá vai trò";
+            btnXoa.UseVisualStyleBackColor = true;
+            // 
+            // btnTaoMoi
+            // 
+            btnTaoMoi.Location = new Point(446, 5);
+            btnTaoMoi.Name = "btnTaoMoi";
+            btnTaoMoi.Size = new Size(104, 29);
+            btnTaoMoi.TabIndex = 3;
+            btnTaoMoi.Text = "Thêm vai trò";
+            btnTaoMoi.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -245,25 +263,7 @@
             checkBox1.Text = "Bán hàng";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // btnTaoMoi
-            // 
-            btnTaoMoi.Location = new Point(446, 5);
-            btnTaoMoi.Name = "btnTaoMoi";
-            btnTaoMoi.Size = new Size(104, 29);
-            btnTaoMoi.TabIndex = 3;
-            btnTaoMoi.Text = "Thêm vai trò";
-            btnTaoMoi.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Location = new Point(356, 409);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(94, 29);
-            btnXoa.TabIndex = 4;
-            btnXoa.Text = "Xoá vai trò";
-            btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // PhanQuyen
+            // frmPhanQuyen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -272,7 +272,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "PhanQuyen";
+            Name = "frmPhanQuyen";
             Text = "Form1";
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);

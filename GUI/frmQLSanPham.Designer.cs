@@ -1,6 +1,6 @@
 ﻿namespace DoAn
 {
-    partial class Product
+    partial class frmQLSanPham
     {
         /// <summary>
         ///  Required designer variable.
@@ -476,7 +476,7 @@
             txtID.TabIndex = 0;
             txtID.Text = "ID:";
             // 
-            // Product
+            // frmQLSanPham
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -484,7 +484,7 @@
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(1094, 767);
-            Name = "Product";
+            Name = "frmQLSanPham";
             Text = "Quản Lý Sản Phẩm";
             mainPanel.ResumeLayout(false);
             panel2.ResumeLayout(false);

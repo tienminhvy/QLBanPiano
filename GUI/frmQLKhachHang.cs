@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLBanPiano.GUI
 {
-    public partial class CustomerGUI : Form
+    public partial class frmQLKhachHang : Form
     {
-        public CustomerGUI()
+        public frmQLKhachHang()
         {
             InitializeComponent();
         }

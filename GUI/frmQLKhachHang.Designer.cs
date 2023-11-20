@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI
 {
-    partial class CustomerGUI
+    partial class frmQLKhachHang
     {
         /// <summary>
         /// Required designer variable.

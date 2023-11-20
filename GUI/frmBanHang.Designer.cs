@@ -110,13 +110,15 @@
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(3, 2);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1325, 722);
+            panel1.Size = new Size(1330, 719);
             panel1.TabIndex = 0;
             // 
             // panel4
             // 
+            panel4.Anchor = AnchorStyles.Top;
             panel4.BackColor = Color.FromArgb(192, 255, 192);
             panel4.Controls.Add(txtTienThoiLai);
             panel4.Controls.Add(label22);
@@ -281,6 +283,7 @@
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top;
             panel3.BackColor = Color.PowderBlue;
             panel3.Controls.Add(txtSoLuongMua);
             panel3.Controls.Add(label21);
@@ -556,6 +559,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top;
             panel2.BackColor = Color.Wheat;
             panel2.Controls.Add(btnChonKhachHang);
             panel2.Controls.Add(btnTimKhachHang);
@@ -577,6 +581,7 @@
             panel2.Controls.Add(listView1);
             panel2.Controls.Add(label2);
             panel2.Location = new Point(0, 85);
+            panel2.MinimumSize = new Size(404, 625);
             panel2.Name = "panel2";
             panel2.Size = new Size(404, 625);
             panel2.TabIndex = 1;
@@ -755,21 +760,22 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(564, 7);
+            label1.Location = new Point(577, 9);
             label1.Name = "label1";
             label1.Size = new Size(155, 41);
             label1.TabIndex = 0;
             label1.Text = "Bán Hàng";
             // 
-            // BanHang
+            // frmBanHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1330, 757);
+            ClientSize = new Size(1330, 719);
             Controls.Add(panel1);
-            Name = "BanHang";
+            Name = "frmBanHang";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

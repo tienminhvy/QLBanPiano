@@ -1,8 +1,8 @@
 namespace DoAn
 {
-    public partial class Product : Form
+    public partial class frmQLSanPham : Form
     {
-        public Product()
+        public frmQLSanPham()
         {
             InitializeComponent();
         }
@@ -49,12 +49,12 @@ namespace DoAn
         }
 
         public bool XoaSanPham(int id)
-        {   
+        {
 
             // ---------------------------------Code xoa san pham ---------------------------------------------
             return true;
         }
     }
 
-    
+
 }
