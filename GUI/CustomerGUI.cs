@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLBanPiano.GUI.SubForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace QLBanPiano.GUI
         public CustomerGUI()
         {
             InitializeComponent();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            frmThemKhachHang frm2 = new frmThemKhachHang();
+            frm2.Show();
         }
     }
 }
