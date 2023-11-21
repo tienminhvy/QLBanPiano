@@ -83,7 +83,6 @@ namespace DoAn
             dgvSanPham.DataSource = null;
             dgvSanPham.Rows.Clear();
             dgvSanPham.DataSource = danhSachSanPham;
-
         }
 
         public void LoadTrangThaiComponents()

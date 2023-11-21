@@ -192,6 +192,40 @@ namespace QLBanPiano.BUS
             return db.Execute(sqlStr);
         }
 
+        public List<DoiTuong> TimKiem(string tieuChi, string giaTri)
+        {
+            string dieuKien = "";
+            switch (tieuChi)
+            {
+                case "ID":
+                    {
+                        dieuKien = "CAST(nhaccu.id AS VARCHAR) LIKE '%" + giaTri + "%'";
+                        break;
+                    }
+                case "Mã":
+                    {
+                        dieuKien = "Upper(nhaccu.ma) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "Tên":
+                    {
+                        dieuKien = "Upper(nhaccu.ten) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "Thương Hiệu":
+                    {
+                        dieuKien = "Upper(thuonghieu.ten) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "Loại":
+                    {
+                        dieuKien = "Upper(piano.phanLoai) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+            }
+            MessageBox.Show(dieuKien);
+            return LayDS(dieuKien + " AND nhaccu.trangthai = 1");
+        }
         public bool ThongTinSanPhamThayDoi(int id, string ma, string ten, long gia,string hinhAnh, string loai, string thuongHieu,
             string dacDiem, string moTa)
         {

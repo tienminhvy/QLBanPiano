@@ -35,7 +35,7 @@ namespace QLBanPiano
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
+            f = AddNewForm(new frmBanHang());
         }
 
         private void dsPianoToolStripMenuItem_Click(object sender, EventArgs e)
