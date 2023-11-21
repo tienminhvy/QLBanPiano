@@ -281,7 +281,6 @@ namespace DoAn
             if (lvKhachHang.SelectedItems.Count > 0)
             {
                 string idKhachHangDuocChon = lvKhachHang.SelectedItems[0].SubItems[0].Text;
-                //Piano piano = (Piano)pianoBUS.LayDS("piano.id = " + idSanPhamDuocChon)[0];
                 KhachHang khachHang = (KhachHang)khachHangBUS.LayDS("id = " + idKhachHangDuocChon)[0];
                 fillThongTinKhachHang(khachHang);
             }
