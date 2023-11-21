@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
-    partial class QLHD
+    partial class frmQLHoaDon
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLHD));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLHoaDon));
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();

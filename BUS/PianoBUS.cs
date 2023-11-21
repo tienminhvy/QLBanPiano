@@ -44,7 +44,7 @@ namespace QLBanPiano.BUS
 
             foreach (DataRow row in dt.Rows)
             {
-                Piano piano = new Piano();
+                DTO.Piano piano = new DTO.Piano();
                 piano.Id = int.Parse(row["id"].ToString());
                 piano.Ma = row["Mã nhạc cụ"].ToString();
                 piano.Ten = row["Tên"].ToString();

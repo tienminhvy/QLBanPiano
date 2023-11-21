@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
-    partial class ThemPhieuNhap
+    partial class frmThemPhieuNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThemPhieuNhap));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemPhieuNhap));
             groupBox1 = new GroupBox();
             comboBox1 = new ComboBox();
             dateTimePicker1 = new DateTimePicker();

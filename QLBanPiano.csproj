@@ -10,6 +10,7 @@
 
   <ItemGroup>
 	<Folder Include="DTO\" />
+	<Folder Include="GUI\QuanLyHoaDon&amp;PhieuNhap\" />
   </ItemGroup>
 
   <ItemGroup>

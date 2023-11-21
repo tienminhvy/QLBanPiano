@@ -1,6 +1,6 @@
 ﻿namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
-    partial class QLPN
+    partial class frmQLPhieuNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLPN));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLPhieuNhap));
             panel1 = new Panel();
             label1 = new Label();
             gridViewPanel = new Panel();

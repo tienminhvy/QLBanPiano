@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
-    public partial class QLHD : Form
+    public partial class frmQLHoaDon : Form
     {
-        public QLHD()
+        public frmQLHoaDon()
         {
             InitializeComponent();
             Init();
