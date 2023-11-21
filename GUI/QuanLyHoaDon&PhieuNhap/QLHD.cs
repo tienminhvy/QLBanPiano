@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLBanPiano.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
     public partial class QLHD : Form
     {
+        private HoaDonBUS hoaDonBus = new HoaDonBUS();
         public QLHD()
         {
             InitializeComponent();
@@ -19,7 +21,10 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
         }
         void Init()
         {
-
+            DataTable dt = hoaDonBus.LayToanBoDS();
+            hoaDonGridView.DataSource = null;
+            hoaDonGridView.Rows.Clear();
+            hoaDonGridView.DataSource = dt;
         }
     }
 }

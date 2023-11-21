@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.BUS
 {
-    public class HoaDonBUS
+    public class HoaDonBUS : IBUS
     {
         DB db;
         public HoaDonBUS()
@@ -18,7 +18,7 @@ namespace QLBanPiano.BUS
         }
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
-            return db.GetColumn("vaitro", tenTruong, dieuKien);
+            return db.GetColumn("hoadon", tenTruong, dieuKien);
         }
 
         public List<HoaDon> LayDS(string dieukien)
@@ -46,12 +46,14 @@ namespace QLBanPiano.BUS
 
         public DataTable LayToanBoDS()
         {
-            throw new NotImplementedException();
+            string sqlCmd = "select id as N'ID', thoiGian as N'Thời gian ' , nhanvien_id as N'Mã nhân viên', khachhang_id as N'Mã khách hàng' from hoadon\r\n\r\n";
+            DataTable dt = db.Execute(sqlCmd);
+            return dt;
         }
-
-        public int SoLuong(string dieuKien)
+         
+        public int SoLuong(string dieuKien) // dieukien = "select count(*) from hoadon"
         {
-            return db.GetCount("vaitro", dieuKien);
+            return db.GetCount("hoadon", dieuKien);
         }
 
         public bool Sua(params string[] dsTruong)
@@ -60,17 +62,17 @@ namespace QLBanPiano.BUS
             string ten = dsTruong[1];
             string dsQuyen = dsTruong[2];
 
-            string tenCu = db.GetColumn("vaitro", "ten", "id = " + id).ToString();
+            string tenCu = db.GetColumn("hoadon", "ten", "id = " + id).ToString();
             if (tenCu != ten)
             {
-                if (db.GetCount("vaitro", "ten = N'" + ten + "' and trangthai = 1") > 0)
+                if (db.GetCount("hoadon", "ten = N'" + ten + "' and trangthai = 1") > 0)
                 {
-                    MessageBox.Show("Tên vai trò đã tồn tại trong CSDL");
+                    MessageBox.Show("Tên hóa đơn đã tồn tại trong CSDL");
                     return false;
                 }
                 else
                 {
-                    db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
+                    db.ExecuteNonQuery(string.Format("UPDATE hoadon " +
                     "SET ten = N'{0}', " +
                     "dsQuyen = '{1}' " +
                     "WHERE id = {2}", ten, dsQuyen, id));
@@ -105,6 +107,11 @@ namespace QLBanPiano.BUS
                 "SET trangthai = 0 " +
                 "WHERE {1}", tieuChi));
             return true;
+        }
+
+        List<DoiTuong> IBUS.LayDS(string dieukien)
+        {
+            throw new NotImplementedException();
         }
     }
 }
