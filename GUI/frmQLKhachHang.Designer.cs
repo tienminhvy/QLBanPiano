@@ -174,6 +174,7 @@
             btnThem.TabIndex = 6;
             btnThem.Text = "T&hêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // txtSoDienThoai
             // 

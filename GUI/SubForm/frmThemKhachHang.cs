@@ -1,5 +1,4 @@
-﻿using QLBanPiano.GUI.SubForm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,19 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI
+namespace QLBanPiano.GUI.SubForm
 {
-    public partial class frmPhanQuyen : Form
+    public partial class frmThemKhachHang : Form
     {
-        public frmPhanQuyen()
+        public frmThemKhachHang()
         {
             InitializeComponent();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            frmThemKhachHang frm2 = new frmThemKhachHang();
-            frm2.Show();
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -11,7 +11,7 @@ namespace QLBanPiano.BUS
     interface IBUS
     {
         public abstract DataTable LayToanBoDS();
-        public abstract List<DoiTuong> LayDS(string dieukien);
+        public abstract List<DoiTuong> LayDS(string dieuKien);
         public abstract int SoLuong(string dieuKien);
         public abstract object GiaTriTruong(string tenTruong, string dieuKien);
         public abstract bool Them(params string[] dsTruong);
