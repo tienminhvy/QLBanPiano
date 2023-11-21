@@ -482,7 +482,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1382, 720);
             Controls.Add(mainPanel);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(1094, 767);
             Name = "frmQLSanPham";
             Text = "Quản Lý Sản Phẩm";

@@ -262,7 +262,7 @@
             groupBoxInfor.Controls.Add(label_midName);
             groupBoxInfor.Controls.Add(txt_id);
             groupBoxInfor.Controls.Add(label_id);
-            groupBoxInfor.Location = new Point(369, 49);
+            groupBoxInfor.Location = new Point(378, 49);
             groupBoxInfor.Name = "groupBoxInfor";
             groupBoxInfor.Size = new Size(607, 268);
             groupBoxInfor.TabIndex = 6;
@@ -277,7 +277,7 @@
             groupBoxSearch.Controls.Add(label_type);
             groupBoxSearch.Controls.Add(txtSearch);
             groupBoxSearch.Controls.Add(label_input);
-            groupBoxSearch.Location = new Point(22, 61);
+            groupBoxSearch.Location = new Point(31, 61);
             groupBoxSearch.Name = "groupBoxSearch";
             groupBoxSearch.Size = new Size(335, 256);
             groupBoxSearch.TabIndex = 5;
@@ -301,9 +301,9 @@
             // 
             panel1.Controls.Add(dgvNhanVien);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 344);
+            panel1.Location = new Point(0, 391);
             panel1.Name = "panel1";
-            panel1.Size = new Size(995, 209);
+            panel1.Size = new Size(1013, 209);
             panel1.TabIndex = 7;
             // 
             // dgvNhanVien
@@ -317,10 +317,10 @@
             dgvNhanVien.ReadOnly = true;
             dgvNhanVien.RowHeadersWidth = 51;
             dgvNhanVien.RowTemplate.Height = 29;
-            dgvNhanVien.Size = new Size(995, 209);
+            dgvNhanVien.Size = new Size(1013, 209);
             dgvNhanVien.TabIndex = 0;
             // 
-            // EmployeeFrm
+            // frmQLNhanVien
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -329,9 +329,9 @@
             Controls.Add(groupBoxInfor);
             Controls.Add(groupBoxSearch);
             Controls.Add(label_title);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(1013, 600);
-            Name = "EmployeeFrm";
+            Name = "frmQLNhanVien";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EmployeeFrm";
             groupBoxInfor.ResumeLayout(false);

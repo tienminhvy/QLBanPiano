@@ -153,7 +153,7 @@
             okButton.Text = "&OK";
             okButton.Click += okButton_Click;
             // 
-            // About
+            // frmGioiThieu
             // 
             AcceptButton = okButton;
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -164,7 +164,7 @@
             Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "About";
+            Name = "frmGioiThieu";
             Padding = new Padding(12, 14, 12, 14);
             ShowIcon = false;
             ShowInTaskbar = false;
