@@ -16,8 +16,8 @@ namespace QLBanPiano.DAL
         DataSet ds; //Doi tuong chhua CSDL khi giao tiep
         public DB()
         {
-            string server = "DESKTOP-VYTM\\VYTM_NEW";
-            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
+            string server = "LAPTOP-3O7CUBA2\\SQLEXPRESS";
+            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=1";
             sqlConn = new SqlConnection(strCnn);
         }
         //Phuong thuc de thuc hien cau lenh strSQL truy vân du lieu
@@ -60,7 +60,7 @@ namespace QLBanPiano.DAL
             {
                 string sqlString = string.Format("select count(*) from {0} " +
                 "where {1}", tableName, condition);
-                SqlCommand sqlcmd = new SqlCommand(sqlString, sqlConn);
+                SqlCommand sqlcmd = new(sqlString, sqlConn);
                 sqlConn.Open(); //Mo ket noi
                 int count = (int)sqlcmd.ExecuteScalar();//Lenh hien lenh Them/Xoa/Sua
                 sqlConn.Close();//Dong ket noi

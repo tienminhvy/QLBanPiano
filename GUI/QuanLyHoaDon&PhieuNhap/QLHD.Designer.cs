@@ -30,16 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLHD));
             panel1 = new Panel();
+            label9 = new Label();
             label1 = new Label();
             panel2 = new Panel();
             rightPanel = new Panel();
+            nv_nameTextBox = new TextBox();
+            kh_nameTextBox = new TextBox();
+            label8 = new Label();
+            label7 = new Label();
             label5 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
+            idTextbox = new TextBox();
+            nv_idTextBox = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            kh_idTextBox = new TextBox();
             label3 = new Label();
             leftPanel = new Panel();
             panel5 = new Panel();
@@ -49,7 +54,7 @@
             panel6 = new Panel();
             panel4 = new Panel();
             totalTextBoxPanel = new Panel();
-            textBox4 = new TextBox();
+            hoaDonCountTxtBox = new TextBox();
             filterBtn = new Button();
             label6 = new Label();
             panel3 = new Panel();
@@ -68,12 +73,22 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label9);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1016, 120);
             panel1.TabIndex = 0;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(0, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(152, 25);
+            label9.TabIndex = 4;
+            label9.Text = "@quanlibanpiano";
             // 
             // label1
             // 
@@ -101,23 +116,63 @@
             // rightPanel
             // 
             rightPanel.Anchor = AnchorStyles.None;
+            rightPanel.Controls.Add(nv_nameTextBox);
+            rightPanel.Controls.Add(kh_nameTextBox);
+            rightPanel.Controls.Add(label8);
+            rightPanel.Controls.Add(label7);
             rightPanel.Controls.Add(label5);
             rightPanel.Controls.Add(dateTimePicker1);
             rightPanel.Controls.Add(label4);
-            rightPanel.Controls.Add(textBox1);
-            rightPanel.Controls.Add(textBox3);
+            rightPanel.Controls.Add(idTextbox);
+            rightPanel.Controls.Add(nv_idTextBox);
             rightPanel.Controls.Add(label2);
-            rightPanel.Controls.Add(textBox2);
+            rightPanel.Controls.Add(kh_idTextBox);
             rightPanel.Controls.Add(label3);
-            rightPanel.Location = new Point(3, 6);
+            rightPanel.Location = new Point(0, 0);
             rightPanel.Name = "rightPanel";
-            rightPanel.Size = new Size(459, 161);
+            rightPanel.Size = new Size(559, 161);
             rightPanel.TabIndex = 5;
+            // 
+            // nv_nameTextBox
+            // 
+            nv_nameTextBox.Enabled = false;
+            nv_nameTextBox.Location = new Point(166, 87);
+            nv_nameTextBox.Name = "nv_nameTextBox";
+            nv_nameTextBox.ReadOnly = true;
+            nv_nameTextBox.Size = new Size(180, 31);
+            nv_nameTextBox.TabIndex = 11;
+            // 
+            // kh_nameTextBox
+            // 
+            kh_nameTextBox.Enabled = false;
+            kh_nameTextBox.Location = new Point(166, 46);
+            kh_nameTextBox.Name = "kh_nameTextBox";
+            kh_nameTextBox.ReadOnly = true;
+            kh_nameTextBox.Size = new Size(180, 31);
+            kh_nameTextBox.TabIndex = 10;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(27, 87);
+            label8.Name = "label8";
+            label8.Size = new Size(128, 25);
+            label8.TabIndex = 9;
+            label8.Text = "Tên nhân viên :";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(12, 52);
+            label7.Name = "label7";
+            label7.Size = new Size(143, 25);
+            label7.TabIndex = 8;
+            label7.Text = "Tên khách hàng :";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 124);
+            label5.Location = new Point(7, 124);
             label5.Name = "label5";
             label5.Size = new Size(148, 25);
             label5.TabIndex = 3;
@@ -125,6 +180,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Enabled = false;
             dateTimePicker1.Location = new Point(166, 124);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(293, 31);
@@ -133,49 +189,52 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(33, 89);
+            label4.Location = new Point(367, 90);
             label4.Name = "label4";
             label4.Size = new Size(127, 25);
             label4.TabIndex = 2;
             label4.Text = "Mã nhân viên :";
             // 
-            // textBox1
+            // idTextbox
             // 
-            textBox1.Location = new Point(166, 6);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(293, 31);
-            textBox1.TabIndex = 4;
+            idTextbox.Enabled = false;
+            idTextbox.Location = new Point(166, 6);
+            idTextbox.Name = "idTextbox";
+            idTextbox.ReadOnly = true;
+            idTextbox.Size = new Size(180, 31);
+            idTextbox.TabIndex = 4;
             // 
-            // textBox3
+            // nv_idTextBox
             // 
-            textBox3.Location = new Point(166, 83);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(293, 31);
-            textBox3.TabIndex = 6;
+            nv_idTextBox.Enabled = false;
+            nv_idTextBox.Location = new Point(507, 87);
+            nv_idTextBox.Name = "nv_idTextBox";
+            nv_idTextBox.ReadOnly = true;
+            nv_idTextBox.Size = new Size(43, 31);
+            nv_idTextBox.TabIndex = 6;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(33, 12);
+            label2.Location = new Point(37, 12);
             label2.Name = "label2";
             label2.Size = new Size(118, 25);
             label2.TabIndex = 0;
             label2.Text = "Mã hóa đơn :";
             // 
-            // textBox2
+            // kh_idTextBox
             // 
-            textBox2.Location = new Point(166, 46);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(293, 31);
-            textBox2.TabIndex = 5;
+            kh_idTextBox.Enabled = false;
+            kh_idTextBox.Location = new Point(507, 46);
+            kh_idTextBox.Name = "kh_idTextBox";
+            kh_idTextBox.ReadOnly = true;
+            kh_idTextBox.Size = new Size(43, 31);
+            kh_idTextBox.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 52);
+            label3.Location = new Point(352, 52);
             label3.Name = "label3";
             label3.Size = new Size(142, 25);
             label3.TabIndex = 1;
@@ -250,21 +309,22 @@
             // 
             // totalTextBoxPanel
             // 
-            totalTextBoxPanel.Controls.Add(textBox4);
+            totalTextBoxPanel.Controls.Add(hoaDonCountTxtBox);
             totalTextBoxPanel.Dock = DockStyle.Right;
-            totalTextBoxPanel.Location = new Point(111, 0);
+            totalTextBoxPanel.Location = new Point(176, 0);
             totalTextBoxPanel.Name = "totalTextBoxPanel";
-            totalTextBoxPanel.Size = new Size(280, 55);
+            totalTextBoxPanel.Size = new Size(215, 55);
             totalTextBoxPanel.TabIndex = 1;
             // 
-            // textBox4
+            // hoaDonCountTxtBox
             // 
-            textBox4.Anchor = AnchorStyles.None;
-            textBox4.Location = new Point(0, 12);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(280, 31);
-            textBox4.TabIndex = 10;
+            hoaDonCountTxtBox.Anchor = AnchorStyles.None;
+            hoaDonCountTxtBox.Enabled = false;
+            hoaDonCountTxtBox.Location = new Point(3, 15);
+            hoaDonCountTxtBox.Name = "hoaDonCountTxtBox";
+            hoaDonCountTxtBox.ReadOnly = true;
+            hoaDonCountTxtBox.Size = new Size(143, 31);
+            hoaDonCountTxtBox.TabIndex = 10;
             // 
             // filterBtn
             // 
@@ -275,15 +335,16 @@
             filterBtn.TabIndex = 16;
             filterBtn.Text = "Lọc";
             filterBtn.UseVisualStyleBackColor = true;
+            filterBtn.Click += filterBtn_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(3, 16);
+            label6.Location = new Point(9, 18);
             label6.Name = "label6";
-            label6.Size = new Size(96, 25);
+            label6.Size = new Size(158, 25);
             label6.TabIndex = 9;
-            label6.Text = "Tổng tiền :";
+            label6.Text = "Tổng số hóa đơn :";
             // 
             // panel3
             // 
@@ -291,31 +352,34 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 281);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1016, 359);
+            panel3.Size = new Size(1016, 351);
             panel3.TabIndex = 2;
             // 
             // hoaDonGridView
             // 
+            hoaDonGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hoaDonGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            hoaDonGridView.Dock = DockStyle.Fill;
             hoaDonGridView.Location = new Point(0, 0);
             hoaDonGridView.Name = "hoaDonGridView";
             hoaDonGridView.RowHeadersWidth = 62;
             hoaDonGridView.RowTemplate.Height = 33;
-            hoaDonGridView.Size = new Size(1016, 359);
+            hoaDonGridView.Size = new Size(1016, 351);
             hoaDonGridView.TabIndex = 0;
+            hoaDonGridView.CellClick += hoaDonGridView_CellClick;
+            hoaDonGridView.CellDoubleClick += hoaDonGridView_CellDoubleClick;
             // 
             // QLHD
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1016, 640);
+            ClientSize = new Size(1016, 632);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "QLHD";
             Text = "QLHD";
+            Load += QLHD_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -339,8 +403,8 @@
         private Panel panel1;
         private Label label1;
         private Panel panel2;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox kh_idTextBox;
+        private TextBox idTextbox;
         private Label label5;
         private Label label4;
         private Label label3;
@@ -348,18 +412,23 @@
         private Panel panel3;
         private DataGridView hoaDonGridView;
         private DateTimePicker dateTimePicker1;
-        private TextBox textBox3;
+        private TextBox nv_idTextBox;
         private Panel panel5;
         private Panel panel6;
         private Button filterBtn;
         private Panel panel7;
         private Button searchBtn;
         private TextBox textBox5;
-        private TextBox textBox4;
+        private TextBox hoaDonCountTxtBox;
         private Label label6;
         private Panel panel4;
         private Panel leftPanel;
         private Panel totalTextBoxPanel;
         private Panel rightPanel;
+        private TextBox nv_nameTextBox;
+        private TextBox kh_nameTextBox;
+        private Label label8;
+        private Label label7;
+        private Label label9;
     }
 }
