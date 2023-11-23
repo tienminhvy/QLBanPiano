@@ -22,6 +22,24 @@ namespace QLBanPiano.BUS
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
+        public bool Them(params string[] dsTruong)
+        {
+            try
+            {
+                int nhaccu_id = Convert.ToInt32(dsTruong[0]);
+                int hoadon_id = Convert.ToInt32(dsTruong[1]);
+                long dongia = Convert.ToInt64(dsTruong[2]);
+                short soLuong = Convert.ToInt16(dsTruong[3]);
+
+                string sqlCmd = string.Format("insert into chitiethoadon (nhaccu_id,hoadon_id,donGiaLucBan,soLuong)\r\nvalues ({0},{1},{2},{3})");
+                db.ExecuteNonQuery(sqlCmd);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         //////////////////////////////////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
@@ -44,10 +62,6 @@ namespace QLBanPiano.BUS
             throw new NotImplementedException();
         }
 
-        public bool Them(params string[] dsTruong)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Xoa(string tieuChi)
         {

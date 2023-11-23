@@ -29,9 +29,15 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
             hoaDonGridView.Rows.Clear();
             hoaDonGridView.DataSource = dt;
             hoaDonGridView.ReadOnly = true;
+            hoaDonGridView.AllowUserToResizeColumns = false;
+            hoaDonGridView.AllowUserToResizeRows = false;
             hoaDonGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             hoaDonGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             hoaDonGridView.Columns["Thời gian"].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm:ss tt";
+            foreach (DataGridViewColumn col in hoaDonGridView.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
             hoaDonCountTxtBox.Text = hoaDonMaxBus.SoLuong("id > -1").ToString();
         }
 

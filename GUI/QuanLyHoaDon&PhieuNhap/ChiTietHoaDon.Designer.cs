@@ -322,7 +322,7 @@
             MaximizeBox = false;
             MaximumSize = new Size(600, 730);
             MinimizeBox = false;
-            MinimumSize = new Size(500, 730);
+            MinimumSize = new Size(600, 730);
             Name = "ChiTietHoaDon";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ChiTietHoaDon";

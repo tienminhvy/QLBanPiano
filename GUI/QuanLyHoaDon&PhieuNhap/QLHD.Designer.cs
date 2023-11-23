@@ -57,7 +57,7 @@
             hoaDonCountTxtBox = new TextBox();
             filterBtn = new Button();
             label6 = new Label();
-            panel3 = new Panel();
+            gridViewPanel = new Panel();
             hoaDonGridView = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -67,7 +67,7 @@
             panel7.SuspendLayout();
             panel4.SuspendLayout();
             totalTextBoxPanel.SuspendLayout();
-            panel3.SuspendLayout();
+            gridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).BeginInit();
             SuspendLayout();
             // 
@@ -346,14 +346,14 @@
             label6.TabIndex = 9;
             label6.Text = "Tổng số hóa đơn :";
             // 
-            // panel3
+            // gridViewPanel
             // 
-            panel3.Controls.Add(hoaDonGridView);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 281);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1016, 351);
-            panel3.TabIndex = 2;
+            gridViewPanel.Controls.Add(hoaDonGridView);
+            gridViewPanel.Dock = DockStyle.Fill;
+            gridViewPanel.Location = new Point(0, 281);
+            gridViewPanel.Name = "gridViewPanel";
+            gridViewPanel.Size = new Size(1016, 351);
+            gridViewPanel.TabIndex = 2;
             // 
             // hoaDonGridView
             // 
@@ -373,7 +373,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1016, 632);
-            Controls.Add(panel3);
+            Controls.Add(gridViewPanel);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -393,7 +393,7 @@
             panel4.PerformLayout();
             totalTextBoxPanel.ResumeLayout(false);
             totalTextBoxPanel.PerformLayout();
-            panel3.ResumeLayout(false);
+            gridViewPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).EndInit();
             ResumeLayout(false);
         }
@@ -409,7 +409,7 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private Panel panel3;
+        private Panel gridViewPanel;
         private DataGridView hoaDonGridView;
         private DateTimePicker dateTimePicker1;
         private TextBox nv_idTextBox;

@@ -11,31 +11,28 @@ using System.Windows.Forms;
 
 namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
-    public partial class ChiTietHoaDon : Form
+    public partial class ChiTietPhieuNhap : Form
     {
-        ChiTietHoaDonBUS chiTietHoaDonBUS = new();
-        public ChiTietHoaDon()
+        ChiTietPhieuNhapBUS ctpnBus = new();
+        public ChiTietPhieuNhap()
         {
             InitializeComponent();
             Init();
         }
         void Init()
         {
-            if (QLHD.doubleClickRowID != -1)
+            if (QLPN.doubleClickRowID != -1)
             {
-                DataTable dt = chiTietHoaDonBUS.LayChiTietHoaDon(QLHD.doubleClickRowID);
+                DataTable dt = ctpnBus.LayChiTietPhieuNhap(QLPN.doubleClickRowID);
                 DataTable datasource = dt.Clone();
                 foreach (DataRow row in dt.Rows)
                 {
                     datasource.ImportRow(row);
                 }
-
                 datasource.Columns.Remove("ID");
-                datasource.Columns.Remove("Thời gian");
                 datasource.Columns.Remove("Mã nhân viên");
-                datasource.Columns.Remove("Tên nhân viên");
-                datasource.Columns.Remove("Mã khách hàng");
-                datasource.Columns.Remove("Tên khách hàng");
+                datasource.Columns.Remove("Nhân viên");
+                datasource.Columns.Remove("Thời gian");
 
                 datasource.Columns.Add("Tổng tiền", typeof(int));
                 long total = 0;
@@ -44,27 +41,26 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
                     row["Tổng tiền"] = Convert.ToInt64(row["SL"]) * Convert.ToInt64(row["Đơn giá"]);
                     total += Convert.ToInt64(row["Tổng tiền"]);
                 }
-                totalTextBox.Text = total.ToString() + "  VNĐ";
-                totalTextBox.TextAlign = HorizontalAlignment.Right;
-
-                cthdGridView.DataSource = null;
-                cthdGridView.Rows.Clear();
-                cthdGridView.DataSource = datasource;
-                cthdGridView.ReadOnly = true;
-                cthdGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                //Load lên grid view 
+                ctpnGridView.DataSource = null;
+                ctpnGridView.Rows.Clear();
+                ctpnGridView.DataSource = datasource;
+                ctpnGridView.ReadOnly = true;
+                ctpnGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 //Load lên text box 
-                idHoaDon.Text = dt.Rows[0]["ID"].ToString();
-                idHoaDon.TextAlign = HorizontalAlignment.Center;
+                idPhieuNhap.Text = dt.Rows[0]["ID"].ToString();
+                idPhieuNhap.TextAlign = HorizontalAlignment.Center;
+                totalTextBox.Text = total.ToString() + " VNĐ";
+                totalTextBox.TextAlign = HorizontalAlignment.Center;
                 nv_idTextBox.Text = dt.Rows[0]["Mã nhân viên"].ToString();
-                nv_nameTextBox.Text = dt.Rows[0]["Tên nhân viên"].ToString();
-                kh_idTextBox.Text = dt.Rows[0]["Mã khách hàng"].ToString();
-                kh_nameTextBox.Text = dt.Rows[0]["Tên khách hàng"].ToString();
+                nv_idTextBox.TextAlign = HorizontalAlignment.Right;
+                nv_nameTextBox.Text = dt.Rows[0]["Nhân viên"].ToString();
+                nv_nameTextBox.TextAlign = HorizontalAlignment.Right;
                 //Load lên date time picker với định dạng mới 
                 DateTime result = (DateTime)dt.Rows[0]["Thời gian"];
                 dateTimePicker1.Value = result;
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy hh:mm:ss tt";
-
 
             }
         }

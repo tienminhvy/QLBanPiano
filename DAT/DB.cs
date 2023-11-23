@@ -21,6 +21,24 @@ namespace QLBanPiano.DAL
             sqlConn = new SqlConnection(strCnn);
         }
         //Phuong thuc de thuc hien cau lenh strSQL truy vân du lieu
+        public int ExecuteScalar(string tableName, string colum)
+        {
+            try
+            {
+                string sqlString = string.Format("select max({1}) \r\nfrom {0}", tableName, colum);
+                SqlCommand sqlcmd = new(sqlString, sqlConn);
+                sqlConn.Open(); //Mo ket noi
+                int count = (int)sqlcmd.ExecuteScalar();//Lenh hien lenh Them/Xoa/Sua
+                sqlConn.Close();//Dong ket noi
+                return count;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
         public DataTable Execute(string sqlStr)
         {
             try
