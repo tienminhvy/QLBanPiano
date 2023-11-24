@@ -106,5 +106,10 @@ namespace QLBanPiano.BUS
                 "WHERE {1}", tieuChi));
             return true;
         }
+
+        public bool Validate(params string[] dsTruong)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

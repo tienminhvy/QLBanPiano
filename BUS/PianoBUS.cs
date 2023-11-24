@@ -34,10 +34,20 @@ namespace QLBanPiano.BUS
          */
         public List<DoiTuong> LayDS(string dieukien)
         {
-            string sqlStr = "SELECT  piano.id as 'id',  \r\nnhaccu.ma as N'Mã nhạc cụ',  \r\nnhaccu.ten as N'Tên',  \r\ndacDiemNoiBat as N'Đặc điểm nổi bật'," +
-                "  \r\nmoTaChiTiet as N'Mô tả chi tiết',  \r\ngia as N'Giá', \r\nhinhAnh as N'Hình Ảnh',  \r\nsoLuong as N'Số lượng',  \r\nphanLoai as N'Phân loại', " +
-                " \r\nthuonghieu.ma as N'Mã Thương Hiệu',  \r\nthuonghieu.ten as N'Tên Thương Hiệu',  \r\nnhaccu.thuonghieu_id  \r\nFROM piano, nhaccu, thuonghieu" +
-                " \r\nWHERE piano.nhaccu_id = nhaccu.id AND  \r\nnhaccu.thuonghieu_id = thuonghieu.id AND " + dieukien;
+            string sqlStr = "SELECT  piano.id as 'id'," +
+                "nhaccu.ma as N'Mã nhạc cụ'," +
+                "nhaccu.ten as N'Tên'," +
+                "dacDiemNoiBat as N'Đặc điểm nổi bật'," +
+                "moTaChiTiet as N'Mô tả chi tiết'," +
+                "gia as N'Giá'," +
+                "hinhAnh as N'Hình Ảnh'," +
+                "soLuong as N'Số lượng'," +
+                "phanLoai as N'Phân loại', " +
+                "thuonghieu.ma as N'Mã Thương Hiệu'," +
+                "thuonghieu.ten as N'Tên Thương Hiệu'," +
+                "nhaccu.thuonghieu_id " +
+                "FROM piano, nhaccu, thuonghieu " +
+                "WHERE piano.nhaccu_id = nhaccu.id AND nhaccu.thuonghieu_id = thuonghieu.id AND nhaccu.trangthai = 1 AND " + dieukien;
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
             foreach (DataRow row in dt.Rows)
@@ -71,10 +81,10 @@ namespace QLBanPiano.BUS
                 "dacDiemNoiBat as N'Đặc điểm nổi bật', " +
                 "moTaChiTiet as N'Mô tả chi tiết', " +
                 "gia as N'Giá', " +
-                "soLuong as N'Số lượng', " +
-                "FROM piano, nhaccu, thuonghieu" +
+                "soLuong as N'Số lượng' " +
+                "FROM piano, nhaccu, thuonghieu " +
                 "WHERE piano.nhaccu_id = nhaccu.id AND " +
-                "nhaccu.thuonghieu_id = thuonghieu.id AND trangthai = 1";
+                "nhaccu.thuonghieu_id = thuonghieu.id AND nhaccu.trangthai = 1";
                 return db.Execute(sqlStr);
         }
 
@@ -265,7 +275,7 @@ namespace QLBanPiano.BUS
         public bool ThongTinSanPhamThayDoi(int id, string ma, string ten, long gia,string hinhAnh, string loai, string thuongHieu,
             string dacDiem, string moTa)
         {
-            Piano pianoCu = (Piano) LayDS("piano.id=" + id)[0];
+            QLBanPiano.DTO.Piano pianoCu = (QLBanPiano.DTO.Piano) LayDS("piano.id=" + id)[0];
             if(pianoCu == null)
             {
                 MessageBox.Show("Có lỗi xảy ra, vui lòng thực hiện đúng các bước", "Báo lỗi");
