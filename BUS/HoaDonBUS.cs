@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.BUS
 {
-    public class HoaDonBUS
+    public class HoaDonBUS : IBUS
     {
         DB db;
         public HoaDonBUS()
@@ -99,12 +99,22 @@ namespace QLBanPiano.BUS
             return (check != -1);
         }
 
+        public bool Validate(params string[] dsTruong)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Xoa(string tieuChi)
         {
             db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
                 "SET trangthai = 0 " +
                 "WHERE {1}", tieuChi));
             return true;
+        }
+
+        List<DoiTuong> IBUS.LayDS(string dieuKien)
+        {
+            throw new NotImplementedException();
         }
     }
 }

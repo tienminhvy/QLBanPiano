@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace QLBanPiano.BUS
+namespace QLBanPiano.BUS // Tạm không dùng BUS này
 {
-    public class NhacCuBUS : IBUS
+    public class NhacCuBUS
     {
         DB db;
         public NhacCuBUS()
