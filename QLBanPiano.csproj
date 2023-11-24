@@ -10,7 +10,10 @@
 
   <ItemGroup>
 	<Folder Include="DTO\" />
-	<Folder Include="GUI\QuanLyHoaDon&amp;PhieuNhap\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>

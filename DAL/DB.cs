@@ -82,7 +82,7 @@ namespace QLBanPiano.DAL
             {
                 string sqlString = string.Format("select count(*) from {0} " +
                 "where {1}", tableName, condition);
-                SqlCommand sqlcmd = new(sqlString, sqlConn);
+                SqlCommand sqlcmd = new SqlCommand(sqlString, sqlConn);
                 sqlConn.Open(); //Mo ket noi
                 int count = (int)sqlcmd.ExecuteScalar();//Lenh hien lenh Them/Xoa/Sua
                 sqlConn.Close();//Dong ket noi
@@ -130,7 +130,7 @@ namespace QLBanPiano.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗiabs",
+                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConn.Close();
                 return -1;

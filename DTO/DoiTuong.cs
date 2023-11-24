@@ -8,6 +8,5 @@ namespace QLBanPiano.DTO
 {
     public interface DoiTuong
     {
-
     }
 }
