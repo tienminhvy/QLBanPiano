@@ -61,12 +61,12 @@ namespace QLBanPiano
 
         private void phieuNhapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Chưa xong
+            innerNewForm(new frmQLPhieuNhap());
         }
 
         private void hoaDonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Chưa xong
+            innerNewForm(new frmQLHoaDon());
         }
 
         private void vaiTroToolStripMenuItem_Click(object sender, EventArgs e)

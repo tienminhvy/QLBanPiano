@@ -9,21 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
+namespace QLBanPiano.GUI
 {
-    public partial class ChiTietPhieuNhap : Form
+    public partial class frmChiTietPhieuNhap : Form
     {
         ChiTietPhieuNhapBUS ctpnBus = new();
-        public ChiTietPhieuNhap()
+        public frmChiTietPhieuNhap()
         {
             InitializeComponent();
             Init();
         }
         void Init()
         {
-            if (QLPN.doubleClickRowID != -1)
+            if (frmQLPhieuNhap.doubleClickRowID != -1)
             {
-                DataTable dt = ctpnBus.LayChiTietPhieuNhap(QLPN.doubleClickRowID);
+                DataTable dt = ctpnBus.LayChiTietPhieuNhap(frmQLPhieuNhap.doubleClickRowID);
                 DataTable datasource = dt.Clone();
                 foreach (DataRow row in dt.Rows)
                 {

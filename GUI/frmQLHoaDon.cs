@@ -11,13 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
+namespace QLBanPiano.GUI
 {
     public partial class frmQLHoaDon : Form
     {
         private HoaDonBUS hoaDonMaxBus = new HoaDonBUS();
         public static int doubleClickRowID = -1;
-        public QLHD()
+        public frmQLHoaDon()
         {
             InitializeComponent();
             Init();
@@ -43,11 +43,11 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 
         private void filterBtn_Click(object sender, EventArgs e)
         {
-            TimHoaDon frm = new TimHoaDon();
+            frmTimHoaDon frm = new frmTimHoaDon();
             frm.ShowDialog();
-            if (TimHoaDon.searched == true)
+            if (frmTimHoaDon.searched == true)
             {
-                DataTable dt = TimHoaDon.temp;
+                DataTable dt = frmTimHoaDon.temp;
                 hoaDonGridView.DataSource = null;
                 hoaDonGridView.Rows.Clear();
                 hoaDonGridView.DataSource = dt;
@@ -93,7 +93,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
             {
                 DataGridViewRow selectedRow = hoaDonGridView.Rows[e.RowIndex];
                 doubleClickRowID = (int)selectedRow.Cells[0].Value;
-                ChiTietHoaDon ct = new();
+                frmChiTietHoaDon ct = new();
                 ct.ShowDialog();
             }
             catch (Exception ex)
