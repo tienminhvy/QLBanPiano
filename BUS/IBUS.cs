@@ -17,5 +17,7 @@ namespace QLBanPiano.BUS
         public abstract bool Them(params string[] dsTruong);
         public abstract bool Sua(params string[] dsTruong);
         public abstract bool Xoa(string tieuChi);
+
+        public abstract bool Validate(params string[] dsTruong);
     }
 }

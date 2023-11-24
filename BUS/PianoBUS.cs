@@ -150,8 +150,15 @@ namespace QLBanPiano.BUS
             return true;
         }
 
+        public bool Validate(params string[] dsTruong)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Xoa(string tieuChi)
         {
+            KhachHangBUS b = new KhachHangBUS();
+
             db.ExecuteNonQuery(string.Format("UPDATE nhaccu " +
                 "SET trangthai = 0 " +
                 "WHERE {1}", tieuChi));

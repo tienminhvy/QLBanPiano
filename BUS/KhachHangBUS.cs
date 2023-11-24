@@ -18,12 +18,21 @@ namespace QLBanPiano.BUS
         {
             db = new DB();
         }
-
+        /**
+         * <summary>Lấy toàn bộ danh sách khách hàng</summary>
+         * <param name="tenTruong">Tên cột cần lấy giá trị</param>
+         * <param name="dieuKien">Điều kiện để lấy giá trị</param>
+         * <returns>object (đối tượng đầu tiên tìm thấy)</returns>
+         */
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
             return db.GetColumn("khachhang", tenTruong, dieuKien);
         }
-
+        /**
+         * <summary>Lấy toàn bộ danh sách khách hàng</summary>
+         * <param name="dieukien">Điều kiện truyền vào (ví dụ 1 = 1 để thực hiện câu lệnh này mặc định)</param>
+         * <returns>List<DoiTuong></returns>
+         */
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
@@ -32,7 +41,7 @@ namespace QLBanPiano.BUS
                 "khachhang.ten as N'Tên', " +
                 "khachhang.diaChi as N'Địa chỉ', " +
                 "khachhang.sdt as N'Số điện thoại', " +
-                "FROM khachhang" + dieukien;
+                "FROM khachhang WHERE trangthai = 1 AND " + dieukien;
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
@@ -49,15 +58,19 @@ namespace QLBanPiano.BUS
             }
             return ds;
         }
+        /**
+         * <summary>Lấy toàn bộ danh sách khách hàng</summary>
+         * <returns>DataTable</returns>
+         */
         public DataTable LayToanBoDS()
         {
             string sqlStr = "SELECT " +
-                "khachhang.id as N'Mã khách hàng ', " +
+                "khachhang.id as N'Mã khách hàng', " +
                 "khachhang.hoLot as N'Họ lót', " +
                 "khachhang.ten as N'Tên', " +
                 "khachhang.diaChi as N'Địa chỉ', " +
                 "khachhang.sdt as N'Số điện thoại', " +
-                "FROM khachhang";
+                "FROM khachhang WHERE trangthai = 1";
 
             return db.Execute(sqlStr);
         }
@@ -65,53 +78,24 @@ namespace QLBanPiano.BUS
         {
             return db.GetCount("khachhang", dieuKien);
         }
+        /**
+         * <summary>Sửa khách hàng</summary>
+         * <param name="dsTruong">gồm hoLot, ten, diaChi, soDienThoai, id của khách hàng cần sửa theo thứ tự</param>
+         * <returns>true/false</returns>
+         */
         public bool Sua(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string hoLot = dsTruong[1];
-            string ten = dsTruong[2];
-            string diaChi = dsTruong[3];
-            string soDienThoai = dsTruong[4];
-
-
-            string idKhachHang = db.GetColumn("khachhang", "id", "Mã khách hàng  = " + id).ToString();
-            string hoLotKhachHang = db.GetColumn("khachhang", "hoLot", "Họ lót = " + hoLot).ToString();
-            string tenKhachHang = db.GetColumn("khachhang", "ten", "Tên = " + ten).ToString();
-            string diaChiKhachHang = db.GetColumn("khachhang", "diaChi", "Địa chủ = " + diaChi).ToString();
-            string soDienThoaiKhachHang = db.GetColumn("khachhang", "soDienThoai", "Số điện thoại = " + soDienThoai).ToString();
-
-            //không được để trống các trường thông tin
-            if (idKhachHang.Equals("") || hoLotKhachHang.Equals("") || tenKhachHang.Equals("") || diaChiKhachHang.Equals("") || soDienThoaiKhachHang.Equals(""))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
-                return false;
-            }
-
-            //kiểm tra id của khách hàng đã tồn tại hay chưa
-            if (db.GetCount("khachhang", "Mã khách hàng = N'" + id + "' AND trang thai = 1") == 0)
-            {
-                MessageBox.Show("Mã khách hàng đã tồn tại");
-            }
-
-            //Kiểm tra số điện thoại phải là 10 chữ sỗ
-            if (soDienThoaiKhachHang.Length != 0)
-            {
-                MessageBox.Show("Số điện thoại phải có 10 chữ số!");
-                return false;
-            }
-
-            //Kiểm tra số điện thoại đã tồn tại hay chưa
-            if (db.GetCount("khachhang", "soDienThoai = N'" + soDienThoai + "' AND trang thai = 1") > 0)
-            {
-                MessageBox.Show("Số điện thoại đã tồn tại");
-                return false;
-            }
+            string hoLot = dsTruong[0];
+            string ten = dsTruong[1];
+            string diaChi = dsTruong[2];
+            string soDienThoai = dsTruong[3];
+            string id = dsTruong[4];
 
             db.ExecuteNonQuery(string.Format("UPDATE khachhang " +
-                            "SET hoLot = '{0}', " +
+                            "SET hoLot = N'{0}', " +
                             "ten = N'{1}', " +
                             "diaChi = N'{2}', " +
-                            "soDienThoai = N'{3}', " +
+                            "soDienThoai = '{3}', " +
                             "WHERE id = {4}",
                             hoLot,
                             ten,
@@ -121,49 +105,32 @@ namespace QLBanPiano.BUS
             return true;
         }
 
-        public  bool Them(params string[] dsTruong)
+        /**
+         * <summary>Validate giá trị truyền vào</summary>
+         * <param name="dsTruong">gồm hoLot, ten, diaChi, soDienThoai theo thứ tự</param>
+         * <returns>true/false</returns>
+         */
+        public bool Validate(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string hoLot = dsTruong[1];
-            string ten = dsTruong[2];
-            string diaChi = dsTruong[3];
-            string soDienThoai = dsTruong[4];
+            // Viết validate ở đây
+            return true;
+        }
 
-            string idKhachHang = db.GetColumn("khachhang", "id", "Mã khách hàng  = " + id).ToString();
-            string hoLotKhachHang = db.GetColumn("khachhang", "hoLot", "Họ lót = " + hoLot).ToString();
-            string tenKhachHang = db.GetColumn("khachhang", "ten", "Tên = " + ten).ToString();
-            string diaChiKhachHang = db.GetColumn("khachhang", "diaChi", "Địa chủ = " + diaChi).ToString();
-            string soDienThoaiKhachHang = db.GetColumn("khachhang", "soDienThoai", "Số điện thoại = " + soDienThoai).ToString();
-
-            //không để trống các trường thông tin     
-            if (idKhachHang.Equals("") || hoLotKhachHang.Equals("") || tenKhachHang.Equals("") || diaChiKhachHang.Equals("") || soDienThoaiKhachHang.Equals(""))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
-                return false;
-            }
-            //kiểm tra id của khách hàng đã tồn tại hay chưa
-            if (db.GetCount("khachhang", "Mã khách hàng = N'" + id + "' AND trang thai = 1") > 0)
-            {
-                MessageBox.Show("Mã khách hàng đã tồn tại");
-                return false;
-            }
-            //Kiểm tra số điện thoại phải là 10 chữ sỗ
-            if (soDienThoai.Length != 10)
-            {
-                MessageBox.Show("Số điện thoại phải có 10 chữ số");
-                return false;
-            }
-            //Kiểm tra số điện thoại đã tồn tại hay chưa
-            if (db.GetCount("khachhang", "soDienThoai = N'" + soDienThoai + "' AND trang thai = 1") > 0)
-            {
-                MessageBox.Show("Số điện thoại đã tồn tại");
-                return false;
-            }
+        /**
+         * <summary>Thêm vào 1 khách hàng</summary>
+         * <param name="dsTruong">gồm hoLot, ten, diaChi, soDienThoai theo thứ tự</param>
+         * <returns>true/false</returns>
+         */
+        public bool Them(params string[] dsTruong)
+        {
+            string hoLot = dsTruong[0];
+            string ten = dsTruong[1];
+            string diaChi = dsTruong[2];
+            string soDienThoai = dsTruong[3];
 
             // Thực hiện câu truy vấn để thêm mới khách hàng
-            db.ExecuteNonQuery(string.Format("INSERT INTO khachhang (id, hoLot, ten, diaChi, soDienThoai, trang thai) " +
-                            "VALUES ('{0}', '{1}', N'{2}', N'{3}', N'{4}', 1)",
-                            id,
+            db.ExecuteNonQuery(string.Format("INSERT INTO khachhang (hoLot, ten, diaChi, soDienThoai, trangthai) " +
+                            "VALUES (N'{0}', N'{1}', N'{2}', '{3}', 1)",
                             hoLot,
                             ten,
                             diaChi,
@@ -171,12 +138,16 @@ namespace QLBanPiano.BUS
 
             return true;
         }
-
+        /**
+         * <summary>Xoá khách hàng (soft delete)</summary>
+         * <param name="tieuChi">Điều kiện xoá (ví dụ tên cột = điều kiện | hoLot = N'Nguyễn')</param>
+         * <returns>true/false</returns>
+         */
         public bool Xoa(string tieuChi)
         {
             db.ExecuteNonQuery(string.Format("UPDATE khachhang" +
                 "SET trangthai = 0 " +
-                "WHERE {1}", tieuChi));
+                "WHERE {0}", tieuChi));
             return true;
         }
     }
