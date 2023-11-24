@@ -24,15 +24,13 @@ namespace QLBanPiano.BUS
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
-                "* FROM vaitro WHERE " + dieukien;
+                "* FROM vaitro WHERE trangthai = 1 AND " + dieukien;
 
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
             foreach (DataRow row in dt.Rows)
             {
-                if (int.Parse(row["trangthai"].ToString()) == 0)
-                    continue;
                 VaiTro vaiTro = new VaiTro();
                 vaiTro.Id = int.Parse(row["id"].ToString());
                 vaiTro.Ten = row["ten"].ToString();
@@ -76,6 +74,9 @@ namespace QLBanPiano.BUS
                 }
             } else
             {
+                string str = string.Format("UPDATE vaitro " +
+                "SET dsQuyen = '{0}' " +
+                "WHERE id = {1}", dsQuyen, id);
                 db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
                 "SET dsQuyen = '{0}' " +
                 "WHERE id = {1}", dsQuyen, id));
