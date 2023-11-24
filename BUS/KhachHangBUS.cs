@@ -1,17 +1,16 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
-using QLBanPiano.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Reflection.Metadata.Ecma335;
+using System.Windows.Forms;
 
 namespace QLBanPiano.BUS
 {
-    public class KhachHangBUS : IBUS
+    internal class KhachHangBUS : IBUS
     {
         DB db;
         public KhachHangBUS()
@@ -47,17 +46,21 @@ namespace QLBanPiano.BUS
 
             foreach (DataRow row in dt.Rows)
             {
-                DTO.KhachHang khachhang = new DTO.KhachHang();
-                khachhang.Id = int.Parse(row["Mã khách hàng"].ToString());
-                khachhang.HoLot = row["Họ lót"].ToString();
-                khachhang.Ten = row["Tên"].ToString();
-                khachhang.DiaChi = row["Địa chỉ"].ToString();
-                khachhang.SoDienThoai = row["Số điện thoại"].ToString();
-                //
-                ds.Add((DoiTuong)khachhang);
+                KhachHang khachHang = new KhachHang();
+                khachHang.Id = int.Parse(row["id"].ToString());
+                khachHang.HoLot = row["Họ lót"].ToString();
+                khachHang.Ten = row["Tên"].ToString();
+                khachHang.DiaChi = row["Địa chỉ"].ToString();
+                khachHang.SoDienThoai = row["Số điện thoại"].ToString();
+                ds.Add(khachHang);
             }
+
             return ds;
         }
+
+        
+
+        
         /**
          * <summary>Lấy toàn bộ danh sách khách hàng</summary>
          * <returns>DataTable</returns>
@@ -73,6 +76,30 @@ namespace QLBanPiano.BUS
                 "FROM khachhang WHERE trangthai = 1";
 
             return db.Execute(sqlStr);
+        }
+
+        public List<DoiTuong> TimKiem(string tieuChi, string giaTri)
+        {
+            string dieuKien = "";
+            switch (tieuChi)
+            {
+                case "ID":
+                    {
+                        dieuKien = "CAST(id AS VARCHAR) LIKE '%" + giaTri + "%'";
+                        break;
+                    }
+                case "Tên":
+                    {
+                        dieuKien = "Upper(ten) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "SDT":
+                    {
+                        dieuKien = "sdt LIKE N'%" + giaTri + "%'";
+                        break;
+                    }
+            }
+            return LayDS(dieuKien + " AND trangthai = 1");
         }
         /**
          * <summary>Lấy số lượng</summary>

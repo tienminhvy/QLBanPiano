@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.DTO
 {
-    public class KhachHang
+    public class KhachHang : DoiTuong
     {
         // gồm các thuộc tính họ lót, tên, địa chỉ, số điện thoại
         private int id;

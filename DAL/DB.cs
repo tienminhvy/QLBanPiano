@@ -53,6 +53,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return null;
             }
             return ds.Tables[0];
@@ -71,6 +72,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
             }
         }
 
@@ -90,6 +92,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return -1;
             }
         }
@@ -110,6 +113,7 @@ namespace QLBanPiano.DAL
             {
                 MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return null;
             }
         }
@@ -126,8 +130,9 @@ namespace QLBanPiano.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗi",
+                MessageBox.Show("Nội dung: " + ex.Message, "Xảy ra lỗiabs",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sqlConn.Close();
                 return -1;
             }
         }

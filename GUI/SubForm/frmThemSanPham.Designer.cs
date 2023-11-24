@@ -92,6 +92,7 @@
             btnThoat.TabIndex = 20;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = false;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnNhapLai
             // 
@@ -103,6 +104,7 @@
             btnNhapLai.TabIndex = 19;
             btnNhapLai.Text = "Nhập Lại";
             btnNhapLai.UseVisualStyleBackColor = false;
+            btnNhapLai.Click += btnNhapLai_Click;
             // 
             // btnThem
             // 
@@ -114,6 +116,7 @@
             btnThem.TabIndex = 18;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // txtMoTa
             // 
@@ -122,6 +125,7 @@
             txtMoTa.Name = "txtMoTa";
             txtMoTa.Size = new Size(251, 94);
             txtMoTa.TabIndex = 17;
+            txtMoTa.KeyPress += txtMoTa_KeyPress;
             // 
             // label9
             // 
@@ -139,6 +143,7 @@
             txtDacDiem.Name = "txtDacDiem";
             txtDacDiem.Size = new Size(211, 94);
             txtDacDiem.TabIndex = 15;
+            txtDacDiem.KeyPress += txtDacDiem_KeyPress;
             // 
             // label8
             // 
@@ -151,7 +156,9 @@
             // 
             // cbbLoai
             // 
+            cbbLoai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbLoai.FormattingEnabled = true;
+            cbbLoai.Items.AddRange(new object[] { "điện", "Upright", "Grand" });
             cbbLoai.Location = new Point(232, 222);
             cbbLoai.Name = "cbbLoai";
             cbbLoai.Size = new Size(128, 28);
@@ -168,6 +175,7 @@
             // 
             // cbbThuongHieu
             // 
+            cbbThuongHieu.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbThuongHieu.FormattingEnabled = true;
             cbbThuongHieu.Location = new Point(122, 179);
             cbbThuongHieu.Name = "cbbThuongHieu";
@@ -188,15 +196,19 @@
             ptbAnh.Location = new Point(366, 81);
             ptbAnh.Name = "ptbAnh";
             ptbAnh.Size = new Size(270, 173);
+            ptbAnh.SizeMode = PictureBoxSizeMode.Zoom;
             ptbAnh.TabIndex = 9;
             ptbAnh.TabStop = false;
+            ptbAnh.MouseClick += ptbAnh_MouseClick;
             // 
             // txtGia
             // 
             txtGia.Location = new Point(76, 223);
+            txtGia.MaxLength = 18;
             txtGia.Name = "txtGia";
             txtGia.Size = new Size(104, 27);
             txtGia.TabIndex = 8;
+            txtGia.KeyPress += txtGia_KeyPress;
             // 
             // label5
             // 
@@ -213,6 +225,7 @@
             txtTen.Name = "txtTen";
             txtTen.Size = new Size(238, 27);
             txtTen.TabIndex = 6;
+            txtTen.KeyPress += txtTen_KeyPress;
             // 
             // label4
             // 
@@ -229,6 +242,7 @@
             txtMa.Name = "txtMa";
             txtMa.Size = new Size(126, 27);
             txtMa.TabIndex = 4;
+            txtMa.KeyPress += txtMa_KeyPress;
             // 
             // label3
             // 
@@ -241,6 +255,7 @@
             // 
             // txtID
             // 
+            txtID.Enabled = false;
             txtID.Location = new Point(76, 81);
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
