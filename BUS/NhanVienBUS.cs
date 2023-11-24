@@ -133,18 +133,15 @@ namespace QLBanPiano.BUS
 
         public bool Them(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string hoLot = dsTruong[1];
-            string ten = dsTruong[2];
-            DateTime ngayVaoLam = DateTime.Parse(dsTruong[3]);
+            string hoLot = dsTruong[0];
+            string ten = dsTruong[1];
+            string ngayVaoLam = dsTruong[3];
             string sdt = dsTruong[4];
             string diaChi = dsTruong[5];
-                       
             
-            db.ExecuteNonQuery(string.Format("INSERT INTO nhanvien (id, hoLot, ten, ngayVaoLam, " +
+            db.ExecuteNonQuery(string.Format("INSERT INTO nhanvien (hoLot, ten, ngayVaoLam, " +
                 "sdt, diaChi, trangthai) " + 
-                "VALUES ('{0}', N'{1}', N'{2}', '{3}','{4}', N'{5}',1)",
-                    id,
+                "VALUES (N'{1}', N'{2}', '{3}','{4}', N'{5}',1)",
                     hoLot,
                     ten,
                     ngayVaoLam,
