@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
+namespace QLBanPiano.GUI
 {
-    public partial class ChiTietHoaDon : Form
+    public partial class frmChiTietHoaDon : Form
     {
         ChiTietHoaDonBUS chiTietHoaDonBUS = new();
-        public ChiTietHoaDon()
+        public frmChiTietHoaDon()
         {
             InitializeComponent();
             Init();

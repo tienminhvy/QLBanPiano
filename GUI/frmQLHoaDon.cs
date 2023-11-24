@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
+namespace QLBanPiano.GUI
 {
     public partial class frmQLHoaDon : Form
     {
@@ -93,7 +93,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
             {
                 DataGridViewRow selectedRow = hoaDonGridView.Rows[e.RowIndex];
                 doubleClickRowID = (int)selectedRow.Cells[0].Value;
-                ChiTietHoaDon ct = new();
+                frmChiTietHoaDon ct = new();
                 ct.ShowDialog();
             }
             catch (Exception ex)

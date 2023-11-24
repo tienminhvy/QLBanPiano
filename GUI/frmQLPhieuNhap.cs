@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
+namespace QLBanPiano.GUI
 {
     public partial class frmQLPhieuNhap : Form
     {
@@ -112,7 +112,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
             {
                 DataGridViewRow selectedRow = phieuNhapGridView.Rows[e.RowIndex];
                 doubleClickRowID = (int)selectedRow.Cells[0].Value;
-                ChiTietPhieuNhap ctpn = new();
+                frmChiTietPhieuNhap ctpn = new();
                 ctpn.ShowDialog();
             }
             catch (Exception ex)
