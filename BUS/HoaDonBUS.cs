@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.BUS
 {
-    public class HoaDonBUS : IBUS
+    public class HoaDonBUS
     {
         DB db;
         public HoaDonBUS()
@@ -119,11 +119,6 @@ namespace QLBanPiano.BUS
             throw new NotImplementedException();
         }
 
-        public bool Validate(params string[] dsTruong)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Xoa(string tieuChi)
         {
             throw new NotImplementedException();
@@ -151,11 +146,6 @@ namespace QLBanPiano.BUS
                 list.Add(hd);
             }
             return list;
-        }
-
-        List<DoiTuong> IBUS.LayDS(string dieuKien)
-        {
-            throw new NotImplementedException();
         }
     }
 }

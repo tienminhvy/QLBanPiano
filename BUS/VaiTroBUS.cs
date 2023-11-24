@@ -16,22 +16,11 @@ namespace QLBanPiano.BUS
         {
             db = new DB();
         }
-
-        /**
-         * <summary>Lấy giá trị của một cột với điều kiện</summary>
-         * <param name="tenTruong">Tên cột cần lấy giá trị</param>
-         * <param name="dieuKien">Điều kiện để lấy giá trị</param>
-         * <returns>object (đối tượng đầu tiên tìm thấy)</returns>
-         */
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
             return db.GetColumn("vaitro", tenTruong, dieuKien);
         }
-        /**
-         * <summary>Lấy toàn bộ danh sách</summary>
-         * <param name="dieukien">Điều kiện truyền vào (ví dụ 1 = 1 để thực hiện câu lệnh này mặc định)</param>
-         * <returns>List<DoiTuong></returns>
-         */
+
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
@@ -54,32 +43,17 @@ namespace QLBanPiano.BUS
 
             return ds;
         }
-        /**
-         * <summary>Lấy toàn bộ danh sách</summary>
-         * <returns>DataTable</returns>
-         */
+
         public DataTable LayToanBoDS()
         {
-            string sqlStr = "SELECT " +
-                "* " +
-                "FROM vaitro WHERE trangthai = 1";
-
-            return db.Execute(sqlStr);
+            throw new NotImplementedException();
         }
-        /**
-         * <summary>Lấy số lượng</summary>
-         * <param name="dieuKien">điều kiện truyền vào (ví dụ 1 = 1 để mặc định)</param>
-         * <returns>true/false</returns>
-         */
+
         public int SoLuong(string dieuKien)
         {
             return db.GetCount("vaitro", dieuKien);
         }
-        /**
-         * <summary>Sửa vai trò</summary>
-         * <param name="dsTruong">gồm id, ten, dsQuyen theo thứ tự</param>
-         * <returns>true/false</returns>
-         */
+
         public bool Sua(params string[] dsTruong)
         {
             string id = dsTruong[0];
@@ -108,11 +82,7 @@ namespace QLBanPiano.BUS
             }
             return true;
         }
-        /**
-         * <summary>Thêm vai trò mới</summary>
-         * <param name="dsTruong">gồm ten, dsQuyen theo thứ tự</param>
-         * <returns>true/false</returns>
-         */
+
         public bool Them(params string[] dsTruong)
         {
             string ten = dsTruong[0];
@@ -126,20 +96,7 @@ namespace QLBanPiano.BUS
                 "VALUES (N'{0}', '{1}')", ten, dsQuyen));
             return (check != -1);
         }
-        /**
-         * <summary>Validate giá trị truyền vào</summary>
-         * <param name="dsTruong">gồm ten, dsQuyen theo thứ tự</param>
-         * <returns>true/false</returns>
-         */
-        public bool Validate(params string[] dsTruong)
-        {
-            throw new NotImplementedException();
-        }
-        /**
-         * <summary>Xoá vai trò (soft delete)</summary>
-         * <param name="tieuChi">Điều kiện xoá (ví dụ tên cột = điều kiện | ten = N'Admin')</param>
-         * <returns>true/false</returns>
-         */
+
         public bool Xoa(string tieuChi)
         {
             db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
