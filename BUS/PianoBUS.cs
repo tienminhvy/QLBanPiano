@@ -15,12 +15,21 @@ namespace QLBanPiano.BUS
         public PianoBUS() {
             db = new DB();
         }
-
+        /**
+         * <summary>Lấy giá trị của một cột với điều kiện</summary>
+         * <param name="tenTruong">Tên cột cần lấy giá trị</param>
+         * <param name="dieuKien">Điều kiện để lấy giá trị</param>
+         * <returns>object (đối tượng đầu tiên tìm thấy)</returns>
+         */
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
             return db.GetColumn("piano", tenTruong, dieuKien);
         }
-
+        /**
+         * <summary>Lấy toàn bộ danh sách piano</summary>
+         * <param name="dieukien">Điều kiện truyền vào (ví dụ 1 = 1 để thực hiện câu lệnh này mặc định)</param>
+         * <returns>List<DoiTuong></returns>
+         */
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
@@ -60,7 +69,10 @@ namespace QLBanPiano.BUS
             }
             return ds;
         }
-
+        /**
+         * <summary>Lấy toàn bộ danh sách piano</summary>
+         * <returns>DataTable</returns>
+         */
         public DataTable LayToanBoDS()
         {
             string sqlStr = "SELECT " +
@@ -72,7 +84,7 @@ namespace QLBanPiano.BUS
                 "soLuong as N'Số lượng', " +
                 "FROM piano, nhaccu, thuonghieu" +
                 "WHERE piano.nhaccu_id = nhaccu.id AND " +
-                "nhaccu.thuonghieu_id = thuonghieu.id";
+                "nhaccu.thuonghieu_id = thuonghieu.id AND trangthai = 1";
 
             return db.Execute(sqlStr);
         }
@@ -81,7 +93,11 @@ namespace QLBanPiano.BUS
         {
             return db.GetCount("piano", dieuKien);
         }
-
+        /**
+         * <summary>Sửa thông tin</summary>
+         * <param name="dsTruong">gồm ma, ten, dacDiemNoiBat, moTaChiTiet, gia, hinhAnh, phanLoai, idThuongHieu, idNhacCu cần sửa theo thứ tự</param>
+         * <returns>true/false</returns>
+         */
         public bool Sua(params string[] dsTruong)
         {
             string ma = dsTruong[0];
@@ -92,13 +108,11 @@ namespace QLBanPiano.BUS
             string hinhAnh = dsTruong[5];
             string phanLoai = dsTruong[6];
             string idThuongHieu = dsTruong[7];
-            string idPiano = dsTruong[8];
+            string idNhacCu = dsTruong[8];
 
-            string idNhacCu = db.GetColumn("piano", "nhaccu_id", "id = " + idPiano).ToString();
-            if (idNhacCu == "-1") return false;
             db.ExecuteNonQuery(string.Format("UPDATE piano " +
                 "SET phanLoai = N'{0}' " +
-                "WHERE id = {1}", phanLoai, idPiano));
+                "WHERE nhaccu_id = {1}", phanLoai, idNhacCu));
 
             db.ExecuteNonQuery(string.Format("UPDATE nhaccu " +
                             "SET ma = '{0}', " +
@@ -119,7 +133,11 @@ namespace QLBanPiano.BUS
                             idNhacCu));
             return true;
         }
-
+        /**
+         * <summary>Thêm thông tin</summary>
+         * <param name="dsTruong">gồm ma, ten, dacDiemNoiBat, moTaChiTiet, gia, hinhAnh, phanLoai, idThuongHieu cần sửa theo thứ tự</param>
+         * <returns>true/false</returns>
+         */
         public bool Them(params string[] dsTruong)
         {
             string ma = dsTruong[0];
@@ -149,16 +167,22 @@ namespace QLBanPiano.BUS
                 "VALUES ({0}, {1})", phanLoai, nhaccu_id));
             return true;
         }
-
+        /**
+         * <summary>Xác minh thông tin</summary>
+         * <param name="dsTruong">gồm ma, ten, dacDiemNoiBat, moTaChiTiet, gia, hinhAnh, phanLoai, idThuongHieu</param>
+         * <returns>true/false</returns>
+         */
         public bool Validate(params string[] dsTruong)
         {
             throw new NotImplementedException();
         }
-
+        /**
+         * <summary>Xoá (soft delete)</summary>
+         * <param name="tieuChi">Điều kiện xoá (ví dụ id = 0)</param>
+         * <returns>true/false</returns>
+         */
         public bool Xoa(string tieuChi)
         {
-            KhachHangBUS b = new KhachHangBUS();
-
             db.ExecuteNonQuery(string.Format("UPDATE nhaccu " +
                 "SET trangthai = 0 " +
                 "WHERE {1}", tieuChi));

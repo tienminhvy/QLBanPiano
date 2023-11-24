@@ -19,7 +19,7 @@ namespace QLBanPiano.BUS
             db = new DB();
         }
         /**
-         * <summary>Lấy toàn bộ danh sách khách hàng</summary>
+         * <summary>Lấy giá trị của một cột với điều kiện</summary>
          * <param name="tenTruong">Tên cột cần lấy giá trị</param>
          * <param name="dieuKien">Điều kiện để lấy giá trị</param>
          * <returns>object (đối tượng đầu tiên tìm thấy)</returns>
@@ -74,6 +74,11 @@ namespace QLBanPiano.BUS
 
             return db.Execute(sqlStr);
         }
+        /**
+         * <summary>Lấy số lượng</summary>
+         * <param name="dieuKien">điều kiện truyền vào (ví dụ 1 = 1 để mặc định)</param>
+         * <returns>true/false</returns>
+         */
         public int SoLuong(string dieuKien)
         {
             return db.GetCount("khachhang", dieuKien);
