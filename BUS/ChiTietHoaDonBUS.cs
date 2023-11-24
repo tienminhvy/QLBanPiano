@@ -31,7 +31,7 @@ namespace QLBanPiano.BUS
                 long dongia = Convert.ToInt64(dsTruong[2]);
                 short soLuong = Convert.ToInt16(dsTruong[3]);
 
-                string sqlCmd = string.Format("insert into chitiethoadon (nhaccu_id,hoadon_id,donGiaLucBan,soLuong)\r\nvalues ({0},{1},{2},{3})");
+                string sqlCmd = string.Format("insert into chitiethoadon (nhaccu_id,hoadon_id,donGiaLucBan,soLuong)\r\nvalues ({0},{1},{2},{3})",nhaccu_id,hoadon_id,dongia,soLuong);
                 db.ExecuteNonQuery(sqlCmd);
                 return true;
             }

@@ -269,7 +269,6 @@ namespace QLBanPiano.BUS
                         break;
                     }
             }
-            MessageBox.Show(dieuKien);
             return LayDS(dieuKien + " AND nhaccu.trangthai = 1");
         }
         public bool ThongTinSanPhamThayDoi(int id, string ma, string ten, long gia,string hinhAnh, string loai, string thuongHieu,
@@ -327,6 +326,13 @@ namespace QLBanPiano.BUS
                 return false;
             }
             return true;
+        }
+
+        public void SuaSoLuong(int nhaccu_id, int soLuongBan)
+        {
+            db.ExecuteNonQuery(string.Format("UPDATE nhaccu " +
+                "SET soLuong = soLuong -" + soLuongBan +
+                "WHERE nhaccu.id = {0}", nhaccu_id));
         }
     }
 }
