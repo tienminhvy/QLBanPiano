@@ -89,10 +89,5 @@ namespace QLBanPiano.BUS
         {
             throw new NotImplementedException();
         }
-
-        public bool Validate(params string[] dsTruong)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

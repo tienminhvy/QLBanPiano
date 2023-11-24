@@ -17,7 +17,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
     {
         private HoaDonBUS hoaDonMaxBus = new HoaDonBUS();
         public static int doubleClickRowID = -1;
-        public frmQLHoaDon()
+        public QLHD()
         {
             InitializeComponent();
             Init();
@@ -43,11 +43,11 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 
         private void filterBtn_Click(object sender, EventArgs e)
         {
-            frmTimHoaDon frm = new frmTimHoaDon();
+            TimHoaDon frm = new TimHoaDon();
             frm.ShowDialog();
-            if (frmTimHoaDon.searched == true)
+            if (TimHoaDon.searched == true)
             {
-                DataTable dt = frmTimHoaDon.temp;
+                DataTable dt = TimHoaDon.temp;
                 hoaDonGridView.DataSource = null;
                 hoaDonGridView.Rows.Clear();
                 hoaDonGridView.DataSource = dt;

@@ -97,11 +97,6 @@ namespace QLBanPiano.BUS
             return (check != -1);
         }
 
-        public bool Validate(params string[] dsTruong)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Xoa(string tieuChi)
         {
             db.ExecuteNonQuery(string.Format("UPDATE vaitro " +

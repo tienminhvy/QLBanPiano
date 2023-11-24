@@ -24,7 +24,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
             totalTextBox.Text = string.Format("{0}     VNĐ", value.ToString());
             totalTextBox.TextAlign = HorizontalAlignment.Right;
             //Init id_pnTextBox 
-            id_pnTextBox.Text = frmThemPhieuNhap.id.ToString();
+            id_pnTextBox.Text = ThemPhieuNhap.id.ToString();
             id_pnTextBox.TextAlign = HorizontalAlignment.Center;
         }
     }
