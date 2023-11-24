@@ -1,6 +1,6 @@
-﻿namespace QLBanPiano.GUI
+﻿namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
-    partial class frmChiTietHoaDon
+    partial class ChiTietHoaDon
     {
         /// <summary>
         /// Required designer variable.

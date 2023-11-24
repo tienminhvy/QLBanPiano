@@ -1,4 +1,4 @@
-﻿namespace QLBanPiano.GUI
+﻿namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
     partial class frmQLPhieuNhap
     {

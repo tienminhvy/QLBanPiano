@@ -1,5 +1,4 @@
 using QLBanPiano.GUI;
-using QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap;
 
 namespace QLBanPiano
 {

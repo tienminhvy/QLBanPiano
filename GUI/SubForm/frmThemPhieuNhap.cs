@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI
+namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 {
     public partial class frmThemPhieuNhap : Form
     {
@@ -47,7 +47,7 @@ namespace QLBanPiano.GUI
 
         private void ct_addBtn_Click(object sender, EventArgs e)
         {
-            frmThemChiTietPhieuNhap themCtpn = new();
+            ThemChiTietPhieuNhap themCtpn = new();
             themCtpn.ShowDialog();
         }
 
