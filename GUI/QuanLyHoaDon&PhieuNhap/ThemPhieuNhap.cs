@@ -44,7 +44,7 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
 
         private void ct_addBtn_Click(object sender, EventArgs e)
         {
-            ThemChiTietPhieuNhap themCtpn = new();
+            frmThemChiTietPhieuNhap themCtpn = new();
             themCtpn.ShowDialog();
         }
 
