@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace DoAn
+namespace QLBanPiano
 {
     public partial class frmBanHang : Form
     {
@@ -28,8 +28,8 @@ namespace DoAn
             InitializeComponent();
             cbbTieuChiSanPham.SelectedIndex = 0;
             cbbTieuChiKhachHang.SelectedIndex = 0;
-            danhSachSanPham = pianoBUS.LayDS("nhaccu.trangthai=1");
-            danhSachKhachHang = khachHangBUS.LayDS("trangthai=1");
+            danhSachSanPham = pianoBUS.LayDS("1=1");
+            danhSachKhachHang = khachHangBUS.LayDS("1=1");
             LoadDSSanPham(danhSachSanPham);
             LoadDSKhachHang(danhSachKhachHang);
         }
@@ -40,7 +40,7 @@ namespace DoAn
 
             foreach (DoiTuong dt in danhSachSanPham)
             {
-                Piano piano = (Piano)dt;
+                QLBanPiano.DTO.Piano piano = (QLBanPiano.DTO.Piano)dt;
                 ListViewItem listViewItem = new ListViewItem(new String[]
                 {
                     piano.Id.ToString(),
@@ -143,7 +143,7 @@ namespace DoAn
             txtDiaChiKH.Text = khachHang.DiaChi;
         }
 
-        public void fillThongTinSanPham(Piano piano)
+        public void fillThongTinSanPham(QLBanPiano.DTO.Piano piano)
         {
             txtIDSP.Text = piano.Id.ToString();
             txtMaSP.Text = piano.Ma;
@@ -172,7 +172,7 @@ namespace DoAn
             int tongSanPham = 0;
             foreach (SanPhamDuocChon sp in DSSanPhamDaChon)
             {
-                Piano piano = (Piano)pianoBUS.LayDS("piano.id=" + sp.IdSanPham)[0];
+                QLBanPiano.DTO.Piano piano = (QLBanPiano.DTO.Piano)pianoBUS.LayDS("piano.id=" + sp.IdSanPham)[0];
                 tongSanPham += sp.SoLuong;
                 tongTien += piano.Gia * sp.SoLuong;
                 ListViewItem listViewItem = new ListViewItem(new String[]
@@ -270,7 +270,7 @@ namespace DoAn
             if (lvSanPham.SelectedItems.Count > 0)
             {
                 string idSanPhamDuocChon = lvSanPham.SelectedItems[0].SubItems[0].Text;
-                Piano piano = (Piano)pianoBUS.LayDS("piano.id = " + idSanPhamDuocChon)[0];
+                QLBanPiano.DTO.Piano piano = (QLBanPiano.DTO.Piano)pianoBUS.LayDS("piano.id = " + idSanPhamDuocChon)[0];
                 fillThongTinSanPham(piano);
             }
 

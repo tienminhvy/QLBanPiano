@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace DoAn
+namespace QLBanPiano
 {
     public partial class frmQLSanPham : Form
     {
@@ -175,11 +175,11 @@ namespace DoAn
             DataGridViewRow selectedRow = dgvSanPham.Rows[rowIndex]; // Lấy dòng được chọn
             string maDuocChon = selectedRow.Cells[0].Value.ToString();
             if (maDuocChon.Equals("")) return; // chưa chọn sản phẩm
-            Piano SanPhamDuocChon = new Piano();
+            QLBanPiano.DTO.Piano SanPhamDuocChon = new QLBanPiano.DTO.Piano();
             foreach (DoiTuong sanpham in danhSachDoiTuongPiano)
             {
-                Piano piano = new Piano();
-                piano = (Piano)sanpham;
+                QLBanPiano.DTO.Piano piano = new QLBanPiano.DTO.Piano();
+                piano = (QLBanPiano.DTO.Piano)sanpham;
                 if (piano.Ma.Equals(maDuocChon))
                 {
                     SanPhamDuocChon = piano; // từ mã sản phẩm của dòng được chọn lấy ra sản phẩm piano tương ứng
@@ -189,7 +189,7 @@ namespace DoAn
 
         }
 
-        public void FillThongTinSanPhamDuocChon(Piano piano)
+        public void FillThongTinSanPhamDuocChon(QLBanPiano.DTO.Piano piano)
         {
             txtIDSP.Text = piano.Id.ToString();
             txtMaSP.Text = piano.Ma.ToString();

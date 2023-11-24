@@ -1,4 +1,4 @@
-using DoAn;
+using QLBanPiano;
 using QLBanPiano.GUI;
 using QLBanPiano.GUI.SubForm;
 using System.Windows.Forms;

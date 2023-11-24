@@ -1,4 +1,4 @@
-﻿namespace DoAn
+﻿namespace QLBanPiano
 {
     partial class frmBanHang
     {
