@@ -3,6 +3,7 @@ using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,85 +19,104 @@ namespace QLBanPiano.BUS
         }
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
-            return db.GetColumn("vaitro", tenTruong, dieuKien);
+            return db.GetColumn("hoadon", tenTruong, dieuKien);
         }
 
-        public List<HoaDon> LayDS(string dieukien)
+        public DataTable GetDS()
         {
-            string sqlStr = "SELECT " +
-                "* FROM hoadon WHERE " + dieukien;
-
-            DataTable dt = db.Execute(sqlStr);
-            List<HoaDon> ds = new List<HoaDon>();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                if (int.Parse(row["trangthai"].ToString()) == 0)
-                    continue;
-                HoaDon hoadon = new HoaDon();
-                hoadon.Id = Convert.ToInt32(row["id"]);
-                hoadon.NhanVien_Id = Convert.ToInt32(row["nhanvien_id"]);
-                hoadon.KhachHang_Id = Convert.ToInt32(row["khachhang_id"]);
-                hoadon.NgayMuaHang = Convert.ToDateTime(row["thoiGian"]);
-                ds.Add(hoadon);
-            }
-
-            return ds;
+            string sqlCmd = "SELECT hoadon.id as N'Mã hóa đơn' ,hoadon.thoiGian as N'Thời gian',nhanvien.id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',khachhang.id as N'Mã khách hàng',CONCAT(khachhang.hoLot,' ',khachhang.ten) as N'Khách hàng '\r\nFrom hoadon\r\nInner join khachhang on hoadon.khachhang_id = khachhang.id\r\nInner join nhanvien on hoadon.nhanvien_id = nhanvien.id";
+            DataTable dt = db.Execute(sqlCmd);
+            return dt;
         }
 
         public DataTable LayToanBoDS()
         {
-            throw new NotImplementedException();
+            string sqlCmd = "select hoadon.id as 'ID',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom hoadon\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\n";
+            DataTable dt = db.Execute(sqlCmd);
+            foreach(DataRow row in dt.Rows)
+            {
+                DateTime thoiGian = (DateTime)row["Thời gian"];
+                string formatted = thoiGian.ToString("yyyy/MM/dd hh:mm:ss tt");
+                row["Thời gian"] = formatted;
+            }
+            return dt;
         }
 
         public int SoLuong(string dieuKien)
         {
-            return db.GetCount("vaitro", dieuKien);
+            return db.GetCount("hoadon", dieuKien);
         }
-
-        public bool Sua(params string[] dsTruong)
+        DataTable listToDataTable(List<DoiTuong> list)
         {
-            string id = dsTruong[0];
-            string ten = dsTruong[1];
-            string dsQuyen = dsTruong[2];
-
-            string tenCu = db.GetColumn("vaitro", "ten", "id = " + id).ToString();
-            if (tenCu != ten)
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("Thời gian", typeof(DateTime));
+            dt.Columns.Add("Mã nhân viên", typeof(int));
+            dt.Columns.Add("Mã khách hàng", typeof(int));
+            if(list != null)
             {
-                if (db.GetCount("vaitro", "ten = N'" + ten + "' and trangthai = 1") > 0)
+                foreach (HoaDon hd in list)
                 {
-                    MessageBox.Show("Tên vai trò đã tồn tại trong CSDL");
-                    return false;
-                }
-                else
-                {
-                    db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
-                    "SET ten = N'{0}', " +
-                    "dsQuyen = '{1}' " +
-                    "WHERE id = {2}", ten, dsQuyen, id));
+                    DataRow row = dt.NewRow();
+                    row["ID"] = hd.Id;
+                    row["Thời gian"] = hd.NgayMuaHang;
+                    row["Mã nhân viên"] = hd.NhanVien_Id;
+                    row["Mã khách hàng"] = hd.KhachHang_Id;
+                    dt.Rows.Add(row);
                 }
             }
-            else
+            return dt;
+        }
+        public DataTable TimKiem(int tieuchi,string giatri)
+        {
+            DataTable dt = new();
+            switch (tieuchi)
             {
-                db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
-                "SET dsQuyen = '{0}' " +
-                "WHERE id = {1}", dsQuyen, id));
+                case 0:
+                    string dieukien0 = "cast(hoadon.id as varchar) like '%"+ giatri +"%'";
+                    dt = layDsDaTruyVan(dieukien0);
+                    break;
+                case 1:
+                    string dieukien1 = "convert(varchar,hoadon.thoiGian,120) like '%" + giatri +"%'";
+                    dt = layDsDaTruyVan(dieukien1);
+                    break;
+                case 2:
+                    string dieukien2 = "hoadon.nhanvien_id like '%" + giatri +"%'";
+                    dt = layDsDaTruyVan(dieukien2);
+                    break;
+                case 3:
+                    string dieukien3 = "hoadon.khachhang_id like '%"+giatri + "%'";
+                    dt = layDsDaTruyVan(dieukien3);
+                    break;
+                case 4:
+                    string dieukien4 = "concat(nhanvien.hoLot,' ',nhanvien.ten) like '%"+giatri+"%'";
+                    dt = layDsDaTruyVan(dieukien4);
+                    break;
+                case 5:
+                    string dieukien5 = "concat(khachhang.hoLot,' ',khachhang.ten) like '%"+giatri+"%'";
+                    dt = layDsDaTruyVan(dieukien5);
+                    break;
+                default:
+                    dt = null;
+                    break;
+            }
+            return dt;
+        }
+        public bool Them(params string[] dsTruong)
+        {
+            string thoiGian = dsTruong[0];
+            string nhanvien_id = dsTruong[1];
+            string khachhang_id = dsTruong[2];
+            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ",Convert.ToDateTime(thoiGian),Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
+            if(hoadon_id == -1)
+            {
+                return false;
             }
             return true;
         }
-
-        public bool Them(params string[] dsTruong)
+        public bool Sua(params string[] dsTruong)
         {
-            string ten = dsTruong[0];
-            string dsQuyen = dsTruong[1];
-            if (db.GetCount("nhaccu", "ten = N'" + ten + "' AND trangthai = 1") == 0)
-            {
-                MessageBox.Show("Vai trò đã tồn tại");
-                return false;
-            }
-            int check = db.Insert(string.Format("INSERT INTO vaitro (ten, dsQuyen) " +
-                "VALUES (N'{0}', '{1}')", ten, dsQuyen));
-            return (check != -1);
+            throw new NotImplementedException();
         }
 
         public bool Validate(params string[] dsTruong)
@@ -106,10 +126,31 @@ namespace QLBanPiano.BUS
 
         public bool Xoa(string tieuChi)
         {
-            db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
-                "SET trangthai = 0 " +
-                "WHERE {1}", tieuChi));
-            return true;
+            throw new NotImplementedException();
+        }
+        public DataTable layDsDaTruyVan(string dieukien)
+        {
+            string sqlCmd = "select hoadon.id as 'ID',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom hoadon\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\nwhere " + dieukien;
+            DataTable dt = db.Execute(sqlCmd);
+            return dt;
+        }
+        public List<DoiTuong> LayDS(string dieukien)
+        {
+            string sqlCmd = "select id as N'ID', thoiGian as N'Thời gian',nhanvien_id as N'Mã nhân viên',khachhang_id as N'Mã khách hàng'\r\nfrom hoadon\r\nwhere " + dieukien;
+            DataTable dt = db.Execute(sqlCmd);
+            List<DoiTuong> list = new();
+            foreach (DataRow dr in dt.Rows)
+            {
+                HoaDon hd = new();
+                hd.Id = Convert.ToInt32(dr["ID"].ToString());
+                DateTime ngayMuaHang = (DateTime)dr["Thời gian"];
+                string formatted = ngayMuaHang.ToString("MM/dd/yyyy hh:mm:ss tt");
+                hd.NgayMuaHang = DateTime.ParseExact(formatted,"MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                hd.NhanVien_Id = Convert.ToInt32(dr["Mã nhân viên"].ToString());
+                hd.KhachHang_Id = Convert.ToInt32(dr["Mã khách hàng"].ToString());
+                list.Add(hd);
+            }
+            return list;
         }
 
         List<DoiTuong> IBUS.LayDS(string dieuKien)
@@ -118,4 +159,3 @@ namespace QLBanPiano.BUS
         }
     }
 }
-
