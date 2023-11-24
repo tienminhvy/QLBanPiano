@@ -21,9 +21,9 @@ namespace QLBanPiano.GUI.QuanLyHoaDon_PhieuNhap
         }
         void Init()
         {
-            if (QLPN.doubleClickRowID != -1)
+            if (frmQLPhieuNhap.doubleClickRowID != -1)
             {
-                DataTable dt = ctpnBus.LayChiTietPhieuNhap(QLPN.doubleClickRowID);
+                DataTable dt = ctpnBus.LayChiTietPhieuNhap(frmQLPhieuNhap.doubleClickRowID);
                 DataTable datasource = dt.Clone();
                 foreach (DataRow row in dt.Rows)
                 {
