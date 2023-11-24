@@ -204,6 +204,7 @@
             // txtGia
             // 
             txtGia.Location = new Point(76, 223);
+            txtGia.MaxLength = 18;
             txtGia.Name = "txtGia";
             txtGia.Size = new Size(104, 27);
             txtGia.TabIndex = 8;
