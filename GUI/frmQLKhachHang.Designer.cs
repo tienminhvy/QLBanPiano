@@ -227,6 +227,7 @@
             // 
             txtMaKH.Location = new Point(89, 37);
             txtMaKH.Name = "txtMaKH";
+            txtMaKH.ReadOnly = true;
             txtMaKH.Size = new Size(187, 33);
             txtMaKH.TabIndex = 1;
             // 
@@ -392,7 +393,7 @@
             colSoDienThoai.ReadOnly = true;
             colSoDienThoai.Width = 180;
             // 
-            // CustomerGUI
+            // frmQLKhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -403,7 +404,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "CustomerGUI";
+            Name = "frmQLKhachHang";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý khách hàng";

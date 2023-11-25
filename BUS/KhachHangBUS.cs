@@ -58,9 +58,9 @@ namespace QLBanPiano.BUS
             return ds;
         }
 
-        
 
-        
+
+
         /**
          * <summary>Lấy toàn bộ danh sách khách hàng</summary>
          * <returns>DataTable</returns>
@@ -120,7 +120,7 @@ namespace QLBanPiano.BUS
             string hoLot = dsTruong[0];
             string ten = dsTruong[1];
             string diaChi = dsTruong[2];
-            string soDienThoai = dsTruong[3];
+            string sdt = dsTruong[3];
             string id = dsTruong[4];
 
             db.ExecuteNonQuery(string.Format("UPDATE khachhang " +
@@ -132,7 +132,7 @@ namespace QLBanPiano.BUS
                             hoLot,
                             ten,
                             diaChi,
-                            soDienThoai,
+                            sdt,
                             id));
             return true;
         }
@@ -144,7 +144,49 @@ namespace QLBanPiano.BUS
          */
         public bool Validate(params string[] dsTruong)
         {
-            // Viết validate ở đây
+            string id = dsTruong[0];
+            string hoLot = dsTruong[1];
+            string ten = dsTruong[2];
+            string diaChi = dsTruong[3];
+            string sdt = dsTruong[4];
+
+            //kiểm tra các trường thông tin có rỗng hay không
+            if (hoLot.Equals("") || ten.Equals("") || diaChi.Equals("") || sdt.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return false;
+            }
+
+            //kiểm tra mã khách hàng đã tồn tại hay chưa
+            if (db.GetCount("khachhang", "id = '" + id + "' AND trangthai=1") == 0)
+            {
+                return false;
+            }
+
+            //kiểm tra số điện thoại của khách hàng có đủ 10 chữ số hay không và
+            if (sdt.Length != 10)
+            {
+                MessageBox.Show("Số điện thoại phải có 10 chữ số!");
+                return false;
+            }
+
+            // kiểm tra xem tất cả các kí tự có phải là 10 chữ số hay không
+            foreach (char kyTu in sdt)
+            {
+                if (!Char.IsDigit(kyTu))
+                {
+                    MessageBox.Show("Số điện thoại chỉ được chứa kí tự số!");
+                    return false;
+
+                }
+            }
+
+            //kiểm tra số điện thoại đã tồn tại hay chưa
+            if (db.GetCount("khachhang", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
+            {
+                MessageBox.Show("Số điện thoại đã tồn tại");
+                return false;
+            }
             return true;
         }
 
@@ -158,15 +200,15 @@ namespace QLBanPiano.BUS
             string hoLot = dsTruong[0];
             string ten = dsTruong[1];
             string diaChi = dsTruong[2];
-            string soDienThoai = dsTruong[3];
+            string sdt = dsTruong[3];
 
             // Thực hiện câu truy vấn để thêm mới khách hàng
-            db.ExecuteNonQuery(string.Format("INSERT INTO khachhang (hoLot, ten, diaChi, soDienThoai, trangthai) " +
+            db.ExecuteNonQuery(string.Format("INSERT INTO khachhang (hoLot, ten, diaChi, sdt, trangthai) " +
                             "VALUES (N'{0}', N'{1}', N'{2}', '{3}', 1)",
                             hoLot,
                             ten,
                             diaChi,
-                            soDienThoai));
+                            sdt));
 
             return true;
         }
