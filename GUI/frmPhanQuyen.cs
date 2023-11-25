@@ -21,7 +21,7 @@ namespace QLBanPiano.GUI
         {
             InitializeComponent();
             Init();
-            uncheckAll();
+            UncheckAll();
         }
         private VaiTro[] layDSVaiTro()
         {
@@ -33,20 +33,21 @@ namespace QLBanPiano.GUI
             }
             return lsVaiTro.ToArray();
         }
-        private void Init()
+        public void Init()
         {
             dsVaiTro.ValueMember = "Id";
             dsVaiTro.DisplayMember = "Ten";
             dsVaiTro.DataSource = new BindingSource(layDSVaiTro(), null);
             dsVaiTro.ClearSelected();
+            txtTenVaiTro.Enabled = false;
         }
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
-            frmThemVaiTro f = new frmThemVaiTro();
+            frmThemVaiTro f = new frmThemVaiTro(this);
             f.ShowDialog();
         }
 
-        private void uncheckAll()
+        private void UncheckAll()
         {
             ckBanHang.Checked = false;
             ckQLHoaDon.Checked = false;
@@ -57,15 +58,31 @@ namespace QLBanPiano.GUI
             ckNhapXuat.Checked = false;
         }
 
+        private void CheckAll()
+        {
+            ckBanHang.Checked = true;
+            ckQLHoaDon.Checked = true;
+            ckQLNhapHang.Checked = true;
+            ckQLNhacCu.Checked = true;
+            ckQLKhachHang.Checked = true;
+            ckQLNhanVien.Checked = true;
+            ckNhapXuat.Checked = true;
+        }
+
         private void dsVaiTro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            uncheckAll();
+            UncheckAll();
             if (dsVaiTro.SelectedIndex > -1)
             {
                 VaiTro vt = layDSVaiTro()[dsVaiTro.SelectedIndex];
+                txtTenVaiTro.Enabled = true;
+
+                txtTenVaiTro.Text = vt.Ten;
 
                 foreach (string quyen in vt.DsQuyen)
                 {
+                    if (quyen.Equals("*"))
+                        CheckAll();
                     if (quyen.Equals("banHang"))
                         ckBanHang.Checked = true;
                     if (quyen.Equals("quanLyNhapHang"))
@@ -120,14 +137,35 @@ namespace QLBanPiano.GUI
                     }
                 }
 
-                if (vaiTroBUS.Sua(vt.Id.ToString(), vt.Ten, dsQuyen(vt)))
+                if (vaiTroBUS.Sua(vt.Id.ToString(), txtTenVaiTro.Text, dsQuyen(vt)))
                 {
-                    MessageBox.Show("Cập nhật vai trò thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    new Msg("Cập nhật vai trò thành công", "");
+                    Init();
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn vai trò trước khi cập nhật!");
+                new Msg("Chọn ít nhất một vai trò trước khi cập nhật", "err");
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dsVaiTro.SelectedIndex > -1)
+            {
+                VaiTro vt = (VaiTro)dsVaiTro.SelectedItem;
+                DialogResult res = new Msg("Bạn có muốn xoá vai trò này?", "warn").Res;
+                if (res is DialogResult.OK)
+                {
+                    if (vaiTroBUS.Xoa(string.Format("id = {0}", vt.Id)))
+                    {
+                        Init();
+                        new Msg("Xoá thành công");
+                    }
+                }
+            } else
+            {
+                new Msg("Chọn ít nhất một vai trò trước khi xoá", "err");
             }
         }
     }

@@ -117,7 +117,11 @@ namespace QLBanPiano.DAL
                 return null;
             }
         }
-
+        /// <summary>
+        /// Phải có output INSERTED.ID!!!
+        /// </summary>
+        /// <param name="sqlString"></param>
+        /// <returns></returns>
         public int Insert(string sqlString)
         {
             try

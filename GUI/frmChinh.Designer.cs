@@ -71,7 +71,6 @@
             // 
             toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { pianoToolStripMenuItem, kháchHàngToolStripMenuItem, nhanVienToolStripMenuItem, phieuNhapToolStripMenuItem, hoaDonToolStripMenuItem, vaiTroToolStripMenuItem });
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             toolStripDropDownButton1.Size = new Size(123, 24);
@@ -80,42 +79,42 @@
             // pianoToolStripMenuItem
             // 
             pianoToolStripMenuItem.Name = "pianoToolStripMenuItem";
-            pianoToolStripMenuItem.Size = new Size(224, 26);
+            pianoToolStripMenuItem.Size = new Size(169, 26);
             pianoToolStripMenuItem.Text = "Piano";
             pianoToolStripMenuItem.Click += pianoToolStripMenuItem_Click;
             // 
             // kháchHàngToolStripMenuItem
             // 
             kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            kháchHàngToolStripMenuItem.Size = new Size(224, 26);
+            kháchHàngToolStripMenuItem.Size = new Size(169, 26);
             kháchHàngToolStripMenuItem.Text = "Khách hàng";
             kháchHàngToolStripMenuItem.Click += kháchHàngToolStripMenuItem_Click;
             // 
             // nhanVienToolStripMenuItem
             // 
             nhanVienToolStripMenuItem.Name = "nhanVienToolStripMenuItem";
-            nhanVienToolStripMenuItem.Size = new Size(224, 26);
+            nhanVienToolStripMenuItem.Size = new Size(169, 26);
             nhanVienToolStripMenuItem.Text = "Nhân viên";
             nhanVienToolStripMenuItem.Click += nhanVienToolStripMenuItem_Click;
             // 
             // phieuNhapToolStripMenuItem
             // 
             phieuNhapToolStripMenuItem.Name = "phieuNhapToolStripMenuItem";
-            phieuNhapToolStripMenuItem.Size = new Size(224, 26);
+            phieuNhapToolStripMenuItem.Size = new Size(169, 26);
             phieuNhapToolStripMenuItem.Text = "Phiếu nhập";
             phieuNhapToolStripMenuItem.Click += phieuNhapToolStripMenuItem_Click;
             // 
             // hoaDonToolStripMenuItem
             // 
             hoaDonToolStripMenuItem.Name = "hoaDonToolStripMenuItem";
-            hoaDonToolStripMenuItem.Size = new Size(224, 26);
+            hoaDonToolStripMenuItem.Size = new Size(169, 26);
             hoaDonToolStripMenuItem.Text = "Hoá đơn";
             hoaDonToolStripMenuItem.Click += hoaDonToolStripMenuItem_Click;
             // 
             // vaiTroToolStripMenuItem
             // 
             vaiTroToolStripMenuItem.Name = "vaiTroToolStripMenuItem";
-            vaiTroToolStripMenuItem.Size = new Size(224, 26);
+            vaiTroToolStripMenuItem.Size = new Size(169, 26);
             vaiTroToolStripMenuItem.Text = "Vai trò";
             vaiTroToolStripMenuItem.Click += vaiTroToolStripMenuItem_Click;
             // 
@@ -132,7 +131,6 @@
             // dangXuatBtn
             // 
             dangXuatBtn.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            dangXuatBtn.Image = (Image)resources.GetObject("dangXuatBtn.Image");
             dangXuatBtn.ImageTransparentColor = Color.Magenta;
             dangXuatBtn.Name = "dangXuatBtn";
             dangXuatBtn.Size = new Size(81, 24);
@@ -171,6 +169,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(mainPanel);
             Controls.Add(toolStrip1);
+            MaximizeBox = false;
             Name = "frmChinh";
             Text = "Phần mềm quản lý bán nhạc cụ Piano";
             toolStrip1.ResumeLayout(false);
