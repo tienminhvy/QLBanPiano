@@ -31,6 +31,9 @@
             panel1 = new Panel();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            btnThoat = new Button();
+            btnReset = new Button();
+            btnThem = new Button();
             txtSoDienThoai = new TextBox();
             txtDiaChi = new TextBox();
             label8 = new Label();
@@ -41,20 +44,8 @@
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
-            btnThem = new Button();
-            btnReset = new Button();
-            btnThoat = new Button();
-            panel2 = new Panel();
-            dataGridView1 = new DataGridView();
-            colMaKH = new DataGridViewTextBoxColumn();
-            colHoLot = new DataGridViewTextBoxColumn();
-            colTen = new DataGridViewTextBoxColumn();
-            colDiaChi = new DataGridViewTextBoxColumn();
-            colSoDienThoat = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -62,7 +53,7 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1117, 71);
+            panel1.Size = new Size(564, 71);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -70,7 +61,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(401, 13);
+            label1.Location = new Point(133, 19);
             label1.Name = "label1";
             label1.Size = new Size(291, 38);
             label1.TabIndex = 0;
@@ -92,12 +83,45 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(719, 93);
+            groupBox1.Location = new Point(12, 100);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(410, 379);
+            groupBox1.Size = new Size(564, 379);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng";
+            // 
+            // btnThoat
+            // 
+            btnThoat.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThoat.Location = new Point(284, 328);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(105, 31);
+            btnThoat.TabIndex = 8;
+            btnThoat.Text = "Th&oát";
+            btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
+            // 
+            // btnReset
+            // 
+            btnReset.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnReset.Location = new Point(158, 328);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(105, 31);
+            btnReset.TabIndex = 7;
+            btnReset.Text = "&Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
+            // 
+            // btnThem
+            // 
+            btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThem.Location = new Point(27, 328);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(104, 31);
+            btnThem.TabIndex = 6;
+            btnThem.Text = "T&hêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // txtSoDienThoai
             // 
@@ -151,6 +175,7 @@
             // 
             txtMaKH.Location = new Point(158, 40);
             txtMaKH.Name = "txtMaKH";
+            txtMaKH.ReadOnly = true;
             txtMaKH.Size = new Size(127, 34);
             txtMaKH.TabIndex = 1;
             // 
@@ -184,104 +209,11 @@
             label4.TabIndex = 0;
             label4.Text = "Mã KH: ";
             // 
-            // btnThem
-            // 
-            btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThem.Location = new Point(27, 328);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(104, 31);
-            btnThem.TabIndex = 6;
-            btnThem.Text = "T&hêm";
-            btnThem.UseVisualStyleBackColor = true;
-            btnThem.Click += btnThem_Click;
-            // 
-            // btnReset
-            // 
-            btnReset.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnReset.Location = new Point(158, 328);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(105, 31);
-            btnReset.TabIndex = 7;
-            btnReset.Text = "&Reset";
-            btnReset.UseVisualStyleBackColor = true;
-            btnReset.Click += btnReset_Click;
-            // 
-            // btnThoat
-            // 
-            btnThoat.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThoat.Location = new Point(284, 328);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(105, 31);
-            btnThoat.TabIndex = 8;
-            btnThoat.Text = "Th&oát";
-            btnThoat.UseVisualStyleBackColor = true;
-            btnThoat.Click += btnThoat_Click;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(dataGridView1);
-            panel2.Location = new Point(12, 106);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(692, 540);
-            panel2.TabIndex = 2;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.ControlLightLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colMaKH, colHoLot, colTen, colDiaChi, colSoDienThoat });
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(686, 537);
-            dataGridView1.TabIndex = 0;
-            // 
-            // colMaKH
-            // 
-            colMaKH.DataPropertyName = "id";
-            colMaKH.HeaderText = "Mã khách hàng ";
-            colMaKH.MinimumWidth = 6;
-            colMaKH.Name = "colMaKH";
-            // 
-            // colHoLot
-            // 
-            colHoLot.DataPropertyName = "hoLot";
-            colHoLot.HeaderText = "Họ lót";
-            colHoLot.MinimumWidth = 6;
-            colHoLot.Name = "colHoLot";
-            colHoLot.Width = 125;
-            // 
-            // colTen
-            // 
-            colTen.DataPropertyName = "ten";
-            colTen.HeaderText = "Tên";
-            colTen.MinimumWidth = 6;
-            colTen.Name = "colTen";
-            // 
-            // colDiaChi
-            // 
-            colDiaChi.DataPropertyName = "diaChi";
-            colDiaChi.HeaderText = "Địa chỉ";
-            colDiaChi.MinimumWidth = 6;
-            colDiaChi.Name = "colDiaChi";
-            colDiaChi.Resizable = DataGridViewTriState.True;
-            colDiaChi.Width = 125;
-            // 
-            // colSoDienThoat
-            // 
-            colSoDienThoat.DataPropertyName = "soDienThoai";
-            colSoDienThoat.HeaderText = "Số điện thoại";
-            colSoDienThoat.MinimumWidth = 6;
-            colSoDienThoat.Name = "colSoDienThoat";
-            colSoDienThoat.Width = 150;
-            // 
             // frmThemKhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1141, 658);
-            Controls.Add(panel2);
+            ClientSize = new Size(590, 491);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             Name = "frmThemKhachHang";
@@ -290,8 +222,6 @@
             panel1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -313,12 +243,5 @@
         private Button btnThoat;
         private Button btnReset;
         private Button btnThem;
-        private Panel panel2;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn colMaKH;
-        private DataGridViewTextBoxColumn colHoLot;
-        private DataGridViewTextBoxColumn colTen;
-        private DataGridViewTextBoxColumn colDiaChi;
-        private DataGridViewTextBoxColumn colSoDienThoat;
     }
 }

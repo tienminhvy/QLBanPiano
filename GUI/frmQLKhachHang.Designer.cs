@@ -55,7 +55,7 @@
             label2 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel3 = new Panel();
-            dataGridView1 = new DataGridView();
+            dgvKhachHang = new DataGridView();
             colMaKH = new DataGridViewTextBoxColumn();
             colHoLot = new DataGridViewTextBoxColumn();
             colTen = new DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKhachHang).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -154,6 +154,7 @@
             btnSua.TabIndex = 8;
             btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnXoa
             // 
@@ -164,6 +165,7 @@
             btnXoa.TabIndex = 7;
             btnXoa.Text = "&Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnThem
             // 
@@ -174,6 +176,7 @@
             btnThem.TabIndex = 6;
             btnThem.Text = "T&hêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // txtSoDienThoai
             // 
@@ -328,25 +331,26 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(dataGridView1);
+            panel3.Controls.Add(dgvKhachHang);
             panel3.Location = new Point(7, 357);
             panel3.Name = "panel3";
             panel3.Size = new Size(1122, 292);
             panel3.TabIndex = 2;
             // 
-            // dataGridView1
+            // dgvKhachHang
             // 
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colMaKH, colHoLot, colTen, colDiaChi, colSoDienThoai });
-            dataGridView1.Location = new Point(5, 3);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1106, 286);
-            dataGridView1.TabIndex = 0;
+            dgvKhachHang.BackgroundColor = SystemColors.Control;
+            dgvKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKhachHang.Columns.AddRange(new DataGridViewColumn[] { colMaKH, colHoLot, colTen, colDiaChi, colSoDienThoai });
+            dgvKhachHang.Location = new Point(5, 3);
+            dgvKhachHang.MultiSelect = false;
+            dgvKhachHang.Name = "dgvKhachHang";
+            dgvKhachHang.ReadOnly = true;
+            dgvKhachHang.RowHeadersWidth = 51;
+            dgvKhachHang.RowTemplate.Height = 29;
+            dgvKhachHang.Size = new Size(1106, 286);
+            dgvKhachHang.TabIndex = 0;
+            dgvKhachHang.SelectionChanged += dgvKhachHang_SelectionChanged;
             // 
             // colMaKH
             // 
@@ -386,7 +390,7 @@
             // 
             // colSoDienThoai
             // 
-            colSoDienThoai.DataPropertyName = "soDienThoai";
+            colSoDienThoai.DataPropertyName = "sdt";
             colSoDienThoai.HeaderText = "Số điện thoại";
             colSoDienThoai.MinimumWidth = 6;
             colSoDienThoai.Name = "colSoDienThoai";
@@ -416,7 +420,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKhachHang).EndInit();
             ResumeLayout(false);
         }
 
@@ -449,7 +453,7 @@
         private Button btnSua;
         private Button btnXoa;
         private Panel panel3;
-        private DataGridView dataGridView1;
+        private DataGridView dgvKhachHang;
         private DataGridViewTextBoxColumn colMaKH;
         private DataGridViewTextBoxColumn colHoLot;
         private DataGridViewTextBoxColumn colTen;

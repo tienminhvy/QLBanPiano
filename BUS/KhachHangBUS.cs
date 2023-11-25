@@ -73,7 +73,8 @@ namespace QLBanPiano.BUS
                 "khachhang.ten as N'Tên', " +
                 "khachhang.diaChi as N'Địa chỉ', " +
                 "khachhang.sdt as N'Số điện thoại', " +
-                "FROM khachhang WHERE trangthai = 1";
+                "FROM khachhang " +
+                "WHERE trangthai = 1";
 
             return db.Execute(sqlStr);
         }
@@ -154,12 +155,6 @@ namespace QLBanPiano.BUS
             if (hoLot.Equals("") || ten.Equals("") || diaChi.Equals("") || sdt.Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
-                return false;
-            }
-
-            //kiểm tra mã khách hàng đã tồn tại hay chưa
-            if (db.GetCount("khachhang", "id = '" + id + "' AND trangthai=1") == 0)
-            {
                 return false;
             }
 
