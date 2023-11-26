@@ -133,7 +133,5 @@ namespace QLBanPiano.GUI
             }
             else MessageBox.Show("Vui lòng chọn khách hàng để sửa!");
         }
-
-
     }
 }

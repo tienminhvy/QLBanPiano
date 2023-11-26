@@ -32,8 +32,6 @@
             label1 = new Label();
             panel2 = new Panel();
             groupBox2 = new GroupBox();
-            button1 = new Button();
-            btnCapNhat = new Button();
             btnSua = new Button();
             btnXoa = new Button();
             btnThem = new Button();
@@ -99,8 +97,6 @@
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top;
-            groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(btnCapNhat);
             groupBox2.Controls.Add(btnSua);
             groupBox2.Controls.Add(btnXoa);
             groupBox2.Controls.Add(btnThem);
@@ -122,32 +118,12 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin khách hàng ";
             // 
-            // button1
-            // 
-            button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(530, 192);
-            button1.Name = "button1";
-            button1.Size = new Size(120, 31);
-            button1.TabIndex = 10;
-            button1.Text = "Th&ống Kê";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // btnCapNhat
-            // 
-            btnCapNhat.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCapNhat.Location = new Point(404, 192);
-            btnCapNhat.Name = "btnCapNhat";
-            btnCapNhat.Size = new Size(120, 31);
-            btnCapNhat.TabIndex = 9;
-            btnCapNhat.Text = "&Cập nhật";
-            btnCapNhat.UseVisualStyleBackColor = true;
-            // 
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSua.Location = new Point(272, 192);
+            btnSua.Location = new Point(480, 192);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(120, 31);
+            btnSua.Size = new Size(185, 31);
             btnSua.TabIndex = 8;
             btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = true;
@@ -156,9 +132,9 @@
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnXoa.Location = new Point(137, 192);
+            btnXoa.Location = new Point(247, 192);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(120, 31);
+            btnXoa.Size = new Size(202, 31);
             btnXoa.TabIndex = 7;
             btnXoa.Text = "&Xóa";
             btnXoa.UseVisualStyleBackColor = true;
@@ -169,7 +145,7 @@
             btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnThem.Location = new Point(11, 192);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(120, 31);
+            btnThem.Size = new Size(210, 31);
             btnThem.TabIndex = 6;
             btnThem.Text = "T&hêm";
             btnThem.UseVisualStyleBackColor = true;
@@ -184,7 +160,7 @@
             // 
             // txtDiaChi
             // 
-            txtDiaChi.Location = new Point(419, 32);
+            txtDiaChi.Location = new Point(419, 37);
             txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.Size = new Size(231, 33);
             txtDiaChi.TabIndex = 4;
@@ -280,7 +256,7 @@
             // btnTimKiem
             // 
             btnTimKiem.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTimKiem.Location = new Point(133, 192);
+            btnTimKiem.Location = new Point(298, 138);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(111, 31);
             btnTimKiem.TabIndex = 3;
@@ -402,8 +378,6 @@
         private TextBox txtMaKH;
         private Button btnThem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Button button1;
-        private Button btnCapNhat;
         private Button btnSua;
         private Button btnXoa;
         private Panel panel3;
