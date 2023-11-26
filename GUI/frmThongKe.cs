@@ -26,7 +26,7 @@ namespace QLBanPiano.GUI
             InitializeComponent();
             LoadComponent();
             LoadThongKeTheoNam(now.Year.ToString());
-            
+
 
         }
 
@@ -48,7 +48,7 @@ namespace QLBanPiano.GUI
 
 
             //Load Bieu Do Thong Ke
-            pvDoanhThu.Model = new PlotModel { Title = "Thống Kê Doanh Thu Năm " + nam};
+            pvDoanhThu.Model = new PlotModel { Title = "Thống Kê Doanh Thu Năm " + nam };
 
             var linearAxisX = new LinearAxis { Position = AxisPosition.Bottom, Title = "Tháng", Minimum = 1, Maximum = 12 };
             linearAxisX.StringFormat = "0";
@@ -127,7 +127,7 @@ namespace QLBanPiano.GUI
             List<long> tongThu = thongKeBUS.TongThuTheoNgay(nam, thang);
 
             //Load Bieu Do Thong Ke
-            pvDoanhThu.Model = new PlotModel { Title = "Thống Kê Doanh Thu Tháng " + thang + " Năm " + nam};
+            pvDoanhThu.Model = new PlotModel { Title = "Thống Kê Doanh Thu Tháng " + thang + " Năm " + nam };
 
             int soNgayTrongThang = DateTime.DaysInMonth(int.Parse(nam), int.Parse(thang));
             var linearAxisX = new LinearAxis { Position = AxisPosition.Bottom, Title = "Ngày", Minimum = 1, Maximum = soNgayTrongThang };
@@ -175,7 +175,7 @@ namespace QLBanPiano.GUI
 
         private void cbbChonThang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbChonThang.SelectedItem == null || cbbChonNam.SelectedItem ==null)
+            if (cbbChonThang.SelectedItem == null || cbbChonNam.SelectedItem == null)
             {
                 return;
             }

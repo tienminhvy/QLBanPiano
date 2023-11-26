@@ -10,6 +10,7 @@ namespace QLBanPiano
         public frmChinh()
         {
             InitializeComponent();
+            innerNewForm(new frmThongKe());
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -72,6 +73,11 @@ namespace QLBanPiano
         private void vaiTroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             innerNewForm(new frmPhanQuyen());
+        }
+
+        private void frmChinh_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -43,8 +43,11 @@
             mainPanel = new Panel();
             statusStrip1 = new StatusStrip();
             lblThongTinDangNhap = new ToolStripStatusLabel();
+            panel1 = new Panel();
+            panel2 = new Panel();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
@@ -149,7 +152,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { lblThongTinDangNhap });
-            statusStrip1.Location = new Point(0, 695);
+            statusStrip1.Location = new Point(0, 3);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(1348, 26);
             statusStrip1.TabIndex = 0;
@@ -161,21 +164,42 @@
             lblThongTinDangNhap.Size = new Size(200, 20);
             lblThongTinDangNhap.Text = "Bạn đang đăng nhập với tên ";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(statusStrip1);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 692);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1348, 29);
+            panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 682);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1348, 10);
+            panel2.TabIndex = 3;
+            // 
             // frmChinh
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
-            Controls.Add(statusStrip1);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(mainPanel);
             Controls.Add(toolStrip1);
             MinimumSize = new Size(1366, 768);
             Name = "frmChinh";
             Text = "Phần mềm quản lý bán nhạc cụ Piano";
+            Load += frmChinh_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -196,5 +220,7 @@
         private ToolStripMenuItem hoaDonToolStripMenuItem;
         private ToolStripMenuItem vaiTroToolStripMenuItem;
         private ToolStripButton toolStripButton1;
+        private Panel panel1;
+        private Panel panel2;
     }
 }
