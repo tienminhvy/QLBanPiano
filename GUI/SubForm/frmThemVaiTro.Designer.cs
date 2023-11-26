@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            button1 = new Button();
+            txtTenVaiTro = new TextBox();
+            btnThem = new Button();
             SuspendLayout();
             // 
             // label1
@@ -42,29 +42,30 @@
             label1.TabIndex = 0;
             label1.Text = "Tên vai trò";
             // 
-            // textBox1
+            // txtTenVaiTro
             // 
-            textBox1.Location = new Point(97, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(224, 27);
-            textBox1.TabIndex = 1;
+            txtTenVaiTro.Location = new Point(97, 12);
+            txtTenVaiTro.Name = "txtTenVaiTro";
+            txtTenVaiTro.Size = new Size(224, 27);
+            txtTenVaiTro.TabIndex = 1;
             // 
-            // button1
+            // btnThem
             // 
-            button1.Location = new Point(227, 45);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "Tạo mới";
-            button1.UseVisualStyleBackColor = true;
+            btnThem.Location = new Point(227, 45);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(94, 29);
+            btnThem.TabIndex = 2;
+            btnThem.Text = "Tạo mới";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // frmThemVaiTro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(333, 82);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnThem);
+            Controls.Add(txtTenVaiTro);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmThemVaiTro";
@@ -76,7 +77,7 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox txtTenVaiTro;
+        private Button btnThem;
     }
 }

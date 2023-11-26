@@ -38,6 +38,7 @@ namespace QLBanPiano
             mainPanel.Controls.Add(f);
             f.Show();
             f.Dock = DockStyle.Fill;
+            this.Size = f.Size;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

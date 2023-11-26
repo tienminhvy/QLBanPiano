@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,15 +25,13 @@ namespace QLBanPiano.BUS
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
-                "* FROM vaitro WHERE " + dieukien;
+                "* FROM vaitro WHERE trangthai = 1 AND " + dieukien;
 
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
             foreach (DataRow row in dt.Rows)
             {
-                if (int.Parse(row["trangthai"].ToString()) == 0)
-                    continue;
                 VaiTro vaiTro = new VaiTro();
                 vaiTro.Id = int.Parse(row["id"].ToString());
                 vaiTro.Ten = row["ten"].ToString();
@@ -65,7 +64,7 @@ namespace QLBanPiano.BUS
             {
                 if (db.GetCount("vaitro", "ten = N'"+ten+"' and trangthai = 1") > 0)
                 {
-                    MessageBox.Show("Tên vai trò đã tồn tại trong CSDL");
+                    new Msg("Tên vai trò đã tồn tại", "err");
                     return false;
                 } else
                 {
@@ -76,6 +75,9 @@ namespace QLBanPiano.BUS
                 }
             } else
             {
+                string str = string.Format("UPDATE vaitro " +
+                "SET dsQuyen = '{0}' " +
+                "WHERE id = {1}", dsQuyen, id);
                 db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
                 "SET dsQuyen = '{0}' " +
                 "WHERE id = {1}", dsQuyen, id));
@@ -87,13 +89,13 @@ namespace QLBanPiano.BUS
         {
             string ten = dsTruong[0];
             string dsQuyen = dsTruong[1];
-            if (db.GetCount("nhaccu", "ten = N'"+ten+"' AND trangthai = 1") == 0)
+            if (db.GetCount("vaitro", "ten = N'"+ten+"' AND trangthai = 1") > 0)
             {
-                MessageBox.Show("Vai trò đã tồn tại");
+                new Msg("Tên vai trò đã tồn tại", "err");
                 return false;
             }
             int check = db.Insert(string.Format("INSERT INTO vaitro (ten, dsQuyen) " +
-                "VALUES (N'{0}', '{1}')", ten, dsQuyen));
+                "output INSERTED.ID VALUES (N'{0}', '{1}')", ten, dsQuyen));
             return (check != -1);
         }
 
@@ -104,9 +106,10 @@ namespace QLBanPiano.BUS
 
         public bool Xoa(string tieuChi)
         {
-            db.ExecuteNonQuery(string.Format("UPDATE vaitro " +
+            string sqlStr = string.Format("UPDATE vaitro " +
                 "SET trangthai = 0 " +
-                "WHERE {1}", tieuChi));
+                "WHERE {0}",tieuChi);
+            db.ExecuteNonQuery(sqlStr);
             return true;
         }
     }
