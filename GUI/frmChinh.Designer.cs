@@ -144,8 +144,9 @@
             mainPanel.BackgroundImageLayout = ImageLayout.None;
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 27);
+            mainPanel.MinimumSize = new Size(1366, 900);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1348, 694);
+            mainPanel.Size = new Size(1366, 900);
             mainPanel.TabIndex = 1;
             // 
             // statusStrip1
