@@ -95,7 +95,7 @@ namespace QLBanPiano.GUI
                         MessageBox.Show("Xóa khách hàng thành công!");
                         HienDSKhachHang();
                     }
-                    else MessageBox.Show("Xóa khách hàng thật bại!");
+                    else MessageBox.Show("Xóa khách hàng thất bại!");
                 }
                 else
                 {
