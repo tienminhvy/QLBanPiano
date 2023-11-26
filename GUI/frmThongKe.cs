@@ -16,11 +16,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QLBanPiano.GUI
 {
-    public partial class ThongKe : Form
+    public partial class frmThongKe : Form
     {
         ThongKeBUS thongKeBUS = new ThongKeBUS();
         DateTime now = DateTime.Now;
-        public ThongKe()
+        public frmThongKe()
         {
 
             InitializeComponent();

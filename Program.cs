@@ -14,7 +14,7 @@ namespace QLBanPiano
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
           //  Application.Run(new frmChinh());
-            Application.Run(new ThongKe());
+            Application.Run(new frmChinh());
         }
     }
 }
