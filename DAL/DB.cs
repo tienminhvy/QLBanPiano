@@ -18,7 +18,7 @@ namespace QLBanPiano.DAL
         {
             string server = "DESKTOP-VYTM\\VYTM_NEW";
             string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
-            // string server = "LAPTOP-52VVCVMC";
+            //string server = "LAPTOP-52VVCVMC";
             // string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=210703";
             sqlConn = new SqlConnection(strCnn);
         }
