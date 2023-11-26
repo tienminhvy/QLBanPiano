@@ -163,7 +163,8 @@ namespace QLBanPiano.GUI
                         new Msg("Xoá thành công");
                     }
                 }
-            } else
+            }
+            else
             {
                 new Msg("Chọn ít nhất một vai trò trước khi xoá", "err");
             }
