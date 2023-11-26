@@ -35,11 +35,11 @@ namespace QLBanPiano.BUS
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
-                "khachhang.id as N'Mã khách hàng ', " +
+                "khachhang.id as N'Mã khách hàng', " +
                 "khachhang.hoLot as N'Họ lót', " +
                 "khachhang.ten as N'Tên', " +
                 "khachhang.diaChi as N'Địa chỉ', " +
-                "khachhang.sdt as N'Số điện thoại', " +
+                "khachhang.sdt as N'Số điện thoại' " +
                 "FROM khachhang WHERE trangthai = 1 AND " + dieukien;
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
@@ -47,7 +47,7 @@ namespace QLBanPiano.BUS
             foreach (DataRow row in dt.Rows)
             {
                 KhachHang khachHang = new KhachHang();
-                khachHang.Id = int.Parse(row["id"].ToString());
+                khachHang.Id = int.Parse(row["Mã khách hàng"].ToString());
                 khachHang.HoLot = row["Họ lót"].ToString();
                 khachHang.Ten = row["Tên"].ToString();
                 khachHang.DiaChi = row["Địa chỉ"].ToString();
@@ -72,7 +72,7 @@ namespace QLBanPiano.BUS
                 "khachhang.hoLot as N'Họ lót', " +
                 "khachhang.ten as N'Tên', " +
                 "khachhang.diaChi as N'Địa chỉ', " +
-                "khachhang.sdt as N'Số điện thoại', " +
+                "khachhang.sdt as N'Số điện thoại' " +
                 "FROM khachhang " +
                 "WHERE trangthai = 1";
 
@@ -128,7 +128,7 @@ namespace QLBanPiano.BUS
                             "SET hoLot = N'{0}', " +
                             "ten = N'{1}', " +
                             "diaChi = N'{2}', " +
-                            "soDienThoai = '{3}', " +
+                            "sdt = '{3}' " +
                             "WHERE id = {4}",
                             hoLot,
                             ten,
@@ -145,11 +145,11 @@ namespace QLBanPiano.BUS
          */
         public bool Validate(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string hoLot = dsTruong[1];
-            string ten = dsTruong[2];
-            string diaChi = dsTruong[3];
-            string sdt = dsTruong[4];
+            string hoLot = dsTruong[0];
+            string ten = dsTruong[1];
+            string diaChi = dsTruong[2];
+            string sdt = dsTruong[3];
+            string id = dsTruong[4];
 
             //kiểm tra các trường thông tin có rỗng hay không
             if (hoLot.Equals("") || ten.Equals("") || diaChi.Equals("") || sdt.Equals(""))
@@ -176,8 +176,8 @@ namespace QLBanPiano.BUS
                 }
             }
 
-            //kiểm tra số điện thoại đã tồn tại hay chưa
-            if (db.GetCount("khachhang", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
+            //kiểm tra số điện thoại đã tồn tại hay chưa khi tạo
+            if (id == "-1" && db.GetCount("khachhang", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
             {
                 MessageBox.Show("Số điện thoại đã tồn tại");
                 return false;
@@ -198,7 +198,8 @@ namespace QLBanPiano.BUS
             string sdt = dsTruong[3];
 
             // Thực hiện câu truy vấn để thêm mới khách hàng
-            db.ExecuteNonQuery(string.Format("INSERT INTO khachhang (hoLot, ten, diaChi, sdt, trangthai) " +
+            db.Insert(string.Format("INSERT INTO khachhang (hoLot, ten, diaChi, sdt, trangthai) " +
+                            "OUTPUT INSERTED.ID " +
                             "VALUES (N'{0}', N'{1}', N'{2}', '{3}', 1)",
                             hoLot,
                             ten,

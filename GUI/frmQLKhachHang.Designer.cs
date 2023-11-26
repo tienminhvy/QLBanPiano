@@ -56,11 +56,6 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel3 = new Panel();
             dgvKhachHang = new DataGridView();
-            colMaKH = new DataGridViewTextBoxColumn();
-            colHoLot = new DataGridViewTextBoxColumn();
-            colTen = new DataGridViewTextBoxColumn();
-            colDiaChi = new DataGridViewTextBoxColumn();
-            colSoDienThoai = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -71,19 +66,21 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top;
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(4, 0);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.MinimumSize = new Size(1141, 71);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1128, 71);
+            panel1.Size = new Size(1141, 71);
             panel1.TabIndex = 0;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.MenuHighlight;
-            label1.Location = new Point(359, 21);
+            label1.Location = new Point(375, 18);
             label1.Name = "label1";
             label1.Size = new Size(422, 38);
             label1.TabIndex = 0;
@@ -91,17 +88,17 @@
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.Controls.Add(groupBox2);
             panel2.Controls.Add(groupBox1);
-            panel2.Location = new Point(7, 77);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1122, 274);
+            panel2.Size = new Size(1141, 587);
             panel2.TabIndex = 1;
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox2.Anchor = AnchorStyles.Top;
             groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(btnCapNhat);
             groupBox2.Controls.Add(btnSua);
@@ -118,9 +115,9 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.Location = new Point(452, 12);
+            groupBox2.Location = new Point(459, 6);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(659, 259);
+            groupBox2.Size = new Size(671, 274);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin khách hàng ";
@@ -266,16 +263,16 @@
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Anchor = AnchorStyles.Top;
             groupBox1.Controls.Add(btnTimKiem);
             groupBox1.Controls.Add(txtTimKiem);
             groupBox1.Controls.Add(cbbTimKiem);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(19, 12);
+            groupBox1.Location = new Point(7, 6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(415, 259);
+            groupBox1.Size = new Size(446, 274);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tìm kiếm ";
@@ -292,20 +289,18 @@
             // 
             // txtTimKiem
             // 
-            txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTimKiem.Location = new Point(160, 85);
+            txtTimKiem.Location = new Point(160, 90);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(147, 33);
+            txtTimKiem.Size = new Size(249, 33);
             txtTimKiem.TabIndex = 2;
             // 
             // cbbTimKiem
             // 
-            cbbTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cbbTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTimKiem.FormattingEnabled = true;
-            cbbTimKiem.Location = new Point(160, 40);
+            cbbTimKiem.Location = new Point(160, 43);
             cbbTimKiem.Name = "cbbTimKiem";
-            cbbTimKiem.Size = new Size(147, 33);
+            cbbTimKiem.Size = new Size(249, 33);
             cbbTimKiem.TabIndex = 1;
             // 
             // label3
@@ -332,70 +327,29 @@
             // panel3
             // 
             panel3.Controls.Add(dgvKhachHang);
-            panel3.Location = new Point(7, 357);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(0, 366);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1122, 292);
+            panel3.Size = new Size(1141, 292);
             panel3.TabIndex = 2;
             // 
             // dgvKhachHang
             // 
+            dgvKhachHang.AllowUserToAddRows = false;
+            dgvKhachHang.AllowUserToDeleteRows = false;
             dgvKhachHang.BackgroundColor = SystemColors.Control;
             dgvKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvKhachHang.Columns.AddRange(new DataGridViewColumn[] { colMaKH, colHoLot, colTen, colDiaChi, colSoDienThoai });
-            dgvKhachHang.Location = new Point(5, 3);
+            dgvKhachHang.Dock = DockStyle.Fill;
+            dgvKhachHang.Location = new Point(0, 0);
             dgvKhachHang.MultiSelect = false;
             dgvKhachHang.Name = "dgvKhachHang";
             dgvKhachHang.ReadOnly = true;
             dgvKhachHang.RowHeadersWidth = 51;
             dgvKhachHang.RowTemplate.Height = 29;
-            dgvKhachHang.Size = new Size(1106, 286);
+            dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvKhachHang.Size = new Size(1141, 292);
             dgvKhachHang.TabIndex = 0;
             dgvKhachHang.SelectionChanged += dgvKhachHang_SelectionChanged;
-            // 
-            // colMaKH
-            // 
-            colMaKH.DataPropertyName = "id";
-            colMaKH.HeaderText = "Mã khách hàng";
-            colMaKH.MinimumWidth = 6;
-            colMaKH.Name = "colMaKH";
-            colMaKH.ReadOnly = true;
-            colMaKH.Width = 150;
-            // 
-            // colHoLot
-            // 
-            colHoLot.DataPropertyName = "hoLot";
-            colHoLot.HeaderText = "Họ lót";
-            colHoLot.MinimumWidth = 6;
-            colHoLot.Name = "colHoLot";
-            colHoLot.ReadOnly = true;
-            colHoLot.Width = 180;
-            // 
-            // colTen
-            // 
-            colTen.DataPropertyName = "ten";
-            colTen.HeaderText = "Tên";
-            colTen.MinimumWidth = 6;
-            colTen.Name = "colTen";
-            colTen.ReadOnly = true;
-            colTen.Width = 125;
-            // 
-            // colDiaChi
-            // 
-            colDiaChi.DataPropertyName = "diaChi";
-            colDiaChi.HeaderText = "Địa chỉ";
-            colDiaChi.MinimumWidth = 6;
-            colDiaChi.Name = "colDiaChi";
-            colDiaChi.ReadOnly = true;
-            colDiaChi.Width = 250;
-            // 
-            // colSoDienThoai
-            // 
-            colSoDienThoai.DataPropertyName = "sdt";
-            colSoDienThoai.HeaderText = "Số điện thoại";
-            colSoDienThoai.MinimumWidth = 6;
-            colSoDienThoai.Name = "colSoDienThoai";
-            colSoDienThoai.ReadOnly = true;
-            colSoDienThoai.Width = 180;
             // 
             // frmQLKhachHang
             // 
@@ -454,10 +408,5 @@
         private Button btnXoa;
         private Panel panel3;
         private DataGridView dgvKhachHang;
-        private DataGridViewTextBoxColumn colMaKH;
-        private DataGridViewTextBoxColumn colHoLot;
-        private DataGridViewTextBoxColumn colTen;
-        private DataGridViewTextBoxColumn colDiaChi;
-        private DataGridViewTextBoxColumn colSoDienThoai;
     }
 }

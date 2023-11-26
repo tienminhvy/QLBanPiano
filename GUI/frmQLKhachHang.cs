@@ -30,11 +30,11 @@ namespace QLBanPiano.GUI
             if (dgvKhachHang.SelectedRows.Count > 0)
             {
                 DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
-                string id = Cells[1].Value.ToString();
-                string hoLot = Cells[2].Value.ToString();
-                string ten = Cells[3].Value.ToString();
-                string diaChi = Cells[4].Value.ToString();
-                string sdt = Cells[5].Value.ToString();
+                string id = Cells[0].Value.ToString();
+                string hoLot = Cells[1].Value.ToString();
+                string ten = Cells[2].Value.ToString();
+                string diaChi = Cells[3].Value.ToString();
+                string sdt = Cells[4].Value.ToString();
                 txtMaKH.Text = ten;
                 txtHoLot.Text = hoLot;
                 txtTen.Text = ten;
@@ -61,18 +61,17 @@ namespace QLBanPiano.GUI
             }
             else
             {
-                if ( khachhang.Validate (
+                if (khachhang.Validate(
                     txtHoLot.Text,
                     txtTen.Text,
                     txtDiaChi.Text,
-                    txtSoDienThoai.Text))
+                    txtSoDienThoai.Text, "-1"))
                 {
                     if (khachhang.Them(
                         txtHoLot.Text,
                         txtTen.Text,
                         txtDiaChi.Text,
-                        txtSoDienThoai.Text,                       
-                        "0"))
+                        txtSoDienThoai.Text))
                     {
                         MessageBox.Show("Thêm khách hàng!");
                         HienDSKhachHang();
@@ -109,19 +108,15 @@ namespace QLBanPiano.GUI
         {
             if (dgvKhachHang.SelectedRows.Count > 0)
             {
-                if (Validate())
+                DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
+                string id = Cells[0].Value.ToString();
+                if (khachhang.Validate(txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, id))
                 {
-                    DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
-                    string id = Cells[1].Value.ToString();
-                    string hoLot = Cells[2].Value.ToString();
-                    string ten = Cells[3].Value.ToString();
-                    string diaChi = Cells[4].Value.ToString();
-                    string sdt = Cells[5].Value.ToString();
-                    txtMaKH.Text = ten;
-                    txtHoLot.Text = hoLot;
-                    txtTen.Text = ten;
-                    txtDiaChi.Text = diaChi;
-                    txtSoDienThoai.Text = sdt;
+                    txtMaKH.Text = id;
+                    string hoLot = txtHoLot.Text;
+                    string ten = txtTen.Text;
+                    string diaChi = txtDiaChi.Text;
+                    string sdt = txtSoDienThoai.Text;
 
                     if (khachhang.Sua(
                         hoLot,
