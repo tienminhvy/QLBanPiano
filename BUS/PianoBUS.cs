@@ -32,6 +32,13 @@ namespace QLBanPiano.BUS
          * <param name="dieukien">Điều kiện truyền vào (ví dụ 1 = 1 để thực hiện câu lệnh này mặc định)</param>
          * <returns>List<DoiTuong></returns>
          */
+        public bool checkExist(string tablename,int id) //áp dụng cho những hàm có col trạng thái
+        {
+            string condition = "where id = "+id+ " and trangthai = 1";
+            int result = db.GetCount(tablename, condition);
+            if (result == -1) return false;
+            return true;
+        }
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT  piano.id as 'id'," +

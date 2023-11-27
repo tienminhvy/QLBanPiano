@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLPhieuNhap));
             panel1 = new Panel();
             label9 = new Label();
@@ -44,8 +44,10 @@
             label3 = new Label();
             label2 = new Label();
             panel2 = new Panel();
-            panel4 = new Panel();
+            leftPanel = new Panel();
             panel5 = new Panel();
+            importFileBtn = new Button();
+            exportFileBtn = new Button();
             addBtn = new Button();
             panel7 = new Panel();
             searchTextBox = new TextBox();
@@ -59,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)phieuNhapGridView).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
-            panel4.SuspendLayout();
+            leftPanel.SuspendLayout();
             panel5.SuspendLayout();
             panel7.SuspendLayout();
             panel6.SuspendLayout();
@@ -72,9 +74,9 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(813, 96);
+            panel1.Size = new Size(1044, 96);
             panel1.TabIndex = 1;
             // 
             // label9
@@ -92,9 +94,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkOrchid;
-            label1.Location = new Point(322, 37);
+            label1.Location = new Point(339, 25);
             label1.Name = "label1";
-            label1.Size = new Size(322, 46);
+            label1.Size = new Size(384, 54);
             label1.TabIndex = 0;
             label1.Text = "Quản Lý Phiếu Nhập";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -102,21 +104,21 @@
             // phieuNhapGridView
             // 
             phieuNhapGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            phieuNhapGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            phieuNhapGridView.DefaultCellStyle = dataGridViewCellStyle1;
             phieuNhapGridView.Dock = DockStyle.Fill;
             phieuNhapGridView.Location = new Point(0, 0);
-            phieuNhapGridView.Margin = new Padding(2, 2, 2, 2);
+            phieuNhapGridView.Margin = new Padding(2);
             phieuNhapGridView.Name = "phieuNhapGridView";
             phieuNhapGridView.RowHeadersWidth = 62;
             phieuNhapGridView.RowTemplate.Height = 33;
-            phieuNhapGridView.Size = new Size(813, 287);
+            phieuNhapGridView.Size = new Size(1044, 378);
             phieuNhapGridView.TabIndex = 0;
             phieuNhapGridView.CellClick += phieuNhapGridView_CellClick;
             phieuNhapGridView.CellDoubleClick += phieuNhapGridView_CellDoubleClick;
@@ -132,9 +134,9 @@
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
-            panel3.Location = new Point(0, 0);
+            panel3.Location = new Point(0, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(508, 161);
+            panel3.Size = new Size(525, 164);
             panel3.TabIndex = 0;
             // 
             // nv_nameTextBox
@@ -210,41 +212,68 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(leftPanel);
             panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 120);
+            panel2.Location = new Point(0, 96);
             panel2.Name = "panel2";
-            panel2.Size = new Size(813, 129);
+            panel2.Size = new Size(1044, 166);
             panel2.TabIndex = 4;
             // 
-            // panel4
+            // leftPanel
             // 
-            panel4.Anchor = AnchorStyles.None;
-            panel4.Controls.Add(panel5);
-            panel4.Controls.Add(panel7);
-            panel4.Controls.Add(panel6);
-            panel4.Location = new Point(508, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(508, 161);
-            panel4.TabIndex = 18;
+            leftPanel.Anchor = AnchorStyles.None;
+            leftPanel.Controls.Add(panel5);
+            leftPanel.Controls.Add(panel7);
+            leftPanel.Controls.Add(panel6);
+            leftPanel.Location = new Point(536, 2);
+            leftPanel.Name = "leftPanel";
+            leftPanel.Size = new Size(508, 161);
+            leftPanel.TabIndex = 18;
             // 
             // panel5
             // 
+            panel5.Controls.Add(importFileBtn);
+            panel5.Controls.Add(exportFileBtn);
             panel5.Controls.Add(addBtn);
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 100);
             panel5.Name = "panel5";
-            panel5.Size = new Size(508, 61);
+            panel5.Size = new Size(508, 64);
             panel5.TabIndex = 12;
+            // 
+            // importFileBtn
+            // 
+            importFileBtn.Image = (Image)resources.GetObject("importFileBtn.Image");
+            importFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            importFileBtn.Location = new Point(133, 8);
+            importFileBtn.Name = "importFileBtn";
+            importFileBtn.Size = new Size(120, 51);
+            importFileBtn.TabIndex = 2;
+            importFileBtn.Text = "  Nhập file";
+            importFileBtn.UseVisualStyleBackColor = true;
+            importFileBtn.Click += importFileBtn_Click;
+            // 
+            // exportFileBtn
+            // 
+            exportFileBtn.Image = (Image)resources.GetObject("exportFileBtn.Image");
+            exportFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            exportFileBtn.Location = new Point(259, 7);
+            exportFileBtn.Name = "exportFileBtn";
+            exportFileBtn.Size = new Size(120, 51);
+            exportFileBtn.TabIndex = 1;
+            exportFileBtn.Text = "  Xuất file";
+            exportFileBtn.UseVisualStyleBackColor = true;
             // 
             // addBtn
             // 
-            addBtn.Location = new Point(398, 5);
+            addBtn.Image = (Image)resources.GetObject("addBtn.Image");
+            addBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            addBtn.Location = new Point(385, 6);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(110, 51);
+            addBtn.Size = new Size(120, 51);
             addBtn.TabIndex = 0;
-            addBtn.Text = "Thêm";
+            addBtn.Text = "  Tạo mới";
             addBtn.UseVisualStyleBackColor = true;
             addBtn.Click += addBtn_Click;
             // 
@@ -268,12 +297,11 @@
             // 
             // searchBtn
             // 
-            searchBtn.Dock = DockStyle.Right;
             searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
             searchBtn.ImageAlign = ContentAlignment.MiddleLeft;
             searchBtn.Location = new Point(398, 0);
             searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(88, 40);
+            searchBtn.Size = new Size(110, 50);
             searchBtn.TabIndex = 8;
             searchBtn.Text = "Tìm kiếm";
             searchBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -328,22 +356,22 @@
             // 
             gridViewPanel.Controls.Add(phieuNhapGridView);
             gridViewPanel.Dock = DockStyle.Fill;
-            gridViewPanel.Location = new Point(0, 281);
+            gridViewPanel.Location = new Point(0, 262);
             gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(1016, 359);
+            gridViewPanel.Size = new Size(1044, 378);
             gridViewPanel.TabIndex = 5;
             // 
-            // QLPN
+            // frmQLPhieuNhap
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1016, 640);
+            ClientSize = new Size(1044, 640);
             Controls.Add(gridViewPanel);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "frmQLPhieuNhap";
             Text = "QLPN";
             panel1.ResumeLayout(false);
@@ -352,7 +380,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
-            panel4.ResumeLayout(false);
+            leftPanel.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
@@ -379,7 +407,7 @@
         private TextBox nv_nameTextBox;
         private Label label5;
         private Panel gridViewPanel;
-        private Panel panel4;
+        private Panel leftPanel;
         private Panel panel6;
         private Label label6;
         private Button ResetBtn;
@@ -389,5 +417,7 @@
         private Button searchBtn;
         private Panel panel5;
         private Button addBtn;
+        private Button exportFileBtn;
+        private Button importFileBtn;
     }
 }

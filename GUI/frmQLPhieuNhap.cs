@@ -1,4 +1,5 @@
 ﻿using QLBanPiano.BUS;
+using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +16,11 @@ namespace QLBanPiano.GUI
     {
 
         PhieuNhapBUS phieuNhapBUS = new();
+        ChiTietPhieuNhapBUS chiTietPhieuNhapBUS = new();
         public static int doubleClickRowID = -1;
         bool searchClicked = false;
+        IOFileBUS fileHandler = new();
+        List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên"};
         public frmQLPhieuNhap()
         {
             InitializeComponent();
@@ -41,7 +45,7 @@ namespace QLBanPiano.GUI
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             //Set Value cho cbbTieuChi
-            string[] list = { "ID", "Thời gian", "Mã nhân viên", "Tên nhân viên" };
+            string[] list = { "ID", "Thời gian", "Mã nhân viên"};
             cbbTieuChi.Items.Clear();
             cbbTieuChi.Items.AddRange(list);
             cbbTieuChi.SelectedIndex = 0;
@@ -55,7 +59,7 @@ namespace QLBanPiano.GUI
                     searchTextBox.ForeColor = Color.FromArgb(160, 160, 160);
                     break;
                 case 1:
-                    searchTextBox.PlaceholderText = "Nhập thời gian (VD: 2023-11-11 8:30:00 )";
+                    searchTextBox.PlaceholderText = "Nhập thời gian (VD: 2023-11-11 8:30:00 AM )";
                     searchTextBox.ForeColor = Color.FromArgb(160, 160, 160);
                     break;
                 case 2:
@@ -221,6 +225,51 @@ namespace QLBanPiano.GUI
         {
             frmThemPhieuNhap themphieunhap = new();
             themphieunhap.ShowDialog();
+        }
+
+        private void importFileBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ofd = new();
+                // Thiết lập các thuộc tính của OpenFileDialog
+                ofd.Title = "Chọn file Excel";
+                ofd.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"; // Chỉ cho phép chọn các file Excel
+                ofd.CheckFileExists = true; // Kiểm tra file tồn tại
+                ofd.CheckPathExists = true; // Kiểm tra đường dẫn hợp lệ
+                // Mở cửa sổ OpenFileDialog và xử lý kết quả
+                DialogResult result = ofd.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string selectedFilePath = ofd.FileName;
+                    List<string> temp = fileHandler.GetListHeader(selectedFilePath);
+                    DataTable raw = fileHandler.ImportFormExcelToDataTable(selectedFilePath);
+                    DataTable rawClone = phieuNhapBUS.getClone(raw);
+                    int max = -1;
+                    foreach(DataRow row in rawClone.Rows)
+                    {
+                        if (Convert.ToInt32(row["ID"]) > max) max = Convert.ToInt32(row["ID"]);
+                    }
+                    int min = max;
+                    foreach(DataRow row in rawClone.Rows)
+                    {
+                        if (Convert.ToInt32(row["ID"]) < min) min = Convert.ToInt32(row["ID"]);
+                    }
+                    DataTable processed = phieuNhapBUS.splitFromExcelTableById(rawClone,min);
+                    PhieuNhap ph = phieuNhapBUS.getPhieuNhap(processed);
+                    DataTable resultTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
+                    Load(resultTable);
+                }
+                else
+                {
+                    MessageBox.Show("Người dùng đã hủy việc chọn file.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+               MessageBox.Show(ex.Message);
+           }
         }
     }
 }

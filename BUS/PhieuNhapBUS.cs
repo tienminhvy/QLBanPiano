@@ -12,11 +12,13 @@ namespace QLBanPiano.BUS
 {
     public class PhieuNhapBUS : IBUS
     {
+        ChiTietPhieuNhapBUS chitietBus = new();
         DB db;
         public PhieuNhapBUS()
         {
             db = new DB();
         }
+        
         public DataTable LayToanBoDS()
         {
             string sqlCmd = "select phieunhap.id as 'ID',thoiGian as N'Thời gian',nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên'\r\nfrom phieunhap\r\ninner join nhanvien on phieunhap.nhanvien_id = nhanvien.id";
@@ -59,6 +61,76 @@ namespace QLBanPiano.BUS
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
+        public string[] getImportedPhieuNhap(DataRow row)
+        {
+            string[] phieunhap = null;
+            string id = row["ID"].ToString();
+            string thoiGian = Convert.ToString(row["Thời gian"]);
+            string nhanvien_id = row["Mã nhân viên"].ToString();
+            List<string> list = new List<string>();
+            list.Add(id);
+            list.Add(thoiGian);
+            list.Add(nhanvien_id);
+            phieunhap = list.ToArray();
+            return phieunhap;
+        }
+        public bool Them(params string[] dsTruong)
+        {
+            try
+            {
+                string thoigian = dsTruong[0];
+                int id_nhanvien = Convert.ToInt32(dsTruong[1]);
+
+                string sqlCmd = string.Format("insert into phieunhap(thoiGian,nhanvien_id)\r\nvalues ('{0}',{1})", thoigian, id_nhanvien);
+                db.ExecuteNonQuery(sqlCmd);
+                return true;
+            }catch(Exception ex)
+            {
+                return false;
+            }
+        }
+        public PhieuNhap getPhieuNhap(DataTable dt)
+        {
+            PhieuNhap phieunhap = new();
+            DataRow row = dt.Rows[0];
+            phieunhap.Id = Convert.ToInt32(row["ID"]);
+            phieunhap.Id_nhanvien = Convert.ToInt32(row["Mã nhân viên"]);
+            phieunhap.ThoiGian = Convert.ToDateTime(row["Thời gian"]);
+            phieunhap.PhieuNhapList = chitietBus.getListChiTiet(dt);
+            return phieunhap;
+        }
+        public DataTable splitFromExcelTableById(DataTable excel,int id)
+        {
+            DataTable dt = excel.Clone();
+            DataRow[] rowSplited = excel.Select("ID = " + id);
+            foreach (DataRow row in rowSplited)
+            {
+                dt.ImportRow(row);
+            }
+            return dt;
+        }
+        public string getSqlString(PhieuNhap phieunhap ) {
+            string result = string.Format("insert into phieunhap(thoiGian,nhanvien_id) values ('{0}',{1}); select SCOPE_IDENTITY();", phieunhap.ThoiGian, phieunhap.Id_nhanvien);
+            return result;
+        }
+        public DataTable getClone(DataTable dt)
+        {
+            DataTable clone = dt.Clone();
+            foreach(DataRow row in dt.Rows)
+            {
+                clone.ImportRow(row);
+            }
+            return clone;
+        }
+        public bool Validates(PhieuNhap phieunhap)
+        {
+            string thisyear = "2023-01-01 00:00:00 AM";
+            DateTime dateTime = DateTime.Parse(thisyear);
+            if (phieunhap.Id <= 0) return false;
+            if (phieunhap.ThoiGian > DateTime.Today || phieunhap.ThoiGian < dateTime) return false;
+            if (phieunhap.Id <= 0) return false;
+            return true;
+        }
         ///////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
@@ -80,10 +152,6 @@ namespace QLBanPiano.BUS
             throw new NotImplementedException();
         }
 
-        public bool Them(params string[] dsTruong)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Xoa(string tieuChi)
         {

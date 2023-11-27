@@ -102,12 +102,21 @@ namespace QLBanPiano.BUS
             }
             return dt;
         }
+        public int TraVeID(params string[] dsTruong)
+        {
+            string thoiGian = dsTruong[0];
+            string nhanvien_id = dsTruong[1];
+            string khachhang_id = dsTruong[2];
+            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ", Convert.ToDateTime(thoiGian), Convert.ToInt32(nhanvien_id), Convert.ToInt32(khachhang_id)));
+            return hoadon_id;
+        }
+
         public bool Them(params string[] dsTruong)
         {
             string thoiGian = dsTruong[0];
             string nhanvien_id = dsTruong[1];
             string khachhang_id = dsTruong[2];
-            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ",Convert.ToDateTime(thoiGian),Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
+            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ('{0}',{1},{2}) ",thoiGian,Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
             if(hoadon_id == -1)
             {
                 return false;

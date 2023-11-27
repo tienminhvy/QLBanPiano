@@ -39,20 +39,12 @@ namespace QLBanPiano.GUI
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             hoaDonCountTxtBox.Text = hoaDonMaxBus.SoLuong("id > -1").ToString();
+            //Init cho combobox tiêu chí
+            string[] items = { "ID", "Thời gian", "Mã nhân viên", "Mã khách hàng", "Tên nhân viên", "Tên khách hàng" };
+            cbbTieuChi.Items.AddRange(items);
+            cbbTieuChi.SelectedIndex = 0;
         }
 
-        private void filterBtn_Click(object sender, EventArgs e)
-        {
-            frmTimHoaDon frm = new frmTimHoaDon();
-            frm.ShowDialog();
-            if (frmTimHoaDon.searched == true)
-            {
-                DataTable dt = frmTimHoaDon.temp;
-                hoaDonGridView.DataSource = null;
-                hoaDonGridView.Rows.Clear();
-                hoaDonGridView.DataSource = dt;
-            }
-        }
 
         private void QLHD_Load(object sender, EventArgs e)
         {
@@ -99,6 +91,44 @@ namespace QLBanPiano.GUI
             catch (Exception ex)
             {
                 MessageBox.Show("Chọn quá nhiều mục");
+            }
+        }
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            Init();
+        }
+
+        private void cbbTieuChi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbbTieuChi.SelectedIndex)
+            {
+                case 0:
+                    txtTieuChi.PlaceholderText = "Nhập ID (VD: 0 )";
+                    txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
+                    break;
+                case 1:
+                    txtTieuChi.PlaceholderText = "Nhập thời gian (VD: 19-05-2023)";
+                    txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
+                    break;
+                case 2:
+                    txtTieuChi.PlaceholderText = "Nhập mã nhân viên (VD: 2 )";
+                    txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
+                    break;
+                case 3:
+                    txtTieuChi.PlaceholderText = "Nhập mã khách hàng (VD: 5 )";
+                    txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
+                    break;
+                case 4:
+                    txtTieuChi.PlaceholderText = "Nhập tên nhân viên (VD: Minh Vy )";
+                    txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
+                    break;
+                case 5:
+                    txtTieuChi.PlaceholderText = "Nhập tên khách hàng (VD: Văn A )";
+                    txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
+                    break;
+                default:
+                    break;
             }
         }
     }

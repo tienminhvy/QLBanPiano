@@ -35,11 +35,11 @@ namespace QLBanPiano.BUS
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +
-                "khachhang.id as N'Mã khách hàng ', " +
+                "khachhang.id as N'Mã khách hàng', " +
                 "khachhang.hoLot as N'Họ lót', " +
                 "khachhang.ten as N'Tên', " +
                 "khachhang.diaChi as N'Địa chỉ', " +
-                "khachhang.sdt as N'Số điện thoại', " +
+                "khachhang.sdt as N'Số điện thoại' " +
                 "FROM khachhang WHERE trangthai = 1 AND " + dieukien;
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
@@ -47,20 +47,20 @@ namespace QLBanPiano.BUS
             foreach (DataRow row in dt.Rows)
             {
                 KhachHang khachHang = new KhachHang();
-                khachHang.Id = int.Parse(row["id"].ToString());
+                khachHang.Id = int.Parse(row["Mã khách hàng"].ToString());
                 khachHang.HoLot = row["Họ lót"].ToString();
                 khachHang.Ten = row["Tên"].ToString();
                 khachHang.DiaChi = row["Địa chỉ"].ToString();
                 khachHang.SoDienThoai = row["Số điện thoại"].ToString();
-                ds.Add(khachHang);
+                ds.Add((DoiTuong)khachHang);
             }
 
             return ds;
         }
 
-        
 
-        
+
+
         /**
          * <summary>Lấy toàn bộ danh sách khách hàng</summary>
          * <returns>DataTable</returns>
