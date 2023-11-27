@@ -18,13 +18,13 @@ namespace QLBanPiano.BUS
 
         public List<DoiTuong> LayDS(string dieukien)
         {
-            string sqlStr = "SELECT" +
+            string sqlStr = "SELECT " +
                 "id as N'Mã nhân viên', " +
                 "hoLot as N'Họ lót', " +
                 "ten as N'Tên', " +
                 "ngayVaoLam as N'Ngày vào làm', " +
                 "sdt as N'Số điện thoại', " +
-                "diaChi as N'Địa chỉ', " +
+                "diaChi as N'Địa chỉ' " +
                 "FROM nhanvien " +
                 "WHERE " + dieukien;
 
@@ -33,16 +33,16 @@ namespace QLBanPiano.BUS
 
             foreach (DataRow row in dt.Rows) {
 
-                if (int.Parse(row["trangthai"].ToString()) == 0)
+                if (Convert.ToInt32(row["trangthai"]) == 0)
                     continue;
 
                 NhanVien nhanvien = new NhanVien();
-                nhanvien.Id = int.Parse(row["id"].ToString());
-                nhanvien.HoLot = row["hoLot"].ToString();
-                nhanvien.Ten = row["ten"].ToString();
-                nhanvien.NgayVaoLam = DateTime.Parse(row["ngayVaoLam"].ToString());
-                nhanvien.SoDienThoai = row["sdt"].ToString();
-                nhanvien.DiaChi = row["diaChi"].ToString();
+                nhanvien.Id = Convert.ToInt32(row["Mã nhân viên"]);
+                nhanvien.HoLot = row["Họ lót"].ToString();
+                nhanvien.Ten = row["Tên"].ToString();
+                nhanvien.NgayVaoLam = Convert.ToDateTime(row["Ngày vào làm"].ToString());
+                nhanvien.SoDienThoai = row["Số điện thoại"].ToString();
+                nhanvien.DiaChi = row["Địa chỉ"].ToString();
                 ds.Add(nhanvien);
 
             }
@@ -52,13 +52,13 @@ namespace QLBanPiano.BUS
 
         public DataTable LayToanBoDS()
         {
-            string sqlStr = "SELECT" +
+            string sqlStr = "SELECT " +
                 "id as N'Mã nhân viên', " +
                 "hoLot as N'Họ lót', " +
                 "ten as N'Tên', " +
                 "ngayVaoLam as N'Ngày vào làm', " +
                 "sdt as N'Số điện thoại', " +
-                "diaChi as N'Địa chỉ', " +
+                "diaChi as N'Địa chỉ' " +
                 "FROM nhanvien";
             
             return db.Execute(sqlStr);
@@ -71,12 +71,13 @@ namespace QLBanPiano.BUS
 
         public bool Validate(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string hoLot = dsTruong[1];
-            string ten = dsTruong[2];
-            DateTime ngayVaoLam = DateTime.Parse(dsTruong[3]);
-            string sdt = dsTruong[4];
-            string diaChi = dsTruong[5];
+            
+            string hoLot = dsTruong[0];
+            string ten = dsTruong[1];
+            DateTime ngayVaoLam = DateTime.Parse(dsTruong[2]);
+            string sdt = dsTruong[3];
+            string diaChi = dsTruong[4];
+            string id = dsTruong[5];
 
             //kiem tra cac truong thong tin co rong hay khong
             if (hoLot.Equals("") || ten.Equals("") ||
@@ -85,9 +86,7 @@ namespace QLBanPiano.BUS
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return false;
             }
-            //kiem tra id nhan vien da ton tai hay chua
-            if (db.GetCount("nhanvien", "id = '" + id + "' AND trangthai=1") == 0)
-                MessageBox.Show("Mã nhân viên đã tồn tại");
+            
 
             //kiem tra sdt cua nhan vien co du 10 so hay khong
             if (sdt.Length != 10)
@@ -97,7 +96,7 @@ namespace QLBanPiano.BUS
             }
 
             //kiem tra co bi trung so dien thoai khong
-            if (db.GetCount("nhanvien", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
+            if (id == "-1" && db.GetCount("nhanvien", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
             {
                 MessageBox.Show("Số điện thoại đã tồn tại");
                 return false;
@@ -108,12 +107,13 @@ namespace QLBanPiano.BUS
 
         public bool Sua(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string hoLot = dsTruong[1];
-            string ten = dsTruong[2];
-            DateTime ngayVaoLam = DateTime.Parse(dsTruong[3]);
-            string sdt = dsTruong[4];
-            string diaChi = dsTruong[5];
+            
+            string hoLot = dsTruong[0];
+            string ten = dsTruong[1];
+            DateTime ngayVaoLam = DateTime.Parse(dsTruong[2]);
+            string sdt = dsTruong[3];
+            string diaChi = dsTruong[4];
+            string id = dsTruong[5];
 
             db.ExecuteNonQuery(string.Format("UPDATE nhanvien " +
                                 " SET hoLot = N'{0}', " +
@@ -124,7 +124,7 @@ namespace QLBanPiano.BUS
                                 "WHERE id = '{5}'",
                                 hoLot,
                                 ten,
-                                ngayVaoLam,
+                                Convert.ToDateTime(ngayVaoLam),
                                 sdt,
                                 diaChi, id));
             return true;
@@ -135,16 +135,17 @@ namespace QLBanPiano.BUS
         {
             string hoLot = dsTruong[0];
             string ten = dsTruong[1];
-            string ngayVaoLam = dsTruong[3];
-            string sdt = dsTruong[4];
-            string diaChi = dsTruong[5];
+            DateTime ngayVaoLam = DateTime.Parse(dsTruong[2]);
+            string sdt = dsTruong[3];
+            string diaChi = dsTruong[4];
             
-            db.ExecuteNonQuery(string.Format("INSERT INTO nhanvien (hoLot, ten, ngayVaoLam, " +
+            db.Insert(string.Format("INSERT INTO nhanvien (hoLot, ten, ngayVaoLam, " +
                 "sdt, diaChi, trangthai) " + 
-                "VALUES (N'{1}', N'{2}', '{3}','{4}', N'{5}',1)",
+                "OUTPUT INSERTED.ID " +
+                "VALUES (N'{0}', N'{1}', '{2}','{3}', N'{4}',1)",
                     hoLot,
                     ten,
-                    ngayVaoLam,
+                    Convert.ToDateTime(ngayVaoLam),
                     sdt,
                     diaChi));
 
@@ -155,8 +156,42 @@ namespace QLBanPiano.BUS
         public bool Xoa(string tieuChi)
         {
             db.ExecuteNonQuery(string.Format("UPDATE nhanvien" +
-                "SET trangthai = 0" + "WHERE {1}", tieuChi));
+                " SET trangthai = 0 " + "WHERE {0}", tieuChi));
             return true;
+        }
+
+        public List<DoiTuong> TimKiem(string tieuChi, string giaTri)
+        {
+            string dieuKien = "";
+            switch (tieuChi)
+            {
+                case "ID":
+                    {
+                        dieuKien = "CAST(id AS VARCHAR) LIKE '%" + giaTri + "%'";
+                        break;
+                    }
+                case "Họ lót":
+                    {
+                        dieuKien = "Upper(hoLot) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "Tên":
+                    {
+                        dieuKien = "Upper(ten) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "Số điện thoại":
+                    {
+                        dieuKien = "sdt LIKE N'%" + giaTri + "%'";
+                        break;
+                    }
+                case "Địa chỉ":
+                    {
+                        dieuKien = "Upper(diaChi) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+            }
+            return LayDS(dieuKien + " AND trangthai = 1");
         }
     }
 }

@@ -34,10 +34,10 @@
             btn_add = new Button();
             txt_address = new TextBox();
             label_address = new Label();
-            maskedTextBox2 = new MaskedTextBox();
+            txt_sdt = new MaskedTextBox();
             label_phoneNum = new Label();
             label_input = new Label();
-            maskedTextBox1 = new MaskedTextBox();
+            txt_date = new MaskedTextBox();
             label_date = new Label();
             txt_name = new TextBox();
             label1 = new Label();
@@ -78,6 +78,7 @@
             btn_delete.TabIndex = 14;
             btn_delete.Text = "Xoá";
             btn_delete.UseVisualStyleBackColor = true;
+            btn_delete.Click += btn_delete_Click;
             // 
             // btn_update
             // 
@@ -87,6 +88,7 @@
             btn_update.TabIndex = 13;
             btn_update.Text = "Sửa";
             btn_update.UseVisualStyleBackColor = true;
+            btn_update.Click += btn_update_Click;
             // 
             // btn_add
             // 
@@ -96,6 +98,7 @@
             btn_add.TabIndex = 12;
             btn_add.Text = "Thêm";
             btn_add.UseVisualStyleBackColor = true;
+            btn_add.Click += btn_add_Click;
             // 
             // txt_address
             // 
@@ -114,13 +117,14 @@
             label_address.TabIndex = 10;
             label_address.Text = "Địa chỉ:";
             // 
-            // maskedTextBox2
+            // txt_sdt
             // 
-            maskedTextBox2.Location = new Point(399, 92);
-            maskedTextBox2.Mask = "000-000-0000";
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(202, 27);
-            maskedTextBox2.TabIndex = 9;
+            txt_sdt.Location = new Point(399, 92);
+            txt_sdt.Mask = "000-000-0000";
+            txt_sdt.Name = "txt_sdt";
+            txt_sdt.Size = new Size(202, 27);
+            txt_sdt.TabIndex = 9;
+            txt_sdt.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             // 
             // label_phoneNum
             // 
@@ -140,14 +144,14 @@
             label_input.TabIndex = 0;
             label_input.Text = "Nhập dữ liệu:";
             // 
-            // maskedTextBox1
+            // txt_date
             // 
-            maskedTextBox1.Location = new Point(398, 33);
-            maskedTextBox1.Mask = "00/00/0000 90:00";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(202, 27);
-            maskedTextBox1.TabIndex = 7;
-            maskedTextBox1.ValidatingType = typeof(DateTime);
+            txt_date.Location = new Point(398, 33);
+            txt_date.Mask = "00/00/0000";
+            txt_date.Name = "txt_date";
+            txt_date.Size = new Size(202, 27);
+            txt_date.TabIndex = 7;
+            txt_date.ValidatingType = typeof(DateTime);
             // 
             // label_date
             // 
@@ -252,9 +256,9 @@
             groupBoxInfor.Controls.Add(btn_add);
             groupBoxInfor.Controls.Add(txt_address);
             groupBoxInfor.Controls.Add(label_address);
-            groupBoxInfor.Controls.Add(maskedTextBox2);
+            groupBoxInfor.Controls.Add(txt_sdt);
             groupBoxInfor.Controls.Add(label_phoneNum);
-            groupBoxInfor.Controls.Add(maskedTextBox1);
+            groupBoxInfor.Controls.Add(txt_date);
             groupBoxInfor.Controls.Add(label_date);
             groupBoxInfor.Controls.Add(txt_name);
             groupBoxInfor.Controls.Add(label1);
@@ -310,6 +314,7 @@
             // 
             dgvNhanVien.AllowUserToAddRows = false;
             dgvNhanVien.AllowUserToDeleteRows = false;
+            dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNhanVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNhanVien.Dock = DockStyle.Fill;
             dgvNhanVien.Location = new Point(0, 0);
@@ -319,8 +324,9 @@
             dgvNhanVien.RowTemplate.Height = 29;
             dgvNhanVien.Size = new Size(995, 209);
             dgvNhanVien.TabIndex = 0;
+            dgvNhanVien.SelectionChanged += dgvNhanVien_SelectionChanged;
             // 
-            // EmployeeFrm
+            // frmQLNhanVien
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -331,7 +337,7 @@
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(1013, 600);
-            Name = "EmployeeFrm";
+            Name = "frmQLNhanVien";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EmployeeFrm";
             groupBoxInfor.ResumeLayout(false);
@@ -351,10 +357,10 @@
         private Button btn_add;
         private TextBox txt_address;
         private Label label_address;
-        private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox txt_sdt;
         private Label label_phoneNum;
         private Label label_input;
-        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox txt_date;
         private Label label_date;
         private TextBox txt_name;
         private Label label1;
