@@ -1,4 +1,5 @@
 ﻿using QLBanPiano.BUS;
+using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,6 +133,25 @@ namespace QLBanPiano.GUI
                 else MessageBox.Show("Sửa khách hàng thất bại!");
             }
             else MessageBox.Show("Vui lòng chọn khách hàng để sửa!");
+        }
+
+        private void frmQLKhachHang_Load(object sender, EventArgs e)
+        {
+            cbbTimKiem.Text = "ID";
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string tieuChi = cbbTimKiem.SelectedItem.ToString();
+            string giaTri = txtTimKiem.Text;
+
+            //Gọi phương thức tìm kiếm trong DataGridView
+            List<DoiTuong> ketQua = khachhang.TimKiem(tieuChi, giaTri);
+            dgvKhachHang.DataSource = ketQua;
+
+
+            cbbTimKiem.SelectedIndex = -1;
+            txtTimKiem.Clear();
         }
     }
 }

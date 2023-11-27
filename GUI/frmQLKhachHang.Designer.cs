@@ -262,6 +262,7 @@
             btnTimKiem.TabIndex = 3;
             btnTimKiem.Text = "&Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // txtTimKiem
             // 
@@ -274,6 +275,7 @@
             // 
             cbbTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTimKiem.FormattingEnabled = true;
+            cbbTimKiem.Items.AddRange(new object[] { "ID", "Tên", "SDT" });
             cbbTimKiem.Location = new Point(160, 43);
             cbbTimKiem.Name = "cbbTimKiem";
             cbbTimKiem.Size = new Size(249, 33);
