@@ -37,7 +37,6 @@
             txt_sdt = new MaskedTextBox();
             label_phoneNum = new Label();
             label_input = new Label();
-            txt_date = new MaskedTextBox();
             label_date = new Label();
             txt_name = new TextBox();
             label1 = new Label();
@@ -50,6 +49,7 @@
             label_type = new Label();
             txtSearch = new TextBox();
             groupBoxInfor = new GroupBox();
+            dtpNgayVaoLam = new DateTimePicker();
             groupBoxSearch = new GroupBox();
             label_title = new Label();
             panel1 = new Panel();
@@ -103,9 +103,9 @@
             // txt_address
             // 
             txt_address.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_address.Location = new Point(399, 162);
+            txt_address.Location = new Point(350, 160);
             txt_address.Name = "txt_address";
-            txt_address.Size = new Size(181, 30);
+            txt_address.Size = new Size(250, 30);
             txt_address.TabIndex = 11;
             // 
             // label_address
@@ -119,7 +119,7 @@
             // 
             // txt_sdt
             // 
-            txt_sdt.Location = new Point(399, 92);
+            txt_sdt.Location = new Point(350, 96);
             txt_sdt.Mask = "000-000-0000";
             txt_sdt.Name = "txt_sdt";
             txt_sdt.Size = new Size(202, 27);
@@ -129,7 +129,7 @@
             // label_phoneNum
             // 
             label_phoneNum.AutoSize = true;
-            label_phoneNum.Location = new Point(273, 99);
+            label_phoneNum.Location = new Point(231, 99);
             label_phoneNum.Name = "label_phoneNum";
             label_phoneNum.Size = new Size(100, 20);
             label_phoneNum.TabIndex = 8;
@@ -144,19 +144,10 @@
             label_input.TabIndex = 0;
             label_input.Text = "Nhập dữ liệu:";
             // 
-            // txt_date
-            // 
-            txt_date.Location = new Point(398, 33);
-            txt_date.Mask = "00/00/0000";
-            txt_date.Name = "txt_date";
-            txt_date.Size = new Size(202, 27);
-            txt_date.TabIndex = 7;
-            txt_date.ValidatingType = typeof(DateTime);
-            // 
             // label_date
             // 
             label_date.AutoSize = true;
-            label_date.Location = new Point(273, 36);
+            label_date.Location = new Point(227, 36);
             label_date.Name = "label_date";
             label_date.Size = new Size(104, 20);
             label_date.TabIndex = 6;
@@ -182,7 +173,7 @@
             // 
             txt_midName.Location = new Point(73, 96);
             txt_midName.Name = "txt_midName";
-            txt_midName.Size = new Size(181, 27);
+            txt_midName.Size = new Size(150, 27);
             txt_midName.TabIndex = 3;
             // 
             // label_midName
@@ -250,6 +241,7 @@
             // groupBoxInfor
             // 
             groupBoxInfor.Anchor = AnchorStyles.Top;
+            groupBoxInfor.Controls.Add(dtpNgayVaoLam);
             groupBoxInfor.Controls.Add(btn_reset);
             groupBoxInfor.Controls.Add(btn_delete);
             groupBoxInfor.Controls.Add(btn_update);
@@ -258,7 +250,6 @@
             groupBoxInfor.Controls.Add(label_address);
             groupBoxInfor.Controls.Add(txt_sdt);
             groupBoxInfor.Controls.Add(label_phoneNum);
-            groupBoxInfor.Controls.Add(txt_date);
             groupBoxInfor.Controls.Add(label_date);
             groupBoxInfor.Controls.Add(txt_name);
             groupBoxInfor.Controls.Add(label1);
@@ -272,6 +263,13 @@
             groupBoxInfor.TabIndex = 6;
             groupBoxInfor.TabStop = false;
             groupBoxInfor.Text = "Thông tin nhân viên";
+            // 
+            // dtpNgayVaoLam
+            // 
+            dtpNgayVaoLam.Location = new Point(350, 31);
+            dtpNgayVaoLam.Name = "dtpNgayVaoLam";
+            dtpNgayVaoLam.Size = new Size(250, 27);
+            dtpNgayVaoLam.TabIndex = 16;
             // 
             // groupBoxSearch
             // 
@@ -360,7 +358,6 @@
         private MaskedTextBox txt_sdt;
         private Label label_phoneNum;
         private Label label_input;
-        private MaskedTextBox txt_date;
         private Label label_date;
         private TextBox txt_name;
         private Label label1;
@@ -377,5 +374,6 @@
         private Label label_title;
         private Panel panel1;
         private DataGridView dgvNhanVien;
+        private DateTimePicker dtpNgayVaoLam;
     }
 }

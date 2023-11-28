@@ -49,8 +49,8 @@ namespace QLBanPiano.GUI.SubForm
                 txt_id.Text = id;
                 txt_midName.Text = hoLot;
                 txt_name.Text = ten;
-                txt_date.Text = ngayVaoLam.ToShortDateString();
                 txt_sdt.Text = sdt;
+                dtpNgayVaoLam.Value = ngayVaoLam;
                 txt_address.Text = diaChi;
 
 
@@ -62,7 +62,7 @@ namespace QLBanPiano.GUI.SubForm
             txt_id.Text = "";
             txt_midName.Text = "";
             txt_name.Text = "";
-            txt_date.Text = "";
+            dtpNgayVaoLam.Value = DateTime.Now;
             txt_sdt.Text = "";
             txt_address.Text = "";
         }
@@ -77,11 +77,11 @@ namespace QLBanPiano.GUI.SubForm
             else
             {
                 if (nhanvien.Validate(txt_midName.Text, txt_name.Text,
-                     txt_date.Text, txt_sdt.Text, txt_address.Text, "-1"))
+                     dtpNgayVaoLam.Value.ToShortDateString(), txt_sdt.Text, txt_address.Text, "-1"))
                 {
 
                     if (nhanvien.Them(txt_midName.Text, txt_name.Text,
-                        txt_date.Text, txt_sdt.Text, txt_address.Text))
+                        dtpNgayVaoLam.Value.ToShortDateString(), txt_sdt.Text, txt_address.Text))
                     {
                         MessageBox.Show("Thêm nhân viên thành công!");
                         HienThiDSNhanVien();
@@ -101,17 +101,16 @@ namespace QLBanPiano.GUI.SubForm
             {
                 DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();
-                if (nhanvien.Validate(txt_midName.Text, txt_name.Text, txt_date.Text
+                if (nhanvien.Validate(txt_midName.Text, txt_name.Text, dtpNgayVaoLam.Value.ToShortDateString()
                     , txt_sdt.Text, txt_address.Text, id))
                 {
                     txt_id.Text = id;
                     string hoLot = txt_midName.Text;
                     string ten = txt_name.Text;
-                    DateTime ngayVaoLam = Convert.ToDateTime(txt_date.Text);
                     string sdt = txt_sdt.Text;
                     string address = txt_address.Text;
 
-                    if (nhanvien.Validate(hoLot, ten, ngayVaoLam.ToShortDateString(), sdt, address, id))
+                    if (nhanvien.Validate(hoLot, ten, dtpNgayVaoLam.Value.ToShortDateString(), sdt, address, id))
                     {
                         MessageBox.Show("Sửa nhân viên thành công!");
                         HienThiDSNhanVien();
