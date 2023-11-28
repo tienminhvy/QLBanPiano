@@ -7,12 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using QLBanPiano.DAL;
 using System.Security.Policy;
+using System.Globalization;
 
 namespace QLBanPiano.BUS
 {
     public class PhieuNhapBUS : IBUS
     {
         ChiTietPhieuNhapBUS chitietBus = new();
+        NhanVienBUS nhanvienBus = new();
         DB db;
         public PhieuNhapBUS()
         {
@@ -89,9 +91,9 @@ namespace QLBanPiano.BUS
                 return false;
             }
         }
-        public PhieuNhap getPhieuNhap(DataTable dt)
+        public PhieuNhapExcel getPhieuNhap(DataTable dt)
         {
-            PhieuNhap phieunhap = new();
+            PhieuNhapExcel phieunhap = new();
             DataRow row = dt.Rows[0];
             phieunhap.Id = Convert.ToInt32(row["ID"]);
             phieunhap.Id_nhanvien = Convert.ToInt32(row["Mã nhân viên"]);
@@ -109,7 +111,7 @@ namespace QLBanPiano.BUS
             }
             return dt;
         }
-        public string getSqlString(PhieuNhap phieunhap ) {
+        public string getSqlString(PhieuNhapExcel phieunhap ) {
             string result = string.Format("insert into phieunhap(thoiGian,nhanvien_id) values ('{0}',{1}); select SCOPE_IDENTITY();", phieunhap.ThoiGian, phieunhap.Id_nhanvien);
             return result;
         }
@@ -122,13 +124,14 @@ namespace QLBanPiano.BUS
             }
             return clone;
         }
-        public bool Validates(PhieuNhap phieunhap)
+        public bool Validates(PhieuNhapExcel phieunhap)
         {
-            string thisyear = "2023-01-01 00:00:00 AM";
-            DateTime dateTime = DateTime.Parse(thisyear);
+            string thisyear = "2014-01-01 00:00:00 AM";
+            DateTime dateTime = DateTime.ParseExact(thisyear,"yyyy-MM-dd hh:mm:ss tt",CultureInfo.InvariantCulture,DateTimeStyles.None);
             if (phieunhap.Id <= 0) return false;
             if (phieunhap.ThoiGian > DateTime.Today || phieunhap.ThoiGian < dateTime) return false;
-            if (phieunhap.Id <= 0) return false;
+            if (nhanvienBus.checkExist(phieunhap.Id_nhanvien) == false) return false;
+            if (phieunhap.PhieuNhapList == null) return false;
             return true;
         }
         ///////////////////////////

@@ -85,7 +85,7 @@ namespace QLBanPiano.DAL
             try
             {
                 string sqlString = string.Format("select count(*) from {0} " +
-                "where {1}", tableName, condition);
+                "where  {1}", tableName, condition);
                 SqlCommand sqlcmd = new(sqlString, sqlConn);
                 sqlConn.Open(); //Mo ket noi
                 int count = (int)sqlcmd.ExecuteScalar();//Lenh hien lenh Them/Xoa/Sua
@@ -149,10 +149,14 @@ namespace QLBanPiano.DAL
         {
             return sqlConn;
         }
-        public void InsertDatatableToDB(DataTable dt,string tableName,SqlTransaction transaction)
+        public void InsertDatatableToDB(DataTable dt,string tableName,SqlTransaction transaction,int id)
         {
             try
             {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dr[0] = id;
+                }
                 using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn, SqlBulkCopyOptions.Default, transaction))
                 {
                     bulkCopy.DestinationTableName = tableName;
@@ -183,7 +187,9 @@ namespace QLBanPiano.DAL
         }
         public bool InsertConstraintedData(DataTable fkTable,string fkTableName,string sqlStringPkValue)
         {
-            using (sqlConn)
+            string server = "LAPTOP-3O7CUBA2\\SQLEXPRESS";
+            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=1";
+            using (sqlConn = new SqlConnection(strCnn)) 
             {
                 sqlConn.Open();
                 trans = sqlConn.BeginTransaction();
@@ -191,13 +197,14 @@ namespace QLBanPiano.DAL
                 {
                     int id = InsertInTransaction(sqlStringPkValue, trans);
                     DataRow row = fkTable.Rows[0];
-                    if (Convert.ToInt32(row["ID"]) == id)
+                    if (id >= 1)
                     {
-                        InsertDatatableToDB(fkTable, fkTableName, trans);
+                        InsertDatatableToDB(fkTable, fkTableName, trans,id);
                         trans.Commit();
                     }
                     else
                     {
+                        MessageBox.Show("ID khac");
                         trans.Rollback();
                         return false;
                     }

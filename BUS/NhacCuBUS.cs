@@ -13,6 +13,7 @@ namespace QLBanPiano.BUS
     public class NhacCuBUS : IBUS
     {
         DB db;
+        PianoBUS pianoBUS = new();
         public NhacCuBUS()
         {
             db = new DB();
@@ -168,7 +169,11 @@ namespace QLBanPiano.BUS
                 ma, ten, dacDiemNoiBat, moTaChiTiet, gia, hinhAnh, idThuongHieu, 1)).ToString();
             return true;
         }
-
+        public bool checkExist(int id)
+        {
+            if (pianoBUS.checkExist("nhaccu", id) == false) return false;
+            return true;
+        }
         public bool Validate(params string[] dsTruong)
         {
             throw new NotImplementedException();
@@ -181,6 +186,10 @@ namespace QLBanPiano.BUS
                 "WHERE {1}", tieuChi));
             return true;
         }
-
+        public void tangSL(int id,short SL)
+        {
+            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong + "+SL+" \r\nwhere id = "+id;
+            db.ExecuteNonQuery(sqlCmd);
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace QLBanPiano.BUS
          */
         public bool checkExist(string tablename,int id) //áp dụng cho những hàm có col trạng thái
         {
-            string condition = "where id = "+id+ " and trangthai = 1";
+            string condition = " id = "+id+ " and trangthai = 1";
             int result = db.GetCount(tablename, condition);
             if (result == -1) return false;
             return true;

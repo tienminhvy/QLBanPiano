@@ -20,6 +20,7 @@ namespace QLBanPiano.GUI
         public static int doubleClickRowID = -1;
         bool searchClicked = false;
         IOFileBUS fileHandler = new();
+        NhacCuBUS nhacCuBUS = new();
         List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên"};
         public frmQLPhieuNhap()
         {
@@ -245,20 +246,50 @@ namespace QLBanPiano.GUI
                     List<string> temp = fileHandler.GetListHeader(selectedFilePath);
                     DataTable raw = fileHandler.ImportFormExcelToDataTable(selectedFilePath);
                     DataTable rawClone = phieuNhapBUS.getClone(raw);
-                    int max = -1;
-                    foreach(DataRow row in rawClone.Rows)
+                    int rowCount = raw.Rows.Count;
+                    while(rowCount > 0)
                     {
-                        if (Convert.ToInt32(row["ID"]) > max) max = Convert.ToInt32(row["ID"]);
+                        MessageBox.Show(rowCount + "");
+                        string minId = rawClone.AsEnumerable().Min(row => row.Field<string>("ID"));
+                        int min = int.Parse(minId);
+                        DataTable processed = phieuNhapBUS.splitFromExcelTableById(rawClone, min);
+                        PhieuNhapExcel ph = new();
+                        ph = phieuNhapBUS.getPhieuNhap(processed);
+                        int numberOfRowMin = fileHandler.returnIdCount(rawClone, min);
+                        if (chiTietPhieuNhapBUS.ValidateList(ph.PhieuNhapList) == true)
+                        {
+                            if (phieuNhapBUS.Validates(ph) == true)
+                            {
+                                DataTable chitietTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
+                                DataTable updateNhaccu = chitietTable.Clone();
+                                updateNhaccu.Columns.Remove("ID");
+                                updateNhaccu.Columns.Remove("Đơn giá");
+                                foreach (DataRow row in chitietTable.Rows)
+                                {
+                                    updateNhaccu.ImportRow(row);
+                                }
+                                chitietTable.Columns["ID"].ColumnName = "phieunhap_id";
+                                chitietTable.Columns["Mã nhạc cụ"].ColumnName = "nhaccu_id";
+                                chitietTable.Columns["Đơn giá"].ColumnName = "chiPhiNhap";
+                                chitietTable.Columns["SL"].ColumnName = "soLuong";
+                                if (fileHandler.ImportConstraint(chitietTable, "chitietphieunhap", phieuNhapBUS.getSqlString(ph)) == true)
+                                {
+                                    foreach (DataRow row in updateNhaccu.Rows)
+                                    {
+                                        nhacCuBUS.tangSL(Convert.ToInt32(row["Mã nhạc cụ"]), Convert.ToInt16(row["SL"]));
+                                    }
+                                }
+                            }
+                            rowCount -= numberOfRowMin;
+                            while(numberOfRowMin > 0)
+                            {
+                                rawClone.Rows.RemoveAt(0);
+                                numberOfRowMin--;
+                            }
+                        }                        
                     }
-                    int min = max;
-                    foreach(DataRow row in rawClone.Rows)
-                    {
-                        if (Convert.ToInt32(row["ID"]) < min) min = Convert.ToInt32(row["ID"]);
-                    }
-                    DataTable processed = phieuNhapBUS.splitFromExcelTableById(rawClone,min);
-                    PhieuNhap ph = phieuNhapBUS.getPhieuNhap(processed);
-                    DataTable resultTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
-                    Load(resultTable);
+                    MessageBox.Show("Import file thành công");
+                    ResetBtn_Click(sender, e);
                 }
                 else
                 {
@@ -271,5 +302,6 @@ namespace QLBanPiano.GUI
                MessageBox.Show(ex.Message);
            }
         }
+
     }
 }

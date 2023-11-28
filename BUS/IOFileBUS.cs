@@ -71,7 +71,15 @@ namespace QLBanPiano.BUS
         }
         public int returnIdCount(DataTable table,int id)
         {
-            return table.AsEnumerable().Count(row => row.Field<int>("ID") == 1);
+            int count = 0;
+            foreach(DataRow row in table.Rows)
+            {
+                if (row["ID"] != DBNull.Value && Convert.ToInt32(row["ID"]) == id)
+                {
+                    count++;
+                }
+            }
+            return count;
 
         }
         public List<string> GetListHeader(string filename)
