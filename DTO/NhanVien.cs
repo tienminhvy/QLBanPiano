@@ -28,7 +28,7 @@ namespace QLBanPiano.DTO
             Id = -1;
             HoLot = "";
             Ten = "";
-            NgayVaoLam = DateTime.Now;
+            NgayVaoLam = DateTime.MinValue;
             SoDienThoai = "";
             DiaChi = "";
         }

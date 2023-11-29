@@ -1,4 +1,5 @@
 using QLBanPiano.GUI;
+using QLBanPiano.GUI.SubForm;
 
 namespace QLBanPiano
 {
