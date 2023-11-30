@@ -61,5 +61,43 @@ namespace QLBanPiano.GUI
             }
         }
 
+        private void confirmAddBtn_Click(object sender, EventArgs e)
+        {
+            if (chiTietPhieuNhapGridView.Rows.Count > 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu");
+                this.Close();
+            }
+        }
+
+        private void ct_addBtn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                ct_addBtn_Click(sender, e);
+            }
+        }
+
+        private void CancelAddBtn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                CancelAddBtn_Click(sender, e);
+            }
+        }
+
+        private void confirmAddBtn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                confirmAddBtn_Click(sender, e);
+            }
+        }
+
+
     }
 }

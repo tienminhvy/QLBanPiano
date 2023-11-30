@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using QLBanPiano.DAL;
 using System.Security.Policy;
 using System.Globalization;
+using DocumentFormat.OpenXml.Office2013.Excel;
 
 namespace QLBanPiano.BUS
 {
@@ -43,7 +44,7 @@ namespace QLBanPiano.BUS
                     dt = LayDsDaTruyVan(dieukien0);
                     break;
                 case 1:
-                    string dieukien1 = "convert(varchar, phieunhap.thoiGian, 120) like '%"+giatri+"%' or cast(phieunhap.thoiGian as varchar) like '%"+giatri+"%'";
+                    string dieukien1 = "CONVERT(VARCHAR, thoiGian, 105) + ' ' + CONVERT(VARCHAR, thoiGian, 108) + ' ' + RIGHT(CONVERT(VARCHAR, thoiGian, 100), 2) LIKE '%" + giatri + "%'";
                     dt = LayDsDaTruyVan(dieukien1);
                     break;
                 case 2:
@@ -133,6 +134,84 @@ namespace QLBanPiano.BUS
             if (nhanvienBus.checkExist(phieunhap.Id_nhanvien) == false) return false;
             if (phieunhap.PhieuNhapList == null) return false;
             return true;
+        }
+        public bool ValidateList (List<PhieuNhapExcel> list)
+        {
+            foreach(PhieuNhapExcel p in list)
+            {
+                if(Validates(p) == false) return false;
+            }
+            return true;
+        }
+        public List<PhieuNhapExcel> convertDataTableToList(DataTable dt)//Thực tế cần lấy List<ChiTietPhieuNhapn> là chính
+        {
+            string[] dinhdang = {
+            "MM/dd/yyyy hh:mm:ss tt",
+            "M/d/yyyy h:mm:ss tt",
+            "M/d/yyyy hh:mm:ss tt",
+            "MM/d/yyyy hh:mm:ss tt",
+            "M/dd/yyyy hh:mm:ss tt",
+            // Thêm các định dạng khả thi khác ở đây...
+             };
+            List<PhieuNhapExcel> list = new();
+            try
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    PhieuNhapExcel phieunhap = new();
+                    phieunhap.Id = Convert.ToInt32(row["ID"]);
+                    phieunhap.Id_nhanvien = Convert.ToInt32(row["Mã nhân viên"]);
+                    foreach(var format in dinhdang)
+                    {
+                        DateTime thoiGian;
+                        if (DateTime.TryParseExact(row["Thời gian"].ToString(), format, CultureInfo.InvariantCulture, DateTimeStyles.None, out thoiGian))
+                        {
+                            phieunhap.ThoiGian = thoiGian;
+                            break; // Nếu chuyển đổi thành công, thoát khỏi vòng lặp
+                        }
+                    }
+                    phieunhap.PhieuNhapList = chitietBus.getListChiTiet(chitietBus.LayChiTietPhieuNhap(Convert.ToInt32(row["ID"])));
+
+                    list.Add(phieunhap);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("LỖI HÀM CONVERT DATATABLE TO LIST" + ex.Message);
+            }
+
+            return list;
+        }
+        public DataTable formatToExport(List<PhieuNhapExcel> list)
+        {
+            DataTable dt = new();
+            try
+            {
+                dt.Columns.Add("ID", typeof(int));
+                dt.Columns.Add("Thời gian", typeof(DateTime));
+                dt.Columns.Add("Mã nhân viên", typeof(int));
+                dt.Columns.Add("Mã nhạc cụ", typeof(int));
+                dt.Columns.Add("Đơn giá", typeof(long));
+                dt.Columns.Add("SL", typeof(short));
+                //
+                foreach(var phieunhap in list)
+                {
+                    foreach (var chitiet in phieunhap.PhieuNhapList)
+                    {
+                        DataRow row = dt.NewRow();
+                        row["ID"] = phieunhap.Id;
+                        row["Thời gian"] = phieunhap.ThoiGian;
+                        row["Mã nhân viên"] = phieunhap.Id_nhanvien;
+                        row["Mã nhạc cụ"] = chitiet.nhaccu_Id;
+                        row["Đơn giá"] = chitiet.DonGia;
+                        row["SL"] = chitiet.SoLuong;
+                        dt.Rows.Add(row);
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return dt;
         }
         ///////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)

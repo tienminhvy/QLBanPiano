@@ -6,9 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ExcelDataReader;
 using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml;
 using QLBanPiano.DAL;
 using System.Data.SqlClient;
+using QLBanPiano.DTO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
+using OfficeOpenXml;
+using System.Globalization;
 
 namespace QLBanPiano.BUS
 {
@@ -115,5 +121,68 @@ namespace QLBanPiano.BUS
             }
             return sortedTable;
         }
+        /////////////////////////////EXPORT///////////////////////////////
+        public bool ExportHoaDonToPdf(HoaDonPDFExcel hoadon,string filename)
+        {
+            Document doc = new Document();
+            try
+            {
+                PdfWriter.GetInstance(doc, new FileStream(filename, FileMode.Create));
+                doc.Open();
+                //Tạo header
+                Paragraph header = new Paragraph("SixTeenShop - Hóa đơn bán hàng");
+                header.Alignment = Element.ALIGN_CENTER;
+                doc.Add(header);
+
+                doc.Add(new Paragraph("\nNgày: " + hoadon.ThoiGian.ToString("dd/MM/yyyy hh:mm:ss tt")+"\n"));
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool ExportToExcel(DataTable table, string filename)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            if (table == null || table.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất ra Excel.");
+                return false;
+            }
+
+            try
+            {
+                using (ExcelPackage package = new())
+                {
+                    // Tạo một worksheet mới
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                    // Đưa dữ liệu từ DataTable vào worksheet
+                    worksheet.Cells["A1"].LoadFromDataTable(table, true);
+
+                    // Xác định định dạng cho cột "Thời gian"
+                    worksheet.Column(2).Style.Numberformat.Format = "MM/dd/yyyy hh:mm:ss";
+
+                    // Lưu file Excel
+                    var file = new FileInfo(filename);
+                    package.SaveAs(file);
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Lỗi khi tạo hoặc mở file Excel. " + ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xuất Excel. " + ex.Message);
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

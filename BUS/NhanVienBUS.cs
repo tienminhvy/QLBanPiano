@@ -7,7 +7,7 @@ namespace QLBanPiano.BUS
     public class NhanVienBUS : IBUS
     {
         DB db;
-        PianoBUS pianoBus = new();
+        private PianoBUS pianoBus = new();
         public NhanVienBUS()
         {
             db = new DB();
@@ -110,7 +110,6 @@ namespace QLBanPiano.BUS
 
             return true;
         }
-
         public bool Sua(params string[] dsTruong)
         {
             string id = dsTruong[0];

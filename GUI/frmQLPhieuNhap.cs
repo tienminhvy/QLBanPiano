@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,16 +16,20 @@ namespace QLBanPiano.GUI
     public partial class frmQLPhieuNhap : Form
     {
 
-        PhieuNhapBUS phieuNhapBUS = new();
-        ChiTietPhieuNhapBUS chiTietPhieuNhapBUS = new();
+        private PhieuNhapBUS phieuNhapBUS = new();
+        private ChiTietPhieuNhapBUS chiTietPhieuNhapBUS = new();
         public static int doubleClickRowID = -1;
-        bool searchClicked = false;
-        IOFileBUS fileHandler = new();
-        NhacCuBUS nhacCuBUS = new();
-        List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên"};
+        private bool searchClicked = false;
+        private IOFileBUS fileHandler = new();
+        private NhacCuBUS nhacCuBUS = new();
+        private List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên", "Mã nhạc cụ", "Đơn giá", "SL" };
+        private DataTable tableToExport = new();
+        private List<PhieuNhapExcel> ExportList = new();
+        private bool imported = true;
         public frmQLPhieuNhap()
         {
             InitializeComponent();
+            Timer.Start();
             Init();
             SearchTextBox_Init();
         }
@@ -32,6 +37,7 @@ namespace QLBanPiano.GUI
         {
             //Set value và định dạng cho data grid view 
             DataTable dt = phieuNhapBUS.LayToanBoDS();
+            tableToExport = dt;
             phieuNhapGridView.DataSource = null;
             phieuNhapGridView.Rows.Clear();
             phieuNhapGridView.DataSource = dt;
@@ -46,7 +52,7 @@ namespace QLBanPiano.GUI
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             //Set Value cho cbbTieuChi
-            string[] list = { "ID", "Thời gian", "Mã nhân viên"};
+            string[] list = { "ID", "Thời gian", "Mã nhân viên" };
             cbbTieuChi.Items.Clear();
             cbbTieuChi.Items.AddRange(list);
             cbbTieuChi.SelectedIndex = 0;
@@ -244,21 +250,40 @@ namespace QLBanPiano.GUI
                 {
                     string selectedFilePath = ofd.FileName;
                     List<string> temp = fileHandler.GetListHeader(selectedFilePath);
-                    DataTable raw = fileHandler.ImportFormExcelToDataTable(selectedFilePath);
-                    DataTable rawClone = phieuNhapBUS.getClone(raw);
-                    int rowCount = raw.Rows.Count;
-                    while(rowCount > 0)
+                    List<PhieuNhapExcel> listImport = new();
+                    if (temp.SequenceEqual(list) == true)
                     {
-                        MessageBox.Show(rowCount + "");
-                        string minId = rawClone.AsEnumerable().Min(row => row.Field<string>("ID"));
-                        int min = int.Parse(minId);
-                        DataTable processed = phieuNhapBUS.splitFromExcelTableById(rawClone, min);
-                        PhieuNhapExcel ph = new();
-                        ph = phieuNhapBUS.getPhieuNhap(processed);
-                        int numberOfRowMin = fileHandler.returnIdCount(rawClone, min);
-                        if (chiTietPhieuNhapBUS.ValidateList(ph.PhieuNhapList) == true)
+                        DataTable raw = fileHandler.ImportFormExcelToDataTable(selectedFilePath);
+                        DataTable rawClone = phieuNhapBUS.getClone(raw);
+                        int rowCount = raw.Rows.Count;
+                        while (rowCount > 0)
                         {
-                            if (phieuNhapBUS.Validates(ph) == true)
+                            string minId = rawClone.AsEnumerable().Min(row => row.Field<string>("ID"));
+                            int min = int.Parse(minId);
+                            DataTable processed = phieuNhapBUS.splitFromExcelTableById(rawClone, min);
+                            PhieuNhapExcel ph = new();
+                            ph = phieuNhapBUS.getPhieuNhap(processed);
+                            int numberOfRowMin = fileHandler.returnIdCount(rawClone, min);
+                            if (chiTietPhieuNhapBUS.ValidateList(ph.PhieuNhapList) == true)
+                            {
+                                listImport.Add(ph);
+                                
+                                rowCount -= numberOfRowMin;
+                                while (numberOfRowMin > 0)
+                                {
+                                    rawClone.Rows.RemoveAt(0);
+                                    numberOfRowMin--;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Định dạng excel không hợp lệ !");
+                                imported = false;
+                            }
+                        }
+                        if (phieuNhapBUS.ValidateList(listImport))
+                        {
+                            foreach(PhieuNhapExcel ph in listImport)
                             {
                                 DataTable chitietTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
                                 DataTable updateNhaccu = chitietTable.Clone();
@@ -280,28 +305,75 @@ namespace QLBanPiano.GUI
                                     }
                                 }
                             }
-                            rowCount -= numberOfRowMin;
-                            while(numberOfRowMin > 0)
-                            {
-                                rawClone.Rows.RemoveAt(0);
-                                numberOfRowMin--;
-                            }
-                        }                        
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thông tin import vào không hợp lệ !");
+                            imported = false;
+                        }
                     }
-                    MessageBox.Show("Import file thành công");
-                    ResetBtn_Click(sender, e);
+                    else
+                    {
+                        MessageBox.Show("Format của file nhập không hợp lệ");
+                        imported = false;
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Người dùng đã hủy việc chọn file.");
+                    imported = false;
+                }
+                if (imported == true)
+                {
+                    MessageBox.Show("Import file thành công");
+                    ResetBtn_Click(sender, e);
                 }
 
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message);
-           }
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        private void exportFileBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Xuất phiếu nhập";
+                sfd.Filter = "Excel Files|*.xlsx;*.xls";
+                DialogResult result = sfd.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string filename = sfd.FileName;
+                    DataTable table = phieuNhapBUS.formatToExport(phieuNhapBUS.convertDataTableToList(tableToExport));
+                    Load(table);
+                    if (fileHandler.ExportToExcel(table, filename))
+                    {
+                        MessageBox.Show("Xuất file excel thành công");
+                        Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                    }
+                    else
+                    {
+                        MessageBox.Show(" Xuất file thất bại");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            ClockLabel.Text = DateTime.Now.ToString("HH:mm:ss tt");
+            CalendarLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            ClockLabel.ForeColor = Color.FromArgb(153, 50, 204);
+            CalendarLabel.ForeColor = Color.FromArgb(153, 50, 204);
+
+        }
     }
 }
+

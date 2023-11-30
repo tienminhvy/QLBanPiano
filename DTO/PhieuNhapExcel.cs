@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.DTO
 {
-    public class PhieuNhapExcel
+    public class PhieuNhapExcel : DoiTuong
     {
         // gồm các trường id, thời gian, nhân viên, danh sách nhạc cụ
         // danh sách đơn giá lúc bán, danh sách số lượng

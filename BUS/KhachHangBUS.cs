@@ -12,6 +12,7 @@ namespace QLBanPiano.BUS
 {
     internal class KhachHangBUS : IBUS
     {
+        private PianoBUS pianoBus = new();
         DB db;
         public KhachHangBUS()
         {
@@ -58,7 +59,10 @@ namespace QLBanPiano.BUS
             return ds;
         }
 
-
+        public bool checkExist(int id)
+        {
+            return pianoBus.checkExist("khachhang", id);
+        }
 
 
         /**

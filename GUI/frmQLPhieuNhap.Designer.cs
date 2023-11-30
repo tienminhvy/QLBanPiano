@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLPhieuNhap));
             panel1 = new Panel();
+            CalendarLabel = new Label();
             label9 = new Label();
             label1 = new Label();
             phieuNhapGridView = new DataGridView();
@@ -46,6 +48,7 @@
             panel2 = new Panel();
             leftPanel = new Panel();
             panel5 = new Panel();
+            ClockLabel = new Label();
             importFileBtn = new Button();
             exportFileBtn = new Button();
             addBtn = new Button();
@@ -57,6 +60,7 @@
             ResetBtn = new Button();
             cbbTieuChi = new ComboBox();
             gridViewPanel = new Panel();
+            Timer = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)phieuNhapGridView).BeginInit();
             panel3.SuspendLayout();
@@ -70,6 +74,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(CalendarLabel);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
@@ -78,6 +83,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1044, 96);
             panel1.TabIndex = 1;
+            // 
+            // CalendarLabel
+            // 
+            CalendarLabel.AutoSize = true;
+            CalendarLabel.Location = new Point(3, 48);
+            CalendarLabel.Name = "CalendarLabel";
+            CalendarLabel.Size = new Size(81, 25);
+            CalendarLabel.TabIndex = 6;
+            CalendarLabel.Text = "Calendar";
             // 
             // label9
             // 
@@ -233,6 +247,7 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(ClockLabel);
             panel5.Controls.Add(importFileBtn);
             panel5.Controls.Add(exportFileBtn);
             panel5.Controls.Add(addBtn);
@@ -240,16 +255,25 @@
             panel5.Location = new Point(0, 100);
             panel5.Name = "panel5";
             panel5.Size = new Size(508, 64);
-            panel5.TabIndex = 12;
+            panel5.TabIndex = 2;
+            // 
+            // ClockLabel
+            // 
+            ClockLabel.AutoSize = true;
+            ClockLabel.Location = new Point(6, 19);
+            ClockLabel.Name = "ClockLabel";
+            ClockLabel.Size = new Size(55, 25);
+            ClockLabel.TabIndex = 3;
+            ClockLabel.Text = "Clock";
             // 
             // importFileBtn
             // 
             importFileBtn.Image = (Image)resources.GetObject("importFileBtn.Image");
             importFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            importFileBtn.Location = new Point(133, 8);
+            importFileBtn.Location = new Point(158, 7);
             importFileBtn.Name = "importFileBtn";
-            importFileBtn.Size = new Size(120, 51);
-            importFileBtn.TabIndex = 2;
+            importFileBtn.Size = new Size(114, 51);
+            importFileBtn.TabIndex = 0;
             importFileBtn.Text = "  Nhập file";
             importFileBtn.UseVisualStyleBackColor = true;
             importFileBtn.Click += importFileBtn_Click;
@@ -258,21 +282,22 @@
             // 
             exportFileBtn.Image = (Image)resources.GetObject("exportFileBtn.Image");
             exportFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            exportFileBtn.Location = new Point(259, 7);
+            exportFileBtn.Location = new Point(278, 6);
             exportFileBtn.Name = "exportFileBtn";
-            exportFileBtn.Size = new Size(120, 51);
+            exportFileBtn.Size = new Size(114, 51);
             exportFileBtn.TabIndex = 1;
             exportFileBtn.Text = "  Xuất file";
             exportFileBtn.UseVisualStyleBackColor = true;
+            exportFileBtn.Click += exportFileBtn_Click;
             // 
             // addBtn
             // 
             addBtn.Image = (Image)resources.GetObject("addBtn.Image");
             addBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            addBtn.Location = new Point(385, 6);
+            addBtn.Location = new Point(394, 6);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(120, 51);
-            addBtn.TabIndex = 0;
+            addBtn.Size = new Size(114, 51);
+            addBtn.TabIndex = 2;
             addBtn.Text = "  Tạo mới";
             addBtn.UseVisualStyleBackColor = true;
             addBtn.Click += addBtn_Click;
@@ -285,7 +310,7 @@
             panel7.Location = new Point(0, 50);
             panel7.Name = "panel7";
             panel7.Size = new Size(508, 50);
-            panel7.TabIndex = 11;
+            panel7.TabIndex = 1;
             // 
             // searchTextBox
             // 
@@ -293,7 +318,7 @@
             searchTextBox.Location = new Point(6, 10);
             searchTextBox.Name = "searchTextBox";
             searchTextBox.Size = new Size(386, 31);
-            searchTextBox.TabIndex = 18;
+            searchTextBox.TabIndex = 0;
             // 
             // searchBtn
             // 
@@ -302,7 +327,7 @@
             searchBtn.Location = new Point(398, 0);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(110, 50);
-            searchBtn.TabIndex = 8;
+            searchBtn.TabIndex = 1;
             searchBtn.Text = "Tìm kiếm";
             searchBtn.TextAlign = ContentAlignment.MiddleRight;
             searchBtn.UseVisualStyleBackColor = true;
@@ -317,7 +342,7 @@
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
             panel6.Size = new Size(508, 50);
-            panel6.TabIndex = 10;
+            panel6.TabIndex = 0;
             // 
             // label6
             // 
@@ -336,7 +361,7 @@
             ResetBtn.Location = new Point(398, 0);
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new Size(110, 50);
-            ResetBtn.TabIndex = 11;
+            ResetBtn.TabIndex = 1;
             ResetBtn.Text = "Làm mới";
             ResetBtn.TextAlign = ContentAlignment.MiddleRight;
             ResetBtn.UseVisualStyleBackColor = true;
@@ -349,7 +374,7 @@
             cbbTieuChi.Location = new Point(92, 6);
             cbbTieuChi.Name = "cbbTieuChi";
             cbbTieuChi.Size = new Size(300, 33);
-            cbbTieuChi.TabIndex = 10;
+            cbbTieuChi.TabIndex = 0;
             cbbTieuChi.SelectedIndexChanged += cbbTieuChi_SelectedIndexChanged;
             // 
             // gridViewPanel
@@ -360,6 +385,11 @@
             gridViewPanel.Name = "gridViewPanel";
             gridViewPanel.Size = new Size(1044, 378);
             gridViewPanel.TabIndex = 5;
+            // 
+            // Timer
+            // 
+            Timer.Interval = 1;
+            Timer.Tick += Timer_Tick;
             // 
             // frmQLPhieuNhap
             // 
@@ -382,6 +412,7 @@
             panel2.ResumeLayout(false);
             leftPanel.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel6.ResumeLayout(false);
@@ -419,5 +450,8 @@
         private Button addBtn;
         private Button exportFileBtn;
         private Button importFileBtn;
+        private Label CalendarLabel;
+        private Label ClockLabel;
+        private System.Windows.Forms.Timer Timer;
     }
 }
