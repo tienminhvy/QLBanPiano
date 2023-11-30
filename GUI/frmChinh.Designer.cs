@@ -138,6 +138,7 @@
             dangXuatBtn.Name = "dangXuatBtn";
             dangXuatBtn.Size = new Size(81, 24);
             dangXuatBtn.Text = "Đăng xuất";
+            dangXuatBtn.Click += dangXuatBtn_Click;
             // 
             // mainPanel
             // 

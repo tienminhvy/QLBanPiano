@@ -219,6 +219,7 @@ namespace QLBanPiano
             if (tkBUS.DangNhap(userTextBox.Text, pwdTextBox.Text))
             {
                 frmChinh.username = userTextBox.Text;
+                frmChinh.nhanvien_id = tkBUS.GiaTriTruong("nhanvien_id", "tenDangNhap = N'" + userTextBox.Text + "'").ToString();
                 frmChinh.dsQuyen = tkBUS.dsQuyen(frmChinh.username);
                 Form f = new frmChinh(this);
                 f.ShowDialog();

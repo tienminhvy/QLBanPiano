@@ -24,7 +24,23 @@ namespace QLBanPiano.BUS
         }
         public List<DoiTuong> LayDS(string dieuKien)
         {
-            throw new NotImplementedException();
+            string sqlStr = "SELECT " +
+                "* " +
+                "FROM taikhoan " +
+                "WHERE " + dieuKien;
+
+            DataTable dt = db.Execute(sqlStr);
+            List<DoiTuong> ds = new List<DoiTuong>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                TaiKhoan taiKhoan = new TaiKhoan();
+                taiKhoan.TenDangNhap = row["tenDangNhap"].ToString();
+                taiKhoan.MatKhau = row["matKhau"].ToString();
+                ds.Add(taiKhoan);
+
+            }
+            return ds;
         }
         public DataTable LayToanBoDS()
         {
@@ -32,7 +48,7 @@ namespace QLBanPiano.BUS
         }
         public int SoLuong(string dieuKien)
         {
-            throw new NotImplementedException();
+            return db.GetCount("taikhoan", dieuKien);
         }
         public bool Sua(params string[] dsTruong)
         {

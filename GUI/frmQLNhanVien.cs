@@ -19,6 +19,7 @@ namespace QLBanPiano.GUI.SubForm
         {
             InitializeComponent();
             HienThiDSNhanVien();
+            btn_reset.Enabled = false;
         }
 
         private void HienThiDSNhanVien()
@@ -28,7 +29,9 @@ namespace QLBanPiano.GUI.SubForm
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
-            frmLienKetTK linkAccount = new frmLienKetTK();
+            DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
+            string id = Cells[0].Value.ToString();
+            frmLienKetTK linkAccount = new frmLienKetTK(id);
             linkAccount.Show();
 
         }
@@ -37,6 +40,7 @@ namespace QLBanPiano.GUI.SubForm
         {
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
+                btn_reset.Enabled = true;
                 //lay du lieu tu cac cot cua datagridview
                 DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();

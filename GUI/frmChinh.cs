@@ -14,6 +14,7 @@ namespace QLBanPiano
         }
         private frmDangNhap fLogin;
         public static string username;
+        public static string nhanvien_id;
         public static List<string> dsQuyen;
         public frmChinh(frmDangNhap fLogin)
         {
@@ -66,6 +67,7 @@ namespace QLBanPiano
         }
         private void Init()
         {
+            lblThongTinDangNhap.Text += username + " | ID nhân viên: " + nhanvien_id;
             pianoToolStripMenuItem.Visible = false;
             khachHangToolStripMenuItem.Visible = false;
             nhanVienToolStripMenuItem.Visible = false;
@@ -154,6 +156,11 @@ namespace QLBanPiano
             e.Cancel = true;
             fLogin.Show();
             Dispose();
+        }
+
+        private void dangXuatBtn_Click(object sender, EventArgs e)
+        {
+            frmChinh_FormClosing(sender, new FormClosingEventArgs(CloseReason.UserClosing, false));
         }
     }
 }
