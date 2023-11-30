@@ -14,12 +14,66 @@ namespace QLBanPiano
         }
         private frmDangNhap fLogin;
         public static string username;
+        public static List<string> dsQuyen;
         public frmChinh(frmDangNhap fLogin)
         {
             this.fLogin = fLogin;
             InitializeComponent();
             innerNewForm(new frmThongKe());
             fLogin.Hide();
+            Init();
+            PhanQuyen();
+        }
+        private void PhanQuyen()
+        {
+            bool isQL = false;
+            foreach (string quyen in dsQuyen)
+            {
+                if (quyen == "banHang")
+                    banHangtoolStripButton.Visible = true;
+                if (quyen == "quanLyNhapHang")
+                {
+                    phieuNhapToolStripMenuItem.Visible = true;
+                    isQL = true;
+                }
+                if (quyen == "quanLyHoaDon")
+                {
+                    hoaDonToolStripMenuItem.Visible = true;
+                    isQL = true;
+                }
+                if (quyen == "quanLyNhacCu")
+                {
+                    pianoToolStripMenuItem.Visible = true;
+                    isQL = true;
+                }
+                if (quyen == "quanLyKhachHang")
+                {
+                    khachHangToolStripMenuItem.Visible = true;
+                    isQL = true;
+                }
+                if (quyen == "quanLyNhanVien")
+                {
+                    nhanVienToolStripMenuItem.Visible = true;
+                    isQL = true;
+                }
+                if (quyen == "nhapXuat")
+                {
+
+                }
+            }
+            if (isQL)
+                dstoolStripDropDownButton.Visible = true;
+        }
+        private void Init()
+        {
+            pianoToolStripMenuItem.Visible = false;
+            khachHangToolStripMenuItem.Visible = false;
+            nhanVienToolStripMenuItem.Visible = false;
+            phieuNhapToolStripMenuItem.Visible = false;
+            hoaDonToolStripMenuItem.Visible = false;
+            vaiTroToolStripMenuItem.Visible = false;
+            dstoolStripDropDownButton.Visible = false;
+            banHangtoolStripButton.Visible = false;
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -60,7 +114,7 @@ namespace QLBanPiano
             innerNewForm(new frmQLSanPham());
         }
 
-        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        private void khachHangToolStripMenuItem_Click(object sender, EventArgs e)
         {
             innerNewForm(new frmQLKhachHang());
         }

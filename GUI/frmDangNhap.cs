@@ -218,8 +218,9 @@ namespace QLBanPiano
             TaiKhoanBUS tkBUS = new TaiKhoanBUS();
             if (tkBUS.DangNhap(userTextBox.Text, pwdTextBox.Text))
             {
-                Form f = new frmChinh(this);
                 frmChinh.username = userTextBox.Text;
+                frmChinh.dsQuyen = tkBUS.dsQuyen(frmChinh.username);
+                Form f = new frmChinh(this);
                 f.ShowDialog();
             }
         }

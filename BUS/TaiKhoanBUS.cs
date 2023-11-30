@@ -100,7 +100,13 @@ namespace QLBanPiano.BUS
 
             return true;
         }
-
+        public List<string> dsQuyen(string username)
+        {
+            string vaitro_id = db.GetColumn("taikhoan", "vaitro_id", "tenDangNhap = N'" + username + "'").ToString();
+            VaiTroBUS vtBUS = new VaiTroBUS();
+            VaiTro vt = vtBUS.layVaiTro(vaitro_id);
+            return vt.DsQuyen;
+        }
         public bool DangNhap(string tenDangNhap, string matKhau)
         {
             if (tenDangNhap == string.Empty)

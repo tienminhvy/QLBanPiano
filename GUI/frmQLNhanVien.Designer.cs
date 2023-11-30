@@ -324,6 +324,7 @@
             dgvNhanVien.ReadOnly = true;
             dgvNhanVien.RowHeadersWidth = 51;
             dgvNhanVien.RowTemplate.Height = 29;
+            dgvNhanVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvNhanVien.Size = new Size(998, 266);
             dgvNhanVien.TabIndex = 0;
             dgvNhanVien.SelectionChanged += dgvNhanVien_SelectionChanged;

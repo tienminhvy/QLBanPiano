@@ -22,6 +22,22 @@ namespace QLBanPiano.BUS
             return db.GetColumn("vaitro", tenTruong, dieuKien);
         }
 
+        public VaiTro layVaiTro(string id)
+        {
+            string sqlStr = "SELECT " +
+                "* FROM vaitro WHERE trangthai = 1 AND id = " + id;
+            DataTable dt = db.Execute(sqlStr);
+            VaiTro vaiTro = new VaiTro();
+            foreach (DataRow row in dt.Rows)
+            {
+                vaiTro.Id = int.Parse(row["id"].ToString());
+                vaiTro.Ten = row["ten"].ToString();
+                List<string> dsQuyen = row["dsQuyen"].ToString().Split(',').ToList();
+                vaiTro.DsQuyen = dsQuyen;
+            }
+            return vaiTro;
+        }
+
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT " +

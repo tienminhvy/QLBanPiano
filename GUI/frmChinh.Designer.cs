@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChinh));
             toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            banHangtoolStripButton = new ToolStripButton();
+            dstoolStripDropDownButton = new ToolStripDropDownButton();
             pianoToolStripMenuItem = new ToolStripMenuItem();
-            kháchHàngToolStripMenuItem = new ToolStripMenuItem();
+            khachHangToolStripMenuItem = new ToolStripMenuItem();
             nhanVienToolStripMenuItem = new ToolStripMenuItem();
             phieuNhapToolStripMenuItem = new ToolStripMenuItem();
             hoaDonToolStripMenuItem = new ToolStripMenuItem();
@@ -53,31 +53,31 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripDropDownButton1, btnGioiThieu, dangXuatBtn });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { banHangtoolStripButton, dstoolStripDropDownButton, btnGioiThieu, dangXuatBtn });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1348, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // banHangtoolStripButton
             // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(75, 24);
-            toolStripButton1.Text = "Bán hàng";
-            toolStripButton1.Click += toolStripButton1_Click;
+            banHangtoolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            banHangtoolStripButton.Image = (Image)resources.GetObject("banHangtoolStripButton.Image");
+            banHangtoolStripButton.ImageTransparentColor = Color.Magenta;
+            banHangtoolStripButton.Name = "banHangtoolStripButton";
+            banHangtoolStripButton.Size = new Size(75, 24);
+            banHangtoolStripButton.Text = "Bán hàng";
+            banHangtoolStripButton.Click += toolStripButton1_Click;
             // 
-            // toolStripDropDownButton1
+            // dstoolStripDropDownButton
             // 
-            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { pianoToolStripMenuItem, kháchHàngToolStripMenuItem, nhanVienToolStripMenuItem, phieuNhapToolStripMenuItem, hoaDonToolStripMenuItem, vaiTroToolStripMenuItem });
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(123, 24);
-            toolStripDropDownButton1.Text = "Xem danh sách";
+            dstoolStripDropDownButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            dstoolStripDropDownButton.DropDownItems.AddRange(new ToolStripItem[] { pianoToolStripMenuItem, khachHangToolStripMenuItem, nhanVienToolStripMenuItem, phieuNhapToolStripMenuItem, hoaDonToolStripMenuItem, vaiTroToolStripMenuItem });
+            dstoolStripDropDownButton.ImageTransparentColor = Color.Magenta;
+            dstoolStripDropDownButton.Name = "dstoolStripDropDownButton";
+            dstoolStripDropDownButton.Size = new Size(123, 24);
+            dstoolStripDropDownButton.Text = "Xem danh sách";
             // 
             // pianoToolStripMenuItem
             // 
@@ -86,12 +86,12 @@
             pianoToolStripMenuItem.Text = "Piano";
             pianoToolStripMenuItem.Click += pianoToolStripMenuItem_Click;
             // 
-            // kháchHàngToolStripMenuItem
+            // khachHangToolStripMenuItem
             // 
-            kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            kháchHàngToolStripMenuItem.Size = new Size(169, 26);
-            kháchHàngToolStripMenuItem.Text = "Khách hàng";
-            kháchHàngToolStripMenuItem.Click += kháchHàngToolStripMenuItem_Click;
+            khachHangToolStripMenuItem.Name = "khachHangToolStripMenuItem";
+            khachHangToolStripMenuItem.Size = new Size(169, 26);
+            khachHangToolStripMenuItem.Text = "Khách hàng";
+            khachHangToolStripMenuItem.Click += khachHangToolStripMenuItem_Click;
             // 
             // nhanVienToolStripMenuItem
             // 
@@ -215,14 +215,14 @@
         private ToolStripButton dangXuatBtn;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblThongTinDangNhap;
-        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripDropDownButton dstoolStripDropDownButton;
         private ToolStripMenuItem pianoToolStripMenuItem;
-        private ToolStripMenuItem kháchHàngToolStripMenuItem;
+        private ToolStripMenuItem khachHangToolStripMenuItem;
         private ToolStripMenuItem nhanVienToolStripMenuItem;
         private ToolStripMenuItem phieuNhapToolStripMenuItem;
         private ToolStripMenuItem hoaDonToolStripMenuItem;
         private ToolStripMenuItem vaiTroToolStripMenuItem;
-        private ToolStripButton toolStripButton1;
+        private ToolStripButton banHangtoolStripButton;
         private Panel panel1;
         private Panel panel2;
     }

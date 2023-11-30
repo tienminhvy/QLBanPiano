@@ -112,7 +112,10 @@ namespace QLBanPiano.GUI.SubForm
 
                     if (nhanvien.Validate(hoLot, ten, dtpNgayVaoLam.Value.ToShortDateString(), sdt, address, id))
                     {
-                        MessageBox.Show("Sửa nhân viên thành công!");
+                        if (nhanvien.Sua(hoLot, ten, dtpNgayVaoLam.Value.ToShortDateString(), sdt, address, id))
+                            MessageBox.Show("Sửa nhân viên thành công!");
+                        else
+                            MessageBox.Show("Sửa nhân viên thất bại!");
                         HienThiDSNhanVien();
                     }
                     else
@@ -131,25 +134,22 @@ namespace QLBanPiano.GUI.SubForm
         {
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
-                if (dgvNhanVien.SelectedRows.Count > 0)
+                //xet tieu chi la ma nhan vien de xoa hang do ra khoi bang
+                if (nhanvien.Xoa("id = "+dgvNhanVien.SelectedRows[0].Cells[0].Value.ToString()))
                 {
-                    //xet tieu chi la ma nhan vien de xoa hang do ra khoi bang
-                    if (nhanvien.Xoa(dgvNhanVien.SelectedRows[0].Cells[0].Value.ToString()))
-                    {
-                        MessageBox.Show("Xoá nhân viên thành công!");
-                        HienThiDSNhanVien();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xoá nhân viên thất bại!");
-                    }
+                    MessageBox.Show("Xoá nhân viên thành công!");
+                    HienThiDSNhanVien();
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn nhân viên để xoá!");
+                    MessageBox.Show("Xoá nhân viên thất bại!");
                 }
-
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên để xoá!");
+            }
+
         }
     }
 }

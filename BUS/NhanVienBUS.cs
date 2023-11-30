@@ -59,7 +59,7 @@ namespace QLBanPiano.BUS
                 "ngayVaoLam as N'Ngày vào làm', " +
                 "sdt as N'Số điện thoại', " +
                 "diaChi as N'Địa chỉ' " +
-                "FROM nhanvien";
+                "FROM nhanvien WHERE trangthai = 1";
             
             return db.Execute(sqlStr);
         }
@@ -120,7 +120,7 @@ namespace QLBanPiano.BUS
                                 "ten = N'{1}', " +
                                 "ngayVaoLam = '{2}', " +
                                 "sdt = '{3}', " +
-                                "diaChi = N'{4}', " +
+                                "diaChi = N'{4}' " +
                                 "WHERE id = '{5}'",
                                 hoLot,
                                 ten,
