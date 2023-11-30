@@ -84,17 +84,17 @@ namespace QLBanPiano.BUS
             string dieuKien = "";
             switch (tieuChi)
             {
-                case "ID":
+                case "Mã khách hàng":
                     {
                         dieuKien = "CAST(id AS VARCHAR) LIKE '%" + giaTri + "%'";
                         break;
                     }
-                case "Tên":
+                case "Tên khách hàng":
                     {
                         dieuKien = "Upper(ten) LIKE N'%" + giaTri.ToUpper() + "%'";
                         break;
                     }
-                case "SDT":
+                case "Số điện thoại":
                     {
                         dieuKien = "sdt LIKE N'%" + giaTri + "%'";
                         break;
@@ -215,7 +215,7 @@ namespace QLBanPiano.BUS
          */
         public bool Xoa(string tieuChi)
         {
-            db.ExecuteNonQuery(string.Format("UPDATE khachhang" +
+            db.ExecuteNonQuery(string.Format("UPDATE khachhang " +
                 "SET trangthai = 0 " +
                 "WHERE {0}", tieuChi));
             return true;

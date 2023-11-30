@@ -97,9 +97,9 @@
             // btnSua
             // 
             btnSua.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSua.Location = new Point(480, 192);
+            btnSua.Location = new Point(467, 192);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(185, 31);
+            btnSua.Size = new Size(183, 31);
             btnSua.TabIndex = 8;
             btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = true;
@@ -108,9 +108,9 @@
             // btnXoa
             // 
             btnXoa.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnXoa.Location = new Point(247, 192);
+            btnXoa.Location = new Point(242, 192);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(202, 31);
+            btnXoa.Size = new Size(183, 31);
             btnXoa.TabIndex = 7;
             btnXoa.Text = "&Xóa";
             btnXoa.UseVisualStyleBackColor = true;
@@ -119,9 +119,9 @@
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThem.Location = new Point(11, 192);
+            btnThem.Location = new Point(18, 192);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(210, 31);
+            btnThem.Size = new Size(183, 31);
             btnThem.TabIndex = 6;
             btnThem.Text = "T&hêm";
             btnThem.UseVisualStyleBackColor = true;
@@ -129,16 +129,18 @@
             // 
             // txtSoDienThoai
             // 
+            txtSoDienThoai.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSoDienThoai.Location = new Point(448, 85);
             txtSoDienThoai.Name = "txtSoDienThoai";
-            txtSoDienThoai.Size = new Size(202, 33);
+            txtSoDienThoai.Size = new Size(202, 30);
             txtSoDienThoai.TabIndex = 5;
             // 
             // txtDiaChi
             // 
+            txtDiaChi.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtDiaChi.Location = new Point(419, 37);
             txtDiaChi.Name = "txtDiaChi";
-            txtDiaChi.Size = new Size(231, 33);
+            txtDiaChi.Size = new Size(231, 30);
             txtDiaChi.TabIndex = 4;
             // 
             // label8
@@ -163,24 +165,27 @@
             // 
             // txtTen
             // 
+            txtTen.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTen.Location = new Point(89, 136);
             txtTen.Name = "txtTen";
-            txtTen.Size = new Size(187, 33);
+            txtTen.Size = new Size(187, 30);
             txtTen.TabIndex = 3;
             // 
             // txtHoLot
             // 
+            txtHoLot.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtHoLot.Location = new Point(89, 85);
             txtHoLot.Name = "txtHoLot";
-            txtHoLot.Size = new Size(187, 33);
+            txtHoLot.Size = new Size(187, 30);
             txtHoLot.TabIndex = 2;
             // 
             // txtMaKH
             // 
+            txtMaKH.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtMaKH.Location = new Point(89, 37);
             txtMaKH.Name = "txtMaKH";
             txtMaKH.ReadOnly = true;
-            txtMaKH.Size = new Size(187, 33);
+            txtMaKH.Size = new Size(187, 30);
             txtMaKH.TabIndex = 1;
             // 
             // label6
@@ -238,21 +243,25 @@
             btnTimKiem.TabIndex = 3;
             btnTimKiem.Text = "&Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // txtTimKiem
             // 
+            txtTimKiem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTimKiem.Location = new Point(160, 90);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(249, 33);
+            txtTimKiem.Size = new Size(249, 30);
             txtTimKiem.TabIndex = 2;
             // 
             // cbbTimKiem
             // 
             cbbTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbTimKiem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbbTimKiem.FormattingEnabled = true;
+            cbbTimKiem.Items.AddRange(new object[] { "Mã khách hàng", "Tên khách hàng", "Số điện thoại" });
             cbbTimKiem.Location = new Point(160, 43);
             cbbTimKiem.Name = "cbbTimKiem";
-            cbbTimKiem.Size = new Size(249, 33);
+            cbbTimKiem.Size = new Size(249, 30);
             cbbTimKiem.TabIndex = 1;
             // 
             // label3
@@ -320,6 +329,7 @@
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý khách hàng";
+            Load += frmQLKhachHang_Load_1;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);

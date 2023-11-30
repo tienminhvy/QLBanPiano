@@ -1,4 +1,6 @@
 ﻿using QLBanPiano.BUS;
+using QLBanPiano.DTO;
+using QLBanPiano.GUI.SubForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,11 +37,15 @@ namespace QLBanPiano.GUI
                 string ten = Cells[2].Value.ToString();
                 string diaChi = Cells[3].Value.ToString();
                 string sdt = Cells[4].Value.ToString();
-                txtMaKH.Text = ten;
+                txtMaKH.Text = id;
                 txtHoLot.Text = hoLot;
                 txtTen.Text = ten;
                 txtDiaChi.Text = diaChi;
                 txtSoDienThoai.Text = sdt;
+            }
+            else
+            {
+                resetTextBoxes();
             }
         }
 
@@ -51,13 +57,14 @@ namespace QLBanPiano.GUI
             txtDiaChi.Text = "";
             txtSoDienThoai.Text = "";
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
+
             if (dgvKhachHang.SelectedRows.Count > 0)
             {
-                resetTextBoxes();
+                //resetTextBoxes();
                 dgvKhachHang.ClearSelection();
+                return;
             }
             else
             {
@@ -65,7 +72,7 @@ namespace QLBanPiano.GUI
                     txtHoLot.Text,
                     txtTen.Text,
                     txtDiaChi.Text,
-                    txtSoDienThoai.Text, "-1"))
+                    txtSoDienThoai.Text, "0"))
                 {
                     if (khachhang.Them(
                         txtHoLot.Text,
@@ -75,6 +82,7 @@ namespace QLBanPiano.GUI
                     {
                         MessageBox.Show("Thêm khách hàng!");
                         HienDSKhachHang();
+                        resetTextBoxes();
                     }
                     else
                     {
@@ -86,21 +94,35 @@ namespace QLBanPiano.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dgvKhachHang.SelectedRows.Count > 0)
+
+            if (txtMaKH.Text.Trim().Length == 0)
             {
-                if (dgvKhachHang.SelectedRows.Count > 0)
-                {
-                    if (khachhang.Xoa(dgvKhachHang.SelectedRows[0].Cells[0].Value.ToString()))
-                    {
-                        MessageBox.Show("Xóa khách hàng thành công!");
-                        HienDSKhachHang();
-                    }
-                    else MessageBox.Show("Xóa khách hàng thất bại!");
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn khách hàng đẻ xóa!");
-                }
+                MessageBox.Show("Chọn khách hàng muốn xóa", "Thông báo");
+                return;
+            }
+            int id = int.Parse(txtMaKH.Text.Trim());
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa khách hàng có mã là: " + id + " không?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            if (khachhang.Xoa("Id=" + id))
+            {
+                MessageBox.Show("Xóa khách hàng thành công!");
+                HienDSKhachHang();                
+                txtMaKH.Text = string.Empty;
+                txtHoLot.Text = string.Empty;
+                txtTen.Text = string.Empty;
+                txtDiaChi.Text = string.Empty;
+                txtSoDienThoai.Text = string.Empty;
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("Xóa khách hàng thất bại!");
             }
         }
 
@@ -108,10 +130,12 @@ namespace QLBanPiano.GUI
         {
             if (dgvKhachHang.SelectedRows.Count > 0)
             {
-                DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
-                string id = Cells[0].Value.ToString();
-                if (khachhang.Validate(txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, id))
+
+
+                if (khachhang.Validate(txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "0"))
                 {
+                    DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
+                    string id = Cells[0].Value.ToString();
                     txtMaKH.Text = id;
                     string hoLot = txtHoLot.Text;
                     string ten = txtTen.Text;
@@ -126,6 +150,7 @@ namespace QLBanPiano.GUI
                         id))
                     {
                         MessageBox.Show("Sửa khách hàng thành công!");
+                        resetTextBoxes();
                         HienDSKhachHang();
                     }
                 }
@@ -133,5 +158,23 @@ namespace QLBanPiano.GUI
             }
             else MessageBox.Show("Vui lòng chọn khách hàng để sửa!");
         }
+
+        private void frmQLKhachHang_Load_1(object sender, EventArgs e)
+        {
+            cbbTimKiem.Text = "Mã khách hàng";
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Hãy nhập thông tin tìm kiếm", "Thông báo");
+                return;
+            }
+
+
+        }
+
+        
     }
 }
