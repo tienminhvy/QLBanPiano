@@ -37,8 +37,9 @@ namespace QLBanPiano.BUS
                 TaiKhoan taiKhoan = new TaiKhoan();
                 taiKhoan.TenDangNhap = row["tenDangNhap"].ToString();
                 taiKhoan.MatKhau = row["matKhau"].ToString();
+                taiKhoan.VaiTro = new VaiTro();
+                taiKhoan.VaiTro.Id = int.Parse(row["vaitro_id"].ToString());
                 ds.Add(taiKhoan);
-
             }
             return ds;
         }
@@ -52,33 +53,29 @@ namespace QLBanPiano.BUS
         }
         public bool Sua(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string tenDangNhap = dsTruong[1];
-            string matKhau = dsTruong[2];
-            string nhanvien_id = dsTruong[3];
-            string vaitro_id = dsTruong[4];
+            string tenDangNhap = dsTruong[0];
+            string matKhau = dsTruong[1];
+            string nhanvien_id = dsTruong[2];
+            string vaitro_id = dsTruong[3];
 
             db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
                 "SET tenDangNhap = '{0}', " +
                 "matKhau = '{1}', " +
-                "nhanvien_id = '{2}', " +
-                "vaitro_id = '{3}', " +
-                "WHERE id = '{4}'",
+                "vaitro_id = '{3}' " +
+                "WHERE nhanvien_id = '{2}'",
                 tenDangNhap,
                 matKhau,
                 nhanvien_id,
-                vaitro_id,
-                id));
+                vaitro_id));
 
             return true;
         }
         public bool Them(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string tenDangNhap = dsTruong[1];
-            string matKhau = dsTruong[2];
-            string nhanvien_id = dsTruong[3];
-            string vaitro_id = dsTruong[4];
+            string tenDangNhap = dsTruong[0];
+            string matKhau = dsTruong[1];
+            string nhanvien_id = dsTruong[2];
+            string vaitro_id = dsTruong[3];
 
             db.ExecuteNonQuery(string.Format("INSERT INTO taikhoan (tenDangNhap, matKhau, " +
                 "nhanvien_id, vaitro_id, trangthai) " +
@@ -92,30 +89,62 @@ namespace QLBanPiano.BUS
         }
         public bool Validate(params string[] dsTruong)
         {
-            string id = dsTruong[0];
-            string tenDangNhap = dsTruong[1];
-            string matKhau = dsTruong[2];
-            string nhanvien_id = dsTruong[3];
-            string vaitro_id = dsTruong[4];
-            
+            string tenDangNhap = dsTruong[0];
+            string matKhau = dsTruong[1];
+            string nhanvien_id = dsTruong[2];
+            string vaitro_id = dsTruong[3];
+
             //kiem tra cac truong thong tin co rong hay khong
-            if (id.Equals("") || tenDangNhap.Equals("") || matKhau.Equals("") 
-                || nhanvien_id.Equals("") || vaitro_id.Equals(""))
+            if (tenDangNhap.Equals("") || matKhau.Equals(""))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                new Msg("Vui lòng nhập đầy đủ thông tin!", "err");
                 return false;
             }
 
+            if (nhanvien_id == "-1")
+            {
+                if (db.GetCount("taikhoan", "tenDangNhap = N'" + tenDangNhap + "'") > 0)
+                {
+                    new Msg("Tên đăng nhập đã tồn tại!", "err");
+                    return false;
+                }
+            } else
+            {
+                string tenDangNhapCu = db.GetColumn("taikhoan", "tenDangNhap", "nhanvien_id = " + nhanvien_id).ToString();
+                if (tenDangNhapCu != tenDangNhap)
+                { // Đổi tên đăng nhập
+                    if (db.GetCount("taikhoan", "tenDangNhap = N'" + tenDangNhap + "'") > 0)
+                    {
+                        new Msg("Tên đăng nhập đã tồn tại!", "err");
+                        return false;
+                    }
+                }
+            }
             return true;
-
         }
         public bool Xoa(string tieuChi)
         {
-            db.ExecuteNonQuery(string.Format("UPDATE taikhoan" +
-                "SET trangthai =0" + "WHERE {1}", tieuChi));
+            db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
+                "SET trangthai = 0 " + "WHERE {0}", tieuChi));
 
             return true;
         }
+
+        public bool Khoa(string nhanvien_id)
+        {
+            db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
+                "SET trangthai = 0 " + "WHERE nhanvien_id = {0}", nhanvien_id));
+
+            return true;
+        }
+        public bool MoKhoa(string nhanvien_id)
+        {
+            db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
+                "SET trangthai = 1 " + "WHERE nhanvien_id = {0}", nhanvien_id));
+
+            return true;
+        }
+
         public List<string> dsQuyen(string username)
         {
             string vaitro_id = db.GetColumn("taikhoan", "vaitro_id", "tenDangNhap = N'" + username + "'").ToString();

@@ -36,8 +36,10 @@
             label_state = new Label();
             label_title = new Label();
             groupBox1 = new GroupBox();
-            txtTenDangNhap = new TextBox();
+            label1 = new Label();
+            cbVaiTro = new ComboBox();
             txtMatKhau = new TextBox();
+            txtTenDangNhap = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,6 +52,7 @@
             btnThaoTac.TabIndex = 17;
             btnThaoTac.Text = "Khoá/Mở khoá";
             btnThaoTac.UseVisualStyleBackColor = true;
+            btnThaoTac.Click += btnThaoTac_Click;
             // 
             // btnCapNhat
             // 
@@ -60,6 +63,7 @@
             btnCapNhat.TabIndex = 16;
             btnCapNhat.Text = "Tạo/Cập nhật";
             btnCapNhat.UseVisualStyleBackColor = true;
+            btnCapNhat.Click += btnCapNhat_Click;
             // 
             // label_pass
             // 
@@ -114,6 +118,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(cbVaiTro);
             groupBox1.Controls.Add(txtMatKhau);
             groupBox1.Controls.Add(txtTenDangNhap);
             groupBox1.Controls.Add(label_state);
@@ -126,12 +132,24 @@
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             // 
-            // txtTenDangNhap
+            // label1
             // 
-            txtTenDangNhap.Location = new Point(188, 55);
-            txtTenDangNhap.Name = "txtTenDangNhap";
-            txtTenDangNhap.Size = new Size(193, 27);
-            txtTenDangNhap.TabIndex = 16;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(14, 136);
+            label1.Name = "label1";
+            label1.Size = new Size(64, 23);
+            label1.TabIndex = 19;
+            label1.Text = "Vai trò:";
+            // 
+            // cbVaiTro
+            // 
+            cbVaiTro.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbVaiTro.FormattingEnabled = true;
+            cbVaiTro.Location = new Point(188, 136);
+            cbVaiTro.Name = "cbVaiTro";
+            cbVaiTro.Size = new Size(193, 28);
+            cbVaiTro.TabIndex = 18;
             // 
             // txtMatKhau
             // 
@@ -140,6 +158,13 @@
             txtMatKhau.PasswordChar = '*';
             txtMatKhau.Size = new Size(193, 27);
             txtMatKhau.TabIndex = 17;
+            // 
+            // txtTenDangNhap
+            // 
+            txtTenDangNhap.Location = new Point(188, 55);
+            txtTenDangNhap.Name = "txtTenDangNhap";
+            txtTenDangNhap.Size = new Size(193, 27);
+            txtTenDangNhap.TabIndex = 16;
             // 
             // frmLienKetTK
             // 
@@ -172,5 +197,7 @@
         private GroupBox groupBox1;
         private TextBox txtMatKhau;
         private TextBox txtTenDangNhap;
+        private ComboBox cbVaiTro;
+        private Label label1;
     }
 }
