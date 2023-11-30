@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLPhieuNhap));
-            panel1 = new Panel();
             label9 = new Label();
             label1 = new Label();
             phieuNhapGridView = new DataGridView();
@@ -43,7 +42,6 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            panel2 = new Panel();
             panel4 = new Panel();
             panel5 = new Panel();
             addBtn = new Button();
@@ -55,10 +53,8 @@
             ResetBtn = new Button();
             cbbTieuChi = new ComboBox();
             gridViewPanel = new Panel();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)phieuNhapGridView).BeginInit();
             panel3.SuspendLayout();
-            panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel7.SuspendLayout();
@@ -66,33 +62,24 @@
             gridViewPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(813, 96);
-            panel1.TabIndex = 1;
-            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(0, 0);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(152, 25);
+            label9.Size = new Size(127, 20);
             label9.TabIndex = 5;
             label9.Text = "@quanlibanpiano";
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkOrchid;
-            label1.Location = new Point(322, 37);
+            label1.Location = new Point(277, 22);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(322, 46);
             label1.TabIndex = 0;
@@ -101,29 +88,33 @@
             // 
             // phieuNhapGridView
             // 
+            phieuNhapGridView.AllowUserToAddRows = false;
+            phieuNhapGridView.AllowUserToDeleteRows = false;
+            phieuNhapGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             phieuNhapGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            phieuNhapGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            phieuNhapGridView.Dock = DockStyle.Fill;
-            phieuNhapGridView.Location = new Point(0, 0);
-            phieuNhapGridView.Margin = new Padding(2, 2, 2, 2);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            phieuNhapGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            phieuNhapGridView.Location = new Point(2, 265);
+            phieuNhapGridView.Margin = new Padding(2);
             phieuNhapGridView.Name = "phieuNhapGridView";
+            phieuNhapGridView.ReadOnly = true;
             phieuNhapGridView.RowHeadersWidth = 62;
             phieuNhapGridView.RowTemplate.Height = 33;
-            phieuNhapGridView.Size = new Size(813, 287);
+            phieuNhapGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            phieuNhapGridView.Size = new Size(870, 247);
             phieuNhapGridView.TabIndex = 0;
             phieuNhapGridView.CellClick += phieuNhapGridView_CellClick;
             phieuNhapGridView.CellDoubleClick += phieuNhapGridView_CellDoubleClick;
             // 
             // panel3
             // 
-            panel3.Anchor = AnchorStyles.None;
+            panel3.Anchor = AnchorStyles.Top;
             panel3.Controls.Add(nv_nameTextBox);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(dateTimePicker);
@@ -132,117 +123,120 @@
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
-            panel3.Location = new Point(0, 0);
+            panel3.Location = new Point(5, 83);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(508, 161);
+            panel3.Size = new Size(415, 129);
             panel3.TabIndex = 0;
             // 
             // nv_nameTextBox
             // 
             nv_nameTextBox.Enabled = false;
-            nv_nameTextBox.Location = new Point(322, 105);
+            nv_nameTextBox.Location = new Point(258, 84);
+            nv_nameTextBox.Margin = new Padding(2);
             nv_nameTextBox.Name = "nv_nameTextBox";
             nv_nameTextBox.ReadOnly = true;
-            nv_nameTextBox.Size = new Size(183, 31);
+            nv_nameTextBox.Size = new Size(147, 27);
             nv_nameTextBox.TabIndex = 7;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(188, 108);
+            label5.Location = new Point(150, 86);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(128, 25);
+            label5.Size = new Size(106, 20);
             label5.TabIndex = 6;
             label5.Text = "Tên nhân viên :";
             // 
             // dateTimePicker
             // 
             dateTimePicker.Enabled = false;
-            dateTimePicker.Location = new Point(136, 62);
+            dateTimePicker.Location = new Point(109, 50);
+            dateTimePicker.Margin = new Padding(2);
             dateTimePicker.Name = "dateTimePicker";
-            dateTimePicker.Size = new Size(369, 31);
+            dateTimePicker.Size = new Size(296, 27);
             dateTimePicker.TabIndex = 5;
             // 
             // idNhanVienTextBox
             // 
             idNhanVienTextBox.Enabled = false;
-            idNhanVienTextBox.Location = new Point(136, 105);
+            idNhanVienTextBox.Location = new Point(109, 84);
+            idNhanVienTextBox.Margin = new Padding(2);
             idNhanVienTextBox.Name = "idNhanVienTextBox";
             idNhanVienTextBox.ReadOnly = true;
-            idNhanVienTextBox.Size = new Size(46, 31);
+            idNhanVienTextBox.Size = new Size(38, 27);
             idNhanVienTextBox.TabIndex = 4;
             // 
             // idPhieuNhapTxtBox
             // 
             idPhieuNhapTxtBox.Enabled = false;
-            idPhieuNhapTxtBox.Location = new Point(136, 20);
+            idPhieuNhapTxtBox.Location = new Point(109, 16);
+            idPhieuNhapTxtBox.Margin = new Padding(2);
             idPhieuNhapTxtBox.Name = "idPhieuNhapTxtBox";
             idPhieuNhapTxtBox.ReadOnly = true;
-            idPhieuNhapTxtBox.Size = new Size(292, 31);
+            idPhieuNhapTxtBox.Size = new Size(234, 27);
             idPhieuNhapTxtBox.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 108);
+            label4.Location = new Point(2, 86);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(127, 25);
+            label4.Size = new Size(104, 20);
             label4.TabIndex = 2;
             label4.Text = "Mã nhân viên :";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(22, 67);
+            label3.Location = new Point(18, 54);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(108, 25);
+            label3.Size = new Size(88, 20);
             label3.TabIndex = 1;
             label3.Text = "Ngày nhập :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 20);
+            label2.Location = new Point(2, 16);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(140, 25);
+            label2.Size = new Size(115, 20);
             label2.TabIndex = 0;
             label2.Text = "Mã phiếu nhập :";
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(panel4);
-            panel2.Controls.Add(panel3);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 120);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(813, 129);
-            panel2.TabIndex = 4;
-            // 
             // panel4
             // 
-            panel4.Anchor = AnchorStyles.None;
+            panel4.Anchor = AnchorStyles.Top;
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel6);
-            panel4.Location = new Point(508, 0);
+            panel4.Location = new Point(424, 83);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(508, 161);
+            panel4.Size = new Size(445, 134);
             panel4.TabIndex = 18;
             // 
             // panel5
             // 
             panel5.Controls.Add(addBtn);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 100);
+            panel5.Location = new Point(0, 80);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(508, 61);
+            panel5.Size = new Size(445, 49);
             panel5.TabIndex = 12;
             // 
             // addBtn
             // 
-            addBtn.Location = new Point(398, 5);
+            addBtn.Dock = DockStyle.Right;
+            addBtn.Location = new Point(343, 0);
+            addBtn.Margin = new Padding(2);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(110, 51);
+            addBtn.Size = new Size(102, 49);
             addBtn.TabIndex = 0;
             addBtn.Text = "Thêm";
             addBtn.UseVisualStyleBackColor = true;
@@ -253,17 +247,18 @@
             panel7.Controls.Add(searchTextBox);
             panel7.Controls.Add(searchBtn);
             panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 50);
+            panel7.Location = new Point(0, 40);
+            panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(508, 50);
+            panel7.Size = new Size(445, 40);
             panel7.TabIndex = 11;
             // 
             // searchTextBox
             // 
-            searchTextBox.Anchor = AnchorStyles.None;
-            searchTextBox.Location = new Point(6, 10);
+            searchTextBox.Location = new Point(0, 7);
+            searchTextBox.Margin = new Padding(2);
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(386, 31);
+            searchTextBox.Size = new Size(315, 27);
             searchTextBox.TabIndex = 18;
             // 
             // searchBtn
@@ -271,9 +266,10 @@
             searchBtn.Dock = DockStyle.Right;
             searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
             searchBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            searchBtn.Location = new Point(398, 0);
+            searchBtn.Location = new Point(343, 0);
+            searchBtn.Margin = new Padding(2);
             searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(88, 40);
+            searchBtn.Size = new Size(102, 40);
             searchBtn.TabIndex = 8;
             searchBtn.Text = "Tìm kiếm";
             searchBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -287,16 +283,18 @@
             panel6.Controls.Add(cbbTieuChi);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(508, 50);
+            panel6.Size = new Size(445, 40);
             panel6.TabIndex = 10;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(6, 14);
+            label6.Location = new Point(5, 11);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(80, 25);
+            label6.Size = new Size(67, 20);
             label6.TabIndex = 12;
             label6.Text = "Tiêu chí :";
             // 
@@ -305,9 +303,10 @@
             ResetBtn.Dock = DockStyle.Right;
             ResetBtn.Image = (Image)resources.GetObject("ResetBtn.Image");
             ResetBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ResetBtn.Location = new Point(398, 0);
+            ResetBtn.Location = new Point(343, 0);
+            ResetBtn.Margin = new Padding(2);
             ResetBtn.Name = "ResetBtn";
-            ResetBtn.Size = new Size(110, 50);
+            ResetBtn.Size = new Size(102, 40);
             ResetBtn.TabIndex = 11;
             ResetBtn.Text = "Làm mới";
             ResetBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -318,40 +317,40 @@
             // 
             cbbTieuChi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTieuChi.FormattingEnabled = true;
-            cbbTieuChi.Location = new Point(92, 6);
+            cbbTieuChi.Location = new Point(74, 5);
+            cbbTieuChi.Margin = new Padding(2);
             cbbTieuChi.Name = "cbbTieuChi";
-            cbbTieuChi.Size = new Size(300, 33);
+            cbbTieuChi.Size = new Size(241, 28);
             cbbTieuChi.TabIndex = 10;
             cbbTieuChi.SelectedIndexChanged += cbbTieuChi_SelectedIndexChanged;
             // 
             // gridViewPanel
             // 
+            gridViewPanel.Controls.Add(label9);
+            gridViewPanel.Controls.Add(panel4);
+            gridViewPanel.Controls.Add(label1);
             gridViewPanel.Controls.Add(phieuNhapGridView);
+            gridViewPanel.Controls.Add(panel3);
             gridViewPanel.Dock = DockStyle.Fill;
-            gridViewPanel.Location = new Point(0, 281);
+            gridViewPanel.Location = new Point(0, 0);
+            gridViewPanel.Margin = new Padding(2);
             gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(1016, 359);
+            gridViewPanel.Size = new Size(874, 512);
             gridViewPanel.TabIndex = 5;
             // 
-            // QLPN
+            // frmQLPhieuNhap
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1016, 640);
+            ClientSize = new Size(874, 512);
             Controls.Add(gridViewPanel);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "frmQLPhieuNhap";
             Text = "QLPN";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)phieuNhapGridView).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel7.ResumeLayout(false);
@@ -359,16 +358,14 @@
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             gridViewPanel.ResumeLayout(false);
+            gridViewPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private Label label1;
         private DataGridView phieuNhapGridView;
         private Label label9;
-        private Panel panel2;
         private Panel panel3;
         private DateTimePicker dateTimePicker;
         private TextBox idNhanVienTextBox;

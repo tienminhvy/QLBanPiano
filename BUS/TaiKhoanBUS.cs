@@ -1,5 +1,6 @@
 using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -89,10 +90,6 @@ namespace QLBanPiano.BUS
                 return false;
             }
 
-            //kiem tra id cua tai khoan co ton tai hay chua
-            if (db.GetCount("taikhoan", "id = '" + id + "' AND trangthai = 1") == 0)
-                MessageBox.Show("Mã tài khoản đã tồn tại");
-
             return true;
 
         }
@@ -102,6 +99,45 @@ namespace QLBanPiano.BUS
                 "SET trangthai =0" + "WHERE {1}", tieuChi));
 
             return true;
+        }
+
+        public bool DangNhap(string tenDangNhap, string matKhau)
+        {
+            if (tenDangNhap == string.Empty)
+            {
+                new Msg("Tên đăng nhập không được để trống!", "err");
+                return false;
+            }
+            int count = db.GetCount("taikhoan", "tenDangNhap = N'" + tenDangNhap + "'");
+            if (count > 0)
+            {
+                bool trangThai = (bool) db.GetColumn("taikhoan", "trangthai", "tenDangNhap = N'" + tenDangNhap + "'");
+                if (!trangThai)
+                {
+                    new Msg("Tài khoản đã bị khoá!", "err");
+                    return false;
+                } else if (matKhau == string.Empty)
+                {
+                    new Msg("Mật khẩu không được để trống!", "err");
+                    return false;
+                } else
+                {
+                    count = (int) db.GetCount("taikhoan", "tenDangNhap = N'" + tenDangNhap + "' AND matKhau = N'"+matKhau+"'");
+                    if (count > 0)
+                    {
+                        new Msg("Đăng nhập thành công!");
+                        return true;
+                    } else
+                    {
+                        new Msg("Sai mật khẩu!", "err");
+                        return false;
+                    }
+                }
+            } else
+            {
+                new Msg("Không tồn tại tên đăng nhập!", "err");
+            }
+            return false;
         }
     }
 }

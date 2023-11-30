@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
             label1 = new Label();
-            panel2 = new Panel();
             groupBox2 = new GroupBox();
             btnSua = new Button();
             btnXoa = new Button();
@@ -52,25 +50,13 @@
             label3 = new Label();
             label2 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            panel3 = new Panel();
             dgvKhachHang = new DataGridView();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            panel1 = new Panel();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvKhachHang).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.MinimumSize = new Size(1141, 71);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1141, 71);
-            panel1.TabIndex = 0;
             // 
             // label1
             // 
@@ -78,21 +64,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.MenuHighlight;
-            label1.Location = new Point(375, 18);
+            label1.Location = new Point(370, 9);
             label1.Name = "label1";
             label1.Size = new Size(422, 38);
             label1.TabIndex = 0;
             label1.Text = "QUẢN LÝ KHÁCH HÀNG";
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(groupBox2);
-            panel2.Controls.Add(groupBox1);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 71);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1141, 587);
-            panel2.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -111,7 +87,7 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.Location = new Point(459, 6);
+            groupBox2.Location = new Point(461, 65);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(671, 274);
             groupBox2.TabIndex = 1;
@@ -246,7 +222,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(7, 6);
+            groupBox1.Location = new Point(9, 65);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(446, 274);
             groupBox1.TabIndex = 0;
@@ -300,32 +276,37 @@
             label2.TabIndex = 0;
             label2.Text = "Tìm kiếm theo: ";
             // 
-            // panel3
-            // 
-            panel3.Controls.Add(dgvKhachHang);
-            panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 366);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1141, 292);
-            panel3.TabIndex = 2;
-            // 
             // dgvKhachHang
             // 
             dgvKhachHang.AllowUserToAddRows = false;
             dgvKhachHang.AllowUserToDeleteRows = false;
+            dgvKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhachHang.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvKhachHang.BackgroundColor = SystemColors.Control;
             dgvKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvKhachHang.Dock = DockStyle.Fill;
-            dgvKhachHang.Location = new Point(0, 0);
+            dgvKhachHang.Location = new Point(3, 345);
             dgvKhachHang.MultiSelect = false;
             dgvKhachHang.Name = "dgvKhachHang";
             dgvKhachHang.ReadOnly = true;
             dgvKhachHang.RowHeadersWidth = 51;
             dgvKhachHang.RowTemplate.Height = 29;
             dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvKhachHang.Size = new Size(1141, 292);
+            dgvKhachHang.Size = new Size(1135, 310);
             dgvKhachHang.TabIndex = 0;
             dgvKhachHang.SelectionChanged += dgvKhachHang_SelectionChanged;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(dgvKhachHang);
+            panel1.Controls.Add(groupBox1);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(groupBox2);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1141, 658);
+            panel1.TabIndex = 3;
             // 
             // frmQLKhachHang
             // 
@@ -334,31 +315,23 @@
             AutoScroll = true;
             AutoSize = true;
             ClientSize = new Size(1141, 658);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "frmQLKhachHang";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý khách hàng";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvKhachHang).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private Label label1;
-        private Panel panel2;
         private GroupBox groupBox1;
         private ComboBox cbbTimKiem;
         private Label label3;
@@ -380,7 +353,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button btnSua;
         private Button btnXoa;
-        private Panel panel3;
         private DataGridView dgvKhachHang;
+        private Panel panel1;
     }
 }

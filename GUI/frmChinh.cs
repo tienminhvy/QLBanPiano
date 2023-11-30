@@ -12,6 +12,15 @@ namespace QLBanPiano
             InitializeComponent();
             innerNewForm(new frmThongKe());
         }
+        private frmDangNhap fLogin;
+        public static string username;
+        public frmChinh(frmDangNhap fLogin)
+        {
+            this.fLogin = fLogin;
+            InitializeComponent();
+            innerNewForm(new frmThongKe());
+            fLogin.Hide();
+        }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
         {
@@ -79,6 +88,18 @@ namespace QLBanPiano
         private void frmChinh_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmChinh_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void frmChinh_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            fLogin.Show();
+            Dispose();
         }
     }
 }

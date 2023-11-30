@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLHoaDon));
-            panel1 = new Panel();
             label9 = new Label();
             label1 = new Label();
-            panel2 = new Panel();
             rightPanel = new Panel();
             nv_nameTextBox = new TextBox();
             kh_nameTextBox = new TextBox();
@@ -57,47 +55,34 @@
             hoaDonCountTxtBox = new TextBox();
             filterBtn = new Button();
             label6 = new Label();
-            gridViewPanel = new Panel();
             hoaDonGridView = new DataGridView();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            gridViewPanel = new Panel();
             rightPanel.SuspendLayout();
             leftPanel.SuspendLayout();
             panel5.SuspendLayout();
             panel7.SuspendLayout();
             panel4.SuspendLayout();
             totalTextBoxPanel.SuspendLayout();
-            gridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).BeginInit();
+            gridViewPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(824, 225);
-            panel1.TabIndex = 0;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(0, 0);
             label9.Name = "label9";
-            label9.Size = new Size(152, 25);
+            label9.Size = new Size(127, 20);
             label9.TabIndex = 4;
             label9.Text = "@quanlibanpiano";
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkOrchid;
-            label1.Location = new Point(272, 26);
+            label1.Location = new Point(396, 9);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(282, 46);
@@ -105,19 +90,9 @@
             label1.Text = "Quản Lý Hóa Đơn";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(rightPanel);
-            panel2.Controls.Add(leftPanel);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 120);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1035, 129);
-            panel2.TabIndex = 1;
-            // 
             // rightPanel
             // 
-            rightPanel.Anchor = AnchorStyles.None;
+            rightPanel.Anchor = AnchorStyles.Top;
             rightPanel.Controls.Add(nv_nameTextBox);
             rightPanel.Controls.Add(kh_nameTextBox);
             rightPanel.Controls.Add(label8);
@@ -130,7 +105,7 @@
             rightPanel.Controls.Add(label2);
             rightPanel.Controls.Add(kh_idTextBox);
             rightPanel.Controls.Add(label3);
-            rightPanel.Location = new Point(0, 0);
+            rightPanel.Location = new Point(29, 66);
             rightPanel.Name = "rightPanel";
             rightPanel.Size = new Size(559, 161);
             rightPanel.TabIndex = 5;
@@ -141,7 +116,7 @@
             nv_nameTextBox.Location = new Point(166, 87);
             nv_nameTextBox.Name = "nv_nameTextBox";
             nv_nameTextBox.ReadOnly = true;
-            nv_nameTextBox.Size = new Size(180, 31);
+            nv_nameTextBox.Size = new Size(180, 27);
             nv_nameTextBox.TabIndex = 11;
             // 
             // kh_nameTextBox
@@ -150,7 +125,7 @@
             kh_nameTextBox.Location = new Point(166, 46);
             kh_nameTextBox.Name = "kh_nameTextBox";
             kh_nameTextBox.ReadOnly = true;
-            kh_nameTextBox.Size = new Size(180, 31);
+            kh_nameTextBox.Size = new Size(180, 27);
             kh_nameTextBox.TabIndex = 10;
             // 
             // label8
@@ -158,7 +133,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(27, 87);
             label8.Name = "label8";
-            label8.Size = new Size(128, 25);
+            label8.Size = new Size(106, 20);
             label8.TabIndex = 9;
             label8.Text = "Tên nhân viên :";
             // 
@@ -167,7 +142,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(12, 52);
             label7.Name = "label7";
-            label7.Size = new Size(143, 25);
+            label7.Size = new Size(118, 20);
             label7.TabIndex = 8;
             label7.Text = "Tên khách hàng :";
             // 
@@ -176,7 +151,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(7, 124);
             label5.Name = "label5";
-            label5.Size = new Size(148, 25);
+            label5.Size = new Size(121, 20);
             label5.TabIndex = 3;
             label5.Text = "Ngày mua hàng :";
             // 
@@ -185,7 +160,7 @@
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Location = new Point(166, 124);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(293, 31);
+            dateTimePicker1.Size = new Size(293, 27);
             dateTimePicker1.TabIndex = 7;
             // 
             // label4
@@ -193,7 +168,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(367, 90);
             label4.Name = "label4";
-            label4.Size = new Size(127, 25);
+            label4.Size = new Size(104, 20);
             label4.TabIndex = 2;
             label4.Text = "Mã nhân viên :";
             // 
@@ -203,7 +178,7 @@
             idTextbox.Location = new Point(166, 6);
             idTextbox.Name = "idTextbox";
             idTextbox.ReadOnly = true;
-            idTextbox.Size = new Size(180, 31);
+            idTextbox.Size = new Size(180, 27);
             idTextbox.TabIndex = 4;
             // 
             // nv_idTextBox
@@ -212,7 +187,7 @@
             nv_idTextBox.Location = new Point(507, 87);
             nv_idTextBox.Name = "nv_idTextBox";
             nv_idTextBox.ReadOnly = true;
-            nv_idTextBox.Size = new Size(43, 31);
+            nv_idTextBox.Size = new Size(43, 27);
             nv_idTextBox.TabIndex = 6;
             // 
             // label2
@@ -220,7 +195,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(37, 12);
             label2.Name = "label2";
-            label2.Size = new Size(118, 25);
+            label2.Size = new Size(96, 20);
             label2.TabIndex = 0;
             label2.Text = "Mã hóa đơn :";
             // 
@@ -230,7 +205,7 @@
             kh_idTextBox.Location = new Point(507, 46);
             kh_idTextBox.Name = "kh_idTextBox";
             kh_idTextBox.ReadOnly = true;
-            kh_idTextBox.Size = new Size(43, 31);
+            kh_idTextBox.Size = new Size(43, 27);
             kh_idTextBox.TabIndex = 5;
             // 
             // label3
@@ -238,16 +213,16 @@
             label3.AutoSize = true;
             label3.Location = new Point(352, 52);
             label3.Name = "label3";
-            label3.Size = new Size(142, 25);
+            label3.Size = new Size(116, 20);
             label3.TabIndex = 1;
             label3.Text = "Mã khách hàng :";
             // 
             // leftPanel
             // 
-            leftPanel.Anchor = AnchorStyles.None;
+            leftPanel.Anchor = AnchorStyles.Top;
             leftPanel.Controls.Add(panel5);
             leftPanel.Controls.Add(panel4);
-            leftPanel.Location = new Point(556, 0);
+            leftPanel.Location = new Point(594, 66);
             leftPanel.Name = "leftPanel";
             leftPanel.Size = new Size(460, 161);
             leftPanel.TabIndex = 8;
@@ -259,7 +234,7 @@
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(368, 86);
+            panel5.Size = new Size(460, 86);
             panel5.TabIndex = 8;
             // 
             // panel7
@@ -268,17 +243,17 @@
             panel7.Controls.Add(textBox5);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 40);
-            panel7.Margin = new Padding(2, 2, 2, 2);
+            panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(368, 40);
+            panel7.Size = new Size(460, 40);
             panel7.TabIndex = 12;
             // 
             // searchBtn
             // 
             searchBtn.Dock = DockStyle.Right;
             searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
-            searchBtn.Location = new Point(313, 0);
-            searchBtn.Margin = new Padding(2, 2, 2, 2);
+            searchBtn.Location = new Point(405, 0);
+            searchBtn.Margin = new Padding(2);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(55, 40);
             searchBtn.TabIndex = 8;
@@ -288,7 +263,7 @@
             // textBox5
             // 
             textBox5.Location = new Point(12, 7);
-            textBox5.Margin = new Padding(2, 2, 2, 2);
+            textBox5.Margin = new Padding(2);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(294, 27);
             textBox5.TabIndex = 9;
@@ -297,9 +272,9 @@
             // 
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
-            panel6.Margin = new Padding(2, 2, 2, 2);
+            panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(368, 40);
+            panel6.Size = new Size(460, 40);
             panel6.TabIndex = 13;
             // 
             // panel4
@@ -329,7 +304,7 @@
             hoaDonCountTxtBox.Location = new Point(3, 15);
             hoaDonCountTxtBox.Name = "hoaDonCountTxtBox";
             hoaDonCountTxtBox.ReadOnly = true;
-            hoaDonCountTxtBox.Size = new Size(143, 31);
+            hoaDonCountTxtBox.Size = new Size(143, 27);
             hoaDonCountTxtBox.TabIndex = 10;
             // 
             // filterBtn
@@ -348,49 +323,51 @@
             label6.AutoSize = true;
             label6.Location = new Point(9, 18);
             label6.Name = "label6";
-            label6.Size = new Size(158, 25);
+            label6.Size = new Size(128, 20);
             label6.TabIndex = 9;
             label6.Text = "Tổng số hóa đơn :";
             // 
-            // gridViewPanel
-            // 
-            gridViewPanel.Controls.Add(hoaDonGridView);
-            gridViewPanel.Dock = DockStyle.Fill;
-            gridViewPanel.Location = new Point(0, 281);
-            gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(1016, 351);
-            gridViewPanel.TabIndex = 2;
-            // 
             // hoaDonGridView
             // 
+            hoaDonGridView.AllowUserToAddRows = false;
+            hoaDonGridView.AllowUserToDeleteRows = false;
             hoaDonGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hoaDonGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            hoaDonGridView.Location = new Point(0, 0);
-            hoaDonGridView.Margin = new Padding(2, 2, 2, 2);
+            hoaDonGridView.Location = new Point(2, 295);
+            hoaDonGridView.Margin = new Padding(2);
             hoaDonGridView.Name = "hoaDonGridView";
+            hoaDonGridView.ReadOnly = true;
             hoaDonGridView.RowHeadersWidth = 62;
             hoaDonGridView.RowTemplate.Height = 33;
-            hoaDonGridView.Size = new Size(1016, 351);
+            hoaDonGridView.Size = new Size(1065, 335);
             hoaDonGridView.TabIndex = 0;
             hoaDonGridView.CellClick += hoaDonGridView_CellClick;
             hoaDonGridView.CellDoubleClick += hoaDonGridView_CellDoubleClick;
+            // 
+            // gridViewPanel
+            // 
+            gridViewPanel.Controls.Add(label9);
+            gridViewPanel.Controls.Add(leftPanel);
+            gridViewPanel.Controls.Add(label1);
+            gridViewPanel.Controls.Add(rightPanel);
+            gridViewPanel.Controls.Add(hoaDonGridView);
+            gridViewPanel.Dock = DockStyle.Fill;
+            gridViewPanel.Location = new Point(0, 0);
+            gridViewPanel.Name = "gridViewPanel";
+            gridViewPanel.Size = new Size(1069, 632);
+            gridViewPanel.TabIndex = 2;
             // 
             // frmQLHoaDon
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1016, 632);
+            ClientSize = new Size(1069, 632);
             Controls.Add(gridViewPanel);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "frmQLHoaDon";
             Text = "QLHD";
             Load += QLHD_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
             rightPanel.ResumeLayout(false);
             rightPanel.PerformLayout();
             leftPanel.ResumeLayout(false);
@@ -401,23 +378,20 @@
             panel4.PerformLayout();
             totalTextBoxPanel.ResumeLayout(false);
             totalTextBoxPanel.PerformLayout();
-            gridViewPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).EndInit();
+            gridViewPanel.ResumeLayout(false);
+            gridViewPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private Label label1;
-        private Panel panel2;
         private TextBox kh_idTextBox;
         private TextBox idTextbox;
         private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
-        private Panel gridViewPanel;
         private DataGridView hoaDonGridView;
         private DateTimePicker dateTimePicker1;
         private TextBox nv_idTextBox;
@@ -438,5 +412,6 @@
         private Label label8;
         private Label label7;
         private Label label9;
+        private Panel gridViewPanel;
     }
 }

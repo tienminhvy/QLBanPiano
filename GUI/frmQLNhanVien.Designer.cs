@@ -257,9 +257,9 @@
             groupBoxInfor.Controls.Add(label_midName);
             groupBoxInfor.Controls.Add(txt_id);
             groupBoxInfor.Controls.Add(label_id);
-            groupBoxInfor.Location = new Point(378, 49);
+            groupBoxInfor.Location = new Point(349, 48);
             groupBoxInfor.Name = "groupBoxInfor";
-            groupBoxInfor.Size = new Size(607, 268);
+            groupBoxInfor.Size = new Size(649, 268);
             groupBoxInfor.TabIndex = 6;
             groupBoxInfor.TabStop = false;
             groupBoxInfor.Text = "Thông tin nhân viên";
@@ -279,20 +279,20 @@
             groupBoxSearch.Controls.Add(label_type);
             groupBoxSearch.Controls.Add(txtSearch);
             groupBoxSearch.Controls.Add(label_input);
-            groupBoxSearch.Location = new Point(31, 61);
+            groupBoxSearch.Location = new Point(0, 48);
             groupBoxSearch.Name = "groupBoxSearch";
-            groupBoxSearch.Size = new Size(335, 256);
+            groupBoxSearch.Size = new Size(335, 268);
             groupBoxSearch.TabIndex = 5;
             groupBoxSearch.TabStop = false;
             groupBoxSearch.Text = "Tìm kiếm";
             // 
             // label_title
             // 
-            label_title.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label_title.Anchor = AnchorStyles.Top;
             label_title.AutoSize = true;
             label_title.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label_title.ForeColor = Color.Blue;
-            label_title.Location = new Point(317, 9);
+            label_title.Location = new Point(349, 9);
             label_title.Margin = new Padding(4, 0, 4, 0);
             label_title.Name = "label_title";
             label_title.Size = new Size(335, 28);
@@ -302,25 +302,29 @@
             // panel1
             // 
             panel1.Controls.Add(dgvNhanVien);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 391);
+            panel1.Controls.Add(label_title);
+            panel1.Controls.Add(groupBoxInfor);
+            panel1.Controls.Add(groupBoxSearch);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1013, 209);
+            panel1.Size = new Size(1006, 600);
             panel1.TabIndex = 7;
             // 
             // dgvNhanVien
             // 
             dgvNhanVien.AllowUserToAddRows = false;
             dgvNhanVien.AllowUserToDeleteRows = false;
+            dgvNhanVien.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvNhanVien.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvNhanVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNhanVien.Dock = DockStyle.Fill;
-            dgvNhanVien.Location = new Point(0, 0);
+            dgvNhanVien.Location = new Point(3, 322);
             dgvNhanVien.Name = "dgvNhanVien";
             dgvNhanVien.ReadOnly = true;
             dgvNhanVien.RowHeadersWidth = 51;
             dgvNhanVien.RowTemplate.Height = 29;
-            dgvNhanVien.Size = new Size(1013, 209);
+            dgvNhanVien.Size = new Size(998, 266);
             dgvNhanVien.TabIndex = 0;
             dgvNhanVien.SelectionChanged += dgvNhanVien_SelectionChanged;
             // 
@@ -328,12 +332,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(995, 553);
+            ClientSize = new Size(1006, 600);
             Controls.Add(panel1);
-            Controls.Add(groupBoxInfor);
-            Controls.Add(groupBoxSearch);
-            Controls.Add(label_title);
-            FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(1013, 600);
             Name = "frmQLNhanVien";
             StartPosition = FormStartPosition.CenterScreen;
@@ -343,9 +343,9 @@
             groupBoxSearch.ResumeLayout(false);
             groupBoxSearch.PerformLayout();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNhanVien).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

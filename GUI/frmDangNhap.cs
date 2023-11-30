@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLBanPiano.BUS;
+using QLBanPiano.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,10 +26,10 @@ namespace QLBanPiano
         {
             userTextBox.Text = Piano.Cons.userText;
             userTextBox.Font = Piano.Cons.textBoxFont;
-            userTextBox.ForeColor = Piano.Cons.loginColor;
+            //userTextBox.ForeColor = Piano.Cons.loginColor;
             pwdTextBox.Text = Piano.Cons.pwdText;
             pwdTextBox.Font = Piano.Cons.loginFont;
-            pwdTextBox.ForeColor = Piano.Cons.loginColor;
+            //pwdTextBox.ForeColor = Piano.Cons.loginColor;
 
         }
         private void label1_Click(object sender, EventArgs e)
@@ -208,6 +210,17 @@ namespace QLBanPiano
             if (pwdTextBox.Text == string.Empty)
             {
                 pwdTextBox.Text = Piano.Cons.pwdText;
+            }
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+            if (tkBUS.DangNhap(userTextBox.Text, pwdTextBox.Text))
+            {
+                Form f = new frmChinh(this);
+                frmChinh.username = userTextBox.Text;
+                f.ShowDialog();
             }
         }
     }

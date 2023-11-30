@@ -76,6 +76,7 @@
             // 
             // mainPanel
             // 
+            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             mainPanel.Controls.Add(panel2);
             mainPanel.Controls.Add(panel1);
             mainPanel.Controls.Add(headerPanel);
@@ -86,6 +87,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.Controls.Add(btnSua);
             panel2.Controls.Add(btnXoa);
             panel2.Controls.Add(btnNhapLai);
@@ -303,9 +305,10 @@
             // 
             // label13
             // 
+            label13.Anchor = AnchorStyles.Top;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(54, 0);
+            label13.Location = new Point(55, 6);
             label13.Name = "label13";
             label13.Size = new Size(273, 41);
             label13.TabIndex = 1;
@@ -330,7 +333,12 @@
             // 
             // dgvSanPham
             // 
+            dgvSanPham.AllowUserToAddRows = false;
+            dgvSanPham.AllowUserToDeleteRows = false;
+            dgvSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSanPham.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSanPham.Dock = DockStyle.Fill;
             dgvSanPham.Location = new Point(0, 0);
             dgvSanPham.MultiSelect = false;
             dgvSanPham.Name = "dgvSanPham";
@@ -338,7 +346,7 @@
             dgvSanPham.RowHeadersWidth = 51;
             dgvSanPham.RowTemplate.Height = 29;
             dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSanPham.Size = new Size(867, 595);
+            dgvSanPham.Size = new Size(870, 595);
             dgvSanPham.TabIndex = 0;
             dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
             // 
@@ -493,7 +501,7 @@
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(1093, 764);
-            Name = "Product";
+            Name = "frmQLSanPham";
             Text = "Quản Lý Sản Phẩm";
             mainPanel.ResumeLayout(false);
             panel2.ResumeLayout(false);
