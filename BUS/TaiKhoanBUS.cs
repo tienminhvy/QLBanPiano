@@ -59,10 +59,10 @@ namespace QLBanPiano.BUS
             string vaitro_id = dsTruong[3];
 
             db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
-                "SET tenDangNhap = '{0}', " +
-                "matKhau = '{1}', " +
-                "vaitro_id = '{3}' " +
-                "WHERE nhanvien_id = '{2}'",
+                "SET tenDangNhap = N'{0}', " +
+                "matKhau = N'{1}', " +
+                "vaitro_id = {3} " +
+                "WHERE nhanvien_id = {2}",
                 tenDangNhap,
                 matKhau,
                 nhanvien_id,
@@ -79,7 +79,7 @@ namespace QLBanPiano.BUS
 
             db.ExecuteNonQuery(string.Format("INSERT INTO taikhoan (tenDangNhap, matKhau, " +
                 "nhanvien_id, vaitro_id, trangthai) " +
-                "VALUES ({1}, {2}, {3}, {4}, 1)",
+                "VALUES (N'{0}', N'{1}', {2}, {3}, 1)",
                 tenDangNhap,
                 matKhau,
                 nhanvien_id,

@@ -99,17 +99,19 @@ namespace QLBanPiano.GUI.SubForm
                     if (tkBUS.Sua(txtTenDangNhap.Text, txtMatKhau.Text, nv_id, cbVaiTro.SelectedValue.ToString()))
                     {
                         new Msg("Sửa nhân viên thành công!");
+                        Init();
                     }
                 }
             }
             else
             {
                 // Khởi tạo
-                if (tkBUS.Validate(txtTenDangNhap.Text, txtMatKhau.Text, nv_id, cbVaiTro.SelectedValue.ToString()))
+                if (tkBUS.Validate(txtTenDangNhap.Text, txtMatKhau.Text, "-1", cbVaiTro.SelectedValue.ToString()))
                 {
                     if (tkBUS.Them(txtTenDangNhap.Text, txtMatKhau.Text, nv_id, cbVaiTro.SelectedValue.ToString()))
                     {
                         new Msg("Thêm nhân viên thành công!");
+                        Init();
                     }
                 }
             }
