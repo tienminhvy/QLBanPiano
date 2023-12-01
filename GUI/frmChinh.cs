@@ -27,47 +27,61 @@ namespace QLBanPiano
         }
         private void PhanQuyen()
         {
+            int count = 0;
             bool isQL = false;
             foreach (string quyen in dsQuyen)
             {
                 if (quyen == "banHang")
+                {
                     banHangtoolStripButton.Visible = true;
+                    count++;
+                }
                 if (quyen == "quanLyNhapHang")
                 {
                     phieuNhapToolStripMenuItem.Visible = true;
                     isQL = true;
+                    count++;
                 }
                 if (quyen == "quanLyHoaDon")
                 {
                     hoaDonToolStripMenuItem.Visible = true;
                     isQL = true;
+                    count++;
                 }
                 if (quyen == "quanLyNhacCu")
                 {
                     pianoToolStripMenuItem.Visible = true;
                     isQL = true;
+                    count++;
                 }
                 if (quyen == "quanLyKhachHang")
                 {
                     khachHangToolStripMenuItem.Visible = true;
                     isQL = true;
+                    count++;
                 }
                 if (quyen == "quanLyNhanVien")
                 {
                     nhanVienToolStripMenuItem.Visible = true;
                     isQL = true;
+                    count++;
                 }
                 if (quyen == "thongKe")
                 {
                     thongKetoolStripButton.Visible = true;
+                    count++;
                 }
                 if (quyen == "nhapXuat")
                 {
-
+                    count++;
                 }
             }
             if (isQL)
                 dstoolStripDropDownButton.Visible = true;
+            if (count == 8)
+            {
+                vaiTroToolStripMenuItem.Visible = true;
+            }
         }
         private void Init()
         {
@@ -78,9 +92,10 @@ namespace QLBanPiano
             phieuNhapToolStripMenuItem.Visible = false;
             hoaDonToolStripMenuItem.Visible = false;
             vaiTroToolStripMenuItem.Visible = false;
-            dstoolStripDropDownButton.Visible = false;
             banHangtoolStripButton.Visible = false;
             thongKetoolStripButton.Visible = false;
+            // 8 quyền cơ bản
+            dstoolStripDropDownButton.Visible = false;
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)

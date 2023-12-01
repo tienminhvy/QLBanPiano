@@ -99,6 +99,8 @@ namespace QLBanPiano.GUI
                         ckQLNhanVien.Checked = true;
                     if (quyen.Equals("nhapXuat"))
                         ckNhapXuat.Checked = true;
+                    if (quyen.Equals("thongKe"))
+                        ckThongKe.Checked = true;
                 }
             }
         }
@@ -135,6 +137,8 @@ namespace QLBanPiano.GUI
                                 vt.DsQuyen.Add("quanLyNhanVien");
                             if (ck.Name.Equals("ckNhapXuat"))
                                 vt.DsQuyen.Add("nhapXuat");
+                            if (ck.Name.Equals("ckThongKe"))
+                                vt.DsQuyen.Add("thongKe");
                         }
                     }
                 }
