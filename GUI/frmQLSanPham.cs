@@ -198,7 +198,11 @@ namespace QLBanPiano
             txtDacDiemSP.Text = piano.DacDiemNoiBat.ToString();
             txtMoTaSP.Text = piano.MoTaChiTiet.ToString();
             string imagelink = projectDirectory + "GUI\\ImageSanPham\\" + piano.HinhAnh;
-            ptbAnh.Image = Image.FromFile(imagelink);
+
+            FileStream stream = new FileStream(imagelink, FileMode.Open, FileAccess.Read);
+            ptbAnh.Image = Image.FromStream(stream);
+            stream.Close();
+
             cbbLoaiSP.SelectedItem = piano.Phanloai;
             cbbThuongHieuSP.SelectedItem = piano.ThuongHieu.Ten;
         }
@@ -393,9 +397,11 @@ namespace QLBanPiano
             openFileDialog.Filter = "Image Files|*.jpg;*.gif;*.bmp;*.png;*.jpeg";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ptbAnh.Image = Image.FromFile(openFileDialog.FileName);
                 string destinationPath = projectDirectory + "GUI\\ImageSanPham\\" + txtIDSP.Text + ".png";
                 File.Copy(openFileDialog.FileName, destinationPath, true); //copy ảnh đã chọn vào folder lưu ảnh sản phẩm
+                FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
+                ptbAnh.Image = Image.FromStream(stream);
+                stream.Close();
             }
         }
     }
