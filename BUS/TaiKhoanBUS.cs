@@ -32,6 +32,8 @@ namespace QLBanPiano.BUS
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
+            VaiTroBUS vtBUS = new VaiTroBUS();
+
             foreach (DataRow row in dt.Rows)
             {
                 TaiKhoan taiKhoan = new TaiKhoan();
@@ -39,6 +41,7 @@ namespace QLBanPiano.BUS
                 taiKhoan.MatKhau = row["matKhau"].ToString();
                 taiKhoan.VaiTro = new VaiTro();
                 taiKhoan.VaiTro.Id = int.Parse(row["vaitro_id"].ToString());
+                taiKhoan.VaiTro.Ten = vtBUS.GiaTriTruong("ten", " id = " + row["vaitro_id"].ToString()).ToString();
                 ds.Add(taiKhoan);
             }
             return ds;
@@ -50,6 +53,20 @@ namespace QLBanPiano.BUS
         public int SoLuong(string dieuKien)
         {
             return db.GetCount("taikhoan", dieuKien);
+        }
+        public bool DoiMatKhau(string matKhau, string nhanvien_id)
+        {
+            new Msg(string.Format("UPDATE taikhoan " +
+                "SET matKhau = N'{0}' " +
+                "WHERE nhanvien_id = {1}",
+                matKhau,
+                nhanvien_id));
+            db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
+                "matKhau = N'{0}' " +
+                "WHERE nhanvien_id = {1}",
+                matKhau,
+                nhanvien_id));
+            return true;
         }
         public bool Sua(params string[] dsTruong)
         {

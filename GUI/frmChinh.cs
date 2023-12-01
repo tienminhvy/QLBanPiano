@@ -20,7 +20,20 @@ namespace QLBanPiano
         {
             this.fLogin = fLogin;
             InitializeComponent();
-            innerNewForm(new frmThongKe());
+            foreach (string quyen in dsQuyen)
+            {
+                if (quyen == "thongKe")
+                {
+                    innerNewForm(new frmThongKe());
+                    break;
+                }
+
+                else
+                {
+                    innerNewForm(new frmBanHang());
+                    break;
+                }
+            }
             fLogin.Hide();
             Init();
             PhanQuyen();
@@ -85,6 +98,7 @@ namespace QLBanPiano
         }
         private void Init()
         {
+            KeyPress += KeyPressEvent;
             lblThongTinDangNhap.Text += username + " | ID nhân viên: " + nhanvien_id;
             pianoToolStripMenuItem.Visible = false;
             khachHangToolStripMenuItem.Visible = false;
@@ -102,6 +116,7 @@ namespace QLBanPiano
         {
             frmGioiThieu about = new frmGioiThieu();
             about.Show();
+            about.KeyPress += KeyPressEvent;
         }
 
         private void btnTaoMoi_ButtonClick(object sender, EventArgs e)
@@ -186,6 +201,19 @@ namespace QLBanPiano
         private void thongKetoolStripButton_Click(object sender, EventArgs e)
         {
             innerNewForm(new frmThongKe());
+        }
+        private void KeyPressEvent(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                ((Form)sender).Dispose();
+            }
+        }
+        private void ttCaNhantoolStripButton_Click(object sender, EventArgs e)
+        {
+            frmChinhSuaThongTin frm = new frmChinhSuaThongTin();
+            frm.ShowDialog();
+            frm.KeyPress += KeyPressEvent;
         }
     }
 }

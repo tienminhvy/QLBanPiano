@@ -41,6 +41,7 @@
             btnGioiThieu = new ToolStripButton();
             dangXuatBtn = new ToolStripButton();
             thongKetoolStripButton = new ToolStripButton();
+            ttCaNhantoolStripButton = new ToolStripButton();
             mainPanel = new Panel();
             statusStrip1 = new StatusStrip();
             lblThongTinDangNhap = new ToolStripStatusLabel();
@@ -54,7 +55,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { banHangtoolStripButton, dstoolStripDropDownButton, btnGioiThieu, dangXuatBtn, thongKetoolStripButton });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { banHangtoolStripButton, dstoolStripDropDownButton, btnGioiThieu, dangXuatBtn, thongKetoolStripButton, ttCaNhantoolStripButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1348, 27);
@@ -151,6 +152,16 @@
             thongKetoolStripButton.Text = "Xem thống kê";
             thongKetoolStripButton.Click += thongKetoolStripButton_Click;
             // 
+            // ttCaNhantoolStripButton
+            // 
+            ttCaNhantoolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            ttCaNhantoolStripButton.Image = (Image)resources.GetObject("ttCaNhantoolStripButton.Image");
+            ttCaNhantoolStripButton.ImageTransparentColor = Color.Magenta;
+            ttCaNhantoolStripButton.Name = "ttCaNhantoolStripButton";
+            ttCaNhantoolStripButton.Size = new Size(196, 24);
+            ttCaNhantoolStripButton.Text = "Chỉnh sửa thông tin cá nhân";
+            ttCaNhantoolStripButton.Click += ttCaNhantoolStripButton_Click;
+            // 
             // mainPanel
             // 
             mainPanel.BackgroundImageLayout = ImageLayout.None;
@@ -238,5 +249,6 @@
         private Panel panel1;
         private Panel panel2;
         private ToolStripButton thongKetoolStripButton;
+        private ToolStripButton ttCaNhantoolStripButton;
     }
 }
