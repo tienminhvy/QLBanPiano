@@ -200,7 +200,7 @@ namespace QLBanPiano
 
         private void thongKetoolStripButton_Click(object sender, EventArgs e)
         {
-            innerNewForm(new frmThongKe());
+
         }
         private void KeyPressEvent(object sender, KeyPressEventArgs e)
         {
@@ -214,6 +214,16 @@ namespace QLBanPiano
             frmChinhSuaThongTin frm = new frmChinhSuaThongTin();
             frm.ShowDialog();
             frm.KeyPress += KeyPressEvent;
+        }
+
+        private void theoDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            innerNewForm(new frmThongKe());
+        }
+
+        private void theoThuongHieuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            innerNewForm(new frmThongKeThuongHieu());
         }
     }
 }

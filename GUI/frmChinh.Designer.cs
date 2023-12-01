@@ -38,10 +38,12 @@
             phieuNhapToolStripMenuItem = new ToolStripMenuItem();
             hoaDonToolStripMenuItem = new ToolStripMenuItem();
             vaiTroToolStripMenuItem = new ToolStripMenuItem();
+            ttCaNhantoolStripButton = new ToolStripButton();
+            thongKetoolStripButton = new ToolStripDropDownButton();
+            theoDoanhThuToolStripMenuItem = new ToolStripMenuItem();
+            theoThuongHieuToolStripMenuItem = new ToolStripMenuItem();
             btnGioiThieu = new ToolStripButton();
             dangXuatBtn = new ToolStripButton();
-            thongKetoolStripButton = new ToolStripButton();
-            ttCaNhantoolStripButton = new ToolStripButton();
             mainPanel = new Panel();
             statusStrip1 = new StatusStrip();
             lblThongTinDangNhap = new ToolStripStatusLabel();
@@ -55,7 +57,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { banHangtoolStripButton, dstoolStripDropDownButton, btnGioiThieu, dangXuatBtn, thongKetoolStripButton, ttCaNhantoolStripButton });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { banHangtoolStripButton, dstoolStripDropDownButton, ttCaNhantoolStripButton, thongKetoolStripButton, btnGioiThieu, dangXuatBtn });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1348, 27);
@@ -123,6 +125,40 @@
             vaiTroToolStripMenuItem.Text = "Vai trò";
             vaiTroToolStripMenuItem.Click += vaiTroToolStripMenuItem_Click;
             // 
+            // ttCaNhantoolStripButton
+            // 
+            ttCaNhantoolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            ttCaNhantoolStripButton.Image = (Image)resources.GetObject("ttCaNhantoolStripButton.Image");
+            ttCaNhantoolStripButton.ImageTransparentColor = Color.Magenta;
+            ttCaNhantoolStripButton.Name = "ttCaNhantoolStripButton";
+            ttCaNhantoolStripButton.Size = new Size(196, 24);
+            ttCaNhantoolStripButton.Text = "Chỉnh sửa thông tin cá nhân";
+            ttCaNhantoolStripButton.Click += ttCaNhantoolStripButton_Click;
+            // 
+            // thongKetoolStripButton
+            // 
+            thongKetoolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            thongKetoolStripButton.DropDownItems.AddRange(new ToolStripItem[] { theoDoanhThuToolStripMenuItem, theoThuongHieuToolStripMenuItem });
+            thongKetoolStripButton.Image = (Image)resources.GetObject("thongKetoolStripButton.Image");
+            thongKetoolStripButton.ImageTransparentColor = Color.Magenta;
+            thongKetoolStripButton.Name = "thongKetoolStripButton";
+            thongKetoolStripButton.Size = new Size(84, 24);
+            thongKetoolStripButton.Text = "Thống kê";
+            // 
+            // theoDoanhThuToolStripMenuItem
+            // 
+            theoDoanhThuToolStripMenuItem.Name = "theoDoanhThuToolStripMenuItem";
+            theoDoanhThuToolStripMenuItem.Size = new Size(209, 26);
+            theoDoanhThuToolStripMenuItem.Text = "Theo doanh thu";
+            theoDoanhThuToolStripMenuItem.Click += theoDoanhThuToolStripMenuItem_Click;
+            // 
+            // theoThuongHieuToolStripMenuItem
+            // 
+            theoThuongHieuToolStripMenuItem.Name = "theoThuongHieuToolStripMenuItem";
+            theoThuongHieuToolStripMenuItem.Size = new Size(209, 26);
+            theoThuongHieuToolStripMenuItem.Text = "Theo thương hiệu";
+            theoThuongHieuToolStripMenuItem.Click += theoThuongHieuToolStripMenuItem_Click;
+            // 
             // btnGioiThieu
             // 
             btnGioiThieu.DisplayStyle = ToolStripItemDisplayStyle.Text;
@@ -141,26 +177,6 @@
             dangXuatBtn.Size = new Size(81, 24);
             dangXuatBtn.Text = "Đăng xuất";
             dangXuatBtn.Click += dangXuatBtn_Click;
-            // 
-            // thongKetoolStripButton
-            // 
-            thongKetoolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            thongKetoolStripButton.Image = (Image)resources.GetObject("thongKetoolStripButton.Image");
-            thongKetoolStripButton.ImageTransparentColor = Color.Magenta;
-            thongKetoolStripButton.Name = "thongKetoolStripButton";
-            thongKetoolStripButton.Size = new Size(105, 24);
-            thongKetoolStripButton.Text = "Xem thống kê";
-            thongKetoolStripButton.Click += thongKetoolStripButton_Click;
-            // 
-            // ttCaNhantoolStripButton
-            // 
-            ttCaNhantoolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            ttCaNhantoolStripButton.Image = (Image)resources.GetObject("ttCaNhantoolStripButton.Image");
-            ttCaNhantoolStripButton.ImageTransparentColor = Color.Magenta;
-            ttCaNhantoolStripButton.Name = "ttCaNhantoolStripButton";
-            ttCaNhantoolStripButton.Size = new Size(196, 24);
-            ttCaNhantoolStripButton.Text = "Chỉnh sửa thông tin cá nhân";
-            ttCaNhantoolStripButton.Click += ttCaNhantoolStripButton_Click;
             // 
             // mainPanel
             // 
@@ -248,7 +264,10 @@
         private ToolStripButton banHangtoolStripButton;
         private Panel panel1;
         private Panel panel2;
-        private ToolStripButton thongKetoolStripButton;
+        private ToolStripDropDownButton thongKetoolStripButton;
         private ToolStripButton ttCaNhantoolStripButton;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripMenuItem theoDoanhThuToolStripMenuItem;
+        private ToolStripMenuItem theoThuongHieuToolStripMenuItem;
     }
 }

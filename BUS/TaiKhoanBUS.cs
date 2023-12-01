@@ -56,16 +56,10 @@ namespace QLBanPiano.BUS
         }
         public bool DoiMatKhau(string matKhau, string nhanvien_id)
         {
-            new Msg(string.Format("UPDATE taikhoan " +
-                "SET matKhau = N'{0}' " +
-                "WHERE nhanvien_id = {1}",
+            string strSql = string.Format("UPDATE taikhoan SET matKhau = N'{0}' WHERE nhanvien_id = {1}",
                 matKhau,
-                nhanvien_id));
-            db.ExecuteNonQuery(string.Format("UPDATE taikhoan " +
-                "matKhau = N'{0}' " +
-                "WHERE nhanvien_id = {1}",
-                matKhau,
-                nhanvien_id));
+                nhanvien_id).Trim();
+            db.ExecuteNonQuery(strSql);
             return true;
         }
         public bool Sua(params string[] dsTruong)
