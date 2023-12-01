@@ -348,7 +348,6 @@ namespace QLBanPiano.GUI
                 {
                     string filename = sfd.FileName;
                     DataTable table = phieuNhapBUS.formatToExport(phieuNhapBUS.convertDataTableToList(tableToExport));
-                    Load(table);
                     if (fileHandler.ExportToExcel(table, filename))
                     {
                         MessageBox.Show("Xuất file excel thành công");

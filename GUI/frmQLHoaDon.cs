@@ -347,7 +347,6 @@ namespace QLBanPiano.GUI
                 string filename = sfd.FileName;
                 DataTable export = exportBus.formatToExport(exportBus.DatatableToList(exportTable));
                 DataRow row = export.Rows[0];
-                Loads(export);
                 bool return_val = fileHandler.ExportToExcel(export, filename);
                 if (return_val)
                 {
