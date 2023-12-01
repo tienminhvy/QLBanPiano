@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 
 namespace QLBanPiano.DAL
@@ -15,6 +16,7 @@ namespace QLBanPiano.DAL
         SqlConnection sqlConn; //Doi tuong ket noi CSDL
         SqlDataAdapter da;//Bo dieu phoi du lieu
         DataSet ds; //Doi tuong chhua CSDL khi giao tiep
+        SqlTransaction trans;
         public DB()
         {
             //string server = "DESKTOP-RPE3FUU\\TRONGPHU";
@@ -141,6 +143,82 @@ namespace QLBanPiano.DAL
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConn.Close();
                 return -1;
+            }
+        }
+        //Nam code thêm để insert nhiều dòng dữ liệu cùng luc
+        public SqlTransaction getTrans()
+        {
+            return trans;
+        }
+        public SqlConnection getSqlConn()
+        {
+            return sqlConn;
+        }
+        public void InsertDatatableToDB(DataTable dt,string tableName,SqlTransaction transaction,int id)
+        {
+            try
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dr[0] = id;
+                }
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn, SqlBulkCopyOptions.Default, transaction))
+                {
+                    bulkCopy.DestinationTableName = tableName;
+                    foreach (DataColumn col in dt.Columns)
+                    {
+                        bulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
+                    }
+                    bulkCopy.WriteToServer(dt);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public int InsertInTransaction(string sqlString,SqlTransaction transaction)
+        {
+            int return_id = -1;
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand(sqlString,sqlConn,transaction);
+                return_id = Convert.ToInt32(sqlCmd.ExecuteScalar());
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return return_id;
+        }
+        public bool InsertConstraintedData(DataTable fkTable,string fkTableName,string sqlStringPkValue)
+        {
+            string server = "LAPTOP-3O7CUBA2\\SQLEXPRESS";
+            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=1";
+            using (sqlConn = new SqlConnection(strCnn)) 
+            {
+                sqlConn.Open();
+                trans = sqlConn.BeginTransaction();
+                try
+                {
+                    int id = InsertInTransaction(sqlStringPkValue, trans);
+                    DataRow row = fkTable.Rows[0];
+                    if (id >= 1)
+                    {
+                        InsertDatatableToDB(fkTable, fkTableName, trans,id);
+                        trans.Commit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID khac");
+                        trans.Rollback();
+                        return false;
+                    }
+                }catch(Exception ex)
+                {
+                    trans.Rollback();
+                    return false;
+                }
+                return true;
             }
         }
     }

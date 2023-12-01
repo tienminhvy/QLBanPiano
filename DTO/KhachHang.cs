@@ -38,5 +38,10 @@ namespace QLBanPiano.DTO
             DiaChi = diaChi;
             SoDienThoai = soDienThoai;
         }
+
+        public bool Sua(dynamic[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

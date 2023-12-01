@@ -13,11 +13,23 @@ namespace QLBanPiano.BUS
     public class NhacCuBUS : IBUS
     {
         DB db;
+        PianoBUS pianoBUS = new();
         public NhacCuBUS()
         {
             db = new DB();
         }
-
+        public List<int> getListId()
+        {
+            List<int> list = new();
+            string sqlCmd = "select id \r\nfrom nhaccu\r\nwhere trangthai = 1";
+            DataTable dt = db.Execute(sqlCmd);
+            foreach (DataRow row in dt.Rows)
+            {
+                int id = Convert.ToInt32(row["ID"]);
+                list.Add(id);
+            }
+            return list;
+        }
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
             return db.GetColumn("nhaccu", tenTruong, dieuKien);
@@ -168,7 +180,11 @@ namespace QLBanPiano.BUS
                 ma, ten, dacDiemNoiBat, moTaChiTiet, gia, hinhAnh, idThuongHieu, 1)).ToString();
             return true;
         }
-
+        public bool checkExist(int id)
+        {
+            if (pianoBUS.checkExist("nhaccu", id) == false) return false;
+            return true;
+        }
         public bool Validate(params string[] dsTruong)
         {
             throw new NotImplementedException();
@@ -181,6 +197,15 @@ namespace QLBanPiano.BUS
                 "WHERE {1}", tieuChi));
             return true;
         }
-
+        public void tangSL(int id,short SL)
+        {
+            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong + "+SL+" \r\nwhere id = "+id;
+            db.ExecuteNonQuery(sqlCmd);
+        }
+        public void giamSL(int id,short SL)
+        {
+            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong - " + SL + " \r\nwhere id = " + id;
+            db.ExecuteNonQuery(sqlCmd);
+        }
     }
 }

@@ -37,10 +37,10 @@
             label3 = new Label();
             label2 = new Label();
             panel1 = new Panel();
-            ct_soLuongTextBox = new TextBox();
-            label4 = new Label();
             CancelAddBtn = new Button();
             confirmAddBtn = new Button();
+            ct_soLuongTextBox = new TextBox();
+            label4 = new Label();
             totalTextBox = new TextBox();
             label7 = new Label();
             label8 = new Label();
@@ -95,7 +95,7 @@
             nv_idComboBox.Location = new Point(212, 65);
             nv_idComboBox.Name = "nv_idComboBox";
             nv_idComboBox.Size = new Size(333, 33);
-            nv_idComboBox.TabIndex = 4;
+            nv_idComboBox.TabIndex = 0;
             // 
             // dateTimePicker1
             // 
@@ -104,6 +104,7 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(333, 31);
             dateTimePicker1.TabIndex = 3;
+            dateTimePicker1.TabStop = false;
             // 
             // label3
             // 
@@ -125,14 +126,40 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(ct_soLuongTextBox);
-            panel1.Controls.Add(label4);
             panel1.Controls.Add(CancelAddBtn);
             panel1.Controls.Add(confirmAddBtn);
+            panel1.Controls.Add(ct_soLuongTextBox);
+            panel1.Controls.Add(label4);
             panel1.Location = new Point(12, 454);
             panel1.Name = "panel1";
             panel1.Size = new Size(554, 50);
             panel1.TabIndex = 2;
+            // 
+            // CancelAddBtn
+            // 
+            CancelAddBtn.Image = (Image)resources.GetObject("CancelAddBtn.Image");
+            CancelAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            CancelAddBtn.Location = new Point(106, 0);
+            CancelAddBtn.Name = "CancelAddBtn";
+            CancelAddBtn.Size = new Size(100, 50);
+            CancelAddBtn.TabIndex = 1;
+            CancelAddBtn.Text = "  Hủy";
+            CancelAddBtn.UseVisualStyleBackColor = true;
+            CancelAddBtn.Click += CancelAddBtn_Click;
+            CancelAddBtn.KeyPress += CancelAddBtn_KeyPress;
+            // 
+            // confirmAddBtn
+            // 
+            confirmAddBtn.Image = (Image)resources.GetObject("confirmAddBtn.Image");
+            confirmAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            confirmAddBtn.Location = new Point(0, 0);
+            confirmAddBtn.Name = "confirmAddBtn";
+            confirmAddBtn.Size = new Size(100, 50);
+            confirmAddBtn.TabIndex = 0;
+            confirmAddBtn.Text = "   Thêm";
+            confirmAddBtn.UseVisualStyleBackColor = true;
+            confirmAddBtn.Click += confirmAddBtn_Click;
+            confirmAddBtn.KeyPress += confirmAddBtn_KeyPress;
             // 
             // ct_soLuongTextBox
             // 
@@ -142,6 +169,7 @@
             ct_soLuongTextBox.ReadOnly = true;
             ct_soLuongTextBox.Size = new Size(167, 31);
             ct_soLuongTextBox.TabIndex = 3;
+            ct_soLuongTextBox.TabStop = false;
             // 
             // label4
             // 
@@ -151,29 +179,6 @@
             label4.Size = new Size(166, 25);
             label4.TabIndex = 2;
             label4.Text = "Số lượng (chi tiết ) :";
-            // 
-            // CancelAddBtn
-            // 
-            CancelAddBtn.Image = (Image)resources.GetObject("CancelAddBtn.Image");
-            CancelAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            CancelAddBtn.Location = new Point(0, 0);
-            CancelAddBtn.Name = "CancelAddBtn";
-            CancelAddBtn.Size = new Size(100, 50);
-            CancelAddBtn.TabIndex = 1;
-            CancelAddBtn.Text = "  Hủy";
-            CancelAddBtn.UseVisualStyleBackColor = true;
-            CancelAddBtn.Click += CancelAddBtn_Click;
-            // 
-            // confirmAddBtn
-            // 
-            confirmAddBtn.Image = (Image)resources.GetObject("confirmAddBtn.Image");
-            confirmAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            confirmAddBtn.Location = new Point(106, 0);
-            confirmAddBtn.Name = "confirmAddBtn";
-            confirmAddBtn.Size = new Size(100, 50);
-            confirmAddBtn.TabIndex = 0;
-            confirmAddBtn.Text = "   Thêm";
-            confirmAddBtn.UseVisualStyleBackColor = true;
             // 
             // totalTextBox
             // 
@@ -213,24 +218,27 @@
             // 
             // chiTietPhieuNhapGridView
             // 
+            chiTietPhieuNhapGridView.BackgroundColor = Color.White;
             chiTietPhieuNhapGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             chiTietPhieuNhapGridView.Dock = DockStyle.Fill;
+            chiTietPhieuNhapGridView.GridColor = Color.White;
             chiTietPhieuNhapGridView.Location = new Point(0, 0);
             chiTietPhieuNhapGridView.Name = "chiTietPhieuNhapGridView";
             chiTietPhieuNhapGridView.RowHeadersWidth = 62;
             chiTietPhieuNhapGridView.RowTemplate.Height = 33;
             chiTietPhieuNhapGridView.Size = new Size(551, 227);
             chiTietPhieuNhapGridView.TabIndex = 0;
+            chiTietPhieuNhapGridView.TabStop = false;
             // 
             // panel3
             // 
-            panel3.Controls.Add(totalTextBox);
             panel3.Controls.Add(ct_addBtn);
+            panel3.Controls.Add(totalTextBox);
             panel3.Controls.Add(label7);
             panel3.Location = new Point(12, 398);
             panel3.Name = "panel3";
             panel3.Size = new Size(554, 50);
-            panel3.TabIndex = 9;
+            panel3.TabIndex = 1;
             // 
             // ct_addBtn
             // 
@@ -240,11 +248,13 @@
             ct_addBtn.Name = "ct_addBtn";
             ct_addBtn.Size = new Size(206, 50);
             ct_addBtn.TabIndex = 1;
-            ct_addBtn.Text = "   Thêm chi tiết ";
+            ct_addBtn.Text = "       Thêm chi tiết ";
+            ct_addBtn.TextAlign = ContentAlignment.MiddleLeft;
             ct_addBtn.UseVisualStyleBackColor = true;
             ct_addBtn.Click += ct_addBtn_Click;
+            ct_addBtn.KeyPress += ct_addBtn_KeyPress;
             // 
-            // ThemPhieuNhap
+            // frmThemPhieuNhap
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -258,7 +268,7 @@
             MaximizeBox = false;
             MaximumSize = new Size(600, 600);
             MinimumSize = new Size(600, 600);
-            Name = "ThemPhieuNhap";
+            Name = "frmThemPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ThemPhieuNhap";
             Load += ThemPhieuNhap_Load;
@@ -282,8 +292,6 @@
         private Label label2;
         private DateTimePicker dateTimePicker1;
         private ComboBox nv_idComboBox;
-        private Button CancelAddBtn;
-        private Button confirmAddBtn;
         private Label label8;
         private Label label1;
         private TextBox id_pnTextBox;
@@ -292,8 +300,10 @@
         private Label label7;
         private TextBox totalTextBox;
         private Panel panel3;
-        private Button ct_addBtn;
         private TextBox ct_soLuongTextBox;
         private Label label4;
+        private Button ct_addBtn;
+        private Button CancelAddBtn;
+        private Button confirmAddBtn;
     }
 }

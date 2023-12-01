@@ -7,6 +7,7 @@ namespace QLBanPiano.BUS
     public class NhanVienBUS : IBUS
     {
         DB db;
+        private PianoBUS pianoBus = new();
         public NhanVienBUS()
         {
             db = new DB();
@@ -65,10 +66,12 @@ namespace QLBanPiano.BUS
         {
             return db.GetCount("nhanvien", dieuKien);
         }
-
+        public bool checkExist(int id)
+        {
+            return pianoBus.checkExist("nhanvien", id);
+        }
         public bool Validate(params string[] dsTruong)
         {
-            
             string hoLot = dsTruong[0];
             string ten = dsTruong[1];
             DateTime ngayVaoLam = DateTime.Parse(dsTruong[2]);

@@ -12,6 +12,9 @@ namespace QLBanPiano.BUS
 {
     public class HoaDonBUS
     {
+        private ChiTietHoaDonBUS chitietBus = new();
+        private KhachHangBUS khachhangBus = new();
+        private NhanVienBUS nhanvienBus = new();
         DB db;
         public HoaDonBUS()
         {
@@ -46,26 +49,65 @@ namespace QLBanPiano.BUS
         {
             return db.GetCount("hoadon", dieuKien);
         }
-        DataTable listToDataTable(List<DoiTuong> list)
+        public DataTable getClone(DataTable dt)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID", typeof(int));
-            dt.Columns.Add("Thời gian", typeof(DateTime));
-            dt.Columns.Add("Mã nhân viên", typeof(int));
-            dt.Columns.Add("Mã khách hàng", typeof(int));
-            if(list != null)
+            DataTable clone = dt.Clone();
+            foreach (DataRow row in dt.Rows)
             {
-                foreach (HoaDon hd in list)
-                {
-                    DataRow row = dt.NewRow();
-                    row["ID"] = hd.Id;
-                    row["Thời gian"] = hd.NgayMuaHang;
-                    row["Mã nhân viên"] = hd.NhanVien_Id;
-                    row["Mã khách hàng"] = hd.KhachHang_Id;
-                    dt.Rows.Add(row);
-                }
+                clone.ImportRow(row);
+            }
+            return clone;
+        }
+        public DataTable splitFromExcelTableById(DataTable excel, int id)
+        {
+            DataTable dt = excel.Clone();
+            DataRow[] rowSplited = excel.Select("ID = " + id);
+            foreach (DataRow row in rowSplited)
+            {
+                dt.ImportRow(row);
             }
             return dt;
+        }
+        public HoaDonPDFExcel getHoaDon(DataTable dt)
+        {
+            HoaDonPDFExcel hoadon = new();
+            DataRow row = dt.Rows[0];
+            try
+            {
+                hoadon.Id = Convert.ToInt32(row["ID"]);
+                hoadon.NhanVien_id = Convert.ToInt32(row["Mã nhân viên"]);
+                hoadon.ThoiGian = Convert.ToDateTime(row["Thời gian"]);
+                hoadon.KhachHang_id = Convert.ToInt32(row["Mã khách hàng"]);
+                hoadon.List = chitietBus.DatatableToList(dt);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Lỗi convert " + ex.Message);
+            }
+            return hoadon;
+        }
+        public bool Validates(HoaDonPDFExcel hoadon)
+        {
+            string thisyear = "2014-01-01 00:00:00 AM";
+            DateTime dateTime = DateTime.ParseExact(thisyear, "yyyy-MM-dd hh:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None);
+            if (hoadon.Id <= 0) return false;
+            if (hoadon.ThoiGian > DateTime.Today || hoadon.ThoiGian < dateTime) return false;
+            if (khachhangBus.checkExist(hoadon.KhachHang_id) == false) return false;
+            if (nhanvienBus.checkExist(hoadon.NhanVien_id) == false) return false;
+            if (hoadon.List == null) return false;
+            return true;
+        }
+        public bool ValidateList(List<HoaDonPDFExcel> list)
+        {
+            foreach (HoaDonPDFExcel hoaDon in list)
+            {
+                if (Validates(hoaDon) == false) return false;
+            }
+            return true;
+        }
+        public string getSqlString(HoaDonPDFExcel hoadon)
+        {
+            string result = string.Format("insert into hoadon(thoiGian,nhanvien_id,khachhang_id) values ('{0}',{1},{2}); select SCOPE_IDENTITY();", hoadon.ThoiGian, hoadon.NhanVien_id,hoadon.KhachHang_id);
+            return result;
         }
         public DataTable TimKiem(int tieuchi,string giatri)
         {
@@ -77,7 +119,7 @@ namespace QLBanPiano.BUS
                     dt = layDsDaTruyVan(dieukien0);
                     break;
                 case 1:
-                    string dieukien1 = "convert(varchar,hoadon.thoiGian,120) like '%" + giatri +"%'";
+                    string dieukien1 = "CONVERT(VARCHAR, thoiGian, 105) + ' ' + CONVERT(VARCHAR, thoiGian, 108) + ' ' + RIGHT(CONVERT(VARCHAR, thoiGian, 100), 2) LIKE '%"+giatri+"%'";
                     dt = layDsDaTruyVan(dieukien1);
                     break;
                 case 2:
@@ -102,12 +144,21 @@ namespace QLBanPiano.BUS
             }
             return dt;
         }
+        public int TraVeID(params string[] dsTruong)
+        {
+            string thoiGian = dsTruong[0];
+            string nhanvien_id = dsTruong[1];
+            string khachhang_id = dsTruong[2];
+            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ", Convert.ToDateTime(thoiGian), Convert.ToInt32(nhanvien_id), Convert.ToInt32(khachhang_id)));
+            return hoadon_id;
+        }
+
         public bool Them(params string[] dsTruong)
         {
             string thoiGian = dsTruong[0];
             string nhanvien_id = dsTruong[1];
             string khachhang_id = dsTruong[2];
-            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ",Convert.ToDateTime(thoiGian),Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
+            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ('{0}',{1},{2}) ",thoiGian,Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
             if(hoadon_id == -1)
             {
                 return false;

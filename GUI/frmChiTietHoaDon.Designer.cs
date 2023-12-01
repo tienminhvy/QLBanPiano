@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChiTietHoaDon));
             panel1 = new Panel();
             hoadonIdPanel = new Panel();
             idHoaDon = new TextBox();
@@ -39,7 +40,6 @@
             returnTextBox = new TextBox();
             takeTextBox = new TextBox();
             totalTextBox = new TextBox();
-            label9 = new Label();
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
@@ -54,6 +54,7 @@
             label5 = new Label();
             label4 = new Label();
             label11 = new Label();
+            exportBillBtn = new Button();
             panel1.SuspendLayout();
             hoadonIdPanel.SuspendLayout();
             dgvPanel.SuspendLayout();
@@ -87,6 +88,7 @@
             idHoaDon.ReadOnly = true;
             idHoaDon.Size = new Size(132, 31);
             idHoaDon.TabIndex = 1;
+            idHoaDon.TabStop = false;
             // 
             // label1
             // 
@@ -107,6 +109,7 @@
             // 
             // cthdGridView
             // 
+            cthdGridView.BackgroundColor = Color.White;
             cthdGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             cthdGridView.Dock = DockStyle.Fill;
             cthdGridView.Location = new Point(0, 0);
@@ -115,6 +118,7 @@
             cthdGridView.RowTemplate.Height = 33;
             cthdGridView.Size = new Size(561, 208);
             cthdGridView.TabIndex = 0;
+            cthdGridView.TabStop = false;
             // 
             // panel2
             // 
@@ -122,7 +126,6 @@
             panel2.Controls.Add(returnTextBox);
             panel2.Controls.Add(takeTextBox);
             panel2.Controls.Add(totalTextBox);
-            panel2.Controls.Add(label9);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Location = new Point(5, 292);
@@ -147,6 +150,7 @@
             returnTextBox.ReadOnly = true;
             returnTextBox.Size = new Size(150, 31);
             returnTextBox.TabIndex = 5;
+            returnTextBox.TabStop = false;
             // 
             // takeTextBox
             // 
@@ -156,6 +160,7 @@
             takeTextBox.ReadOnly = true;
             takeTextBox.Size = new Size(150, 31);
             takeTextBox.TabIndex = 4;
+            takeTextBox.TabStop = false;
             // 
             // totalTextBox
             // 
@@ -165,16 +170,7 @@
             totalTextBox.ReadOnly = true;
             totalTextBox.Size = new Size(150, 31);
             totalTextBox.TabIndex = 3;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(54, 111);
-            label9.Name = "label9";
-            label9.Size = new Size(450, 21);
-            label9.TabIndex = 2;
-            label9.Text = "Xin cảm ơn quý khách vì đã mua sản phẩm của cửa hàng !";
+            totalTextBox.TabStop = false;
             // 
             // label3
             // 
@@ -218,6 +214,7 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(325, 31);
             dateTimePicker1.TabIndex = 9;
+            dateTimePicker1.TabStop = false;
             // 
             // kh_idTextBox
             // 
@@ -227,6 +224,7 @@
             kh_idTextBox.ReadOnly = true;
             kh_idTextBox.Size = new Size(211, 31);
             kh_idTextBox.TabIndex = 8;
+            kh_idTextBox.TabStop = false;
             // 
             // nv_idTextBox
             // 
@@ -236,6 +234,7 @@
             nv_idTextBox.ReadOnly = true;
             nv_idTextBox.Size = new Size(211, 31);
             nv_idTextBox.TabIndex = 7;
+            nv_idTextBox.TabStop = false;
             // 
             // kh_nameTextBox
             // 
@@ -245,6 +244,7 @@
             kh_nameTextBox.ReadOnly = true;
             kh_nameTextBox.Size = new Size(325, 31);
             kh_nameTextBox.TabIndex = 6;
+            kh_nameTextBox.TabStop = false;
             // 
             // nv_nameTextBox
             // 
@@ -254,6 +254,7 @@
             nv_nameTextBox.ReadOnly = true;
             nv_nameTextBox.Size = new Size(325, 31);
             nv_nameTextBox.TabIndex = 5;
+            nv_nameTextBox.TabStop = false;
             // 
             // label8
             // 
@@ -303,27 +304,41 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(5, 646);
+            label11.Location = new Point(5, 690);
             label11.Name = "label11";
             label11.Size = new Size(152, 25);
             label11.TabIndex = 7;
             label11.Text = "@quanlibanpiano";
             // 
-            // ChiTietHoaDon
+            // exportBillBtn
+            // 
+            exportBillBtn.Image = (Image)resources.GetObject("exportBillBtn.Image");
+            exportBillBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            exportBillBtn.Location = new Point(190, 649);
+            exportBillBtn.Name = "exportBillBtn";
+            exportBillBtn.Size = new Size(162, 52);
+            exportBillBtn.TabIndex = 8;
+            exportBillBtn.Text = "   Xuất hóa đơn";
+            exportBillBtn.UseVisualStyleBackColor = true;
+            exportBillBtn.Click += exportFileBtn_Click;
+            exportBillBtn.KeyPress += exportFileBtn_KeyPress;
+            // 
+            // frmChiTietHoaDon
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(578, 674);
+            ClientSize = new Size(578, 724);
+            Controls.Add(exportBillBtn);
             Controls.Add(label11);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(dgvPanel);
             Controls.Add(panel1);
             MaximizeBox = false;
-            MaximumSize = new Size(600, 730);
+            MaximumSize = new Size(600, 780);
             MinimizeBox = false;
-            MinimumSize = new Size(600, 730);
-            Name = "ChiTietHoaDon";
+            MinimumSize = new Size(600, 780);
+            Name = "frmChiTietHoaDon";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ChiTietHoaDon";
             panel1.ResumeLayout(false);
@@ -348,7 +363,6 @@
         private Panel dgvPanel;
         private DataGridView cthdGridView;
         private Panel panel2;
-        private Label label3;
         private Label label2;
         private Panel panel3;
         private Label label4;
@@ -361,11 +375,12 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private Label label9;
         private TextBox totalTextBox;
+        private Label label11;
         private Label label10;
         private TextBox returnTextBox;
         private TextBox takeTextBox;
-        private Label label11;
+        private Label label3;
+        private Button exportBillBtn;
     }
 }

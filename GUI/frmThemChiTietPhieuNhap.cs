@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLBanPiano.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace QLBanPiano.GUI
 {
     public partial class frmThemChiTietPhieuNhap : Form
     {
+        NhacCuBUS nhacCuBUS = new();
         public frmThemChiTietPhieuNhap()
         {
             InitializeComponent();
@@ -26,6 +28,20 @@ namespace QLBanPiano.GUI
             //Init id_pnTextBox 
             id_pnTextBox.Text = frmThemPhieuNhap.id.ToString();
             id_pnTextBox.TextAlign = HorizontalAlignment.Center;
+            //Init combobox value list
+            List<int> list = nhacCuBUS.getListId();
+            nc_idComboBox.Items.Clear();
+            nc_idComboBox.DataSource = list;
+        }
+
+        private void ConfirmAddBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancelAddBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using QLBanPiano.BUS;
+using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,16 +16,27 @@ namespace QLBanPiano.GUI
     public partial class frmChiTietHoaDon : Form
     {
         ChiTietHoaDonBUS chiTietHoaDonBUS = new();
+        HoaDonPdfExcelBUS hoadonPdfBus = new();
+        IOFileBUS fileHandler = new();
+        int hoadon_id = -1;
+        DataTable processed = new();
         public frmChiTietHoaDon()
         {
             InitializeComponent();
             Init();
         }
+        public frmChiTietHoaDon(int id)
+        {
+            this.hoadon_id = id;
+            InitializeComponent();
+            Init();
+        }
         void Init()
         {
-            if (frmQLHoaDon.doubleClickRowID != -1)
+            if (hoadon_id != -1)
             {
-                DataTable dt = chiTietHoaDonBUS.LayChiTietHoaDon(frmQLHoaDon.doubleClickRowID);
+                DataTable dt = chiTietHoaDonBUS.LayChiTietHoaDon(hoadon_id);
+                processed = dt;
                 DataTable datasource = dt.Clone();
                 foreach (DataRow row in dt.Rows)
                 {
@@ -66,6 +79,42 @@ namespace QLBanPiano.GUI
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy hh:mm:ss tt";
 
 
+            }
+        }
+
+        private void exportFileBtn_Click(object sender, EventArgs e)//Export bill btn
+        {
+            HoaDonPDFExcel hoaDon = new();
+            hoaDon = hoadonPdfBus.getHoaDonByID(hoadon_id);
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "PDF Files|*.pdf";
+            sfd.Title = "Chọn nơi lưu file";
+
+            // Hiển thị SaveFileDialog
+            DialogResult result = sfd.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                string filename = sfd.FileName;
+                bool return_value = fileHandler.ExportHoaDonToPdf(hoaDon, filename);
+                if( return_value )
+                {
+                    MessageBox.Show("Xuất hóa đơn thành công !");
+                    Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi");
+                }
+            }
+        }
+
+        private void exportFileBtn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                exportFileBtn_Click(sender, e);
             }
         }
     }

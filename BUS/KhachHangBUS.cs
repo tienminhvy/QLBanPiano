@@ -12,6 +12,7 @@ namespace QLBanPiano.BUS
 {
     internal class KhachHangBUS : IBUS
     {
+        private PianoBUS pianoBus = new();
         DB db;
         public KhachHangBUS()
         {
@@ -52,13 +53,16 @@ namespace QLBanPiano.BUS
                 khachHang.Ten = row["Tên"].ToString();
                 khachHang.DiaChi = row["Địa chỉ"].ToString();
                 khachHang.SoDienThoai = row["Số điện thoại"].ToString();
-                ds.Add(khachHang);
+                ds.Add((DoiTuong)khachHang);
             }
 
             return ds;
         }
 
-
+        public bool checkExist(int id)
+        {
+            return pianoBus.checkExist("khachhang", id);
+        }
 
 
         /**

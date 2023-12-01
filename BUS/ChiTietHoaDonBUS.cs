@@ -11,7 +11,9 @@ namespace QLBanPiano.BUS
 {
     public class ChiTietHoaDonBUS : IBUS
     {
+        PianoBUS pianobus = new();
         DB db;
+
         public ChiTietHoaDonBUS()
         {
             db = new DB();
@@ -31,7 +33,7 @@ namespace QLBanPiano.BUS
                 long dongia = Convert.ToInt64(dsTruong[2]);
                 short soLuong = Convert.ToInt16(dsTruong[3]);
 
-                string sqlCmd = string.Format("insert into chitiethoadon (nhaccu_id,hoadon_id,donGiaLucBan,soLuong)\r\nvalues ({0},{1},{2},{3})");
+                string sqlCmd = string.Format("insert into chitiethoadon (nhaccu_id,hoadon_id,donGiaLucBan,soLuong)\r\nvalues ({0},{1},{2},{3})",nhaccu_id,hoadon_id,dongia,soLuong);
                 db.ExecuteNonQuery(sqlCmd);
                 return true;
             }
@@ -39,6 +41,83 @@ namespace QLBanPiano.BUS
             {
                 return false;
             }
+        }
+        public DataTable splitFromExcelTable(DataTable excel)
+        {
+            DataTable dt = new();
+
+            return dt;
+        }
+        public DataTable ListToDataTable(List<ChiTietHoaDon> list)
+        {
+            DataTable result = new();
+            if(list != null )
+            {
+                var properties = list[0].GetType().GetProperties();
+                foreach(var prop in properties)
+                {
+                    result.Columns.Add(prop.Name,prop.PropertyType);
+                }
+                foreach(var chitiet in  list)
+                {
+                    DataRow row = result.NewRow();
+                    foreach(var prop in properties)
+                    {
+                        row[prop.Name] = prop.GetValue(chitiet);
+                    }
+                    result.Rows.Add(row);   
+                }
+            }
+            return result;
+        }
+        public List<ChiTietHoaDon> DatatableToList(DataTable table)
+        {
+            List<ChiTietHoaDon> list = table.AsEnumerable().Select(row => new ChiTietHoaDon
+            {
+                hoadon_Id = Convert.ToInt32(row["ID"]),
+                nhaccu_Id = Convert.ToInt32(row["Mã nhạc cụ"]),
+                DonGia = Convert.ToInt64(row["Đơn giá"]),
+                SoLuong = Convert.ToInt16(row["SL"])
+            }).ToList();
+            return list;    
+
+        }
+        public bool Validates(ChiTietHoaDon chitiet)
+        {
+            if (pianobus.checkExist("nhaccu",chitiet.nhaccu_Id) == false) return false;
+            if (chitiet.DonGia < 500000 || chitiet.DonGia > 25000000000) return false;
+            if (chitiet.SoLuong <= 0 || chitiet.SoLuong >= 100) return false;
+            return true;
+        }
+        public bool ValidateList(List<ChiTietHoaDon> list)
+        {
+            foreach (var chitiet in list)
+            {
+                if (Validates(chitiet) == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public DataTable convertToDataTable(List<ChiTietHoaDon> list)
+        {
+            DataTable dt = new();
+            ChiTietHoaDon chitiet = new();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("Mã nhạc cụ", typeof(int));
+            dt.Columns.Add("Đơn giá", typeof(long));
+            dt.Columns.Add("SL", typeof(short));
+            foreach (var obj in list)
+            {
+                DataRow row = dt.NewRow();
+                row["ID"] = obj.hoadon_Id;
+                row["Mã nhạc cụ"] = obj.nhaccu_Id;
+                row["Đơn giá"] = obj.DonGia;
+                row["SL"] = obj.SoLuong;
+                dt.Rows.Add(row);
+            }
+            return dt;
         }
         //////////////////////////////////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)
