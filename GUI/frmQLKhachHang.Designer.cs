@@ -258,7 +258,7 @@
             cbbTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTimKiem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbbTimKiem.FormattingEnabled = true;
-            cbbTimKiem.Items.AddRange(new object[] { "Xem tất cả", "ID", "Tên", "SDT" });
+            cbbTimKiem.Items.AddRange(new object[] { "Xem tất cả", "ID", "Họ lót", "Tên", "SDT", "Địa chỉ" });
             cbbTimKiem.Location = new Point(160, 43);
             cbbTimKiem.Name = "cbbTimKiem";
             cbbTimKiem.Size = new Size(249, 30);

@@ -26,15 +26,12 @@ namespace QLBanPiano.BUS
                 "sdt as N'Số điện thoại', " +
                 "diaChi as N'Địa chỉ' " +
                 "FROM nhanvien " +
-                "WHERE " + dieukien;
+                "WHERE trangthai = 1 AND " + dieukien;
 
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
             foreach (DataRow row in dt.Rows) {
-
-                if (Convert.ToInt32(row["trangthai"]) == 0)
-                    continue;
 
                 NhanVien nhanvien = new NhanVien();
                 nhanvien.Id = Convert.ToInt32(row["Mã nhân viên"]);
@@ -180,7 +177,7 @@ namespace QLBanPiano.BUS
                         dieuKien = "Upper(ten) LIKE N'%" + giaTri.ToUpper() + "%'";
                         break;
                     }
-                case "Số điện thoại":
+                case "SDT":
                     {
                         dieuKien = "sdt LIKE N'%" + giaTri + "%'";
                         break;
@@ -191,7 +188,9 @@ namespace QLBanPiano.BUS
                         break;
                     }
             }
-            return LayDS(dieuKien + " AND trangthai = 1");
+            if (dieuKien == string.Empty)
+                dieuKien = "1=1";
+            return LayDS(dieuKien);
         }
     }
 }

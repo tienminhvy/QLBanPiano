@@ -76,7 +76,7 @@ namespace QLBanPiano.GUI
 
         private void dgvKhachHang_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvKhachHang.SelectedRows.Count > 0 && thaydoiND == false)
+            if (dgvKhachHang.SelectedRows.Count > 0 && !thaydoiND)
             {
                 DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();
@@ -231,7 +231,8 @@ namespace QLBanPiano.GUI
                 if (cbbTimKiem.SelectedItem == "Xem tất cả")
                 {
                     txtTimKiem.Enabled = false;
-                } else
+                }
+                else
                     txtTimKiem.Enabled = true;
             }
         }

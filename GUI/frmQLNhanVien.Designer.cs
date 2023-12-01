@@ -204,23 +204,25 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(103, 144);
+            btnSearch.Location = new Point(182, 140);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(129, 35);
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Tìm";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // cbbTypeSearch
             // 
             cbbTypeSearch.DisplayMember = "ID";
             cbbTypeSearch.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTypeSearch.FormattingEnabled = true;
-            cbbTypeSearch.Items.AddRange(new object[] { "ID", "Họ lót", "Tên", "Số điện thoại", "Địa chỉ" });
+            cbbTypeSearch.Items.AddRange(new object[] { "Xem tất cả", "ID", "Họ lót", "Tên", "Địa chỉ", "SDT" });
             cbbTypeSearch.Location = new Point(129, 36);
             cbbTypeSearch.Name = "cbbTypeSearch";
             cbbTypeSearch.Size = new Size(182, 28);
             cbbTypeSearch.TabIndex = 3;
+            cbbTypeSearch.SelectedIndexChanged += cbbTypeSearch_SelectedIndexChanged;
             // 
             // label_type
             // 
