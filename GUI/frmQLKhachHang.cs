@@ -20,16 +20,63 @@ namespace QLBanPiano.GUI
         {
             InitializeComponent();
             HienDSKhachHang();
+            cbbTimKiem.SelectedItem = "Xem tất cả";
         }
 
-        private void HienDSKhachHang()
+        private void themCot()
         {
-            dgvKhachHang.DataSource = khachhang.LayToanBoDS();
+            DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+            col.Name = "Mã khách hàng";
+            col.DataPropertyName = "Id";
+
+            dgvKhachHang.Columns.Add(col);
+
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Họ lót";
+            col.DataPropertyName = "HoLot";
+
+            dgvKhachHang.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Tên";
+            col.DataPropertyName = "Ten";
+
+            dgvKhachHang.Columns.Add(col);
+
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Địa chỉ";
+            col.DataPropertyName = "DiaChi";
+
+            dgvKhachHang.Columns.Add(col);
+
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Số điện thoại";
+            col.DataPropertyName = "SoDienThoai";
+
+            dgvKhachHang.Columns.Add(col);
+        }
+        private static bool thaydoiND = false;
+        private void HienDSKhachHang(List<DoiTuong> danhSachKhachHang = null)
+        {
+            thaydoiND = true;
+            if (danhSachKhachHang != null)
+            {
+                dgvKhachHang.DataSource = null;
+                themCot();
+                BindingSource bs = new BindingSource();
+                foreach (KhachHang kh in danhSachKhachHang)
+                {
+                    bs.Add(kh);
+                }
+                dgvKhachHang.DataSource = bs;
+            }
+            else
+                dgvKhachHang.DataSource = khachhang.LayToanBoDS();
+            thaydoiND = false;
         }
 
         private void dgvKhachHang_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvKhachHang.SelectedRows.Count > 0)
+            if (dgvKhachHang.SelectedRows.Count > 0 && thaydoiND == false)
             {
                 DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();
@@ -110,7 +157,7 @@ namespace QLBanPiano.GUI
             if (khachhang.Xoa("Id=" + id))
             {
                 MessageBox.Show("Xóa khách hàng thành công!");
-                HienDSKhachHang();                
+                HienDSKhachHang();
                 txtMaKH.Text = string.Empty;
                 txtHoLot.Text = string.Empty;
                 txtTen.Text = string.Empty;
@@ -166,15 +213,27 @@ namespace QLBanPiano.GUI
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (txtTimKiem.Text.Trim().Length == 0)
+            string tieuChi = cbbTimKiem.SelectedItem.ToString();
+            string giaTri = txtTimKiem.Text.Trim();
+            if (giaTri == string.Empty && tieuChi != "Xem tất cả")
             {
-                MessageBox.Show("Hãy nhập thông tin tìm kiếm", "Thông báo");
+                new Msg("Vui lòng nhập thông tin tìm kiếm!", "err");
                 return;
             }
-
-
+            List<DoiTuong> DSKetQuaTimKiem = khachhang.TimKiem(tieuChi, giaTri);
+            HienDSKhachHang(DSKetQuaTimKiem);
         }
 
-        
+        private void cbbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbTimKiem.SelectedIndex > -1)
+            {
+                if (cbbTimKiem.SelectedItem == "Xem tất cả")
+                {
+                    txtTimKiem.Enabled = false;
+                } else
+                    txtTimKiem.Enabled = true;
+            }
+        }
     }
 }

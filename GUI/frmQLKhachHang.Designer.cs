@@ -258,11 +258,12 @@
             cbbTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTimKiem.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbbTimKiem.FormattingEnabled = true;
-            cbbTimKiem.Items.AddRange(new object[] { "Mã khách hàng", "Tên khách hàng", "Số điện thoại" });
+            cbbTimKiem.Items.AddRange(new object[] { "Xem tất cả", "ID", "Tên", "SDT" });
             cbbTimKiem.Location = new Point(160, 43);
             cbbTimKiem.Name = "cbbTimKiem";
             cbbTimKiem.Size = new Size(249, 30);
             cbbTimKiem.TabIndex = 1;
+            cbbTimKiem.SelectedIndexChanged += cbbTimKiem_SelectedIndexChanged;
             // 
             // label3
             // 

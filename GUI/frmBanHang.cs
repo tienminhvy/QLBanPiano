@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.BUS;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using QLBanPiano.GUI.SubForm;
 using System;
 using System.Collections;
@@ -357,6 +358,11 @@ namespace QLBanPiano
         {
             string tieuChi = cbbTieuChiKhachHang.SelectedItem.ToString();
             string giaTri = txtTimKiemKhachHang.Text.Trim();
+            if (giaTri == string.Empty)
+            {
+                new Msg("Vui lòng nhập thông tin tìm kiếm!", "err");
+                return;
+            }
             List<DoiTuong> DSKetQuaTimKiem = khachHangBUS.TimKiem(tieuChi, giaTri);
             LoadDSKhachHang(DSKetQuaTimKiem);
         }
@@ -365,6 +371,11 @@ namespace QLBanPiano
         {
             string tieuChi = cbbTieuChiSanPham.SelectedItem.ToString();
             string giaTri = txtTimKiemSanPham.Text.Trim();
+            if (giaTri == string.Empty)
+            {
+                new Msg("Vui lòng nhập thông tin tìm kiếm!", "err");
+                return;
+            }
             List<DoiTuong> DSKetQuaTimKiem = pianoBUS.TimKiem(tieuChi, giaTri);
             LoadDSSanPham(DSKetQuaTimKiem);
         }
