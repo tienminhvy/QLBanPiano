@@ -40,6 +40,7 @@
             btnTaoMoi = new Button();
             label1 = new Label();
             gbDSQuyen = new GroupBox();
+            ckThongKe = new CheckBox();
             ckNhapXuat = new CheckBox();
             ckQLNhanVien = new CheckBox();
             ckQLKhachHang = new CheckBox();
@@ -191,6 +192,7 @@
             // gbDSQuyen
             // 
             gbDSQuyen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbDSQuyen.Controls.Add(ckThongKe);
             gbDSQuyen.Controls.Add(ckNhapXuat);
             gbDSQuyen.Controls.Add(ckQLNhanVien);
             gbDSQuyen.Controls.Add(ckQLKhachHang);
@@ -204,6 +206,16 @@
             gbDSQuyen.TabIndex = 0;
             gbDSQuyen.TabStop = false;
             gbDSQuyen.Text = "Danh sách quyền";
+            // 
+            // ckThongKe
+            // 
+            ckThongKe.AutoSize = true;
+            ckThongKe.Location = new Point(23, 245);
+            ckThongKe.Name = "ckThongKe";
+            ckThongKe.Size = new Size(123, 24);
+            ckThongKe.TabIndex = 7;
+            ckThongKe.Text = "Xem thống kê";
+            ckThongKe.UseVisualStyleBackColor = true;
             // 
             // ckNhapXuat
             // 
@@ -316,5 +328,6 @@
         private Button btnXoa;
         private Button btnTaoMoi;
         private TextBox txtTenVaiTro;
+        private CheckBox ckThongKe;
     }
 }

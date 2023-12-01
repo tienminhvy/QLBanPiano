@@ -57,6 +57,10 @@ namespace QLBanPiano
                     nhanVienToolStripMenuItem.Visible = true;
                     isQL = true;
                 }
+                if (quyen == "thongKe")
+                {
+                    thongKetoolStripButton.Visible = true;
+                }
                 if (quyen == "nhapXuat")
                 {
 
@@ -76,6 +80,7 @@ namespace QLBanPiano
             vaiTroToolStripMenuItem.Visible = false;
             dstoolStripDropDownButton.Visible = false;
             banHangtoolStripButton.Visible = false;
+            thongKetoolStripButton.Visible = false;
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -161,6 +166,11 @@ namespace QLBanPiano
         private void dangXuatBtn_Click(object sender, EventArgs e)
         {
             frmChinh_FormClosing(sender, new FormClosingEventArgs(CloseReason.UserClosing, false));
+        }
+
+        private void thongKetoolStripButton_Click(object sender, EventArgs e)
+        {
+            innerNewForm(new frmThongKe());
         }
     }
 }

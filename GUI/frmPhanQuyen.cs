@@ -56,6 +56,7 @@ namespace QLBanPiano.GUI
             ckQLKhachHang.Checked = false;
             ckQLNhanVien.Checked = false;
             ckNhapXuat.Checked = false;
+            ckThongKe.Checked = false;
         }
 
         private void CheckAll()
@@ -67,6 +68,7 @@ namespace QLBanPiano.GUI
             ckQLKhachHang.Checked = true;
             ckQLNhanVien.Checked = true;
             ckNhapXuat.Checked = true;
+            ckThongKe.Checked = true;
         }
 
         private void dsVaiTro_SelectedIndexChanged(object sender, EventArgs e)
