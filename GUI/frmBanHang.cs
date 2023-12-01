@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.BUS;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI.SubForm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace QLBanPiano
         public frmBanHang()
         {
             InitializeComponent();
+            Init();
+        }
+
+        public void Init()
+        {
             cbbTieuChiSanPham.SelectedIndex = 0;
             cbbTieuChiKhachHang.SelectedIndex = 0;
             danhSachSanPham = pianoBUS.LayDS("1=1");
@@ -223,6 +229,9 @@ namespace QLBanPiano
         private void btnThemKhachHang_Click(object sender, EventArgs e)
         {
             // -------------------------------------Code mở form thêm khách hàng và load lại danh sách khách hàng---------------------------------------------------
+            frmThemKhachHang fThemKH = new frmThemKhachHang(this);
+            fThemKH.StartPosition = FormStartPosition.CenterParent;
+            fThemKH.ShowDialog();
         }
 
         private void btnChonKhachHang_Click(object sender, EventArgs e)

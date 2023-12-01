@@ -84,23 +84,25 @@ namespace QLBanPiano.BUS
             string dieuKien = "";
             switch (tieuChi)
             {
-                case "Mã khách hàng":
+                case "ID":
                     {
                         dieuKien = "CAST(id AS VARCHAR) LIKE '%" + giaTri + "%'";
                         break;
                     }
-                case "Tên khách hàng":
+                case "Tên":
                     {
                         dieuKien = "Upper(ten) LIKE N'%" + giaTri.ToUpper() + "%'";
                         break;
                     }
-                case "Số điện thoại":
+                case "SDT":
                     {
                         dieuKien = "sdt LIKE N'%" + giaTri + "%'";
                         break;
                     }
             }
-            return LayDS(dieuKien + " AND trangthai = 1");
+            if (dieuKien == string.Empty)
+                dieuKien = "1=1";
+            return LayDS(dieuKien);
         }
         /**
          * <summary>Lấy số lượng</summary>
