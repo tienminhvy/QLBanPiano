@@ -30,7 +30,8 @@ namespace QLBanPiano
             pwdTextBox.Text = Piano.Cons.pwdText;
             pwdTextBox.Font = Piano.Cons.loginFont;
             //pwdTextBox.ForeColor = Piano.Cons.loginColor;
-
+            userTextBox.KeyPress += frmDangNhap_KeyPress;
+            pwdTextBox.KeyPress += frmDangNhap_KeyPress;
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -223,6 +224,14 @@ namespace QLBanPiano
                 frmChinh.dsQuyen = tkBUS.dsQuyen(frmChinh.username);
                 Form f = new frmChinh(this);
                 f.ShowDialog();
+            }
+        }
+
+        private void frmDangNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnDangNhap_Click(sender, e);
             }
         }
     }

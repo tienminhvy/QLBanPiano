@@ -428,6 +428,7 @@
             Text = "Đăng nhập";
             Load += LoginForm_Load;
             ClientSizeChanged += LoginForm_ClientSizeChanged;
+            KeyPress += frmDangNhap_KeyPress;
             Resize += LoginForm_Resize;
             formPanel.ResumeLayout(false);
             loginBtnPanel.ResumeLayout(false);
