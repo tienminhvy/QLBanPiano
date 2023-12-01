@@ -3,6 +3,7 @@ using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -125,6 +126,40 @@ namespace QLBanPiano.BUS
                 list[ngay] = long.Parse(row["Tổng giá tiền"].ToString());
             }
             return list;
+        }
+
+        public int SoLuongThuongHieuDaBanTrongNam(string nam, string maThuongHieu)
+        {
+            string sqlStr = "SELECT ISNULL(sum(cthd.soLuong), 0) as N'Số Lượng' " +
+                "FROM hoadon hd join chitiethoadon cthd on hd.id = cthd.hoadon_id " +
+                "join nhaccu nc on cthd.nhaccu_id = nc.id " +
+                "join thuonghieu th on nc.thuonghieu_id = th.id " +
+                "WHERE YEAR(hd.thoiGian) = "+nam+" and th.ma = '"+maThuongHieu+"' " +
+                "GROUP BY th.ma";
+            DataTable dt = db.Execute(sqlStr);
+            int result = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                result = int.Parse(row["Số Lượng"].ToString());
+            }
+            return result;
+        }
+
+        public int SoLuongThuongHieuDaBanTrongThang(string nam, string thang, string maThuongHieu)
+        {
+            string sqlStr = "SELECT ISNULL(sum(cthd.soLuong), 0) as N'Số Lượng' " +
+                "FROM hoadon hd join chitiethoadon cthd on hd.id = cthd.hoadon_id " +
+                "join nhaccu nc on cthd.nhaccu_id = nc.id " +
+                "join thuonghieu th on nc.thuonghieu_id = th.id " +
+                "WHERE YEAR(hd.thoiGian) = " + nam + "and MONTH(hd.thoiGian) = "+thang+ " and th.ma = '" + maThuongHieu + "' " +
+                "GROUP BY th.ma";
+            DataTable dt = db.Execute(sqlStr);
+            int result = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                result = int.Parse(row["Số Lượng"].ToString());
+            }
+            return result;
         }
 
     }

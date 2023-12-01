@@ -17,10 +17,10 @@ namespace QLBanPiano.DAL
         DataSet ds; //Doi tuong chhua CSDL khi giao tiep
         public DB()
         {
-            string server = "DESKTOP-VYTM\\VYTM_NEW";
-            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
-            //string server = "LAPTOP-52VVCVMC";
-            // string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=210703";
+    //        string server = "DESKTOP-VYTM\\VYTM_NEW";
+           // string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
+            string server = "LAPTOP-52VVCVMC";
+             string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=210703";
             sqlConn = new SqlConnection(strCnn);
         }
         //Phuong thuc de thuc hien cau lenh strSQL truy vân du lieu

@@ -49,6 +49,20 @@ namespace QLBanPiano.BUS
             }
             return list;
         }
+
+        public List<String> LayDSMaThuongHieu()
+        {
+            List<String> list = new List<String>();
+            string sqlStr = "SELECT ma as N'Mã Thương Hiệu'\r\nFROM thuonghieu";
+
+            DataTable dt = db.Execute(sqlStr);
+            foreach (DataRow dr in dt.Rows)
+            {
+                list.Add(dr["Mã Thương Hiệu"].ToString());
+            }
+            return list;
+        }
+
         public int SoLuong(string dieuKien)
         {
             return db.GetCount("thuonghieu", dieuKien);
