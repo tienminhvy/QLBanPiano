@@ -35,7 +35,7 @@ namespace QLBanPiano
                 }
             }
             fLogin.Hide();
-            Init();
+            // Init();
             PhanQuyen();
         }
         private void PhanQuyen()

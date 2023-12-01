@@ -30,11 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLHoaDon));
-            panel1 = new Panel();
             CalendarLabel = new Label();
             label9 = new Label();
             label1 = new Label();
-            panel2 = new Panel();
             leftPanel = new Panel();
             panel7 = new Panel();
             ClockLabel = new Label();
@@ -64,11 +62,8 @@
             label2 = new Label();
             kh_idTextBox = new TextBox();
             label3 = new Label();
-            gridViewPanel = new Panel();
             hoaDonGridView = new DataGridView();
             Clock = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
             leftPanel.SuspendLayout();
             panel7.SuspendLayout();
             panel5.SuspendLayout();
@@ -76,22 +71,8 @@
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             rightPanel.SuspendLayout();
-            gridViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).BeginInit();
-            gridViewPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(CalendarLabel);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1087, 96);
-            panel1.TabIndex = 0;
             // 
             // CalendarLabel
             // 
@@ -125,17 +106,6 @@
             label1.TabIndex = 0;
             label1.Text = "Quản Lý Hóa Đơn";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(leftPanel);
-            panel2.Controls.Add(rightPanel);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 96);
-            panel2.Margin = new Padding(4);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1087, 203);
-            panel2.TabIndex = 1;
             // 
             // leftPanel
             // 
@@ -460,16 +430,6 @@
             label3.TabIndex = 1;
             label3.Text = "Mã khách hàng :";
             // 
-            // gridViewPanel
-            // 
-            gridViewPanel.Controls.Add(hoaDonGridView);
-            gridViewPanel.Dock = DockStyle.Fill;
-            gridViewPanel.Location = new Point(0, 299);
-            gridViewPanel.Margin = new Padding(4);
-            gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(1087, 363);
-            gridViewPanel.TabIndex = 2;
-            // 
             // hoaDonGridView
             // 
             hoaDonGridView.BackgroundColor = Color.White;
@@ -497,15 +457,11 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1087, 662);
-            Controls.Add(gridViewPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             Name = "frmQLHoaDon";
             Text = "QLHD";
             Load += frmQLHoaDon_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
             leftPanel.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
@@ -519,10 +475,7 @@
             panel3.PerformLayout();
             rightPanel.ResumeLayout(false);
             rightPanel.PerformLayout();
-            gridViewPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)hoaDonGridView).EndInit();
-            gridViewPanel.ResumeLayout(false);
-            gridViewPanel.PerformLayout();
             ResumeLayout(false);
         }
 

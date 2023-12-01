@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLPhieuNhap));
-            panel1 = new Panel();
             CalendarLabel = new Label();
             label9 = new Label();
             label1 = new Label();
@@ -45,7 +44,6 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            panel2 = new Panel();
             leftPanel = new Panel();
             panel5 = new Panel();
             ClockLabel = new Label();
@@ -61,28 +59,14 @@
             cbbTieuChi = new ComboBox();
             gridViewPanel = new Panel();
             Timer = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)phieuNhapGridView).BeginInit();
             panel3.SuspendLayout();
-            panel2.SuspendLayout();
             leftPanel.SuspendLayout();
             panel5.SuspendLayout();
             panel7.SuspendLayout();
             panel6.SuspendLayout();
             gridViewPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(CalendarLabel);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1044, 96);
-            panel1.TabIndex = 1;
             // 
             // CalendarLabel
             // 
@@ -237,16 +221,6 @@
             label2.TabIndex = 0;
             label2.Text = "Mã phiếu nhập :";
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(leftPanel);
-            panel2.Controls.Add(panel3);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 96);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1044, 166);
-            panel2.TabIndex = 4;
-            // 
             // leftPanel
             // 
             leftPanel.Anchor = AnchorStyles.None;
@@ -400,7 +374,6 @@
             // gridViewPanel
             // 
             gridViewPanel.Controls.Add(label9);
-            gridViewPanel.Controls.Add(panel4);
             gridViewPanel.Controls.Add(label1);
             gridViewPanel.Controls.Add(phieuNhapGridView);
             gridViewPanel.Controls.Add(panel3);
@@ -428,7 +401,6 @@
             ((System.ComponentModel.ISupportInitialize)phieuNhapGridView).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            panel2.ResumeLayout(false);
             leftPanel.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
