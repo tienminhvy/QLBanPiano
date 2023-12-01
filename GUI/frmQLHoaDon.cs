@@ -300,7 +300,7 @@ namespace QLBanPiano.GUI
                                     }
                                 }catch(Exception ex)
                                 {
-                                    MessageBox.Show("Sai định dạng ");
+                                    MessageBox.Show("Sai định dạng " +ex.Message);
                                     imported = false;
                                     break;
                                 }

@@ -35,6 +35,7 @@ namespace QLBanPiano.GUI
             int value = 0;
             totalTextBox.Text = string.Format("{0}     VNĐ", value.ToString());
             totalTextBox.TextAlign = HorizontalAlignment.Right;
+            txtIdNv.Text = frmChinh.nhanvien_id;
 
         }
 

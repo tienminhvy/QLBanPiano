@@ -32,7 +32,6 @@
             groupBox1 = new GroupBox();
             id_pnTextBox = new TextBox();
             label1 = new Label();
-            nv_idComboBox = new ComboBox();
             dateTimePicker1 = new DateTimePicker();
             label3 = new Label();
             label2 = new Label();
@@ -48,6 +47,7 @@
             chiTietPhieuNhapGridView = new DataGridView();
             panel3 = new Panel();
             ct_addBtn = new Button();
+            txtIdNv = new TextBox();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -57,15 +57,17 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtIdNv);
             groupBox1.Controls.Add(id_pnTextBox);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(nv_idComboBox);
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(10, 10);
+            groupBox1.Margin = new Padding(2, 2, 2, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(551, 147);
+            groupBox1.Padding = new Padding(2, 2, 2, 2);
+            groupBox1.Size = new Size(441, 118);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin phiếu nhập";
@@ -73,54 +75,51 @@
             // id_pnTextBox
             // 
             id_pnTextBox.Enabled = false;
-            id_pnTextBox.Location = new Point(212, 104);
+            id_pnTextBox.Location = new Point(170, 83);
+            id_pnTextBox.Margin = new Padding(2, 2, 2, 2);
             id_pnTextBox.Name = "id_pnTextBox";
             id_pnTextBox.ReadOnly = true;
-            id_pnTextBox.Size = new Size(119, 31);
+            id_pnTextBox.Size = new Size(96, 27);
             id_pnTextBox.TabIndex = 6;
             id_pnTextBox.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(17, 110);
+            label1.Location = new Point(17, 86);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(140, 25);
+            label1.Size = new Size(115, 20);
             label1.TabIndex = 5;
             label1.Text = "Mã phiếu nhập :";
-            // 
-            // nv_idComboBox
-            // 
-            nv_idComboBox.FormattingEnabled = true;
-            nv_idComboBox.Location = new Point(212, 65);
-            nv_idComboBox.Name = "nv_idComboBox";
-            nv_idComboBox.Size = new Size(333, 33);
-            nv_idComboBox.TabIndex = 0;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Enabled = false;
-            dateTimePicker1.Location = new Point(212, 21);
+            dateTimePicker1.Location = new Point(170, 17);
+            dateTimePicker1.Margin = new Padding(2, 2, 2, 2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(333, 31);
+            dateTimePicker1.Size = new Size(267, 27);
             dateTimePicker1.TabIndex = 3;
             dateTimePicker1.TabStop = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(17, 73);
+            label3.Location = new Point(17, 52);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(137, 25);
+            label3.Size = new Size(112, 20);
             label3.TabIndex = 2;
             label3.Text = "Mã nhân viên   :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 27);
+            label2.Location = new Point(12, 22);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(139, 25);
+            label2.Size = new Size(115, 20);
             label2.TabIndex = 1;
             label2.Text = "Thời gian nhập :";
             // 
@@ -130,18 +129,20 @@
             panel1.Controls.Add(confirmAddBtn);
             panel1.Controls.Add(ct_soLuongTextBox);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(12, 454);
+            panel1.Location = new Point(10, 363);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(554, 50);
+            panel1.Size = new Size(443, 40);
             panel1.TabIndex = 2;
             // 
             // CancelAddBtn
             // 
             CancelAddBtn.Image = (Image)resources.GetObject("CancelAddBtn.Image");
             CancelAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            CancelAddBtn.Location = new Point(106, 0);
+            CancelAddBtn.Location = new Point(85, 0);
+            CancelAddBtn.Margin = new Padding(2, 2, 2, 2);
             CancelAddBtn.Name = "CancelAddBtn";
-            CancelAddBtn.Size = new Size(100, 50);
+            CancelAddBtn.Size = new Size(80, 40);
             CancelAddBtn.TabIndex = 1;
             CancelAddBtn.Text = "  Hủy";
             CancelAddBtn.UseVisualStyleBackColor = true;
@@ -153,8 +154,9 @@
             confirmAddBtn.Image = (Image)resources.GetObject("confirmAddBtn.Image");
             confirmAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
             confirmAddBtn.Location = new Point(0, 0);
+            confirmAddBtn.Margin = new Padding(2, 2, 2, 2);
             confirmAddBtn.Name = "confirmAddBtn";
-            confirmAddBtn.Size = new Size(100, 50);
+            confirmAddBtn.Size = new Size(80, 40);
             confirmAddBtn.TabIndex = 0;
             confirmAddBtn.Text = "   Thêm";
             confirmAddBtn.UseVisualStyleBackColor = true;
@@ -164,56 +166,62 @@
             // ct_soLuongTextBox
             // 
             ct_soLuongTextBox.Enabled = false;
-            ct_soLuongTextBox.Location = new Point(384, 7);
+            ct_soLuongTextBox.Location = new Point(307, 6);
+            ct_soLuongTextBox.Margin = new Padding(2, 2, 2, 2);
             ct_soLuongTextBox.Name = "ct_soLuongTextBox";
             ct_soLuongTextBox.ReadOnly = true;
-            ct_soLuongTextBox.Size = new Size(167, 31);
+            ct_soLuongTextBox.Size = new Size(134, 27);
             ct_soLuongTextBox.TabIndex = 3;
             ct_soLuongTextBox.TabStop = false;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(212, 13);
+            label4.Location = new Point(170, 10);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(166, 25);
+            label4.Size = new Size(139, 20);
             label4.TabIndex = 2;
             label4.Text = "Số lượng (chi tiết ) :";
             // 
             // totalTextBox
             // 
             totalTextBox.Enabled = false;
-            totalTextBox.Location = new Point(337, 10);
+            totalTextBox.Location = new Point(270, 8);
+            totalTextBox.Margin = new Padding(2, 2, 2, 2);
             totalTextBox.Name = "totalTextBox";
             totalTextBox.ReadOnly = true;
-            totalTextBox.Size = new Size(214, 31);
+            totalTextBox.Size = new Size(172, 27);
             totalTextBox.TabIndex = 8;
             totalTextBox.TabStop = false;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(212, 13);
+            label7.Location = new Point(170, 10);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(119, 25);
+            label7.Size = new Size(98, 20);
             label7.TabIndex = 7;
             label7.Text = "Tổng chi phí :";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(12, 507);
+            label8.Location = new Point(10, 406);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(152, 25);
+            label8.Size = new Size(127, 20);
             label8.TabIndex = 3;
             label8.Text = "@quanlibanpiano";
             // 
             // panel2
             // 
             panel2.Controls.Add(chiTietPhieuNhapGridView);
-            panel2.Location = new Point(12, 165);
+            panel2.Location = new Point(10, 132);
+            panel2.Margin = new Padding(2, 2, 2, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(551, 227);
+            panel2.Size = new Size(441, 182);
             panel2.TabIndex = 4;
             // 
             // chiTietPhieuNhapGridView
@@ -223,10 +231,11 @@
             chiTietPhieuNhapGridView.Dock = DockStyle.Fill;
             chiTietPhieuNhapGridView.GridColor = Color.White;
             chiTietPhieuNhapGridView.Location = new Point(0, 0);
+            chiTietPhieuNhapGridView.Margin = new Padding(2, 2, 2, 2);
             chiTietPhieuNhapGridView.Name = "chiTietPhieuNhapGridView";
             chiTietPhieuNhapGridView.RowHeadersWidth = 62;
             chiTietPhieuNhapGridView.RowTemplate.Height = 33;
-            chiTietPhieuNhapGridView.Size = new Size(551, 227);
+            chiTietPhieuNhapGridView.Size = new Size(441, 182);
             chiTietPhieuNhapGridView.TabIndex = 0;
             chiTietPhieuNhapGridView.TabStop = false;
             // 
@@ -235,9 +244,10 @@
             panel3.Controls.Add(ct_addBtn);
             panel3.Controls.Add(totalTextBox);
             panel3.Controls.Add(label7);
-            panel3.Location = new Point(12, 398);
+            panel3.Location = new Point(10, 318);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(554, 50);
+            panel3.Size = new Size(443, 40);
             panel3.TabIndex = 1;
             // 
             // ct_addBtn
@@ -245,8 +255,9 @@
             ct_addBtn.Image = (Image)resources.GetObject("ct_addBtn.Image");
             ct_addBtn.ImageAlign = ContentAlignment.MiddleLeft;
             ct_addBtn.Location = new Point(0, 0);
+            ct_addBtn.Margin = new Padding(2, 2, 2, 2);
             ct_addBtn.Name = "ct_addBtn";
-            ct_addBtn.Size = new Size(206, 50);
+            ct_addBtn.Size = new Size(165, 40);
             ct_addBtn.TabIndex = 1;
             ct_addBtn.Text = "       Thêm chi tiết ";
             ct_addBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -254,20 +265,29 @@
             ct_addBtn.Click += ct_addBtn_Click;
             ct_addBtn.KeyPress += ct_addBtn_KeyPress;
             // 
+            // txtIdNv
+            // 
+            txtIdNv.Enabled = false;
+            txtIdNv.Location = new Point(170, 49);
+            txtIdNv.Name = "txtIdNv";
+            txtIdNv.Size = new Size(98, 27);
+            txtIdNv.TabIndex = 7;
+            // 
             // frmThemPhieuNhap
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(578, 544);
+            ClientSize = new Size(466, 442);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(label8);
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2, 2, 2, 2);
             MaximizeBox = false;
-            MaximumSize = new Size(600, 600);
-            MinimumSize = new Size(600, 600);
+            MaximumSize = new Size(484, 489);
+            MinimumSize = new Size(484, 489);
             Name = "frmThemPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ThemPhieuNhap";
@@ -291,7 +311,6 @@
         private Label label3;
         private Label label2;
         private DateTimePicker dateTimePicker1;
-        private ComboBox nv_idComboBox;
         private Label label8;
         private Label label1;
         private TextBox id_pnTextBox;
@@ -305,5 +324,6 @@
         private Button ct_addBtn;
         private Button CancelAddBtn;
         private Button confirmAddBtn;
+        private TextBox txtIdNv;
     }
 }

@@ -17,14 +17,16 @@ namespace QLBanPiano.DAL
         SqlDataAdapter da;//Bo dieu phoi du lieu
         DataSet ds; //Doi tuong chhua CSDL khi giao tiep
         SqlTransaction trans;
+        string server;
+        string strCnn;
         public DB()
         {
             //string server = "DESKTOP-RPE3FUU\\TRONGPHU";
             //string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=123456";
             //string server = "LAPTOP-52VVCVMC";
             // string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=210703";
-            string server = "DESKTOP-VYTM\\VYTM_NEW";
-            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
+            server = "DESKTOP-VYTM\\VYTM_NEW";
+            strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
             sqlConn = new SqlConnection(strCnn);
         }
         //Phuong thuc de thuc hien cau lenh strSQL truy vân du lieu
@@ -192,8 +194,6 @@ namespace QLBanPiano.DAL
         }
         public bool InsertConstraintedData(DataTable fkTable,string fkTableName,string sqlStringPkValue)
         {
-            string server = "LAPTOP-3O7CUBA2\\SQLEXPRESS";
-            string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=1";
             using (sqlConn = new SqlConnection(strCnn)) 
             {
                 sqlConn.Open();
