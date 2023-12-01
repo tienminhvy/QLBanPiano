@@ -269,7 +269,6 @@ namespace QLBanPiano.BUS
                         break;
                     }
             }
-            MessageBox.Show(dieuKien);
             return LayDS(dieuKien + " AND nhaccu.trangthai = 1");
         }
         public bool ThongTinSanPhamThayDoi(int id, string ma, string ten, long gia,string hinhAnh, string loai, string thuongHieu,
