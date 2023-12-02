@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,17 +22,35 @@ namespace QLBanPiano.BUS
             return db.GetColumn("thuonghieu", tenTruong, dieuKien);
         }
 
-        public List<DoiTuong> LayDS(string dieukien)
+        public List<DoiTuong> LayDS(string dieukien = "")
         {
-            throw new NotImplementedException();
+            if (dieukien == string.Empty)
+                dieukien = "1 = 1";
+            string sqlStr = "SELECT " +
+                "* FROM thuonghieu WHERE trangthai = 1 AND " + dieukien;
+
+            DataTable dt = db.Execute(sqlStr);
+            List<DoiTuong> ds = new List<DoiTuong>();
+            ThuongHieu thuonghieu;
+            foreach (DataRow row in dt.Rows)
+            {
+                thuonghieu = new ThuongHieu();
+                thuonghieu.Id = int.Parse(row["id"].ToString());
+                thuonghieu.Ma = row["ma"].ToString();
+                thuonghieu.Ten = row["ten"].ToString();
+                thuonghieu.MoTa = row["moTa"].ToString();
+                ds.Add(thuonghieu);
+            }
+            return ds;
         }
 
         public DataTable LayToanBoDS()
         {
             string sqlStr = "SELECT " +
-                "ma as N'Mã thương hiệu', " +
-                "ten as N'Tên thương hiệu', " +
-                "moTa as N'Mô tả thương hiệu' " +
+                "id as N'Id', " +
+                "ma as N'Mã', " +
+                "ten as N'Tên', " +
+                "moTa as N'Mô tả' " +
                 "FROM thuonghieu WHERE trangthai = 1";
 
             return db.Execute(sqlStr);
@@ -75,22 +94,10 @@ namespace QLBanPiano.BUS
             string ten = dsTruong[2];
             string moTa = dsTruong[3];
 
-            string idThuongHieu = db.GetColumn("thuonghieu", "id", "id = " + id).ToString(); // kiểm tra id của thương hiệu có tồn tại không
-            if (idThuongHieu == "-1")
-            {
-                MessageBox.Show("Không tìm thấy mã thương hiệu");
-                return false; //id Nhạc Cụ Không Tồn Tại
-            }
-
-            string trangThaiCuaMa = db.GetColumn("nhaccu", "trangthai", "ma = " + ma + "and id !=" + id).ToString(); //Lấy trạng thái của mã thương hiệu điền vào, nếu chưa tồn tại thì kq = null, nếu có tồn tại thì là True/false
-            if (trangThaiCuaMa == "1") // cần kiểm tra xem có mã thuonghieu nào trùng với nhạc cụ đang sửa và có id khác nhaccu đang sửa
-            {
-                MessageBox.Show("Mã thương hiệu đã tồn tại");
-                return false; // mã đã tồn tại và thương hiệu đó chưa bị xóa
-            }
-
             db.ExecuteNonQuery(string.Format("UPDATE thuonghieu " +
-                "SET ma = N'{0}', ten = N'{1}', moTa = N'{2}' " +
+                "SET ma = N'{0}', " +
+                "ten = N'{1}', " +
+                "moTa = N'{2}' " +
                 "WHERE id = {3}", ma, ten, moTa, id));
             return true;
         }
@@ -101,15 +108,9 @@ namespace QLBanPiano.BUS
             string ten = dsTruong[1];
             string moTa = dsTruong[2];
 
-            if (db.GetCount("thuonghieu", "ma = '" + ma + "' AND trangthai = 1") > 0)
-            {
-                MessageBox.Show("Mã thương hiệu đã tồn tại");
-                return false;
-            }
-
-            string thuonghieu_id = db.Insert(string.Format("INSERT INTO thuonghieu " +
+            db.ExecuteNonQuery(string.Format("INSERT INTO thuonghieu " +
                 "(ma, ten, moTa, trangthai) " +
-                "VALUES (N'{0}', N'{1}', N'{2}', 1);", ma, ten, moTa)).ToString();
+                "VALUES (N'{0}', N'{1}', N'{2}', 1);", ma, ten, moTa));
             return true;
         }
 
@@ -117,13 +118,56 @@ namespace QLBanPiano.BUS
         {
             db.ExecuteNonQuery(string.Format("UPDATE thuonghieu " +
                 "SET trangthai = 0 " +
-                "WHERE {1}", tieuChi));
+                "WHERE {0}", tieuChi));
             return true;
         }
 
         public bool Validate(params string[] dsTruong)
         {
-            throw new NotImplementedException();
+            string ma = dsTruong[0];
+            string ten = dsTruong[1];
+            string moTa = dsTruong[2];
+            string id = dsTruong[3];
+
+            if (ma == string.Empty || ten == string.Empty || moTa == string.Empty)
+            {
+                new Msg("Vui lòng điền đầy đủ thông tin", "err");
+                return false;
+            }
+
+            if (id == "-1" && db.GetCount("thuonghieu", "ma = N'" + ma + "' AND trangthai = 1") > 0)
+            {
+                new Msg("Mã thương hiệu này đã tồn tại!");
+                return false;
+            }
+
+            return true;
+        }
+
+        public List<DoiTuong> TimKiem(string tieuChi, string giaTri)
+        {
+            string dieuKien = "";
+            switch (tieuChi)
+            {
+                case "ID":
+                    {
+                        dieuKien = "CAST(id AS VARCHAR) LIKE '%" + giaTri + "%'";
+                        break;
+                    }
+                case "Mã":
+                    {
+                        dieuKien = "Upper(Ma) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+                case "Tên":
+                    {
+                        dieuKien = "Upper(Ten) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
+            }
+            if (dieuKien == string.Empty)
+                dieuKien = "1=1";
+            return LayDS(dieuKien);
         }
     }
 }

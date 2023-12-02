@@ -38,6 +38,7 @@
             phieuNhapToolStripMenuItem = new ToolStripMenuItem();
             hoaDonToolStripMenuItem = new ToolStripMenuItem();
             vaiTroToolStripMenuItem = new ToolStripMenuItem();
+            thuongHieuToolStripMenuItem = new ToolStripMenuItem();
             ttCaNhantoolStripButton = new ToolStripButton();
             thongKetoolStripButton = new ToolStripDropDownButton();
             theoDoanhThuToolStripMenuItem = new ToolStripMenuItem();
@@ -77,7 +78,7 @@
             // dstoolStripDropDownButton
             // 
             dstoolStripDropDownButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            dstoolStripDropDownButton.DropDownItems.AddRange(new ToolStripItem[] { pianoToolStripMenuItem, khachHangToolStripMenuItem, nhanVienToolStripMenuItem, phieuNhapToolStripMenuItem, hoaDonToolStripMenuItem, vaiTroToolStripMenuItem });
+            dstoolStripDropDownButton.DropDownItems.AddRange(new ToolStripItem[] { pianoToolStripMenuItem, khachHangToolStripMenuItem, nhanVienToolStripMenuItem, phieuNhapToolStripMenuItem, hoaDonToolStripMenuItem, vaiTroToolStripMenuItem, thuongHieuToolStripMenuItem });
             dstoolStripDropDownButton.ImageTransparentColor = Color.Magenta;
             dstoolStripDropDownButton.Name = "dstoolStripDropDownButton";
             dstoolStripDropDownButton.Size = new Size(123, 24);
@@ -86,44 +87,51 @@
             // pianoToolStripMenuItem
             // 
             pianoToolStripMenuItem.Name = "pianoToolStripMenuItem";
-            pianoToolStripMenuItem.Size = new Size(169, 26);
+            pianoToolStripMenuItem.Size = new Size(175, 26);
             pianoToolStripMenuItem.Text = "Piano";
             pianoToolStripMenuItem.Click += pianoToolStripMenuItem_Click;
             // 
             // khachHangToolStripMenuItem
             // 
             khachHangToolStripMenuItem.Name = "khachHangToolStripMenuItem";
-            khachHangToolStripMenuItem.Size = new Size(169, 26);
+            khachHangToolStripMenuItem.Size = new Size(175, 26);
             khachHangToolStripMenuItem.Text = "Khách hàng";
             khachHangToolStripMenuItem.Click += khachHangToolStripMenuItem_Click;
             // 
             // nhanVienToolStripMenuItem
             // 
             nhanVienToolStripMenuItem.Name = "nhanVienToolStripMenuItem";
-            nhanVienToolStripMenuItem.Size = new Size(169, 26);
+            nhanVienToolStripMenuItem.Size = new Size(175, 26);
             nhanVienToolStripMenuItem.Text = "Nhân viên";
             nhanVienToolStripMenuItem.Click += nhanVienToolStripMenuItem_Click;
             // 
             // phieuNhapToolStripMenuItem
             // 
             phieuNhapToolStripMenuItem.Name = "phieuNhapToolStripMenuItem";
-            phieuNhapToolStripMenuItem.Size = new Size(169, 26);
+            phieuNhapToolStripMenuItem.Size = new Size(175, 26);
             phieuNhapToolStripMenuItem.Text = "Phiếu nhập";
             phieuNhapToolStripMenuItem.Click += phieuNhapToolStripMenuItem_Click;
             // 
             // hoaDonToolStripMenuItem
             // 
             hoaDonToolStripMenuItem.Name = "hoaDonToolStripMenuItem";
-            hoaDonToolStripMenuItem.Size = new Size(169, 26);
+            hoaDonToolStripMenuItem.Size = new Size(175, 26);
             hoaDonToolStripMenuItem.Text = "Hoá đơn";
             hoaDonToolStripMenuItem.Click += hoaDonToolStripMenuItem_Click;
             // 
             // vaiTroToolStripMenuItem
             // 
             vaiTroToolStripMenuItem.Name = "vaiTroToolStripMenuItem";
-            vaiTroToolStripMenuItem.Size = new Size(169, 26);
+            vaiTroToolStripMenuItem.Size = new Size(175, 26);
             vaiTroToolStripMenuItem.Text = "Vai trò";
             vaiTroToolStripMenuItem.Click += vaiTroToolStripMenuItem_Click;
+            // 
+            // thuongHieuToolStripMenuItem
+            // 
+            thuongHieuToolStripMenuItem.Name = "thuongHieuToolStripMenuItem";
+            thuongHieuToolStripMenuItem.Size = new Size(175, 26);
+            thuongHieuToolStripMenuItem.Text = "Thương hiệu";
+            thuongHieuToolStripMenuItem.Click += thuongHieuToolStripMenuItem_Click;
             // 
             // ttCaNhantoolStripButton
             // 
@@ -269,5 +277,6 @@
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem theoDoanhThuToolStripMenuItem;
         private ToolStripMenuItem theoThuongHieuToolStripMenuItem;
+        private ToolStripMenuItem thuongHieuToolStripMenuItem;
     }
 }

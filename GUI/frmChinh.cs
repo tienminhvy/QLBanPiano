@@ -225,5 +225,10 @@ namespace QLBanPiano
         {
             innerNewForm(new frmThongKeThuongHieu());
         }
+
+        private void thuongHieuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            innerNewForm(new frmQLThuongHieu());
+        }
     }
 }

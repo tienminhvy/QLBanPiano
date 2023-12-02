@@ -157,6 +157,7 @@ namespace QLBanPiano.BUS
         {
             db.ExecuteNonQuery(string.Format("UPDATE nhanvien" +
                 " SET trangthai = 0 " + "WHERE {0}", tieuChi));
+            (new TaiKhoanBUS()).Xoa(tieuChi);
             return true;
         }
 

@@ -142,12 +142,12 @@ namespace QLBanPiano.GUI.SubForm
                     if (nhanvien.Them(txt_midName.Text, txt_name.Text,
                         dtpNgayVaoLam.Value.ToShortDateString(), txt_sdt.Text, txt_address.Text))
                     {
-                        MessageBox.Show("Thêm nhân viên thành công!");
+                        new Msg("Thêm nhân viên thành công!");
                         HienThiDSNhanVien();
                     }
                     else
                     {
-                        MessageBox.Show("Thêm nhân viên thất bại!");
+                        new Msg("Thêm nhân viên thất bại!", "err");
                     }
                 }
             }
@@ -193,6 +193,9 @@ namespace QLBanPiano.GUI.SubForm
         {
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
+                DialogResult res = new Msg("Bạn có muốn xoá nhân viên này?", "warn").Res;
+                if (res != DialogResult.OK)
+                    return;
                 //xet tieu chi la ma nhan vien de xoa hang do ra khoi bang
                 if (nhanvien.Xoa("id = " + dgvNhanVien.SelectedRows[0].Cells[0].Value.ToString()))
                 {
