@@ -382,33 +382,35 @@ namespace QLBanPiano
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            if(txtIDKH.Text.Length == 0)
+            if (txtIDKH.Text.Length == 0)
             {
                 MessageBox.Show("Chưa chọn khách hàng", "Thông báo");
                 return;
             }
-            if(DSSanPhamDaChon.Count == 0)
+            if (DSSanPhamDaChon.Count == 0)
             {
                 MessageBox.Show("Chưa chọn sản phẩm", "Thông báo");
                 return;
             }
             try
             {
-                if (txtTongTienNhan.Text.Length == 0) {
+                if (txtTongTienNhan.Text.Length == 0)
+                {
                     MessageBox.Show("Nhập số tiền nhận vào", "Thông báo");
-                    txtTongTienNhan.Focus(); 
+                    txtTongTienNhan.Focus();
                     return;
                 }
                 long tongTien = long.Parse(txtTongTien.Text);
                 long tienNhan = long.Parse(txtTongTienNhan.Text);
-                if(tienNhan < tongTien)
+                if (tienNhan < tongTien)
                 {
                     MessageBox.Show("Tiền nhận chưa đủ, vui lòng nhập lại", "Thông báo");
                     txtTongTienNhan.Focus();
                     return;
                 }
                 //---------------------------------------Code tạo Hóa đơn-------------------------------------------------------------
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi không mong muốn xảy ra, vui lòng thực hiện đúng thao tác", "Báo lỗi");
                 return;

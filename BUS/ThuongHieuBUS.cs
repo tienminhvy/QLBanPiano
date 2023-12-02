@@ -81,7 +81,18 @@ namespace QLBanPiano.BUS
             }
             return list;
         }
+        public List<int> LayDSIdThuongHieu()
+        {
+            List<int> list = new List<int>();
+            string sqlStr = "SELECT id as N'id Thương Hiệu'\r\nFROM thuonghieu";
 
+            DataTable dt = db.Execute(sqlStr);
+            foreach (DataRow dr in dt.Rows)
+            {
+                list.Add(int.Parse(dr["id Thương Hiệu"].ToString()));
+            }
+            return list;
+        }
         public int SoLuong(string dieuKien)
         {
             return db.GetCount("thuonghieu", dieuKien);

@@ -124,7 +124,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1322, 722);
+            panel1.Size = new Size(1323, 757);
             panel1.TabIndex = 0;
             // 
             // panel4
@@ -421,6 +421,7 @@
             // 
             // ptbAnh
             // 
+            ptbAnh.BorderStyle = BorderStyle.FixedSingle;
             ptbAnh.Enabled = false;
             ptbAnh.Location = new Point(328, 342);
             ptbAnh.Name = "ptbAnh";

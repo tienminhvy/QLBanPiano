@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Math;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace QLBanPiano.DTO
             phanloai = "";
         }
 
-        public Piano(int id, string phanloai, NhacCu nhacCu)
+        public Piano(int id, string phanloai, NhacCu nhacCu) : base(nhacCu.Id, nhacCu.Ma, nhacCu.Ten, nhacCu.DacDiemNoiBat, nhacCu.MoTaChiTiet,nhacCu.Gia, nhacCu.HinhAnh, nhacCu.SoLuong, nhacCu.ThuongHieu)
         {
             this.id = id;
             this.phanloai = phanloai;

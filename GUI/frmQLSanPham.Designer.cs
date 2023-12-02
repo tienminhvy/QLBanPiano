@@ -66,6 +66,8 @@
             label1 = new Label();
             txtMaTimKiem = new TextBox();
             label2 = new Label();
+            btnXuatFile = new Button();
+            btnNhapFile = new Button();
             mainPanel.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).BeginInit();
@@ -88,6 +90,8 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panel2.Controls.Add(btnNhapFile);
+            panel2.Controls.Add(btnXuatFile);
             panel2.Controls.Add(btnSua);
             panel2.Controls.Add(btnXoa);
             panel2.Controls.Add(btnNhapLai);
@@ -240,6 +244,8 @@
             // 
             // ptbAnh
             // 
+            ptbAnh.BorderStyle = BorderStyle.FixedSingle;
+            ptbAnh.Cursor = Cursors.Hand;
             ptbAnh.Location = new Point(198, 73);
             ptbAnh.Name = "ptbAnh";
             ptbAnh.Size = new Size(173, 173);
@@ -497,6 +503,32 @@
             label2.Text = "Mã:";
             label2.Click += label2_Click;
             // 
+            // btnXuatFile
+            // 
+            btnXuatFile.Anchor = AnchorStyles.Top;
+            btnXuatFile.BackColor = Color.PaleGreen;
+            btnXuatFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnXuatFile.Location = new Point(13, 503);
+            btnXuatFile.Name = "btnXuatFile";
+            btnXuatFile.Size = new Size(105, 53);
+            btnXuatFile.TabIndex = 22;
+            btnXuatFile.Text = "Xuất File";
+            btnXuatFile.UseVisualStyleBackColor = false;
+            btnXuatFile.Click += btnXuatFile_Click;
+            // 
+            // btnNhapFile
+            // 
+            btnNhapFile.Anchor = AnchorStyles.Top;
+            btnNhapFile.BackColor = Color.FromArgb(128, 255, 128);
+            btnNhapFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNhapFile.Location = new Point(143, 503);
+            btnNhapFile.Name = "btnNhapFile";
+            btnNhapFile.Size = new Size(105, 53);
+            btnNhapFile.TabIndex = 23;
+            btnNhapFile.Text = "Nhập File";
+            btnNhapFile.UseVisualStyleBackColor = false;
+            btnNhapFile.Click += btnNhapFile_Click;
+            // 
             // frmQLSanPham
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -558,5 +590,7 @@
         private Label label14;
         private Button btnSua;
         private DataGridView dgvSanPham;
+        private Button btnNhapFile;
+        private Button btnXuatFile;
     }
 }

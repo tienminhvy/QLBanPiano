@@ -4,6 +4,7 @@ using QLBanPiano.GUI.SubForm;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
 using System.Windows.Forms;
@@ -15,7 +16,9 @@ namespace QLBanPiano
         string projectDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\"; // lấy dường dẫn tính tới folder QLBanPIano
         private PianoBUS pianoBUS = new PianoBUS();
         private ThuongHieuBUS thuongHieuBUS = new ThuongHieuBUS();
-
+        private IOFileBUS iOFileBUS = new IOFileBUS();
+        private List<string> HeaderExcel = new List<string> { "Mã nhạc cụ", "Tên", "Đặc điểm nổi bật",
+            "Mô tả chi tiết", "Giá", "Hình Ảnh","Phân loại", "id Thương Hiệu" };
 
         private List<DoiTuong> danhSachDoiTuongPiano = new List<DoiTuong>();
         public frmQLSanPham()
@@ -198,10 +201,16 @@ namespace QLBanPiano
             txtDacDiemSP.Text = piano.DacDiemNoiBat.ToString();
             txtMoTaSP.Text = piano.MoTaChiTiet.ToString();
             string imagelink = projectDirectory + "GUI\\ImageSanPham\\" + piano.HinhAnh;
+            try
+            {
+                FileStream stream = new FileStream(imagelink, FileMode.Open, FileAccess.Read);
+                ptbAnh.Image = Image.FromStream(stream);
+                stream.Close();
+            }catch(Exception ex)
+            {
 
-            FileStream stream = new FileStream(imagelink, FileMode.Open, FileAccess.Read);
-            ptbAnh.Image = Image.FromStream(stream);
-            stream.Close();
+            }
+            
 
             cbbLoaiSP.SelectedItem = piano.Phanloai;
             cbbThuongHieuSP.SelectedItem = piano.ThuongHieu.Ten;
@@ -403,6 +412,21 @@ namespace QLBanPiano
                 ptbAnh.Image = Image.FromStream(stream);
                 stream.Close();
             }
+        }
+
+        private void btnNhapFile_Click(object sender, EventArgs e)
+        {
+            pianoBUS.NhapFileExcel();
+            LoadDanhSachSanPham();
+            btnNhapLai_Click(null, null);
+            txtIDSP.Text = string.Empty;
+            danhSachDoiTuongPiano.Clear();
+            danhSachDoiTuongPiano = pianoBUS.LayDS("nhaccu.trangthai = 1");
+        }
+
+        private void btnXuatFile_Click(object sender, EventArgs e)
+        {
+           pianoBUS.XuatFileExcel();
         }
     }
 

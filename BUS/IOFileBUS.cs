@@ -71,6 +71,54 @@ namespace QLBanPiano.BUS
             }
             return result;
         }
+        public DataTable ImportFormExcelToDataTableWithOutID(string filename)
+        {
+            
+            DataTable result = new();
+            DataTable temp = new();
+            bool isHeader = true;
+            // Sử dụng FileStream để mở tệp Excel
+            using (var wb = new XLWorkbook(filename))
+            {
+                var ws = wb.Worksheet(1);
+                // Lấy tên của các cột từ dòng header (dòng đầu tiên)
+                foreach (var row in ws.RowsUsed())
+                {
+                    if (row.CellsUsed().Any(cell => !string.IsNullOrEmpty(cell.Value.ToString())))
+                    {
+                        if (isHeader)
+                        {
+                            foreach (var cell in row.Cells())
+                            {
+                                temp.Columns.Add(cell.Value.ToString());
+                            }
+                            isHeader = false;
+                        }
+                        else
+                        {
+                            DataRow dataRow = temp.NewRow();
+                            int colIndex = 0;
+                            foreach (var cell in row.Cells())
+                            {
+                                if (colIndex < temp.Columns.Count)
+                                {
+                                    dataRow[colIndex++] = cell.Value;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Not fit !");
+                                }
+                            }
+                            temp.Rows.Add(dataRow);
+                        }
+                    }
+                }
+                result = temp;
+                //result = sort(temp);// sort dựa trên cột ID truyền vào 
+                // không có cột id nên k sort
+            }
+            return result;
+        }
         public bool ImportConstraint(DataTable fkTable,string fkTableName,string sqlString)//SqlString lay tu ben bus của những đối tượng có ràng buộc như hóa đơn,phiếu nhập
         {//VD : fkTable của phiếu nhập là chi tiết phiếu nhập, fkTableName là chitietphieunhap
             return db.InsertConstraintedData(fkTable,fkTableName,sqlString);
@@ -164,7 +212,7 @@ namespace QLBanPiano.BUS
 
                     // Xác định định dạng cho cột "Thời gian"
                     worksheet.Column(2).Style.Numberformat.Format = "MM/dd/yyyy hh:mm:ss";
-
+                    worksheet.Columns.AutoFit();
                     // Lưu file Excel
                     var file = new FileInfo(filename);
                     package.SaveAs(file);
