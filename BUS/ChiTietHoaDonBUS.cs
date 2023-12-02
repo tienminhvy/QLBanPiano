@@ -20,7 +20,7 @@ namespace QLBanPiano.BUS
         }
         public DataTable LayChiTietHoaDon(int id) 
         {
-            string sqlCmd = "select chitiethoadon.hoadon_id as 'ID',chitiethoadon.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',chitiethoadon.soLuong as 'SL' ,chitiethoadon.donGiaLucBan as N'Đơn giá',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom chitiethoadon\r\ninner join hoadon on hoadon.id = chitiethoadon.hoadon_id\r\ninner join nhaccu on chitiethoadon.nhaccu_id = nhaccu.id\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\nwhere chitiethoadon.hoadon_id = " + id;
+            string sqlCmd = "select chitiet_hdpn.hoadon_id as 'ID',chitiet_hdpn.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',chitiet_hdpn.soLuong as 'SL' ,chitiet_hdpn.donGia as N'Đơn giá',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom chitiet_hdpn\r\ninner join hoadon on hoadon.id = chitiet_hdpn.hoadon_id\r\ninner join nhaccu on chitiet_hdpn.nhaccu_id = nhaccu.id\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\nwhere chitiet_hdpn.hoadon_id = " + id;
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
@@ -33,7 +33,7 @@ namespace QLBanPiano.BUS
                 long dongia = Convert.ToInt64(dsTruong[2]);
                 short soLuong = Convert.ToInt16(dsTruong[3]);
 
-                string sqlCmd = string.Format("insert into chitiethoadon (nhaccu_id,hoadon_id,donGiaLucBan,soLuong)\r\nvalues ({0},{1},{2},{3})",nhaccu_id,hoadon_id,dongia,soLuong);
+                string sqlCmd = string.Format("insert into chitiet_hdpn (nhaccu_id,hoadon_id,donGia,soLuong)\r\nvalues ({0},{1},{2},{3})",nhaccu_id,hoadon_id,dongia,soLuong);
                 db.ExecuteNonQuery(sqlCmd);
                 return true;
             }

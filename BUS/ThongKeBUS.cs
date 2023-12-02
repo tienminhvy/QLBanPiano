@@ -61,9 +61,9 @@ namespace QLBanPiano.BUS
 
         public List<long> TongChiTheoThang(string nam)
         {
-            string sqlStr = "SELECT MONTH(pn.thoiGian) as N'Tháng', SUM(ctpn.soLuong * ctpn.chiPhiNhap) as N'Tổng giá tiền'" +
-                "\r\nFROM phieunhap pn JOIN chitietphieunhap ctpn ON pn.id = ctpn.phieunhap_id" +
-                "\r\nWHERE YEAR(pn.thoiGian) = " +nam +
+            string sqlStr = "SELECT MONTH(pn.thoiGian) as N'Tháng', SUM(ctpn.soLuong * ctpn.donGia) as N'Tổng giá tiền'" +
+                "\r\nFROM hoadonphieunhap pn JOIN chitiet_hdpn ctpn ON pn.id = ctpn.id_hdpn" +
+                "\r\nWHERE pn.khachhang_id IS NULL AND YEAR(pn.thoiGian) = " + nam +
                 "\r\nGROUP BY MONTH(pn.thoiGian);";
             DataTable dt = db.Execute(sqlStr);
             List<long> list = Enumerable.Repeat(0L, 12).ToList(); // tạo 1 list 12 phần tử với tất cả = 0
@@ -77,9 +77,9 @@ namespace QLBanPiano.BUS
         }
         public List<long> TongThuTheoThang(string nam)
         {
-            string sqlStr = "SELECT MONTH(hd.thoiGian) as N'Tháng', SUM(cthd.soLuong * cthd.donGiaLucBan) as N'Tổng giá tiền' " +
-                "FROM hoadon hd JOIN chitiethoadon cthd ON hd.id = cthd.hoadon_id " +
-                "WHERE YEAR(hd.thoiGian) = " +nam+
+            string sqlStr = "SELECT MONTH(hd.thoiGian) as N'Tháng', SUM(cthd.soLuong * cthd.donGia) as N'Tổng giá tiền' " +
+                "FROM hoadonphieunhap hd JOIN chitiet_hdpn cthd ON hd.id = cthd.id_hdpn " +
+                "WHERE hd.khachhang_id IS NOT NULL AND YEAR(hd.thoiGian) = " +nam+
                 "GROUP BY MONTH(hd.thoiGian); ";
             DataTable dt = db.Execute(sqlStr);
             List<long> list = Enumerable.Repeat(0L, 12).ToList(); // tạo 1 list 12 phần tử với tất cả = 0
@@ -95,9 +95,9 @@ namespace QLBanPiano.BUS
         public List<long> TongChiTheoNgay(string nam, string thang)
         {
             int soNgayTrongThang = DateTime.DaysInMonth(int.Parse(nam), int.Parse(thang));
-            string sqlStr = "SELECT DAY(pn.thoiGian) as N'Ngày', SUM(ctpn.soLuong * ctpn.chiPhiNhap) as N'Tổng giá tiền' " +
-                "FROM phieunhap pn JOIN chitietphieunhap ctpn ON pn.id = ctpn.phieunhap_id " +
-                "WHERE YEAR(pn.thoiGian) = "+nam+" AND MONTH(pn.thoiGian) = "+thang +
+            string sqlStr = "SELECT DAY(pn.thoiGian) as N'Ngày', SUM(ctpn.soLuong * ctpn.donGia) as N'Tổng giá tiền' " +
+                "FROM hoadonphieunhap pn JOIN chitiet_hdpn ctpn ON pn.id = ctpn.id_hdpn " +
+                "WHERE pn.khachhang_id IS NULL AND YEAR(pn.thoiGian) = " + nam+" AND MONTH(pn.thoiGian) = "+thang +
                 " GROUP BY Day(pn.thoiGian); ";
             DataTable dt = db.Execute(sqlStr);
             List<long> list = Enumerable.Repeat(0L, soNgayTrongThang).ToList(); // tạo 1 list 30/31/28 phần tử với tất cả = 0
@@ -113,9 +113,9 @@ namespace QLBanPiano.BUS
         public List<long> TongThuTheoNgay(string nam, string thang)
         {
             int soNgayTrongThang = DateTime.DaysInMonth(int.Parse(nam), int.Parse(thang));
-            string sqlStr = "SELECT DAY(hd.thoiGian) as N'Ngày', SUM(cthd.soLuong * cthd.donGiaLucBan) as N'Tổng giá tiền' " +
-                "FROM hoadon hd JOIN chitiethoadon cthd ON hd.id = cthd.hoadon_id " +
-                "WHERE YEAR(hd.thoiGian) = "+nam+" AND MONTH(hd.thoiGian) = " +thang +
+            string sqlStr = "SELECT DAY(hd.thoiGian) as N'Ngày', SUM(cthd.soLuong * cthd.donGia) as N'Tổng giá tiền' " +
+                "FROM hoadonphieunhap hd JOIN chitiet_hdpn cthd ON hd.id = cthd.id_hdpn " +
+                "WHERE hd.khachhang_id IS NOT NULL AND YEAR(hd.thoiGian) = " + nam+" AND MONTH(hd.thoiGian) = " +thang +
                 " GROUP BY DAY(hd.thoiGian); ";
             DataTable dt = db.Execute(sqlStr);
             List<long> list = Enumerable.Repeat(0L, soNgayTrongThang).ToList(); // tạo 1 list 30/31/28 phần tử với tất cả = 0
@@ -131,10 +131,10 @@ namespace QLBanPiano.BUS
         public int SoLuongThuongHieuDaBanTrongNam(string nam, string maThuongHieu)
         {
             string sqlStr = "SELECT ISNULL(sum(cthd.soLuong), 0) as N'Số Lượng' " +
-                "FROM hoadon hd join chitiethoadon cthd on hd.id = cthd.hoadon_id " +
+                "FROM hoadonphieunhap hd join chitiet_hdpn cthd on hd.id = cthd.id_hdpn " +
                 "join nhaccu nc on cthd.nhaccu_id = nc.id " +
                 "join thuonghieu th on nc.thuonghieu_id = th.id " +
-                "WHERE YEAR(hd.thoiGian) = "+nam+" and th.ma = '"+maThuongHieu+"' " +
+                "WHERE hd.khachhang_id IS NOT NULL AND YEAR(hd.thoiGian) = " + nam+" and th.ma = '"+maThuongHieu+"' " +
                 "GROUP BY th.ma";
             DataTable dt = db.Execute(sqlStr);
             int result = 0;
@@ -148,10 +148,10 @@ namespace QLBanPiano.BUS
         public int SoLuongThuongHieuDaBanTrongThang(string nam, string thang, string maThuongHieu)
         {
             string sqlStr = "SELECT ISNULL(sum(cthd.soLuong), 0) as N'Số Lượng' " +
-                "FROM hoadon hd join chitiethoadon cthd on hd.id = cthd.hoadon_id " +
+                "FROM hoadonphieunhap hd join chitiet_hdpn cthd on hd.id = cthd.id_hdpn " +
                 "join nhaccu nc on cthd.nhaccu_id = nc.id " +
                 "join thuonghieu th on nc.thuonghieu_id = th.id " +
-                "WHERE YEAR(hd.thoiGian) = " + nam + "and MONTH(hd.thoiGian) = "+thang+ " and th.ma = '" + maThuongHieu + "' " +
+                "WHERE hd.khachhang_id IS NOT NULL AND YEAR(hd.thoiGian) = " + nam + "and MONTH(hd.thoiGian) = "+thang+ " and th.ma = '" + maThuongHieu + "' " +
                 "GROUP BY th.ma";
             DataTable dt = db.Execute(sqlStr);
             int result = 0;

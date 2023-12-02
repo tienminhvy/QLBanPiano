@@ -22,19 +22,19 @@ namespace QLBanPiano.BUS
         }
         public object GiaTriTruong(string tenTruong, string dieuKien)
         {
-            return db.GetColumn("hoadon", tenTruong, dieuKien);
+            return db.GetColumn("hoadonphieunhap", tenTruong, dieuKien);
         }
 
         public DataTable GetDS()
         {
-            string sqlCmd = "SELECT hoadon.id as N'Mã hóa đơn' ,hoadon.thoiGian as N'Thời gian',nhanvien.id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',khachhang.id as N'Mã khách hàng',CONCAT(khachhang.hoLot,' ',khachhang.ten) as N'Khách hàng '\r\nFrom hoadon\r\nInner join khachhang on hoadon.khachhang_id = khachhang.id\r\nInner join nhanvien on hoadon.nhanvien_id = nhanvien.id";
+            string sqlCmd = "SELECT hoadonphieunhap.id as N'Mã hóa đơn' ,hoadonphieunhap.thoiGian as N'Thời gian',nhanvien.id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',khachhang.id as N'Mã khách hàng',CONCAT(khachhang.hoLot,' ',khachhang.ten) as N'Khách hàng '\r\nFrom hoadonphieunhap\r\nInner join khachhang on hoadonphieunhap.khachhang_id = khachhang.id\r\nInner join nhanvien on hoadonphieunhap.nhanvien_id = nhanvien.id WHERE hoadonphieunhap.khachhang_id IS NOT NULL";
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
 
         public DataTable LayToanBoDS()
         {
-            string sqlCmd = "select hoadon.id as 'ID',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom hoadon\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\n";
+            string sqlCmd = "select hoadonphieunhap.id as 'ID',hoadonphieunhap.thoiGian as N'Thời gian',hoadonphieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadonphieunhap.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom hoadonphieunhap\r\ninner join khachhang on hoadonphieunhap.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadonphieunhap.nhanvien_id = nhanvien.id\r\nWHERE hoadonphieunhap.khachhang_id IS NOT NULL";
             DataTable dt = db.Execute(sqlCmd);
             foreach(DataRow row in dt.Rows)
             {
@@ -47,7 +47,7 @@ namespace QLBanPiano.BUS
 
         public int SoLuong(string dieuKien)
         {
-            return db.GetCount("hoadon", dieuKien);
+            return db.GetCount("hoadonphieunhap", dieuKien);
         }
         public DataTable getClone(DataTable dt)
         {
@@ -70,30 +70,30 @@ namespace QLBanPiano.BUS
         }
         public HoaDonPDFExcel getHoaDon(DataTable dt)
         {
-            HoaDonPDFExcel hoadon = new();
+            HoaDonPDFExcel hoadonphieunhap = new();
             DataRow row = dt.Rows[0];
             try
             {
-                hoadon.Id = Convert.ToInt32(row["ID"]);
-                hoadon.NhanVien_id = Convert.ToInt32(row["Mã nhân viên"]);
-                hoadon.ThoiGian = Convert.ToDateTime(row["Thời gian"]);
-                hoadon.KhachHang_id = Convert.ToInt32(row["Mã khách hàng"]);
-                hoadon.List = chitietBus.DatatableToList(dt);
+                hoadonphieunhap.Id = Convert.ToInt32(row["ID"]);
+                hoadonphieunhap.NhanVien_id = Convert.ToInt32(row["Mã nhân viên"]);
+                hoadonphieunhap.ThoiGian = Convert.ToDateTime(row["Thời gian"]);
+                hoadonphieunhap.KhachHang_id = Convert.ToInt32(row["Mã khách hàng"]);
+                hoadonphieunhap.List = chitietBus.DatatableToList(dt);
             }catch(Exception ex)
             {
                 MessageBox.Show("Lỗi convert " + ex.Message);
             }
-            return hoadon;
+            return hoadonphieunhap;
         }
-        public bool Validates(HoaDonPDFExcel hoadon)
+        public bool Validates(HoaDonPDFExcel hoadonphieunhap)
         {
             string thisyear = "2014-01-01 00:00:00 AM";
             DateTime dateTime = DateTime.ParseExact(thisyear, "yyyy-MM-dd hh:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None);
-            if (hoadon.Id <= 0) return false;
-            if (hoadon.ThoiGian > DateTime.Today || hoadon.ThoiGian < dateTime) return false;
-            if (khachhangBus.checkExist(hoadon.KhachHang_id) == false) return false;
-            if (nhanvienBus.checkExist(hoadon.NhanVien_id) == false) return false;
-            if (hoadon.List == null) return false;
+            if (hoadonphieunhap.Id <= 0) return false;
+            if (hoadonphieunhap.ThoiGian > DateTime.Today || hoadonphieunhap.ThoiGian < dateTime) return false;
+            if (khachhangBus.checkExist(hoadonphieunhap.KhachHang_id) == false) return false;
+            if (nhanvienBus.checkExist(hoadonphieunhap.NhanVien_id) == false) return false;
+            if (hoadonphieunhap.List == null) return false;
             return true;
         }
         public bool ValidateList(List<HoaDonPDFExcel> list)
@@ -104,9 +104,9 @@ namespace QLBanPiano.BUS
             }
             return true;
         }
-        public string getSqlString(HoaDonPDFExcel hoadon)
+        public string getSqlString(HoaDonPDFExcel hoadonphieunhap)
         {
-            string result = string.Format("insert into hoadon(thoiGian,nhanvien_id,khachhang_id) values ('{0}',{1},{2}); select SCOPE_IDENTITY();", hoadon.ThoiGian, hoadon.NhanVien_id,hoadon.KhachHang_id);
+            string result = string.Format("insert into hoadonphieunhap(thoiGian,nhanvien_id,khachhang_id) values ('{0}',{1},{2}); select SCOPE_IDENTITY();", hoadonphieunhap.ThoiGian, hoadonphieunhap.NhanVien_id,hoadonphieunhap.KhachHang_id);
             return result;
         }
         public DataTable TimKiem(int tieuchi,string giatri)
@@ -115,7 +115,7 @@ namespace QLBanPiano.BUS
             switch (tieuchi)
             {
                 case 0:
-                    string dieukien0 = "cast(hoadon.id as varchar) like '%"+ giatri +"%'";
+                    string dieukien0 = "cast(hoadonphieunhap.id as varchar) like '%"+ giatri +"%'";
                     dt = layDsDaTruyVan(dieukien0);
                     break;
                 case 1:
@@ -123,11 +123,11 @@ namespace QLBanPiano.BUS
                     dt = layDsDaTruyVan(dieukien1);
                     break;
                 case 2:
-                    string dieukien2 = "hoadon.nhanvien_id like '%" + giatri +"%'";
+                    string dieukien2 = "hoadonphieunhap.nhanvien_id like '%" + giatri +"%'";
                     dt = layDsDaTruyVan(dieukien2);
                     break;
                 case 3:
-                    string dieukien3 = "hoadon.khachhang_id like '%"+giatri + "%'";
+                    string dieukien3 = "hoadonphieunhap.khachhang_id like '%"+giatri + "%'";
                     dt = layDsDaTruyVan(dieukien3);
                     break;
                 case 4:
@@ -149,7 +149,7 @@ namespace QLBanPiano.BUS
             string thoiGian = dsTruong[0];
             string nhanvien_id = dsTruong[1];
             string khachhang_id = dsTruong[2];
-            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ", Convert.ToDateTime(thoiGian), Convert.ToInt32(nhanvien_id), Convert.ToInt32(khachhang_id)));
+            int hoadon_id = db.Insert(string.Format("insert into hoadonphieunhap (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ({0},{1},{2}) ", Convert.ToDateTime(thoiGian), Convert.ToInt32(nhanvien_id), Convert.ToInt32(khachhang_id)));
             return hoadon_id;
         }
 
@@ -158,7 +158,7 @@ namespace QLBanPiano.BUS
             string thoiGian = dsTruong[0];
             string nhanvien_id = dsTruong[1];
             string khachhang_id = dsTruong[2];
-            int hoadon_id = db.Insert(string.Format("insert into hoadon (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ('{0}',{1},{2}) ",thoiGian,Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
+            int hoadon_id = db.Insert(string.Format("insert into hoadonphieunhap (thoiGian,nhanvien_id,khachhang_id) OUTPUT INSERTED.id values ('{0}',{1},{2}) ",thoiGian,Convert.ToInt32(nhanvien_id),Convert.ToInt32(khachhang_id)));
             if(hoadon_id == -1)
             {
                 return false;
@@ -176,13 +176,13 @@ namespace QLBanPiano.BUS
         }
         public DataTable layDsDaTruyVan(string dieukien)
         {
-            string sqlCmd = "select hoadon.id as 'ID',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom hoadon\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\nwhere " + dieukien;
+            string sqlCmd = "select hoadonphieunhap.id as 'ID',hoadonphieunhap.thoiGian as N'Thời gian',hoadonphieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadonphieunhap.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom hoadonphieunhap\r\ninner join khachhang on hoadonphieunhap.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadonphieunhap.nhanvien_id = nhanvien.id\r\nWHERE hoadonphieunhap.khachhang_id IS NOT NULL and " + dieukien;
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
         public List<DoiTuong> LayDS(string dieukien)
         {
-            string sqlCmd = "select id as N'ID', thoiGian as N'Thời gian',nhanvien_id as N'Mã nhân viên',khachhang_id as N'Mã khách hàng'\r\nfrom hoadon\r\nwhere " + dieukien;
+            string sqlCmd = "select id as N'ID', thoiGian as N'Thời gian',nhanvien_id as N'Mã nhân viên',khachhang_id as N'Mã khách hàng'\r\nfrom hoadonphieunhap\r\nwhere " + dieukien;
             DataTable dt = db.Execute(sqlCmd);
             List<DoiTuong> list = new();
             foreach (DataRow dr in dt.Rows)

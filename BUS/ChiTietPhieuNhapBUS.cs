@@ -21,7 +21,7 @@ namespace QLBanPiano.BUS
         }
         public DataTable LayChiTietPhieuNhap(int id)
         {
-            string sqlCmd = "select chitietphieunhap.phieunhap_id as 'ID', chitietphieunhap.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',chiPhiNhap as N'Đơn giá',chitietphieunhap.soLuong as 'SL',phieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',phieunhap.thoiGian as N'Thời gian'\r\nfrom chitietphieunhap\r\ninner join nhaccu on nhaccu.id = chitietphieunhap.nhaccu_id\r\ninner join phieunhap on phieunhap.id = chitietphieunhap.phieunhap_id\r\ninner join nhanvien on nhanvien.id = phieunhap.nhanvien_id\r\nwhere chitietphieunhap.phieunhap_id = " + id;
+            string sqlCmd = "select chitiet_hdpn.phieunhap_id as 'ID', chitiet_hdpn.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',donGia as N'Đơn giá',chitiet_hdpn.soLuong as 'SL',phieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',phieunhap.thoiGian as N'Thời gian'\r\nfrom chitiet_hdpn\r\ninner join nhaccu on nhaccu.id = chitiet_hdpn.nhaccu_id\r\ninner join phieunhap on phieunhap.id = chitiet_hdpn.phieunhap_id\r\ninner join nhanvien on nhanvien.id = phieunhap.nhanvien_id\r\nwhere chitiet_hdpn.phieunhap_id = " + id;
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }

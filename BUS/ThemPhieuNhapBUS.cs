@@ -15,7 +15,7 @@ namespace QLBanPiano.BUS
         }
         public int LayID()
         {
-            int id = db.ExecuteScalar("phieunhap", "id");
+            int id = db.ExecuteScalar("hoadonphieunhap", "id");
             return id + 1;
         }
     }

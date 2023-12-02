@@ -19,7 +19,7 @@ namespace QLBanPiano.BUS
             HoaDonPDFExcel hoaDon = new();
             try
             {
-                string sqlCmd = "select id as 'ID',thoiGian as N'Thời gian',nhanvien_id as N'Mã nhân viên',khachhang_id as N'Mã khách hàng'\r\nfrom hoadon\r\nwhere id = " + ID;
+                string sqlCmd = "select id as 'ID',thoiGian as N'Thời gian',nhanvien_id as N'Mã nhân viên',khachhang_id as N'Mã khách hàng'\r\nfrom hoadonphieunhap\r\nwhere id = " + ID;
                 DataTable dt = db.Execute(sqlCmd);
                 DataRow row = dt.Rows[0];
                 hoaDon.Id = Convert.ToInt32(row["ID"]);
