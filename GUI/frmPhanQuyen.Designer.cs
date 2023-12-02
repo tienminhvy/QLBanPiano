@@ -40,6 +40,7 @@
             btnTaoMoi = new Button();
             label1 = new Label();
             gbDSQuyen = new GroupBox();
+            ckQLThuongHieu = new CheckBox();
             ckThongKe = new CheckBox();
             ckNhapXuat = new CheckBox();
             ckQLNhanVien = new CheckBox();
@@ -192,6 +193,7 @@
             // gbDSQuyen
             // 
             gbDSQuyen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbDSQuyen.Controls.Add(ckQLThuongHieu);
             gbDSQuyen.Controls.Add(ckThongKe);
             gbDSQuyen.Controls.Add(ckNhapXuat);
             gbDSQuyen.Controls.Add(ckQLNhanVien);
@@ -206,6 +208,16 @@
             gbDSQuyen.TabIndex = 0;
             gbDSQuyen.TabStop = false;
             gbDSQuyen.Text = "Danh sách quyền";
+            // 
+            // ckQLThuongHieu
+            // 
+            ckQLThuongHieu.AutoSize = true;
+            ckQLThuongHieu.Location = new Point(23, 275);
+            ckQLThuongHieu.Name = "ckQLThuongHieu";
+            ckQLThuongHieu.Size = new Size(165, 24);
+            ckQLThuongHieu.TabIndex = 8;
+            ckQLThuongHieu.Text = "Quản lý thương hiệu";
+            ckQLThuongHieu.UseVisualStyleBackColor = true;
             // 
             // ckThongKe
             // 
@@ -329,5 +341,6 @@
         private Button btnTaoMoi;
         private TextBox txtTenVaiTro;
         private CheckBox ckThongKe;
+        private CheckBox ckQLThuongHieu;
     }
 }

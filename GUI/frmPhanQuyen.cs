@@ -1,4 +1,5 @@
-﻿using QLBanPiano.BUS;
+﻿using DocumentFormat.OpenXml.Office2010.CustomUI;
+using QLBanPiano.BUS;
 using QLBanPiano.DTO;
 using QLBanPiano.GUI.SubForm;
 using System;
@@ -57,6 +58,7 @@ namespace QLBanPiano.GUI
             ckQLNhanVien.Checked = false;
             ckNhapXuat.Checked = false;
             ckThongKe.Checked = false;
+            ckQLThuongHieu.Checked = false;
         }
 
         private void CheckAll()
@@ -69,6 +71,7 @@ namespace QLBanPiano.GUI
             ckQLNhanVien.Checked = true;
             ckNhapXuat.Checked = true;
             ckThongKe.Checked = true;
+            ckQLThuongHieu.Checked = true;
         }
 
         private void dsVaiTro_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,6 +104,8 @@ namespace QLBanPiano.GUI
                         ckNhapXuat.Checked = true;
                     if (quyen.Equals("thongKe"))
                         ckThongKe.Checked = true;
+                    if (quyen.Equals("quanLyThuongHieu"))
+                        ckQLThuongHieu.Checked = true;
                 }
             }
         }
@@ -118,9 +123,9 @@ namespace QLBanPiano.GUI
                 vt.DsQuyen.Clear();
                 foreach (Control control in gbDSQuyen.Controls)
                 {
-                    if (control is CheckBox)
+                    if (control is System.Windows.Forms.CheckBox)
                     {
-                        CheckBox ck = (CheckBox)control;
+                        System.Windows.Forms.CheckBox ck = (System.Windows.Forms.CheckBox)control;
                         if (ck.Checked)
                         {
                             if (ck.Name.Equals("ckBanHang"))
@@ -139,6 +144,8 @@ namespace QLBanPiano.GUI
                                 vt.DsQuyen.Add("nhapXuat");
                             if (ck.Name.Equals("ckThongKe"))
                                 vt.DsQuyen.Add("thongKe");
+                            if (ck.Name.Equals("ckQLThuongHieu"))
+                                vt.DsQuyen.Add("quanLyThuongHieu");
                         }
                     }
                 }

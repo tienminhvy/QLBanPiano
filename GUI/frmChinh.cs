@@ -10,7 +10,8 @@ namespace QLBanPiano
         public frmChinh()
         {
             InitializeComponent();
-            innerNewForm(new frmThongKe());
+            // Tắt do đã thay đổi cấu trúc bảng
+            // innerNewForm(new frmThongKe());
         }
         private frmDangNhap fLogin;
         public static string username;
@@ -24,18 +25,15 @@ namespace QLBanPiano
             {
                 if (quyen == "thongKe")
                 {
-                    innerNewForm(new frmThongKe());
-                    break;
+                    // Tạm tắt do đã thay đổi cấu trúc bảng
+                    // innerNewForm(new frmThongKe());
+                    // break;
                 }
-
-                else
-                {
-                    innerNewForm(new frmBanHang());
-                    break;
-                }
+                innerNewForm(new frmBanHang());
+                break;
             }
             fLogin.Hide();
-            // Init();
+            Init();
             PhanQuyen();
         }
         private void PhanQuyen()
