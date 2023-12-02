@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLBanPiano.DTO
 {
-    public class ThuongHieu
+    public class ThuongHieu : DoiTuong
     {
         private int id;
         private string ma;

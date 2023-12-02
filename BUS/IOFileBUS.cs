@@ -158,13 +158,13 @@ namespace QLBanPiano.BUS
                 {
                     // Tạo một worksheet mới
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
-
+                    
                     // Đưa dữ liệu từ DataTable vào worksheet
                     worksheet.Cells["A1"].LoadFromDataTable(table, true);
 
                     // Xác định định dạng cho cột "Thời gian"
                     worksheet.Column(2).Style.Numberformat.Format = "MM/dd/yyyy hh:mm:ss";
-
+                    worksheet.Columns.AutoFit();
                     // Lưu file Excel
                     var file = new FileInfo(filename);
                     package.SaveAs(file);

@@ -1,4 +1,6 @@
-﻿using QLBanPiano.DAL;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using iTextSharp.text;
+using QLBanPiano.DAL;
 using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace QLBanPiano.BUS
 {
@@ -95,6 +98,25 @@ namespace QLBanPiano.BUS
                 return db.Execute(sqlStr);
         }
 
+        public DataTable LayToanBoDSXuatExcel()
+        {
+            string sqlStr = "SELECT  piano.id as 'id'," +
+                "nhaccu.ma as N'Mã nhạc cụ'," +
+                "nhaccu.ten as N'Tên'," +
+                "dacDiemNoiBat as N'Đặc điểm nổi bật'," +
+                "moTaChiTiet as N'Mô tả chi tiết'," +
+                "gia as N'Giá'," +
+                "hinhAnh as N'Hình Ảnh'," +
+                "soLuong as N'Số lượng'," +
+                "phanLoai as N'Phân loại', " +
+                "thuonghieu.ma as N'Mã Thương Hiệu'," +
+                "thuonghieu.ten as N'Tên Thương Hiệu'," +
+                "nhaccu.thuonghieu_id as N'id Thương Hiệu' " +
+                "FROM piano, nhaccu, thuonghieu " +
+                "WHERE piano.nhaccu_id = nhaccu.id AND nhaccu.thuonghieu_id = thuonghieu.id AND nhaccu.trangthai = 1";
+            return db.Execute(sqlStr);
+        }
+
         public int SoLuong(string dieuKien)
         {
             return db.GetCount("piano", dieuKien);
@@ -179,7 +201,133 @@ namespace QLBanPiano.BUS
          */
         public bool Validate(params string[] dsTruong)
         {
-            throw new NotImplementedException();
+            string ma = dsTruong[0];
+            string ten = dsTruong[1];
+            string dacDiemNoiBat = dsTruong[2];
+            string moTaChiTiet = dsTruong[3];
+            long gia = long.Parse(dsTruong[4]);
+            string hinhAnh = dsTruong[5];
+            string phanLoai = dsTruong[6];
+            int idThuongHieu = int.Parse(dsTruong[7]);
+
+            List<int> dsIdThuongHieu = new ThuongHieuBUS().LayDSIdThuongHieu();
+            if (!hinhAnh.Equals("example.png"))
+            {
+                return false; // hình ảnh mặc định từ file là example
+            }
+            if (!phanLoai.Equals("điện") && !phanLoai.Equals("Upright") && !phanLoai.Equals("Grand"))
+            {
+                return false; // loại nhạc cụ nằm ngoài danh sách
+            }
+            if (!dsIdThuongHieu.Contains(idThuongHieu))
+            {
+                return false; //id thương hiệu nằm ngoài danh sách thương hiệu
+            }
+            if (ma.Length > 15 || ma.Length < 3)
+            {
+                return false; //Mã dài trên >15 hoặc <3
+            }
+            if (ten.Length > 20 || ten.Length < 3)
+            {
+                return false; //Tên dài >20 hoặc dưới <3
+            }
+            if (gia < 500000 || gia > 25000000000)
+            {
+                return false; //Giá dưới 500 000 hoặc trên 25 tỷ
+            }
+            if (dacDiemNoiBat.Length < 5 || dacDiemNoiBat.Length > 100)
+            {
+                return false; // đặc điểm dài <5 hoặc >100
+            }
+            if (moTaChiTiet.Length < 5 || moTaChiTiet.Length > 100)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Validates(DTO.Piano piano)
+        {
+            List<DoiTuong> list = new List<DoiTuong>();
+            list = LayDS("nhaccu.ma = '" + piano.Ma + "' AND nhaccu.trangThai = 1 AND piano.id != " + piano.Id); // lấy ra nhaccu có mã trùng, trạng thái =1 và có id khác spham
+            if (list.Count > 0)
+            {
+                return false; //Trung ma nhac cu da ton tai
+            }
+            if (piano.Ma.Length > 15 || piano.Ma.Length < 3)
+            {
+                return false; //Mã dài trên >15 hoặc <3
+            }
+            if (piano.Ten.Length > 20 || piano.Ten.Length < 3)
+            {
+                return false; //Tên dài >20 hoặc dưới <3
+            }
+            if (piano.Gia < 500000 || piano.Gia > 25000000000)
+            {
+                return false; //Giá dưới 500 000 hoặc trên 25 tỷ
+            }
+            if (piano.DacDiemNoiBat.Length < 5 || piano.DacDiemNoiBat.Length > 100)
+            {
+                return false; // đặc điểm dài <5 hoặc >100
+            }
+            if (piano.MoTaChiTiet.Length < 5 || piano.MoTaChiTiet.Length > 100)
+            { 
+                return false;
+            }
+            return true;
+        }
+
+        public bool ValidatesList(List<DTO.Piano> list)
+        {
+            foreach(DTO.Piano piano in list)
+            {
+                if (!Validates(piano))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool ThemDanhSachTuExcel(List<DTO.Piano> list)
+        {
+            List<DoiTuong> dsPiano = LayDS("1=1");
+            foreach (DTO.Piano piano in list)
+            {
+                foreach (DTO.DoiTuong doiTuong in dsPiano)
+                {
+                    string[] dsTruong;
+                    DTO.Piano pianoTrongDS = (DTO.Piano) doiTuong;
+                    if(pianoTrongDS.Ma.Equals(piano.Ma) && pianoTrongDS.Ten.Equals(piano)) // trùng mã trùng tên thì cập nhật lại
+                    {
+                        dsTruong = new string[] {piano.Ma, piano.Ten,
+                            piano.DacDiemNoiBat, piano.MoTaChiTiet, piano.Gia.ToString(),
+                            piano.HinhAnh, piano.Phanloai, piano.ThuongHieu.Id.ToString(), pianoTrongDS.Id.ToString()};
+                        if(!Sua(dsTruong) )
+                        {
+                            return false;
+                        }
+                    }
+                    if(pianoTrongDS.Ma.Equals(piano.Ma) && !pianoTrongDS.Ten.Equals(piano)) // trùng mã khác tên là lỗi
+                    {
+                        return false;
+                    }
+                    dsTruong = new string[] {piano.Ma, piano.Ten,
+                            piano.DacDiemNoiBat, piano.MoTaChiTiet, piano.Gia.ToString(),
+                            piano.HinhAnh, piano.Phanloai, piano.ThuongHieu.Id.ToString()};
+                    Them(dsTruong);
+                }
+            }
+            return true;
+        }
+        public DataTable getClone(DataTable dt)
+        {
+            DataTable clone = dt.Clone();
+            foreach (DataRow row in dt.Rows)
+            {
+                clone.ImportRow(row);
+            }
+            return clone;
         }
         /**
          * <summary>Xoá (soft delete)</summary>

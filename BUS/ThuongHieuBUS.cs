@@ -21,9 +21,38 @@ namespace QLBanPiano.BUS
             return db.GetColumn("thuonghieu", tenTruong, dieuKien);
         }
 
+        public List<int> LayDSIdThuongHieu()
+        {
+            List<int> list = new List<int>();
+            string sqlStr = "SELECT id as N'id Thương Hiệu'\r\nFROM thuonghieu";
+
+            DataTable dt = db.Execute(sqlStr);
+            foreach (DataRow dr in dt.Rows)
+            {
+                list.Add(int.Parse(dr["id Thương Hiệu"].ToString()));
+            }
+            return list;
+        }
         public List<DoiTuong> LayDS(string dieukien)
         {
-            throw new NotImplementedException();
+            string sqlStr = "SELECT " +
+                "id as 'id', " +
+                "ma as N'Mã thương hiệu', " +
+                "ten as N'Tên thương hiệu', " +
+                "moTa as N'Mô tả thương hiệu' " +
+                "FROM thuonghieu WHERE trangthai = 1 AND " + dieukien;
+            DataTable dt = db.Execute(sqlStr);
+            List<DoiTuong> ds = new List<DoiTuong>();
+            foreach (DataRow row in dt.Rows)
+            {
+                DTO.ThuongHieu thuongHieu = new DTO.ThuongHieu();
+                thuongHieu.Id = int.Parse(row["id"].ToString());
+                thuongHieu.Ma = row["Mã thương hiệu"].ToString();
+                thuongHieu.Ten = row["Tên thương hiệu"].ToString();
+                thuongHieu.MoTa = row["Mô tả thương hiệu"].ToString();
+                ds.Add(thuongHieu);
+            }
+            return ds;
         }
 
         public DataTable LayToanBoDS()

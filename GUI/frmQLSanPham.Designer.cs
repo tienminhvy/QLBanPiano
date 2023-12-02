@@ -30,6 +30,8 @@
         {
             mainPanel = new Panel();
             panel2 = new Panel();
+            btnXuatFile = new Button();
+            btnNhapFile = new Button();
             btnSua = new Button();
             btnXoa = new Button();
             btnNhapLai = new Button();
@@ -88,6 +90,8 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.Controls.Add(btnXuatFile);
+            panel2.Controls.Add(btnNhapFile);
             panel2.Controls.Add(btnSua);
             panel2.Controls.Add(btnXoa);
             panel2.Controls.Add(btnNhapLai);
@@ -114,6 +118,30 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(381, 715);
             panel2.TabIndex = 2;
+            // 
+            // btnXuatFile
+            // 
+            btnXuatFile.BackColor = Color.MediumSpringGreen;
+            btnXuatFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnXuatFile.Location = new Point(143, 503);
+            btnXuatFile.Name = "btnXuatFile";
+            btnXuatFile.Size = new Size(105, 53);
+            btnXuatFile.TabIndex = 23;
+            btnXuatFile.Text = "Xuất File";
+            btnXuatFile.UseVisualStyleBackColor = false;
+            btnXuatFile.Click += btnXuatFile_Click;
+            // 
+            // btnNhapFile
+            // 
+            btnNhapFile.BackColor = Color.SpringGreen;
+            btnNhapFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNhapFile.Location = new Point(6, 503);
+            btnNhapFile.Name = "btnNhapFile";
+            btnNhapFile.Size = new Size(105, 53);
+            btnNhapFile.TabIndex = 22;
+            btnNhapFile.Text = "Nhập File";
+            btnNhapFile.UseVisualStyleBackColor = false;
+            btnNhapFile.Click += btnNhapFile_Click;
             // 
             // btnSua
             // 
@@ -236,6 +264,7 @@
             // 
             // ptbAnh
             // 
+            ptbAnh.BorderStyle = BorderStyle.FixedSingle;
             ptbAnh.Location = new Point(198, 73);
             ptbAnh.Name = "ptbAnh";
             ptbAnh.Size = new Size(173, 173);
@@ -554,5 +583,7 @@
         private Label label14;
         private Button btnSua;
         private DataGridView dgvSanPham;
+        private Button btnXuatFile;
+        private Button btnNhapFile;
     }
 }

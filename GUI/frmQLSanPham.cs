@@ -1,9 +1,11 @@
-﻿using QLBanPiano.BUS;
+﻿using Org.BouncyCastle.Bcpg.Sig;
+using QLBanPiano.BUS;
 using QLBanPiano.DTO;
 using QLBanPiano.GUI.SubForm;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
 using System.Windows.Forms;
@@ -12,9 +14,14 @@ namespace QLBanPiano
 {
     public partial class frmQLSanPham : Form
     {
-        string projectDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\"; // lấy dường dẫn tính tới folder QLBanPIano
+        string projectDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\"; // lấy dường dẫn tính
+                                                                                        // tới folder QLBanPIano
         private PianoBUS pianoBUS = new PianoBUS();
         private ThuongHieuBUS thuongHieuBUS = new ThuongHieuBUS();
+        private IOFileBUS iOFileBUS = new IOFileBUS();
+        private List<string> HeaderExcel = new List<string> { "Mã nhạc cụ", "Tên", "Đặc điểm nổi bật",
+            "Mô tả chi tiết", "Giá", "Hình Ảnh","Phân loại", "id Thương Hiệu" };
+
 
 
         private List<DoiTuong> danhSachDoiTuongPiano = new List<DoiTuong>();
@@ -402,6 +409,110 @@ namespace QLBanPiano
                 FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
                 ptbAnh.Image = Image.FromStream(stream);
                 stream.Close();
+            }
+        }
+
+        private void btnXuatFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Files|*.xlsx;*.xls";
+            sfd.Title = "Chọn nơi lưu file";
+            sfd.FilterIndex = 1;
+            DialogResult result = sfd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string filename = sfd.FileName;
+                DataTable export = pianoBUS.LayToanBoDSXuatExcel();
+                DataRow row = export.Rows[0];
+                bool return_val = iOFileBUS.ExportToExcel(export, filename);
+                if (return_val)
+                {
+                    MessageBox.Show("Export Excel thành công");
+                    Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                }
+                else
+                {
+                    MessageBox.Show("Export thất bại !");
+                }
+            }
+        }
+
+        private void btnNhapFile_Click(object sender, EventArgs e)
+        {
+            bool imported = true;
+            OpenFileDialog ofd = new OpenFileDialog();
+            // Thiết lập các thuộc tính của OpenFileDialog
+            ofd.Title = "Chọn file Excel";
+            ofd.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"; // Chỉ cho phép chọn các file Excel
+            ofd.CheckFileExists = true; // Kiểm tra file tồn tại
+            ofd.CheckPathExists = true; // Kiểm tra đường dẫn hợp lệ
+            // Mở cửa sổ OpenFileDialog và xử lý kết quả
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    string selectedFilePath = ofd.FileName;
+                    List<string> temp = iOFileBUS.GetListHeader(selectedFilePath);
+                    List<HoaDonPDFExcel> listImport = new();
+                    if (temp.SequenceEqual(HeaderExcel) == true) //"Mã nhạc cụ", "Tên", "Đặc điểm nổi bật", "Mô tả chi tiết", "Giá", "Hình Ảnh","Phân loại", "id Thương Hiệu"
+                    {
+                        DataTable raw = iOFileBUS.ImportFormExcelToDataTable(selectedFilePath);
+                        DataTable rawClone = pianoBUS.getClone(raw);
+                        List<DoiTuong> ds = new List<DoiTuong>();
+                        try
+                        {
+                            List<DTO.Piano> list = new List<DTO.Piano>();
+                            foreach (DataRow row in rawClone.Rows)
+                            {
+                                string ma = row["Mã nhạc cụ"].ToString();
+                                string ten = row["Tên"].ToString();
+                                string dacDiemNoiBat = row["Đặc điểm nổi bật"].ToString();
+                                string moTaChiTiet = row["Mô tả chi tiết"].ToString();
+                                long gia = long.Parse(row["Giá"].ToString());
+                                string hinhAnh = row["Hình Ảnh"].ToString();
+                                string phanLoai = row["Phân loại"].ToString();
+                                int idThuongHieu = int.Parse(row["id Thương Hiệu"].ToString());
+
+                                string[] dsTruong = new string[] { ma, ten, dacDiemNoiBat, moTaChiTiet, gia.ToString(), hinhAnh, phanLoai, idThuongHieu.ToString() };
+
+                                if (!pianoBUS.Validate(dsTruong))
+                                {
+                                    MessageBox.Show("Dữ liệu của file nhập không hợp lệ");
+                                    imported = false;
+                                }
+                                DTO.ThuongHieu thuongHieu = (DTO.ThuongHieu) thuongHieuBUS.LayDS("id = " + idThuongHieu)[0];
+                                DTO.NhacCu nhaccu = new DTO.NhacCu(0,ma,ten,dacDiemNoiBat,moTaChiTiet,gia,hinhAnh,0,thuongHieu);
+                                DTO.Piano piano = new DTO.Piano(0,phanLoai,nhaccu);
+                                list.Add(piano);
+                            }
+                        }catch(Exception ex)
+                        {
+                            MessageBox.Show("Dữ liệu của file nhập không hợp lệ");
+                            imported = false;
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Format của file nhập không hợp lệ");
+                        imported = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Người dùng đã hủy việc chọn file.");
+                imported = false;
+            }
+            if (imported)
+            {
+                MessageBox.Show("Import file thành công");
+                //resetBtn_Click(sender, e);
             }
         }
     }
