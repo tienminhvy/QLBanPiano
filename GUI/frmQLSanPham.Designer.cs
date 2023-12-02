@@ -82,12 +82,12 @@
             mainPanel.Controls.Add(headerPanel);
             mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1259, 720);
+            mainPanel.Size = new Size(1350, 720);
             mainPanel.TabIndex = 0;
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel2.Controls.Add(btnSua);
             panel2.Controls.Add(btnXoa);
             panel2.Controls.Add(btnNhapLai);
@@ -110,13 +110,14 @@
             panel2.Controls.Add(txtIDSP);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label14);
-            panel2.Location = new Point(873, 3);
+            panel2.Location = new Point(876, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(381, 715);
             panel2.TabIndex = 2;
             // 
             // btnSua
             // 
+            btnSua.Anchor = AnchorStyles.Top;
             btnSua.BackColor = Color.FromArgb(255, 255, 128);
             btnSua.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnSua.Location = new Point(143, 652);
@@ -129,6 +130,7 @@
             // 
             // btnXoa
             // 
+            btnXoa.Anchor = AnchorStyles.Top;
             btnXoa.BackColor = Color.Red;
             btnXoa.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnXoa.Location = new Point(13, 652);
@@ -153,6 +155,7 @@
             // 
             // btnThemSP
             // 
+            btnThemSP.Anchor = AnchorStyles.Top;
             btnThemSP.BackColor = Color.Lime;
             btnThemSP.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnThemSP.Location = new Point(267, 652);
@@ -219,6 +222,7 @@
             // 
             // cbbThuongHieuSP
             // 
+            cbbThuongHieuSP.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbThuongHieuSP.FormattingEnabled = true;
             cbbThuongHieuSP.Location = new Point(115, 252);
             cbbThuongHieuSP.Name = "cbbThuongHieuSP";
@@ -308,7 +312,7 @@
             label13.Anchor = AnchorStyles.Top;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(55, 6);
+            label13.Location = new Point(55, 9);
             label13.Name = "label13";
             label13.Size = new Size(273, 41);
             label13.TabIndex = 1;
@@ -497,10 +501,10 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1258, 728);
+            ClientSize = new Size(1349, 728);
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MinimumSize = new Size(1093, 764);
+            MinimumSize = new Size(1096, 764);
             Name = "frmQLSanPham";
             Text = "Quản Lý Sản Phẩm";
             mainPanel.ResumeLayout(false);

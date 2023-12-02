@@ -93,6 +93,11 @@ namespace QLBanPiano.BUS
                         dieuKien = "CAST(id AS VARCHAR) LIKE '%" + giaTri + "%'";
                         break;
                     }
+                case "Họ lót":
+                    {
+                        dieuKien = "Upper(hoLot) LIKE N'%" + giaTri.ToUpper() + "%'";
+                        break;
+                    }
                 case "Tên":
                     {
                         dieuKien = "Upper(ten) LIKE N'%" + giaTri.ToUpper() + "%'";
@@ -101,6 +106,11 @@ namespace QLBanPiano.BUS
                 case "SDT":
                     {
                         dieuKien = "sdt LIKE N'%" + giaTri + "%'";
+                        break;
+                    }
+                case "Địa chỉ":
+                    {
+                        dieuKien = "Upper(diaChi) LIKE N'%" + giaTri.ToUpper() + "%'";
                         break;
                     }
             }

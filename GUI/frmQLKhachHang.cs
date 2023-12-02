@@ -60,6 +60,7 @@ namespace QLBanPiano.GUI
             thaydoiND = true;
             if (danhSachKhachHang != null)
             {
+                dgvKhachHang.Columns.Clear();
                 dgvKhachHang.DataSource = null;
                 themCot();
                 BindingSource bs = new BindingSource();
@@ -127,13 +128,13 @@ namespace QLBanPiano.GUI
                         txtDiaChi.Text,
                         txtSoDienThoai.Text))
                     {
-                        MessageBox.Show("Thêm khách hàng!");
+                        new Msg("Thêm khách hàng thành công!");
                         HienDSKhachHang();
                         resetTextBoxes();
                     }
                     else
                     {
-                        MessageBox.Show("Thêm khách hàng thất bại!");
+                        new Msg("Thêm khách hàng thất bại!", "err");
                     }
                 }
             }
@@ -144,32 +145,29 @@ namespace QLBanPiano.GUI
 
             if (txtMaKH.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Chọn khách hàng muốn xóa", "Thông báo");
+                new Msg("Chọn khách hàng muốn xóa", "err");
                 return;
             }
             int id = int.Parse(txtMaKH.Text.Trim());
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa khách hàng có mã là: " + id + " không?", "Xác nhận", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = new Msg("Bạn có muốn xóa khách hàng có mã là: " + id + " không?", "warn").Res;
             if (dialogResult == DialogResult.No)
             {
                 return;
             }
             if (khachhang.Xoa("Id=" + id))
             {
-                MessageBox.Show("Xóa khách hàng thành công!");
+                new Msg("Xóa khách hàng thành công!");
                 HienDSKhachHang();
                 txtMaKH.Text = string.Empty;
                 txtHoLot.Text = string.Empty;
                 txtTen.Text = string.Empty;
                 txtDiaChi.Text = string.Empty;
                 txtSoDienThoai.Text = string.Empty;
-
-
-
             }
             else
             {
-                MessageBox.Show("Xóa khách hàng thất bại!");
+                new Msg("Xóa khách hàng thất bại!", "err");
             }
         }
 
@@ -196,14 +194,14 @@ namespace QLBanPiano.GUI
                         sdt,
                         id))
                     {
-                        MessageBox.Show("Sửa khách hàng thành công!");
+                        new Msg("Sửa khách hàng thành công!");
                         resetTextBoxes();
                         HienDSKhachHang();
                     }
                 }
-                else MessageBox.Show("Sửa khách hàng thất bại!");
+                else new Msg("Sửa khách hàng thất bại!", "err");
             }
-            else MessageBox.Show("Vui lòng chọn khách hàng để sửa!");
+            else new Msg("Vui lòng chọn khách hàng để sửa!", "err");
         }
 
         private void frmQLKhachHang_Load_1(object sender, EventArgs e)

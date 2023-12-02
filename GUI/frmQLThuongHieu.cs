@@ -189,7 +189,7 @@ namespace QLBanPiano.GUI
                 DataGridViewCellCollection Cells = dgvThuongHieu.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();
 
-                if (thBUS.Xoa("id = "+id))
+                if (thBUS.Xoa("id = " + id))
                 {
                     new Msg("Xoá thương hiệu thành công!");
                     LoadDSThuongHieu();

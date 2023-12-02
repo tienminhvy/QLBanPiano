@@ -57,6 +57,8 @@
             dgvThuongHieu.AllowUserToAddRows = false;
             dgvThuongHieu.AllowUserToDeleteRows = false;
             dgvThuongHieu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvThuongHieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvThuongHieu.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvThuongHieu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvThuongHieu.Location = new Point(2, 236);
             dgvThuongHieu.Name = "dgvThuongHieu";
