@@ -249,72 +249,12 @@ namespace QLBanPiano.GUI
                 if (result == DialogResult.OK)
                 {
                     string selectedFilePath = ofd.FileName;
-                    List<string> temp = fileHandler.GetListHeader(selectedFilePath);
-                    List<PhieuNhapExcel> listImport = new();
-                    if (temp.SequenceEqual(list) == true)
+                    if(phieuNhapBUS.importResult(selectedFilePath) == true)
                     {
-                        DataTable raw = fileHandler.ImportFormExcelToDataTable(selectedFilePath);
-                        DataTable rawClone = phieuNhapBUS.getClone(raw);
-                        int rowCount = raw.Rows.Count;
-                        while (rowCount > 0)
-                        {
-                            string minId = rawClone.AsEnumerable().Min(row => row.Field<string>("ID"));
-                            int min = int.Parse(minId);
-                            DataTable processed = phieuNhapBUS.splitFromExcelTableById(rawClone, min);
-                            PhieuNhapExcel ph = new();
-                            ph = phieuNhapBUS.getPhieuNhap(processed);
-                            int numberOfRowMin = fileHandler.returnIdCount(rawClone, min);
-                            if (chiTietPhieuNhapBUS.ValidateList(ph.PhieuNhapList) == true)
-                            {
-                                listImport.Add(ph);
-                                
-                                rowCount -= numberOfRowMin;
-                                while (numberOfRowMin > 0)
-                                {
-                                    rawClone.Rows.RemoveAt(0);
-                                    numberOfRowMin--;
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Định dạng excel không hợp lệ !");
-                                imported = false;
-                            }
-                        }
-                        if (phieuNhapBUS.ValidateList(listImport))
-                        {
-                            foreach(PhieuNhapExcel ph in listImport)
-                            {
-                                DataTable chitietTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
-                                DataTable updateNhaccu = chitietTable.Clone();
-                                updateNhaccu.Columns.Remove("ID");
-                                updateNhaccu.Columns.Remove("Đơn giá");
-                                foreach (DataRow row in chitietTable.Rows)
-                                {
-                                    updateNhaccu.ImportRow(row);
-                                }
-                                chitietTable.Columns["ID"].ColumnName = "phieunhap_id";
-                                chitietTable.Columns["Mã nhạc cụ"].ColumnName = "nhaccu_id";
-                                chitietTable.Columns["Đơn giá"].ColumnName = "chiPhiNhap";
-                                chitietTable.Columns["SL"].ColumnName = "soLuong";
-                                if (fileHandler.ImportConstraint(chitietTable, "chitietphieunhap", phieuNhapBUS.getSqlString(ph)) == true)
-                                {
-                                    foreach (DataRow row in updateNhaccu.Rows)
-                                    {
-                                        nhacCuBUS.tangSL(Convert.ToInt32(row["Mã nhạc cụ"]), Convert.ToInt16(row["SL"]));
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thông tin import vào không hợp lệ !");
-                            imported = false;
-                        }
+                        imported = true;
                     }
                     else
                     {
-                        MessageBox.Show("Format của file nhập không hợp lệ");
                         imported = false;
                     }
                 }

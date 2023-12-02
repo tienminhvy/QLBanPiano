@@ -25,8 +25,11 @@ namespace QLBanPiano.DAL
             //string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=123456";
             //string server = "LAPTOP-52VVCVMC";
             // string strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=210703";
-            server = "DESKTOP-VYTM\\VYTM_NEW";
-            strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
+            //server = "DESKTOP-VYTM\\VYTM_NEW";
+            //strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=";
+
+            server = "LAPTOP-3O7CUBA2\\SQLEXPRESS";
+            strCnn = "Data Source=" + server + "; Database=qlbanpiano;User ID=sa;Password=1";
             sqlConn = new SqlConnection(strCnn);
         }
         //Phuong thuc de thuc hien cau lenh strSQL truy vân du lieu

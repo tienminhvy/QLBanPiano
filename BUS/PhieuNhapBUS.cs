@@ -14,8 +14,10 @@ namespace QLBanPiano.BUS
 {
     public class PhieuNhapBUS : IBUS
     {
-        ChiTietPhieuNhapBUS chitietBus = new();
-        NhanVienBUS nhanvienBus = new();
+        private ChiTietPhieuNhapBUS chitietBus = new();
+        private NhanVienBUS nhanvienBus = new();
+        private IOFileBUS fileHandler = new();
+        private NhacCuBUS nhacCuBUS = new();
         DB db;
         public PhieuNhapBUS()
         {
@@ -212,6 +214,79 @@ namespace QLBanPiano.BUS
                 MessageBox.Show(ex.Message);
             }
             return dt;
+        }
+        public bool importResult(string filename)
+        {
+            List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên", "Mã nhạc cụ", "Đơn giá", "SL" };
+            List<string> temp = fileHandler.GetListHeader(filename);
+            List<PhieuNhapExcel> listImport = new();
+            if (temp.SequenceEqual(list) == true)
+            {
+                DataTable raw = fileHandler.ImportFormExcelToDataTable(filename);
+                DataTable rawClone = getClone(raw);
+                int rowCount = raw.Rows.Count;
+                while (rowCount > 0)
+                {
+                    string minId = rawClone.AsEnumerable().Min(row => row.Field<string>("ID"));
+                    int min = int.Parse(minId);
+                    DataTable processed = splitFromExcelTableById(rawClone, min);
+                    PhieuNhapExcel ph = new();
+                    ph = getPhieuNhap(processed);
+                    int numberOfRowMin = fileHandler.returnIdCount(rawClone, min);
+                    if (chitietBus.ValidateList(ph.PhieuNhapList) == true)
+                    {
+                        listImport.Add(ph);
+
+                        rowCount -= numberOfRowMin;
+                        while (numberOfRowMin > 0)
+                        {
+                            rawClone.Rows.RemoveAt(0);
+                            numberOfRowMin--;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Định dạng excel không hợp lệ !");
+                        return false;
+                    }
+                }
+                if (ValidateList(listImport))
+                {
+                    foreach (PhieuNhapExcel ph in listImport)
+                    {
+                        DataTable chitietTable = chitietBus.convertToDataTable(ph.PhieuNhapList);
+                        DataTable updateNhaccu = chitietTable.Clone();
+                        updateNhaccu.Columns.Remove("ID");
+                        updateNhaccu.Columns.Remove("Đơn giá");
+                        foreach (DataRow row in chitietTable.Rows)
+                        {
+                            updateNhaccu.ImportRow(row);
+                        }
+                        chitietTable.Columns["ID"].ColumnName = "phieunhap_id";
+                        chitietTable.Columns["Mã nhạc cụ"].ColumnName = "nhaccu_id";
+                        chitietTable.Columns["Đơn giá"].ColumnName = "chiPhiNhap";
+                        chitietTable.Columns["SL"].ColumnName = "soLuong";
+                        if (fileHandler.ImportConstraint(chitietTable, "chitietphieunhap", getSqlString(ph)) == true)
+                        {
+                            foreach (DataRow row in updateNhaccu.Rows)
+                            {
+                                nhacCuBUS.tangSL(Convert.ToInt32(row["Mã nhạc cụ"]), Convert.ToInt16(row["SL"]));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Thông tin import vào không hợp lệ !");
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Format của file nhập không hợp lệ");
+                return false;
+            }
+            return true;
         }
         ///////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)

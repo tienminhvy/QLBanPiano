@@ -490,6 +490,9 @@
             Clock.Interval = 1;
             Clock.Tick += Clock_Tick;
             // 
+            // timer1
+            // 
+            // 
             // frmQLHoaDon
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -563,5 +566,6 @@
         private Panel panel7;
         private Button resetBtn;
         private Panel panel6;
+        private System.Windows.Forms.Timer timer1;
     }
 }

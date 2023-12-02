@@ -21,6 +21,8 @@ namespace QLBanPiano.BUS
     public class IOFileBUS
     {
         DB db;
+        private ChiTietPhieuNhapBUS chiTietPhieuNhapBUS = new();
+        private NhacCuBUS nhacCuBUS = new();
         public IOFileBUS() {
             db = new DB();
         }
