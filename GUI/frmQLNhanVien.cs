@@ -150,8 +150,9 @@ namespace QLBanPiano.GUI.SubForm
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            btn_delete.Enabled = true;
-            btn_update.Enabled = true;
+            btn_delete.Enabled = false;
+            btn_update.Enabled = false;
+            btn_link_acc.Enabled = false;
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
                 refreshTextBox();

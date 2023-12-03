@@ -32,6 +32,22 @@ namespace QLBanPiano.GUI
             Timer.Start();
             Init();
             SearchTextBox_Init();
+
+            exportFileBtn.Enabled = false;
+            exportFileBtn.Visible = false;
+            importFileBtn.Enabled = false;
+            importFileBtn.Visible = false;
+            foreach (string quyen in frmChinh.dsQuyen)
+            {
+                if (quyen == "nhapXuat")
+                {
+                    exportFileBtn.Enabled = true;
+                    exportFileBtn.Visible = true;
+                    importFileBtn.Enabled = true;
+                    importFileBtn.Visible = true;
+                    break;
+                }
+            }
         }
         void Init()
         {

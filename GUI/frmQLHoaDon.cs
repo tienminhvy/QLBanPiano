@@ -33,6 +33,23 @@ namespace QLBanPiano.GUI
             InitializeComponent();
             Clock.Start();
             Init();
+
+            ExportBtn.Enabled = false;
+            ExportBtn.Visible = false;
+            ImportBtn.Enabled = false;
+            ImportBtn.Visible = false;
+            foreach(string quyen in frmChinh.dsQuyen)
+            {
+                if (quyen == "nhapXuat")
+                {
+                    ExportBtn.Enabled = true;
+                    ExportBtn.Visible = true;
+                    ImportBtn.Enabled = true;
+                    ImportBtn.Visible = true;
+                    break;
+                }
+            }
+
         }
         void Init()
         {
