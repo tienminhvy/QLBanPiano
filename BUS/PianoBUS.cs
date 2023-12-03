@@ -346,7 +346,6 @@ namespace QLBanPiano.BUS
                     {
                         
                         DataTable raw = iOFileBUS.ImportFormExcelToDataTableWithOutID(selectedFilePath);
-     
                         DataTable rawClone = getClone(raw); // tạo bản copy của datatable
                         List<DoiTuong> ds = new List<DoiTuong>();
 
@@ -357,7 +356,6 @@ namespace QLBanPiano.BUS
                             foreach (DataRow row in rawClone.Rows)
                             {
                                 string ma = row["Mã nhạc cụ"].ToString();
-
                                 string ten = row["Tên"].ToString();
                                 string dacDiemNoiBat = row["Đặc điểm nổi bật"].ToString();
                                 string moTaChiTiet = row["Mô tả chi tiết"].ToString();
@@ -377,7 +375,6 @@ namespace QLBanPiano.BUS
                                 MessageBox.Show("Có trường dữ liệu không hợp lệ, vui lòng điền file đúng dữ liệu");
                                 return false;
                             }
-                            MessageBox.Show(list.Count+"");
                             MessageBox.Show(ThemDanhSachTuExcel(list));
                         }
                         catch (Exception ex)
