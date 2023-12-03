@@ -39,6 +39,25 @@ namespace QLBanPiano.GUI.SubForm
             return lsVaiTro.ToArray();
         }
         private VaiTroBUS vtBUS = new VaiTroBUS();
+        private void DisableAll()
+        {
+            cbVaiTro.Enabled = false;
+            txtMatKhau.Enabled = false;
+            txtTenDangNhap.Enabled = false;
+            btnCapNhat.Enabled = false;
+            btnThaoTac.Enabled = false;
+        }
+        private void EnableAll()
+        {
+
+        }
+
+        private bool LaAdminToiCao()
+        {
+            if (frmChinh.vaitro_id == "1") return true;
+            return false;
+        }
+
         private void Init()
         {
             cbVaiTro.DisplayMember = "Ten";
@@ -59,15 +78,33 @@ namespace QLBanPiano.GUI.SubForm
                     label_stateResult.Text = "Đã liên kết tài khoản!";
                     List<DoiTuong> taiKhoans = tkBUS.LayDS("nhanvien_id = " + nv_id);
 
+                    string id_vaitro = "";
                     foreach (TaiKhoan tk in taiKhoans)
                     {
                         txtTenDangNhap.Text = tk.TenDangNhap;
                         txtMatKhau.Text = tk.MatKhau;
+                        id_vaitro = tk.VaiTro.Id.ToString();
                         cbVaiTro.SelectedValue = tk.VaiTro.Id;
                         break;
                     }
                     btnCapNhat.Text = "Cập nhật";
                     btnThaoTac.Text = "Khoá";
+
+                    if (!LaAdminToiCao() && id_vaitro == "1")
+                    {
+                        new Msg("Bạn không có đủ quyền hạn để thực hiện thao tác này!");
+                        DisableAll();
+                        return;
+                    }
+
+                    if (!LaAdminToiCao())
+                    {
+                        cbVaiTro.DataSource = new BindingSource(layDSVaiTro().Where((val, i) =>
+                        {
+                            return val.Id != 1;
+                        }), null);
+                        cbVaiTro.SelectedValue = int.Parse(id_vaitro);
+                    }
                 }
                 else
                 {
@@ -91,6 +128,11 @@ namespace QLBanPiano.GUI.SubForm
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            if (cbVaiTro.SelectedIndex == -1)
+            {
+                new Msg("Vui lòng chọn vai trò trước khi thực hiện thao tác này!", "err");
+                return;
+            }
             if (tkBUS.SoLuong("nhanvien_id = " + nv_id) > 0)
             {
                 // Đã có, cập nhật
@@ -129,7 +171,9 @@ namespace QLBanPiano.GUI.SubForm
                     new Msg("Khoá thành công!");
                     Init();
                 }
-            } else {
+            }
+            else
+            {
                 DialogResult res = (new Msg("Bạn có muốn mở khoá tài khoản nhân viên này?", "warn")).Res;
 
                 if (res == DialogResult.OK)
@@ -139,6 +183,10 @@ namespace QLBanPiano.GUI.SubForm
                     Init();
                 }
             }
+        }
+
+        private void cbVaiTro_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

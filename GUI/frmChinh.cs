@@ -16,6 +16,7 @@ namespace QLBanPiano
         private frmDangNhap fLogin;
         public static string username;
         public static string nhanvien_id;
+        public static string vaitro_id;
         public static List<string> dsQuyen;
         public frmChinh(frmDangNhap fLogin)
         {
@@ -86,13 +87,13 @@ namespace QLBanPiano
                 {
                     count++;
                 }
+                if (quyen == "quanLyVaiTro")
+                {
+                    vaiTroToolStripMenuItem.Visible = true;
+                }
             }
             if (isQL)
                 dstoolStripDropDownButton.Visible = true;
-            if (count == 8)
-            {
-                vaiTroToolStripMenuItem.Visible = true;
-            }
         }
         private void Init()
         {

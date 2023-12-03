@@ -59,6 +59,7 @@ namespace QLBanPiano.GUI
             ckNhapXuat.Checked = false;
             ckThongKe.Checked = false;
             ckQLThuongHieu.Checked = false;
+            ckVaiTro.Checked = false;
         }
 
         private void CheckAll()
@@ -72,6 +73,40 @@ namespace QLBanPiano.GUI
             ckNhapXuat.Checked = true;
             ckThongKe.Checked = true;
             ckQLThuongHieu.Checked = true;
+            ckVaiTro.Checked = true;
+        }
+
+        private void DisableAll()
+        {
+            ckBanHang.Enabled = false;
+            ckQLHoaDon.Enabled = false;
+            ckQLNhapHang.Enabled = false;
+            ckQLNhacCu.Enabled = false;
+            ckQLKhachHang.Enabled = false;
+            ckQLNhanVien.Enabled = false;
+            ckNhapXuat.Enabled = false;
+            ckThongKe.Enabled = false;
+            ckQLThuongHieu.Enabled = false;
+            ckVaiTro.Enabled = false;
+            btnCapNhat.Enabled = false;
+            btnXoa.Enabled = false;
+            txtTenVaiTro.Enabled = false;
+        }
+        private void EnableAll()
+        {
+            ckBanHang.Enabled = true;
+            ckQLHoaDon.Enabled = true;
+            ckQLNhapHang.Enabled = true;
+            ckQLNhacCu.Enabled = true;
+            ckQLKhachHang.Enabled = true;
+            ckQLNhanVien.Enabled = true;
+            ckNhapXuat.Enabled = true;
+            ckThongKe.Enabled = true;
+            ckQLThuongHieu.Enabled = true;
+            ckVaiTro.Enabled = true;
+            btnCapNhat.Enabled = true;
+            btnXoa.Enabled = true;
+            txtTenVaiTro.Enabled = true;
         }
 
         private void dsVaiTro_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +114,7 @@ namespace QLBanPiano.GUI
             UncheckAll();
             if (dsVaiTro.SelectedIndex > -1)
             {
+                EnableAll();
                 VaiTro vt = layDSVaiTro()[dsVaiTro.SelectedIndex];
                 txtTenVaiTro.Enabled = true;
 
@@ -106,6 +142,14 @@ namespace QLBanPiano.GUI
                         ckThongKe.Checked = true;
                     if (quyen.Equals("quanLyThuongHieu"))
                         ckQLThuongHieu.Checked = true;
+                    if (quyen.Equals("quanLyVaiTro"))
+                        ckVaiTro.Checked = true;
+                }
+
+                if (dsVaiTro.SelectedIndex == 0)
+                {
+                    DisableAll();
+                    return;
                 }
             }
         }
@@ -146,6 +190,8 @@ namespace QLBanPiano.GUI
                                 vt.DsQuyen.Add("thongKe");
                             if (ck.Name.Equals("ckQLThuongHieu"))
                                 vt.DsQuyen.Add("quanLyThuongHieu");
+                            if (ck.Name.Equals("ckVaiTro"))
+                                vt.DsQuyen.Add("quanLyVaiTro");
                         }
                     }
                 }

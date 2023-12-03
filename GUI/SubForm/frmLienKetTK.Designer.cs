@@ -150,6 +150,7 @@
             cbVaiTro.Name = "cbVaiTro";
             cbVaiTro.Size = new Size(193, 28);
             cbVaiTro.TabIndex = 18;
+            cbVaiTro.SelectedIndexChanged += cbVaiTro_SelectedIndexChanged;
             // 
             // txtMatKhau
             // 

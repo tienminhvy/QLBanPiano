@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_reset = new Button();
+            btn_link_acc = new Button();
             btn_delete = new Button();
             btn_update = new Button();
             btn_add = new Button();
@@ -60,15 +60,15 @@
             ((System.ComponentModel.ISupportInitialize)dgvNhanVien).BeginInit();
             SuspendLayout();
             // 
-            // btn_reset
+            // btn_link_acc
             // 
-            btn_reset.Location = new Point(440, 218);
-            btn_reset.Name = "btn_reset";
-            btn_reset.Size = new Size(160, 35);
-            btn_reset.TabIndex = 15;
-            btn_reset.Text = "Liên kết tài khoản";
-            btn_reset.UseVisualStyleBackColor = true;
-            btn_reset.Click += btn_reset_Click;
+            btn_link_acc.Location = new Point(440, 218);
+            btn_link_acc.Name = "btn_link_acc";
+            btn_link_acc.Size = new Size(160, 35);
+            btn_link_acc.TabIndex = 15;
+            btn_link_acc.Text = "Liên kết tài khoản";
+            btn_link_acc.UseVisualStyleBackColor = true;
+            btn_link_acc.Click += btn_link_acc_Click;
             // 
             // btn_delete
             // 
@@ -244,7 +244,7 @@
             // 
             groupBoxInfor.Anchor = AnchorStyles.Top;
             groupBoxInfor.Controls.Add(dtpNgayVaoLam);
-            groupBoxInfor.Controls.Add(btn_reset);
+            groupBoxInfor.Controls.Add(btn_link_acc);
             groupBoxInfor.Controls.Add(btn_delete);
             groupBoxInfor.Controls.Add(btn_update);
             groupBoxInfor.Controls.Add(btn_add);
@@ -352,7 +352,7 @@
         }
 
         #endregion
-        private Button btn_reset;
+        private Button btn_link_acc;
         private Button btn_delete;
         private Button btn_update;
         private Button btn_add;

@@ -40,6 +40,7 @@
             btnTaoMoi = new Button();
             label1 = new Label();
             gbDSQuyen = new GroupBox();
+            ckVaiTro = new CheckBox();
             ckQLThuongHieu = new CheckBox();
             ckThongKe = new CheckBox();
             ckNhapXuat = new CheckBox();
@@ -193,6 +194,7 @@
             // gbDSQuyen
             // 
             gbDSQuyen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbDSQuyen.Controls.Add(ckVaiTro);
             gbDSQuyen.Controls.Add(ckQLThuongHieu);
             gbDSQuyen.Controls.Add(ckThongKe);
             gbDSQuyen.Controls.Add(ckNhapXuat);
@@ -208,6 +210,16 @@
             gbDSQuyen.TabIndex = 0;
             gbDSQuyen.TabStop = false;
             gbDSQuyen.Text = "Danh sách quyền";
+            // 
+            // ckVaiTro
+            // 
+            ckVaiTro.AutoSize = true;
+            ckVaiTro.Location = new Point(23, 305);
+            ckVaiTro.Name = "ckVaiTro";
+            ckVaiTro.Size = new Size(127, 24);
+            ckVaiTro.TabIndex = 9;
+            ckVaiTro.Text = "Quản lý vai trò";
+            ckVaiTro.UseVisualStyleBackColor = true;
             // 
             // ckQLThuongHieu
             // 
@@ -342,5 +354,6 @@
         private TextBox txtTenVaiTro;
         private CheckBox ckThongKe;
         private CheckBox ckQLThuongHieu;
+        private CheckBox ckVaiTro;
     }
 }

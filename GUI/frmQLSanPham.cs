@@ -26,6 +26,24 @@ namespace QLBanPiano
             InitializeComponent();
             LoadTrangThaiComponents();
             LoadDanhSachSanPham();
+
+            btnNhapFile.Enabled = false;
+            btnNhapFile.Visible = false;
+            btnXuatFile.Enabled = false;
+            btnXuatFile.Visible = false;
+
+            foreach (string quyen in frmChinh.dsQuyen)
+            {
+                if (quyen == "nhapXuat")
+                {
+                    btnNhapFile.Enabled = true;
+                    btnXuatFile.Enabled = true;
+                    btnXuatFile.Visible = true;
+                    btnNhapFile.Visible = true;
+                    break;
+                }
+            }
+
         }
 
         private void btnDatLai_Click(object sender, EventArgs e)

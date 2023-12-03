@@ -222,6 +222,7 @@ namespace QLBanPiano
                 frmChinh.username = userTextBox.Text;
                 frmChinh.nhanvien_id = tkBUS.GiaTriTruong("nhanvien_id", "tenDangNhap = N'" + userTextBox.Text + "'").ToString();
                 frmChinh.dsQuyen = tkBUS.dsQuyen(frmChinh.username);
+                frmChinh.vaitro_id = tkBUS.GiaTriTruong("vaitro_id", "tenDangNhap = N'" + userTextBox.Text + "'").ToString();
                 Form f = new frmChinh(this);
                 f.ShowDialog();
             }

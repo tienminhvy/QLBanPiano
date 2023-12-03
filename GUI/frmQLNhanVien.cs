@@ -20,7 +20,7 @@ namespace QLBanPiano.GUI.SubForm
         {
             InitializeComponent();
             HienThiDSNhanVien();
-            btn_reset.Enabled = false;
+            btn_link_acc.Enabled = false;
             cbbTypeSearch.SelectedIndex = 0;
         }
 
@@ -83,20 +83,29 @@ namespace QLBanPiano.GUI.SubForm
             thaydoiND = false;
         }
 
-        private void btn_reset_Click(object sender, EventArgs e)
+        private void btn_link_acc_Click(object sender, EventArgs e)
         {
-            DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
-            string id = Cells[0].Value.ToString();
-            frmLienKetTK linkAccount = new frmLienKetTK(id);
-            linkAccount.Show();
+            if (dgvNhanVien.SelectedRows.Count > 0)
+            {
+                DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
+                string id = Cells[0].Value.ToString();
 
+                if (id == frmChinh.nhanvien_id)
+                {
+                    new Msg("Bạn không được thực hiện thao tác này trên tài khoản của bản thân", "err");
+                    return;
+                }
+
+                frmLienKetTK linkAccount = new frmLienKetTK(id);
+                linkAccount.Show();
+            }
         }
 
         private void dgvNhanVien_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvNhanVien.SelectedRows.Count > 0 && !thaydoiND)
             {
-                btn_reset.Enabled = true;
+                btn_link_acc.Enabled = true;
                 //lay du lieu tu cac cot cua datagridview
                 DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();
@@ -113,7 +122,19 @@ namespace QLBanPiano.GUI.SubForm
                 dtpNgayVaoLam.Value = ngayVaoLam;
                 txt_address.Text = diaChi;
 
+                TaiKhoanBUS tkBUS = new TaiKhoanBUS();
 
+                string id_vai_tro = tkBUS.GiaTriTruong("vaitro_id", "nhanvien_id = " + id).ToString();
+
+                if (id_vai_tro == "1" && frmChinh.vaitro_id != "1")
+                {
+                    btn_delete.Enabled = false;
+                    btn_update.Enabled = false;
+                } else
+                {
+                    btn_delete.Enabled = true;
+                    btn_update.Enabled = true;
+                }
             }
         }
 
@@ -129,6 +150,8 @@ namespace QLBanPiano.GUI.SubForm
 
         private void btn_add_Click(object sender, EventArgs e)
         {
+            btn_delete.Enabled = true;
+            btn_update.Enabled = true;
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
                 refreshTextBox();
@@ -194,6 +217,7 @@ namespace QLBanPiano.GUI.SubForm
         {
             if (dgvNhanVien.SelectedRows.Count > 0)
             {
+
                 DialogResult res = new Msg("Bạn có muốn xoá nhân viên này?", "warn").Res;
                 if (res != DialogResult.OK)
                     return;

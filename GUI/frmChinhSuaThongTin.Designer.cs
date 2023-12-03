@@ -118,6 +118,7 @@
             Controls.Add(btnCapNhat);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmChinhSuaThongTin";
             Text = "Cập nhật thông tin";
             groupBox1.ResumeLayout(false);
