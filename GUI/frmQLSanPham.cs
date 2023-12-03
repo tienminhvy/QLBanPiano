@@ -206,11 +206,12 @@ namespace QLBanPiano
                 FileStream stream = new FileStream(imagelink, FileMode.Open, FileAccess.Read);
                 ptbAnh.Image = Image.FromStream(stream);
                 stream.Close();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
-            
+
 
             cbbLoaiSP.SelectedItem = piano.Phanloai;
             cbbThuongHieuSP.SelectedItem = piano.ThuongHieu.Ten;
@@ -426,7 +427,7 @@ namespace QLBanPiano
 
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
-           pianoBUS.XuatFileExcel();
+            pianoBUS.XuatFileExcel();
         }
     }
 

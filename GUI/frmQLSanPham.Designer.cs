@@ -30,6 +30,8 @@
         {
             mainPanel = new Panel();
             panel2 = new Panel();
+            btnNhapFile = new Button();
+            btnXuatFile = new Button();
             btnSua = new Button();
             btnXoa = new Button();
             btnNhapLai = new Button();
@@ -66,8 +68,6 @@
             label1 = new Label();
             txtMaTimKiem = new TextBox();
             label2 = new Label();
-            btnXuatFile = new Button();
-            btnNhapFile = new Button();
             mainPanel.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).BeginInit();
@@ -89,7 +89,7 @@
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel2.Controls.Add(btnNhapFile);
             panel2.Controls.Add(btnXuatFile);
             panel2.Controls.Add(btnSua);
@@ -118,6 +118,32 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(381, 715);
             panel2.TabIndex = 2;
+            // 
+            // btnNhapFile
+            // 
+            btnNhapFile.Anchor = AnchorStyles.Top;
+            btnNhapFile.BackColor = Color.FromArgb(128, 255, 128);
+            btnNhapFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNhapFile.Location = new Point(143, 503);
+            btnNhapFile.Name = "btnNhapFile";
+            btnNhapFile.Size = new Size(105, 53);
+            btnNhapFile.TabIndex = 23;
+            btnNhapFile.Text = "Nhập File";
+            btnNhapFile.UseVisualStyleBackColor = false;
+            btnNhapFile.Click += btnNhapFile_Click;
+            // 
+            // btnXuatFile
+            // 
+            btnXuatFile.Anchor = AnchorStyles.Top;
+            btnXuatFile.BackColor = Color.PaleGreen;
+            btnXuatFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnXuatFile.Location = new Point(13, 503);
+            btnXuatFile.Name = "btnXuatFile";
+            btnXuatFile.Size = new Size(105, 53);
+            btnXuatFile.TabIndex = 22;
+            btnXuatFile.Text = "Xuất File";
+            btnXuatFile.UseVisualStyleBackColor = false;
+            btnXuatFile.Click += btnXuatFile_Click;
             // 
             // btnSua
             // 
@@ -318,7 +344,7 @@
             label13.Anchor = AnchorStyles.Top;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(55, 9);
+            label13.Location = new Point(13, 9);
             label13.Name = "label13";
             label13.Size = new Size(273, 41);
             label13.TabIndex = 1;
@@ -335,6 +361,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(dgvSanPham);
             panel1.Location = new Point(0, 125);
             panel1.Name = "panel1";
@@ -375,7 +402,7 @@
             headerPanel.Controls.Add(label2);
             headerPanel.Location = new Point(0, 0);
             headerPanel.Name = "headerPanel";
-            headerPanel.Size = new Size(870, 125);
+            headerPanel.Size = new Size(870, 119);
             headerPanel.TabIndex = 0;
             headerPanel.Paint += headerPanel_Paint;
             // 
@@ -384,7 +411,7 @@
             btnDatLai.Anchor = AnchorStyles.Left;
             btnDatLai.BackColor = Color.FromArgb(255, 255, 192);
             btnDatLai.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDatLai.Location = new Point(787, 68);
+            btnDatLai.Location = new Point(787, 65);
             btnDatLai.Name = "btnDatLai";
             btnDatLai.Size = new Size(83, 37);
             btnDatLai.TabIndex = 21;
@@ -397,7 +424,7 @@
             btnTim.Anchor = AnchorStyles.Left;
             btnTim.BackColor = Color.FromArgb(192, 255, 192);
             btnTim.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTim.Location = new Point(711, 68);
+            btnTim.Location = new Point(711, 65);
             btnTim.Name = "btnTim";
             btnTim.Size = new Size(70, 37);
             btnTim.TabIndex = 20;
@@ -410,7 +437,7 @@
             cbbThuongHieuTimKiem.Anchor = AnchorStyles.Left;
             cbbThuongHieuTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbThuongHieuTimKiem.FormattingEnabled = true;
-            cbbThuongHieuTimKiem.Location = new Point(554, 73);
+            cbbThuongHieuTimKiem.Location = new Point(554, 70);
             cbbThuongHieuTimKiem.Name = "cbbThuongHieuTimKiem";
             cbbThuongHieuTimKiem.Size = new Size(151, 28);
             cbbThuongHieuTimKiem.TabIndex = 19;
@@ -422,7 +449,7 @@
             cbbGiaTimKiem.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbGiaTimKiem.FormattingEnabled = true;
             cbbGiaTimKiem.Items.AddRange(new object[] { "< 5 triệu", "5 đến 10 triệu", "10 đến 20 triệu", "> 20 triệu" });
-            cbbGiaTimKiem.Location = new Point(337, 73);
+            cbbGiaTimKiem.Location = new Point(337, 70);
             cbbGiaTimKiem.Name = "cbbGiaTimKiem";
             cbbGiaTimKiem.Size = new Size(107, 28);
             cbbGiaTimKiem.TabIndex = 18;
@@ -433,7 +460,7 @@
             label8.Anchor = AnchorStyles.Left;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(423, 9);
+            label8.Location = new Point(11, 6);
             label8.Name = "label8";
             label8.Size = new Size(277, 41);
             label8.TabIndex = 17;
@@ -443,7 +470,7 @@
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Location = new Point(450, 76);
+            label5.Location = new Point(450, 73);
             label5.Name = "label5";
             label5.Size = new Size(98, 20);
             label5.TabIndex = 10;
@@ -454,7 +481,7 @@
             // 
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Location = new Point(297, 76);
+            label3.Location = new Point(297, 73);
             label3.Name = "label3";
             label3.Size = new Size(34, 20);
             label3.TabIndex = 6;
@@ -464,7 +491,7 @@
             // txtTenTimKiem
             // 
             txtTenTimKiem.Anchor = AnchorStyles.Left;
-            txtTenTimKiem.Location = new Point(166, 73);
+            txtTenTimKiem.Location = new Point(166, 70);
             txtTenTimKiem.Name = "txtTenTimKiem";
             txtTenTimKiem.Size = new Size(125, 27);
             txtTenTimKiem.TabIndex = 5;
@@ -475,7 +502,7 @@
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(125, 76);
+            label1.Location = new Point(125, 73);
             label1.Name = "label1";
             label1.Size = new Size(35, 20);
             label1.TabIndex = 4;
@@ -485,7 +512,7 @@
             // txtMaTimKiem
             // 
             txtMaTimKiem.Anchor = AnchorStyles.Left;
-            txtMaTimKiem.Location = new Point(47, 73);
+            txtMaTimKiem.Location = new Point(47, 70);
             txtMaTimKiem.Name = "txtMaTimKiem";
             txtMaTimKiem.Size = new Size(73, 27);
             txtMaTimKiem.TabIndex = 3;
@@ -496,38 +523,12 @@
             // 
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(11, 76);
+            label2.Location = new Point(11, 73);
             label2.Name = "label2";
             label2.Size = new Size(33, 20);
             label2.TabIndex = 1;
             label2.Text = "Mã:";
             label2.Click += label2_Click;
-            // 
-            // btnXuatFile
-            // 
-            btnXuatFile.Anchor = AnchorStyles.Top;
-            btnXuatFile.BackColor = Color.PaleGreen;
-            btnXuatFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnXuatFile.Location = new Point(13, 503);
-            btnXuatFile.Name = "btnXuatFile";
-            btnXuatFile.Size = new Size(105, 53);
-            btnXuatFile.TabIndex = 22;
-            btnXuatFile.Text = "Xuất File";
-            btnXuatFile.UseVisualStyleBackColor = false;
-            btnXuatFile.Click += btnXuatFile_Click;
-            // 
-            // btnNhapFile
-            // 
-            btnNhapFile.Anchor = AnchorStyles.Top;
-            btnNhapFile.BackColor = Color.FromArgb(128, 255, 128);
-            btnNhapFile.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNhapFile.Location = new Point(143, 503);
-            btnNhapFile.Name = "btnNhapFile";
-            btnNhapFile.Size = new Size(105, 53);
-            btnNhapFile.TabIndex = 23;
-            btnNhapFile.Text = "Nhập File";
-            btnNhapFile.UseVisualStyleBackColor = false;
-            btnNhapFile.Click += btnNhapFile_Click;
             // 
             // frmQLSanPham
             // 
