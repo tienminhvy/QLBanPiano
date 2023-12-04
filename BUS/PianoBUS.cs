@@ -3,6 +3,7 @@ using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -272,7 +273,12 @@ namespace QLBanPiano.BUS
             return true;
         }
 
-
+        public void GiamSoLuong(int soLuong, string tieuChi)
+        {
+            string sqlStr = "UPDATE nhacc SET soLuong = soLuong - " + soLuong +
+                " WHERE " + tieuChi;
+            db.ExecuteNonQuery(sqlStr);
+        }
         public bool Validates(DTO.Piano piano)
         {
             List<int> dsIdThuongHieu = new ThuongHieuBUS().LayDSIdThuongHieu();

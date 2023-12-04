@@ -408,6 +408,10 @@ namespace QLBanPiano
                     txtTongTienNhan.Focus();
                     return;
                 }
+                foreach (SanPhamDuocChon sp in DSSanPhamDaChon) // giảm số lượng trong database
+                {
+                    pianoBUS.GiamSoLuong(sp.SoLuong, "id = " + sp.IdSanPham);
+                }
                 //---------------------------------------Code tạo Hóa đơn-------------------------------------------------------------
             }
             catch (Exception ex)
