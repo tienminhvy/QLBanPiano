@@ -288,7 +288,7 @@ namespace QLBanPiano
 
         private void btnThemKhachHang_Click(object sender, EventArgs e)
         {   
-            frmThemKhachHang frmKhachHang = new frmThemKhachHang();
+            frmThemKhachHang frmKhachHang = new frmThemKhachHang(this);
             frmKhachHang.ShowDialog();
             danhSachKhachHang = khachHangBUS.LayDS("1=1");
             LoadDSKhachHang(danhSachKhachHang);
