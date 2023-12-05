@@ -532,6 +532,7 @@
             cbbTieuChiSanPham.Name = "cbbTieuChiSanPham";
             cbbTieuChiSanPham.Size = new Size(241, 28);
             cbbTieuChiSanPham.TabIndex = 13;
+            cbbTieuChiSanPham.SelectedIndexChanged += cbbTieuChiSanPham_SelectedIndexChanged;
             // 
             // btnChonSanPham
             // 
@@ -733,6 +734,7 @@
             cbbTieuChiKhachHang.Name = "cbbTieuChiKhachHang";
             cbbTieuChiKhachHang.Size = new Size(173, 28);
             cbbTieuChiKhachHang.TabIndex = 13;
+            cbbTieuChiKhachHang.SelectedIndexChanged += cbbTieuChiKhachHang_SelectedIndexChanged;
             // 
             // btnThemKhachHang
             // 

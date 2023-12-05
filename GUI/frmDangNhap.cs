@@ -17,6 +17,8 @@ namespace QLBanPiano
         bool formExpand;
 
         int curWid = 0, curHeight = 0;
+
+        public static string nhanVien_id = "1"; // ---------------------------------------------reset lại mã nhân viên khi đăng nhập thành công-------------------------------------
         public frmDangNhap()
         {
             InitializeComponent();

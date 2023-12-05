@@ -623,5 +623,12 @@ namespace QLBanPiano.BUS
             }
             return true;
         }
+
+        public void SuaSoLuong(int nhaccu_id, int soLuongBan)
+        {
+            db.ExecuteNonQuery(string.Format("UPDATE nhaccu " +
+                "SET soLuong = soLuong -" + soLuongBan +
+                "WHERE nhaccu.id = {0}", nhaccu_id));
+        }
     }
 }
