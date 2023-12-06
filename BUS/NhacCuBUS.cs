@@ -1,4 +1,5 @@
-﻿using QLBanPiano.DAL;
+﻿using Org.BouncyCastle.Asn1.Mozilla;
+using QLBanPiano.DAL;
 using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
@@ -99,7 +100,13 @@ namespace QLBanPiano.BUS
         {
             return db.GetCount("nhaccu", dieuKien);
         }
-
+        public long getPrice(int nhaccu_id)
+        {
+            string sqlCmd = "select gia as 'Price'\r\nfrom nhaccu\r\nwhere nhaccu.id = "+nhaccu_id;
+            DataTable dt = db.Execute(sqlCmd);
+            long value = Convert.ToInt64(dt.Rows[0]["Price"]);
+            return value;
+        }
         public bool Sua(params string[] dsTruong)
         {
             string id = dsTruong[0];

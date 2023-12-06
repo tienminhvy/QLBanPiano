@@ -301,24 +301,31 @@ namespace QLBanPiano.GUI
                         {
                             foreach(PhieuNhapExcel ph in listImport)
                             {
-                                DataTable chitietTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
-                                DataTable updateNhaccu = chitietTable.Clone();
-                                updateNhaccu.Columns.Remove("ID");
-                                updateNhaccu.Columns.Remove("Đơn giá");
-                                foreach (DataRow row in chitietTable.Rows)
+                                try
                                 {
-                                    updateNhaccu.ImportRow(row);
-                                }
-                                chitietTable.Columns["ID"].ColumnName = "phieunhap_id";
-                                chitietTable.Columns["Mã nhạc cụ"].ColumnName = "nhaccu_id";
-                                chitietTable.Columns["Đơn giá"].ColumnName = "chiPhiNhap";
-                                chitietTable.Columns["SL"].ColumnName = "soLuong";
-                                if (fileHandler.ImportConstraint(chitietTable, "chitietphieunhap", phieuNhapBUS.getSqlString(ph)) == true)
-                                {
-                                    foreach (DataRow row in updateNhaccu.Rows)
+                                    DataTable chitietTable = chiTietPhieuNhapBUS.convertToDataTable(ph.PhieuNhapList);
+                                    DataTable updateNhaccu = chitietTable.Clone();
+                                    updateNhaccu.Columns.Remove("ID");
+                                    updateNhaccu.Columns.Remove("Đơn giá");
+                                    foreach (DataRow row in chitietTable.Rows)
                                     {
-                                        nhacCuBUS.tangSL(Convert.ToInt32(row["Mã nhạc cụ"]), Convert.ToInt16(row["SL"]));
+                                        updateNhaccu.ImportRow(row);
                                     }
+                                    chitietTable.Columns["ID"].ColumnName = "id_hdpn";
+                                    chitietTable.Columns["Mã nhạc cụ"].ColumnName = "nhaccu_id";
+                                    chitietTable.Columns["Đơn giá"].ColumnName = "donGia";
+                                    chitietTable.Columns["SL"].ColumnName = "soLuong";
+                                    if (fileHandler.ImportConstraint(chitietTable, "chitiet_hdpn", phieuNhapBUS.getSqlString(ph)) == true)
+                                    {
+                                        foreach (DataRow row in updateNhaccu.Rows)
+                                        {
+                                            nhacCuBUS.tangSL(Convert.ToInt32(row["Mã nhạc cụ"]), Convert.ToInt16(row["SL"]));
+                                        }
+                                    }
+                                }catch(Exception ex)
+                                {
+                                    imported = false;
+                                    MessageBox.Show("Lỗi : " + ex.Message);
                                 }
                             }
                         }

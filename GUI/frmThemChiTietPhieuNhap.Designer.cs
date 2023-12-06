@@ -33,7 +33,6 @@
             label1 = new Label();
             id_pnTextBox = new TextBox();
             nc_idComboBox = new ComboBox();
-            searchBtn = new Button();
             ct_priceTextBox = new TextBox();
             ct_slTextBox = new TextBox();
             label6 = new Label();
@@ -54,7 +53,6 @@
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(id_pnTextBox);
             groupBox2.Controls.Add(nc_idComboBox);
-            groupBox2.Controls.Add(searchBtn);
             groupBox2.Controls.Add(ct_priceTextBox);
             groupBox2.Controls.Add(ct_slTextBox);
             groupBox2.Controls.Add(label6);
@@ -92,17 +90,9 @@
             nc_idComboBox.FormattingEnabled = true;
             nc_idComboBox.Location = new Point(212, 62);
             nc_idComboBox.Name = "nc_idComboBox";
-            nc_idComboBox.Size = new Size(200, 33);
+            nc_idComboBox.Size = new Size(261, 33);
             nc_idComboBox.TabIndex = 1;
-            // 
-            // searchBtn
-            // 
-            searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
-            searchBtn.Location = new Point(418, 62);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(55, 33);
-            searchBtn.TabIndex = 2;
-            searchBtn.UseVisualStyleBackColor = true;
+            nc_idComboBox.SelectedIndexChanged += nc_idComboBox_SelectedIndexChanged;
             // 
             // ct_priceTextBox
             // 
@@ -122,6 +112,8 @@
             ct_slTextBox.PlaceholderText = " Tối đa 100 sản phẩm";
             ct_slTextBox.Size = new Size(261, 31);
             ct_slTextBox.TabIndex = 3;
+            ct_slTextBox.TextChanged += ct_slTextBox_TextChanged;
+            ct_slTextBox.KeyPress += ct_slTextBox_KeyPress;
             // 
             // label6
             // 
@@ -239,7 +231,6 @@
 
         private GroupBox groupBox2;
         private ComboBox nc_idComboBox;
-        private Button searchBtn;
         private TextBox totalTextBox;
         private Label label7;
         private TextBox ct_priceTextBox;

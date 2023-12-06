@@ -20,7 +20,7 @@ namespace QLBanPiano.BUS
         }
         public DataTable LayChiTietHoaDon(int id) 
         {
-            string sqlCmd = "select chitiet_hdpn.hoadon_id as 'ID',chitiet_hdpn.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',chitiet_hdpn.soLuong as 'SL' ,chitiet_hdpn.donGia as N'Đơn giá',hoadon.thoiGian as N'Thời gian',hoadon.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadon.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom chitiet_hdpn\r\ninner join hoadon on hoadon.id = chitiet_hdpn.hoadon_id\r\ninner join nhaccu on chitiet_hdpn.nhaccu_id = nhaccu.id\r\ninner join khachhang on hoadon.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadon.nhanvien_id = nhanvien.id\r\nwhere chitiet_hdpn.hoadon_id = " + id;
+            string sqlCmd = "select chitiet_hdpn.id_hdpn as 'ID',chitiet_hdpn.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',chitiet_hdpn.soLuong as 'SL' ,chitiet_hdpn.donGia as N'Đơn giá',hoadonphieunhap.thoiGian as N'Thời gian',hoadonphieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Tên nhân viên',hoadonphieunhap.khachhang_id as N'Mã khách hàng',concat(khachhang.hoLot,' ',khachhang.ten) as N'Tên khách hàng'\r\nfrom chitiet_hdpn\r\ninner join hoadonphieunhap on hoadonphieunhap.id = chitiet_hdpn.id_hdpn\r\ninner join nhaccu on chitiet_hdpn.nhaccu_id = nhaccu.id\r\ninner join khachhang on hoadonphieunhap.khachhang_id = khachhang.id\r\ninner join nhanvien on hoadonphieunhap.nhanvien_id = nhanvien.id\r\nwhere chitiet_hdpn.id_hdpn = " + id;
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
@@ -77,7 +77,7 @@ namespace QLBanPiano.BUS
                 hoadon_Id = Convert.ToInt32(row["ID"]),
                 nhaccu_Id = Convert.ToInt32(row["Mã nhạc cụ"]),
                 DonGia = Convert.ToInt64(row["Đơn giá"]),
-                SoLuong = Convert.ToInt16(row["SL"])
+                SoLuong = Convert.ToInt32(row["SL"])
             }).ToList();
             return list;    
 
@@ -118,6 +118,41 @@ namespace QLBanPiano.BUS
                 dt.Rows.Add(row);
             }
             return dt;
+        }
+        private DataTable getName(int id)
+        {
+            string sqlCmd = "select ten as N'Tên'\r\nfrom nhaccu\r\nwhere id = "+id;
+            DataTable dt = db.Execute(sqlCmd);
+            return dt;
+        }
+        public DataTable formatToExport (DataTable table)
+        {
+            DataTable result = new();
+            List<string> listTen = new();
+            DataTable temp = new();
+            foreach (DataRow row in table.Rows)
+            {
+                temp = getName(Convert.ToInt32(row["Mã nhạc cụ"]));
+                string tempo = temp.Rows[0]["Tên"].ToString();
+                listTen.Add(tempo);
+            }
+            result.Columns.Add("Tên sản phẩm", typeof(string));
+            result.Columns.Add("SL", typeof(int));
+            result.Columns.Add("Đơn giá", typeof(long));
+            result.Columns.Add("Tổng tiền", typeof(long));
+
+            int i = 1;
+            foreach (DataRow row in table.Rows)
+            {
+                DataRow newRow = result.NewRow();
+                newRow["Tên sản phẩm"] = i.ToString() + "  " + listTen[i-1];
+                newRow["SL"] = Convert.ToInt32(row["SL"]);
+                //newRow["Đơn giá"] = Convert.ToInt64(row["Đơn giá"]);
+                newRow["Tổng tiền"] = Convert.ToInt64(Convert.ToInt32(row["SL"]) * Convert.ToInt64(row["Đơn giá"]));
+                i++;
+                result.Rows.Add(newRow);
+            }
+            return result;
         }
         //////////////////////////////////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)

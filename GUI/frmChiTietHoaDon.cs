@@ -18,8 +18,9 @@ namespace QLBanPiano.GUI
         ChiTietHoaDonBUS chiTietHoaDonBUS = new();
         HoaDonPdfExcelBUS hoadonPdfBus = new();
         IOFileBUS fileHandler = new();
+        DataTable export = new();
+        DataTable temp = new();
         int hoadon_id = -1;
-        DataTable processed = new();
         public frmChiTietHoaDon()
         {
             InitializeComponent();
@@ -36,13 +37,13 @@ namespace QLBanPiano.GUI
             if (hoadon_id != -1)
             {
                 DataTable dt = chiTietHoaDonBUS.LayChiTietHoaDon(hoadon_id);
-                processed = dt;
+                temp = dt.Clone();
                 DataTable datasource = dt.Clone();
                 foreach (DataRow row in dt.Rows)
                 {
                     datasource.ImportRow(row);
+                    temp.ImportRow(row);
                 }
-
                 datasource.Columns.Remove("ID");
                 datasource.Columns.Remove("Thời gian");
                 datasource.Columns.Remove("Mã nhân viên");
@@ -56,6 +57,11 @@ namespace QLBanPiano.GUI
                 {
                     row["Tổng tiền"] = Convert.ToInt64(row["SL"]) * Convert.ToInt64(row["Đơn giá"]);
                     total += Convert.ToInt64(row["Tổng tiền"]);
+                }
+                export = datasource.Clone();
+                foreach(DataRow row in datasource.Rows)
+                {
+                    export.ImportRow(row);
                 }
                 totalTextBox.Text = total.ToString() + "  VNĐ";
                 totalTextBox.TextAlign = HorizontalAlignment.Right;
@@ -97,19 +103,20 @@ namespace QLBanPiano.GUI
             if(result == DialogResult.OK)
             {
                 string filename = sfd.FileName;
-                bool return_value = fileHandler.ExportHoaDonToPdf(hoaDon, filename);
-                if( return_value )
+                export.Columns.Remove("Mã nhạc cụ");
+                bool return_value = fileHandler.ExportHoaDonToPdf(hoaDon,filename);
+                if( return_value)
                 {
                     MessageBox.Show("Xuất hóa đơn thành công !");
                     Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi");
+                    this.Close();
                 }
             }
         }
-
         private void exportFileBtn_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -117,5 +124,6 @@ namespace QLBanPiano.GUI
                 exportFileBtn_Click(sender, e);
             }
         }
+        
     }
 }

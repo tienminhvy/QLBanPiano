@@ -14,9 +14,9 @@ namespace QLBanPiano.BUS
 {
     public class PhieuNhapBUS : IBUS
     {
-        ChiTietPhieuNhapBUS chitietBus = new();
-        NhanVienBUS nhanvienBus = new();
-        DB db;
+        private ChiTietPhieuNhapBUS chitietBus = new();
+        private NhanVienBUS nhanvienBus = new();
+        private DB db;
         public PhieuNhapBUS()
         {
             db = new DB();
@@ -212,6 +212,29 @@ namespace QLBanPiano.BUS
                 MessageBox.Show(ex.Message);
             }
             return dt;
+        }
+        public bool AddPhieuNhap(PhieuNhapExcel phieunhap)
+        {
+            DataTable chitiet = chitietBus.formatToImport(chitietBus.convertToDataTable(phieunhap.PhieuNhapList));
+            foreach(DataColumn col in chitiet.Columns)
+            {
+                MessageBox.Show(col.ColumnName);
+            }
+            try
+            {
+                if (db.InsertConstraintedData(chitiet, "chitiet_hdpn", getSqlString(phieunhap)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         ///////////////////////////
         public object GiaTriTruong(string tenTruong, string dieuKien)

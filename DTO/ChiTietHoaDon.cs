@@ -12,10 +12,10 @@ namespace QLBanPiano.DTO
         private int nhaccu_id;
         private int hoadon_id;
         private long donGia;
-        private short soLuong;
+        private int soLuong;
         public ChiTietHoaDon() { }
 
-        public ChiTietHoaDon(int nhaccu_id, int hoadon_id, long donGia, short soLuong)
+        public ChiTietHoaDon(int nhaccu_id, int hoadon_id, long donGia, int soLuong)
         {
             this.nhaccu_id = nhaccu_id;
             this.hoadon_id = hoadon_id;
@@ -25,7 +25,7 @@ namespace QLBanPiano.DTO
 
         public int nhaccu_Id {  get { return nhaccu_id; } set { nhaccu_id = value;} }
         public int hoadon_Id { get { return hoadon_id; } set {  hoadon_id = value; } }
-        public short SoLuong { get { return soLuong; } set { soLuong = value; } }
+        public int SoLuong { get { return soLuong; } set { soLuong = value; } }
         public long DonGia { get {return donGia; } set { donGia = value; } }
     }
 }
