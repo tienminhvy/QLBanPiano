@@ -26,7 +26,6 @@ namespace QLBanPiano.BUS
     public class IOFileBUS
     {
         DB db;
-        private ChiTietHoaDonBUS chitiet = new();
         public IOFileBUS() {
             db = new DB();
         }
@@ -179,10 +178,11 @@ namespace QLBanPiano.BUS
         public bool ExportHoaDonToPdf(HoaDonPDFExcel hoadon,string filename)
         {
             
-            string linkLogo = @"C:\\Users\\TranNam\\Source\\Repos\\QLBanPiano\\GUI\\image\\LOGO.png";//Nhớ thay lịnk logo cho mỗi máy
+            string linkLogo = @"D:\\_Development\\CSharp\\pianoLogo512.png";//Nhớ thay lịnk logo cho mỗi máy
             // Thiết lập font mặc định cho toàn bộ tài liệu
             try
             {
+                ChiTietHoaDonBUS chitiet = new();
                 DataTable dt = chitiet.LayChiTietHoaDon(hoadon.Id);
                 DataTable dataTable = dt.Clone();
                 foreach (DataRow row in dt.Rows)
