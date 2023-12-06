@@ -88,7 +88,7 @@ namespace QLBanPiano.GUI
             }
         }
 
-        private void exportFileBtn_Click(object sender, EventArgs e)//Export bill btn
+        public void XuatHoaDonPDF(int hoadon_id)
         {
             HoaDonPDFExcel hoaDon = new();
             hoaDon = hoadonPdfBus.getHoaDonByID(hoadon_id);
@@ -100,12 +100,12 @@ namespace QLBanPiano.GUI
             // Hiển thị SaveFileDialog
             DialogResult result = sfd.ShowDialog();
 
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 string filename = sfd.FileName;
                 export.Columns.Remove("Mã nhạc cụ");
-                bool return_value = fileHandler.ExportHoaDonToPdf(hoaDon,filename);
-                if( return_value)
+                bool return_value = fileHandler.ExportHoaDonToPdf(hoaDon, filename);
+                if (return_value)
                 {
                     MessageBox.Show("Xuất hóa đơn thành công !");
                     Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
@@ -116,6 +116,11 @@ namespace QLBanPiano.GUI
                     this.Close();
                 }
             }
+        }
+
+        private void exportFileBtn_Click(object sender, EventArgs e)//Export bill btn
+        {
+            XuatHoaDonPDF(hoadon_id);
         }
         private void exportFileBtn_KeyPress(object sender, KeyPressEventArgs e)
         {
