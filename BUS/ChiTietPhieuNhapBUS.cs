@@ -21,7 +21,7 @@ namespace QLBanPiano.BUS
         }
         public DataTable LayChiTietPhieuNhap(int id)
         {
-            string sqlCmd = "select chitiet_hdpn.phieunhap_id as 'ID', chitiet_hdpn.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',donGia as N'Đơn giá',chitiet_hdpn.soLuong as 'SL',phieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',phieunhap.thoiGian as N'Thời gian'\r\nfrom chitiet_hdpn\r\ninner join nhaccu on nhaccu.id = chitiet_hdpn.nhaccu_id\r\ninner join phieunhap on phieunhap.id = chitiet_hdpn.phieunhap_id\r\ninner join nhanvien on nhanvien.id = phieunhap.nhanvien_id\r\nwhere chitiet_hdpn.phieunhap_id = " + id;
+            string sqlCmd = "select chitiet_hdpn.id_hdpn as 'ID', chitiet_hdpn.nhaccu_id as N'Mã nhạc cụ',nhaccu.ten as N'Tên nhạc cụ',donGia as N'Đơn giá',chitiet_hdpn.soLuong as 'SL',hoadonphieunhap.nhanvien_id as N'Mã nhân viên',concat(nhanvien.hoLot,' ',nhanvien.ten) as N'Nhân viên',hoadonphieunhap.thoiGian as N'Thời gian'\r\nfrom chitiet_hdpn\r\ninner join nhaccu on nhaccu.id = chitiet_hdpn.nhaccu_id\r\ninner join hoadonphieunhap on hoadonphieunhap.id = chitiet_hdpn.id_hdpn\r\ninner join nhanvien on nhanvien.id = hoadonphieunhap.nhanvien_id\r\nwhere chitiet_hdpn.id_hdpn = " + id;
             DataTable dt = db.Execute(sqlCmd);
             return dt;
         }
@@ -68,6 +68,23 @@ namespace QLBanPiano.BUS
                 dt.Rows.Add(row);
             }
             return dt;
+        }
+        public DataTable formatToImport(DataTable dt)
+        {
+            DataTable table = new();
+            table.Columns.Add("id_hdpn",typeof(int));
+            table.Columns.Add("nhaccu_id",typeof(int));
+            table.Columns.Add("donGia",typeof(long));
+            table.Columns.Add("soLuong",typeof(int));
+            foreach(DataRow row in dt.Rows) {
+                DataRow tableRow = table.NewRow();
+                tableRow["id_hdpn"] = row["ID"];
+                tableRow["nhaccu_id"] = row["Mã nhạc cụ"];
+                tableRow["donGia"] = row["Đơn giá"];
+                tableRow["soLuong"] = row["SL"];
+                table.Rows.Add(tableRow);
+            }
+            return table;
         }
         public bool Validates(ChiTietPhieuNhap chitiet)
         {

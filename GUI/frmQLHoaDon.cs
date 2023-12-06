@@ -282,11 +282,11 @@ namespace QLBanPiano.GUI
                                     chitietTable.Columns["Đơn giá"].SetOrdinal(2);
                                     chitietTable.Columns["SL"].SetOrdinal(3);*/
 
+                                    chitietTable.Columns["ID"].ColumnName = "id_hdpn";
                                     chitietTable.Columns["Mã nhạc cụ"].ColumnName = "nhaccu_id";
-                                    chitietTable.Columns["ID"].ColumnName = "hoadon_id";
-                                    chitietTable.Columns["Đơn giá"].ColumnName = "donGiaLucBan";
+                                    chitietTable.Columns["Đơn giá"].ColumnName = "donGia";
                                     chitietTable.Columns["SL"].ColumnName = "soLuong";
-                                    if (fileHandler.ImportConstraint(chitietTable, "chitiethoadon", hoaDonBus.getSqlString(hoadon)) == true)
+                                    if (fileHandler.ImportConstraint(chitietTable, "chitiet_hdpn", hoaDonBus.getSqlString(hoadon)) == true)
                                     {
                                         foreach (DataRow row in updateNhaccu.Rows)
                                         {
