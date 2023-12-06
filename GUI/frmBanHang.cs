@@ -52,7 +52,7 @@ namespace QLBanPiano
             cbbTieuChiKhachHang.SelectedIndex = 0;
             danhSachSanPham = pianoBUS.LayDS("1=1");
             danhSachKhachHang = khachHangBUS.LayDS("1=1");
-            DSSanPhamDaChon = null;
+            DSSanPhamDaChon.Clear();
             LoadDSSanPham(danhSachSanPham);
             LoadDSKhachHang(danhSachKhachHang);
             LoadDSSanPhamDaChon();
@@ -492,6 +492,9 @@ namespace QLBanPiano
                 }
 
                 MessageBox.Show("Thanh toán thành công", "Thông báo");
+
+                frmChiTietHoaDon f = new(hoaDon_id);
+                f.ShowDialog();
                 
                 LoadLaiComponent();
                 
@@ -499,6 +502,7 @@ namespace QLBanPiano
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show("Có lỗi không mong muốn xảy ra, vui lòng thực hiện đúng thao tác", "Báo lỗi");
                 return;
             }
