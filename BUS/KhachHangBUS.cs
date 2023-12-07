@@ -173,15 +173,22 @@ namespace QLBanPiano.BUS
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return false;
             }
-
-            //kiểm tra số điện thoại của khách hàng có đủ 10 chữ số hay không và
-            if (sdt.Length != 10)
+            foreach (char kyTu in hoLot)
             {
-                MessageBox.Show("Số điện thoại phải có 10 chữ số!");
-                return false;
+                if (!char.IsLetter(kyTu) && !kyTu.Equals(" "))
+                {
+                    MessageBox.Show("Họ lót chỉ được chứa kí tự chữ!");
+                    return false;
+                }
             }
-
-            // kiểm tra xem tất cả các kí tự có phải là 10 chữ số hay không
+            foreach (char kyTu in ten)
+            {
+                if (!char.IsLetter(kyTu) && !kyTu.Equals(" "))
+                {
+                    MessageBox.Show("Tên chỉ được chứa kí tự chữ!");
+                    return false;
+                }
+            }
             foreach (char kyTu in sdt)
             {
                 if (!Char.IsDigit(kyTu))
@@ -191,6 +198,17 @@ namespace QLBanPiano.BUS
 
                 }
             }
+            //kiểm tra số điện thoại của khách hàng có đủ 10 chữ số hay không và
+            if (sdt.Length != 10)
+            {
+                MessageBox.Show("Số điện thoại phải có 10 chữ số!");
+                return false;
+            }
+
+            // kiểm tra xem tất cả các kí tự có phải là 10 chữ số hay không
+            
+            
+            
 
             //kiểm tra số điện thoại đã tồn tại hay chưa khi tạo
             if (id == "-1" && db.GetCount("khachhang", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
