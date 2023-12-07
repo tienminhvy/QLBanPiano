@@ -176,7 +176,7 @@ namespace QLBanPiano.BUS
             }
             foreach (char kyTu in hoLot)
             {
-                if (!char.IsLetter(kyTu) && !kyTu.Equals(" "))
+                if (!char.IsLetter(kyTu) && kyTu.Equals(" "))
                 {
                     new Msg("Họ lót chỉ được chứa kí tự chữ!", "err");
                     return false;
@@ -184,7 +184,7 @@ namespace QLBanPiano.BUS
             }
             foreach (char kyTu in ten)
             {
-                if (!char.IsLetter(kyTu) && !kyTu.Equals(" "))
+                if (!char.IsLetter(kyTu) && kyTu.Equals(" "))
                 {
                     new Msg("Tên chỉ được chứa kí tự chữ!", "err");
                     return false;
