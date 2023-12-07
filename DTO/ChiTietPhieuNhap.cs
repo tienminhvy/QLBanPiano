@@ -15,7 +15,10 @@ namespace QLBanPiano.DTO
         
         public ChiTietPhieuNhap()
         {
-
+            phieunhap_Id = -1;
+            nhaccu_Id = -1;
+            donGia = 0;
+            soLuong = 0;
         }
         public ChiTietPhieuNhap(int phieunhap_id, int nhaccu_id, long donGia, int soLuong)
         {
@@ -30,5 +33,8 @@ namespace QLBanPiano.DTO
         public long DonGia { set { donGia = value; } get {return donGia; } } 
 
         public int SoLuong { get {return soLuong; } set { soLuong = value; } }
+
+        private string ma_nhaccu;
+        public string Ma_NhacCu { get { return ma_nhaccu; } set { ma_nhaccu = value; } }
     }
 }

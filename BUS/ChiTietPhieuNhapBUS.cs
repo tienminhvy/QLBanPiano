@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using QLBanPiano.DAL;
 using System.Reflection.Metadata.Ecma335;
 using DocumentFormat.OpenXml.Presentation;
+using QLBanPiano.GUI;
 
 namespace QLBanPiano.BUS
 {
@@ -50,6 +51,32 @@ namespace QLBanPiano.BUS
             }
             return list;
         }
+        public List<ChiTietPhieuNhap> getListChiTietExcel(DataTable dt)
+        {
+            NhacCuBUS nhaccuBUS = new();
+            List<ChiTietPhieuNhap> list = new();
+            foreach (DataRow row in dt.Rows)
+            {
+                ChiTietPhieuNhap chitiet = new();
+                chitiet.phieunhap_Id = Convert.ToInt32(row["ID"]);
+                string id_or_ma = Convert.ToString(row["Mã nhạc cụ"]);
+
+                if (int.TryParse(id_or_ma, out int id))
+                { // khi xuất
+                    string ma = nhaccuBUS.GiaTriTruong("ma", "id = " + id + " AND trangthai = 1").ToString();
+                    chitiet.Ma_NhacCu = ma;
+                }
+                else
+                { // Khi nhập
+                    chitiet.Ma_NhacCu = id_or_ma;
+                }
+
+                chitiet.DonGia = Convert.ToInt64(row["Đơn giá"]);
+                chitiet.SoLuong = Convert.ToInt16(row["SL"]);
+                list.Add(chitiet);
+            }
+            return list;
+        }
         public DataTable convertToDataTable(List<ChiTietPhieuNhap> list)
         {
             DataTable dt = new();
@@ -62,7 +89,7 @@ namespace QLBanPiano.BUS
             {
                 DataRow row = dt.NewRow();
                 row["ID"] = obj.phieunhap_Id;
-                row["Mã nhạc cụ"] = obj.id;
+                row["Mã nhạc cụ"] = obj.nhaccu_Id;
                 row["Đơn giá"] = obj.DonGia;
                 row["SL"] = obj.SoLuong;
                 dt.Rows.Add(row);
@@ -88,9 +115,29 @@ namespace QLBanPiano.BUS
         }
         public bool Validates(ChiTietPhieuNhap chitiet)
         {
-            if (pianobus.checkExist("nhaccu", chitiet.nhaccu_Id) == false) return false;
-            if (chitiet.DonGia < 500000 || chitiet.DonGia > 25000000000) return false;
-            if (chitiet.SoLuong <= 0 || chitiet.SoLuong >= 100) return false;
+            NhacCuBUS nhaccuBUS = new();
+            if (pianobus.checkExist("nhaccu", chitiet.Ma_NhacCu) == false)
+            {
+                new Msg("Không tìm thấy mã nhạc cụ " + chitiet.Ma_NhacCu, "err");
+                return false;
+            }
+            else
+            {
+                int id = Convert.ToInt32(nhaccuBUS.GiaTriTruong("ID", "ma = '" + chitiet.Ma_NhacCu + "' AND trangthai = 1"));
+                chitiet.nhaccu_Id = id;
+            }
+            if (chitiet.DonGia < 500000 || chitiet.DonGia > 25000000000)
+            {
+                new Msg("Mã nhạc cụ " + chitiet.Ma_NhacCu + " có giá nhập không hợp lệ, \n" +
+                    "Giá nhập phải nằm trong khoảng từ trên 500,000đ đến dưới 25 tỷ đồng.", "err");
+                return false;
+            }
+            if (chitiet.SoLuong <= 0 || chitiet.SoLuong >= 100)
+            {
+                new Msg("Mã nhạc cụ " + chitiet.Ma_NhacCu + " có số lượng nhập không hợp lệ, \n" +
+                    "Số lượng nhập phải nằm trong khoảng từ lớn hơn 0 đến dưới 100 sản phẩm.", "err");
+                return false;
+            }
             return true;
         }
         public bool ValidateList(List<ChiTietPhieuNhap> list)
