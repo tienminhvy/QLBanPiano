@@ -1,4 +1,5 @@
-﻿using QLBanPiano.BUS;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using QLBanPiano.BUS;
 using QLBanPiano.DTO;
 using System;
 using System.Collections.Generic;
@@ -31,22 +32,41 @@ namespace QLBanPiano.GUI
             id_pnTextBox.Text = frmThemPhieuNhap.id.ToString();
             id_pnTextBox.TextAlign = HorizontalAlignment.Center;
             //Init combobox value list
-            List<int> list = nhacCuBUS.getListId();
             nc_idComboBox.Items.Clear();
-            nc_idComboBox.DataSource = list;
+            nc_idComboBox.DisplayMember = "Ma";
+            nc_idComboBox.ValueMember = "Id";
+
+            nc_idComboBox.DataSource = nhacCuBUS.LayDS("1=1").Select(nhaccu => (NhacCu)nhaccu).ToList();
             nc_idComboBox.SelectedIndex = 0;
             //
-            int id = Convert.ToInt32(nc_idComboBox.SelectedItem.ToString());
+            int id = Convert.ToInt32(nc_idComboBox.SelectedValue.ToString());
             ct_priceTextBox.Text = nhacCuBUS.getPrice(id).ToString();
         }
         private void ConfirmAddBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (ct_slTextBox.Text != string.Empty)
+                if (ct_slTextBox.Text != string.Empty || ct_priceTextBox.Text != string.Empty)
                 {
                     chitiet.phieunhap_Id = Convert.ToInt32(id_pnTextBox.Text);
                     chitiet.nhaccu_Id = Convert.ToInt32(nc_idComboBox.SelectedValue);
+                    if (!long.TryParse(ct_priceTextBox.Text, out long _))
+                    {
+                        new Msg("Giá nhập phải là giá trị số!", "err");
+                        ct_priceTextBox.Focus();
+                        return;
+                    }
+                    if (Convert.ToInt32(ct_priceTextBox.Text) > nhacCuBUS.getPrice(chitiet.nhaccu_Id))
+                    {
+                        if (
+                            new Msg("Giá nhập sản phẩm này cao hơn giá bán, bạn có muốn tiếp tục?", "warn").Res != DialogResult.OK
+                            )
+                        {
+                            // Huỷ nhập
+                            new Msg("Đã huỷ nhập!");
+                            return;
+                        }
+                    }
                     chitiet.DonGia = Convert.ToInt32(ct_priceTextBox.Text);
                     chitiet.SoLuong = Convert.ToInt16(ct_slTextBox.Text);
 
@@ -102,6 +122,12 @@ namespace QLBanPiano.GUI
             else
             {
                 long value = 0;
+                if (!long.TryParse(ct_priceTextBox.Text, out long _))
+                {
+                    new Msg("Giá nhập phải là giá trị số!", "err");
+                    ct_slTextBox.Focus();
+                    return;
+                }
                 long chiphi = Convert.ToInt64(ct_priceTextBox.Text);
                 value = chiphi * quantity;
                 //Init totalTextBox
@@ -112,8 +138,11 @@ namespace QLBanPiano.GUI
 
         private void nc_idComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(nc_idComboBox.SelectedItem.ToString());
-            ct_priceTextBox.Text = nhacCuBUS.getPrice(id).ToString();
+            if (nc_idComboBox.SelectedIndex > -1)
+            {
+                int id = Convert.ToInt32(nc_idComboBox.SelectedValue.ToString());
+                ct_priceTextBox.Text = nhacCuBUS.getPrice(id).ToString();
+            }
         }
     }
 }

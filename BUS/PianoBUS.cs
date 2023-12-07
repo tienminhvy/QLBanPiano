@@ -44,6 +44,13 @@ namespace QLBanPiano.BUS
             if (result == -1) return false;
             return true;
         }
+        public bool checkExist(string tablename, string ma) //áp dụng cho những hàm có col trạng thái
+        {
+            string condition = " Ma = '" + ma + "' and trangthai = 1";
+            int result = db.GetCount(tablename, condition);
+            if (result == 0) return false;
+            return true;
+        }
         public List<DoiTuong> LayDS(string dieukien)
         {
             string sqlStr = "SELECT  piano.id as 'id'," +
