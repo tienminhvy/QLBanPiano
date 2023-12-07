@@ -46,18 +46,17 @@ namespace QLBanPiano.BUS
                 "gia as N'Giá', " +
                 "hinhAnh as N'Hình Ảnh', " +
                 "soLuong as N'Số lượng', " +
-                "thuonghieu.ma, " +
-                "thuonghieu.ten, " +
-                "nhaccu.thuonghieu_id " +
-                "FROM nhaccu, thuonghieu" +
-                "WHERE nhaccu.thuonghieu_id = thuonghieu.id AND " + dieukien;
+                "thuonghieu.ma as 'thuonghieu.ma', " +
+                "thuonghieu.ten as 'thuonghieu.ten', " +
+                "nhaccu.thuonghieu_id, " +
+                "nhaccu.trangthai " +
+                "FROM nhaccu, thuonghieu " +
+                "WHERE nhaccu.thuonghieu_id = thuonghieu.id AND nhaccu.trangthai = 1 AND " + dieukien;
             DataTable dt = db.Execute(sqlStr);
             List<DoiTuong> ds = new List<DoiTuong>();
 
             foreach (DataRow row in dt.Rows)
             {
-                if (int.Parse(row["trangthai"].ToString()) == 0)
-                    continue;
                 NhacCu nhaccu = new NhacCu();
                 nhaccu.Id = int.Parse(row["id"].ToString());
                 nhaccu.Ma = row["Mã nhạc cụ"].ToString();
@@ -87,9 +86,9 @@ namespace QLBanPiano.BUS
                 "hinhAnh as N'Hình Ảnh', " +
                 "gia as N'Giá', " +
                 "soLuong as N'Số lượng', " +
-                "nhaccu.thuonghieu_id" +
-                "thuonghieu.ma" +
-                "thuonghieu.ten" +
+                "nhaccu.thuonghieu_id, " +
+                "thuonghieu.ma, " +
+                "thuonghieu.ten " +
                 "FROM nhaccu, thuonghieu" +
                 "WHERE nhaccu.thuonghieu_id = thuonghieu.id";
 
@@ -211,6 +210,12 @@ namespace QLBanPiano.BUS
         }
         public void giamSL(int id,short SL)
         {
+            NhacCuBUS nhacCuBUS = new NhacCuBUS();
+            int soLuongHienTai = int.Parse(nhacCuBUS.GiaTriTruong("soLuong", "id = " + id).ToString());
+            if (soLuongHienTai == 0)
+            {
+                return; // so luong da bang 0
+            }
             string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong - " + SL + " \r\nwhere id = " + id;
             db.ExecuteNonQuery(sqlCmd);
         }

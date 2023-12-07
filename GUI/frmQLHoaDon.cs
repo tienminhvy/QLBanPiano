@@ -347,7 +347,8 @@ namespace QLBanPiano.GUI
             if(imported)
             {
                 MessageBox.Show("Import file thành công");
-                //resetBtn_Click(sender, e);
+                resetBtn_Click(sender, e);
+                Init();
             }
 
         }
