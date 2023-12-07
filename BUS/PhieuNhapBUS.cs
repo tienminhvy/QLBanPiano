@@ -99,7 +99,7 @@ namespace QLBanPiano.BUS
             hoadonphieunhap.Id = Convert.ToInt32(row["ID"]);
             hoadonphieunhap.Id_nhanvien = Convert.ToInt32(row["Mã nhân viên"]);
             hoadonphieunhap.ThoiGian = Convert.ToDateTime(row["Thời gian"]);
-            hoadonphieunhap.PhieuNhapList = chitietBus.getListChiTiet(dt);
+            hoadonphieunhap.PhieuNhapList = chitietBus.getListChiTietExcel(dt);
             return hoadonphieunhap;
         }
         public DataTable splitFromExcelTableById(DataTable excel,int id)
@@ -130,7 +130,7 @@ namespace QLBanPiano.BUS
             string thisyear = "2014-01-01 00:00:00 AM";
             DateTime dateTime = DateTime.ParseExact(thisyear,"yyyy-MM-dd hh:mm:ss tt",CultureInfo.InvariantCulture,DateTimeStyles.None);
             if (hoadonphieunhap.Id <= 0) return false;
-            if (hoadonphieunhap.ThoiGian > DateTime.Today || hoadonphieunhap.ThoiGian < dateTime) return false;
+            if (hoadonphieunhap.ThoiGian > DateTime.Now || hoadonphieunhap.ThoiGian < dateTime) return false;
             if (nhanvienBus.checkExist(hoadonphieunhap.Id_nhanvien) == false) return false;
             if (hoadonphieunhap.PhieuNhapList == null) return false;
             return true;
@@ -170,7 +170,7 @@ namespace QLBanPiano.BUS
                             break; // Nếu chuyển đổi thành công, thoát khỏi vòng lặp
                         }
                     }
-                    hoadonphieunhap.PhieuNhapList = chitietBus.getListChiTiet(chitietBus.LayChiTietPhieuNhap(Convert.ToInt32(row["ID"])));
+                    hoadonphieunhap.PhieuNhapList = chitietBus.getListChiTietExcel(chitietBus.LayChiTietPhieuNhap(Convert.ToInt32(row["ID"])));
 
                     list.Add(hoadonphieunhap);
                 }
@@ -189,7 +189,7 @@ namespace QLBanPiano.BUS
                 dt.Columns.Add("ID", typeof(int));
                 dt.Columns.Add("Thời gian", typeof(DateTime));
                 dt.Columns.Add("Mã nhân viên", typeof(int));
-                dt.Columns.Add("Mã nhạc cụ", typeof(int));
+                dt.Columns.Add("Mã nhạc cụ", typeof(string));
                 dt.Columns.Add("Đơn giá", typeof(long));
                 dt.Columns.Add("SL", typeof(short));
                 //
@@ -201,7 +201,7 @@ namespace QLBanPiano.BUS
                         row["ID"] = hoadonphieunhap.Id;
                         row["Thời gian"] = hoadonphieunhap.ThoiGian;
                         row["Mã nhân viên"] = hoadonphieunhap.Id_nhanvien;
-                        row["Mã nhạc cụ"] = chitiet.nhaccu_Id;
+                        row["Mã nhạc cụ"] = chitiet.Ma_NhacCu;
                         row["Đơn giá"] = chitiet.DonGia;
                         row["SL"] = chitiet.SoLuong;
                         dt.Rows.Add(row);
@@ -216,10 +216,6 @@ namespace QLBanPiano.BUS
         public bool AddPhieuNhap(PhieuNhapExcel phieunhap)
         {
             DataTable chitiet = chitietBus.formatToImport(chitietBus.convertToDataTable(phieunhap.PhieuNhapList));
-            foreach(DataColumn col in chitiet.Columns)
-            {
-                MessageBox.Show(col.ColumnName);
-            }
             try
             {
                 if (db.InsertConstraintedData(chitiet, "chitiet_hdpn", getSqlString(phieunhap)))
