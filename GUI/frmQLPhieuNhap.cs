@@ -248,6 +248,7 @@ namespace QLBanPiano.GUI
         {
             frmThemPhieuNhap themphieunhap = new();
             themphieunhap.ShowDialog();
+            Init();
         }
 
         private void importFileBtn_Click(object sender, EventArgs e)
@@ -295,6 +296,7 @@ namespace QLBanPiano.GUI
                             {
                                 MessageBox.Show("Định dạng excel không hợp lệ !");
                                 imported = false;
+                                break;
                             }
                         }
                         if (phieuNhapBUS.ValidateList(listImport))
@@ -350,6 +352,7 @@ namespace QLBanPiano.GUI
                 {
                     MessageBox.Show("Import file thành công");
                     ResetBtn_Click(sender, e);
+                    Init();
                 }
 
             }
