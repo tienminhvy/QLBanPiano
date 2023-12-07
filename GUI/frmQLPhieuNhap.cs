@@ -395,7 +395,7 @@ namespace QLBanPiano.GUI
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            ClockLabel.Text = DateTime.Now.ToString("HH:mm:ss tt");
+            ClockLabel.Text = DateTime.Now.ToString("hh:mm:ss tt");
             CalendarLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
             ClockLabel.ForeColor = Color.FromArgb(153, 50, 204);
             CalendarLabel.ForeColor = Color.FromArgb(153, 50, 204);

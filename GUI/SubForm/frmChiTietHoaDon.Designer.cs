@@ -346,10 +346,10 @@
             // 
             exportBillBtn.Image = (Image)resources.GetObject("exportBillBtn.Image");
             exportBillBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            exportBillBtn.Location = new Point(152, 519);
+            exportBillBtn.Location = new Point(150, 519);
             exportBillBtn.Margin = new Padding(2);
             exportBillBtn.Name = "exportBillBtn";
-            exportBillBtn.Size = new Size(130, 42);
+            exportBillBtn.Size = new Size(147, 42);
             exportBillBtn.TabIndex = 8;
             exportBillBtn.Text = "   Xuất hóa đơn";
             exportBillBtn.UseVisualStyleBackColor = true;

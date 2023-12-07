@@ -42,6 +42,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top;
             panel1.Controls.Add(pvThuongHieu);
             panel1.Location = new Point(1, 57);
             panel1.Name = "panel1";
@@ -50,7 +51,7 @@
             // 
             // pvThuongHieu
             // 
-            pvThuongHieu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pvThuongHieu.Dock = DockStyle.Fill;
             pvThuongHieu.Enabled = false;
             pvThuongHieu.Location = new Point(0, 0);
             pvThuongHieu.Name = "pvThuongHieu";
@@ -64,6 +65,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top;
             panel2.Controls.Add(lvThuongHieu);
             panel2.Location = new Point(820, 57);
             panel2.Name = "panel2";
@@ -72,7 +74,7 @@
             // 
             // lvThuongHieu
             // 
-            lvThuongHieu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lvThuongHieu.Dock = DockStyle.Fill;
             lvThuongHieu.Location = new Point(0, 0);
             lvThuongHieu.Name = "lvThuongHieu";
             lvThuongHieu.Size = new Size(239, 637);

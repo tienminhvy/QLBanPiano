@@ -47,14 +47,14 @@
             txtTenVaiTro.Location = new Point(97, 12);
             txtTenVaiTro.Name = "txtTenVaiTro";
             txtTenVaiTro.Size = new Size(224, 27);
-            txtTenVaiTro.TabIndex = 1;
+            txtTenVaiTro.TabIndex = 0;
             // 
             // btnThem
             // 
             btnThem.Location = new Point(227, 45);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(94, 29);
-            btnThem.TabIndex = 2;
+            btnThem.TabIndex = 1;
             btnThem.Text = "Tạo mới";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;

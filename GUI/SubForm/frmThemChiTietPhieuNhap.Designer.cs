@@ -96,7 +96,7 @@
             nc_idComboBox.Margin = new Padding(2);
             nc_idComboBox.Name = "nc_idComboBox";
             nc_idComboBox.Size = new Size(210, 28);
-            nc_idComboBox.TabIndex = 1;
+            nc_idComboBox.TabIndex = 0;
             nc_idComboBox.SelectedIndexChanged += nc_idComboBox_SelectedIndexChanged;
             // 
             // ct_priceTextBox
@@ -105,7 +105,7 @@
             ct_priceTextBox.Margin = new Padding(2);
             ct_priceTextBox.Name = "ct_priceTextBox";
             ct_priceTextBox.Size = new Size(210, 27);
-            ct_priceTextBox.TabIndex = 5;
+            ct_priceTextBox.TabIndex = 1;
             ct_priceTextBox.TabStop = false;
             // 
             // ct_slTextBox
@@ -116,7 +116,7 @@
             ct_slTextBox.Name = "ct_slTextBox";
             ct_slTextBox.PlaceholderText = " Tối đa 100 sản phẩm";
             ct_slTextBox.Size = new Size(210, 27);
-            ct_slTextBox.TabIndex = 3;
+            ct_slTextBox.TabIndex = 2;
             ct_slTextBox.TextChanged += ct_slTextBox_TextChanged;
             ct_slTextBox.KeyPress += ct_slTextBox_KeyPress;
             // 
@@ -191,7 +191,7 @@
             CancelAddBtn.Margin = new Padding(2);
             CancelAddBtn.Name = "CancelAddBtn";
             CancelAddBtn.Size = new Size(80, 40);
-            CancelAddBtn.TabIndex = 0;
+            CancelAddBtn.TabIndex = 1;
             CancelAddBtn.Text = "  Hủy";
             CancelAddBtn.UseVisualStyleBackColor = true;
             CancelAddBtn.Click += CancelAddBtn_Click;
@@ -204,7 +204,7 @@
             ConfirmAddBtn.Margin = new Padding(2);
             ConfirmAddBtn.Name = "ConfirmAddBtn";
             ConfirmAddBtn.Size = new Size(80, 40);
-            ConfirmAddBtn.TabIndex = 1;
+            ConfirmAddBtn.TabIndex = 0;
             ConfirmAddBtn.Text = "   Thêm";
             ConfirmAddBtn.UseVisualStyleBackColor = true;
             ConfirmAddBtn.Click += ConfirmAddBtn_Click;
@@ -233,7 +233,7 @@
             MinimumSize = new Size(484, 289);
             Name = "frmThemChiTietPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ThemChiTietPhieuNhapcs";
+            Text = "Thêm chi tiết phiếu nhập";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             panel1.ResumeLayout(false);

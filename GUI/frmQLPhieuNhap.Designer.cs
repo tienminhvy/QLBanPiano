@@ -155,7 +155,7 @@
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
             panel3.Location = new Point(0, 2);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(420, 131);
             panel3.TabIndex = 0;
@@ -164,7 +164,7 @@
             // 
             nv_nameTextBox.Enabled = false;
             nv_nameTextBox.Location = new Point(258, 84);
-            nv_nameTextBox.Margin = new Padding(2, 2, 2, 2);
+            nv_nameTextBox.Margin = new Padding(2);
             nv_nameTextBox.Name = "nv_nameTextBox";
             nv_nameTextBox.ReadOnly = true;
             nv_nameTextBox.Size = new Size(147, 27);
@@ -184,7 +184,7 @@
             // 
             dateTimePicker.Enabled = false;
             dateTimePicker.Location = new Point(109, 50);
-            dateTimePicker.Margin = new Padding(2, 2, 2, 2);
+            dateTimePicker.Margin = new Padding(2);
             dateTimePicker.Name = "dateTimePicker";
             dateTimePicker.Size = new Size(296, 27);
             dateTimePicker.TabIndex = 5;
@@ -193,7 +193,7 @@
             // 
             idNhanVienTextBox.Enabled = false;
             idNhanVienTextBox.Location = new Point(109, 84);
-            idNhanVienTextBox.Margin = new Padding(2, 2, 2, 2);
+            idNhanVienTextBox.Margin = new Padding(2);
             idNhanVienTextBox.Name = "idNhanVienTextBox";
             idNhanVienTextBox.ReadOnly = true;
             idNhanVienTextBox.Size = new Size(38, 27);
@@ -203,7 +203,7 @@
             // 
             idPhieuNhapTxtBox.Enabled = false;
             idPhieuNhapTxtBox.Location = new Point(109, 16);
-            idPhieuNhapTxtBox.Margin = new Padding(2, 2, 2, 2);
+            idPhieuNhapTxtBox.Margin = new Padding(2);
             idPhieuNhapTxtBox.Name = "idPhieuNhapTxtBox";
             idPhieuNhapTxtBox.ReadOnly = true;
             idPhieuNhapTxtBox.Size = new Size(234, 27);
@@ -245,7 +245,7 @@
             panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 77);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(835, 133);
             panel2.TabIndex = 4;
@@ -257,7 +257,7 @@
             leftPanel.Controls.Add(panel7);
             leftPanel.Controls.Add(panel6);
             leftPanel.Location = new Point(429, 2);
-            leftPanel.Margin = new Padding(2, 2, 2, 2);
+            leftPanel.Margin = new Padding(2);
             leftPanel.Name = "leftPanel";
             leftPanel.Size = new Size(406, 129);
             leftPanel.TabIndex = 18;
@@ -270,7 +270,7 @@
             panel5.Controls.Add(addBtn);
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 80);
-            panel5.Margin = new Padding(2, 2, 2, 2);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
             panel5.Size = new Size(406, 51);
             panel5.TabIndex = 2;
@@ -278,7 +278,7 @@
             // ClockLabel
             // 
             ClockLabel.AutoSize = true;
-            ClockLabel.Location = new Point(5, 15);
+            ClockLabel.Location = new Point(-5, 15);
             ClockLabel.Margin = new Padding(2, 0, 2, 0);
             ClockLabel.Name = "ClockLabel";
             ClockLabel.Size = new Size(45, 20);
@@ -289,10 +289,10 @@
             // 
             importFileBtn.Image = (Image)resources.GetObject("importFileBtn.Image");
             importFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            importFileBtn.Location = new Point(126, 6);
-            importFileBtn.Margin = new Padding(2, 2, 2, 2);
+            importFileBtn.Location = new Point(85, 5);
+            importFileBtn.Margin = new Padding(2);
             importFileBtn.Name = "importFileBtn";
-            importFileBtn.Size = new Size(91, 41);
+            importFileBtn.Size = new Size(105, 41);
             importFileBtn.TabIndex = 0;
             importFileBtn.Text = "  Nhập file";
             importFileBtn.UseVisualStyleBackColor = true;
@@ -302,10 +302,10 @@
             // 
             exportFileBtn.Image = (Image)resources.GetObject("exportFileBtn.Image");
             exportFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            exportFileBtn.Location = new Point(222, 5);
-            exportFileBtn.Margin = new Padding(2, 2, 2, 2);
+            exportFileBtn.Location = new Point(194, 5);
+            exportFileBtn.Margin = new Padding(2);
             exportFileBtn.Name = "exportFileBtn";
-            exportFileBtn.Size = new Size(91, 41);
+            exportFileBtn.Size = new Size(107, 41);
             exportFileBtn.TabIndex = 1;
             exportFileBtn.Text = "  Xuất file";
             exportFileBtn.UseVisualStyleBackColor = true;
@@ -315,10 +315,10 @@
             // 
             addBtn.Image = (Image)resources.GetObject("addBtn.Image");
             addBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            addBtn.Location = new Point(315, 5);
-            addBtn.Margin = new Padding(2, 2, 2, 2);
+            addBtn.Location = new Point(305, 5);
+            addBtn.Margin = new Padding(2);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(91, 41);
+            addBtn.Size = new Size(101, 41);
             addBtn.TabIndex = 2;
             addBtn.Text = "  Tạo mới";
             addBtn.UseVisualStyleBackColor = true;
@@ -330,7 +330,7 @@
             panel7.Controls.Add(searchBtn);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 40);
-            panel7.Margin = new Padding(2, 2, 2, 2);
+            panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
             panel7.Size = new Size(406, 40);
             panel7.TabIndex = 1;
@@ -339,19 +339,19 @@
             // 
             searchTextBox.Anchor = AnchorStyles.None;
             searchTextBox.Location = new Point(5, 8);
-            searchTextBox.Margin = new Padding(2, 2, 2, 2);
+            searchTextBox.Margin = new Padding(2);
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(310, 27);
+            searchTextBox.Size = new Size(296, 27);
             searchTextBox.TabIndex = 0;
             // 
             // searchBtn
             // 
             searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
             searchBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            searchBtn.Location = new Point(318, 0);
-            searchBtn.Margin = new Padding(2, 2, 2, 2);
+            searchBtn.Location = new Point(305, 0);
+            searchBtn.Margin = new Padding(2);
             searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(88, 40);
+            searchBtn.Size = new Size(101, 40);
             searchBtn.TabIndex = 1;
             searchBtn.Text = "Tìm kiếm";
             searchBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -365,7 +365,7 @@
             panel6.Controls.Add(cbbTieuChi);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
-            panel6.Margin = new Padding(2, 2, 2, 2);
+            panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
             panel6.Size = new Size(406, 40);
             panel6.TabIndex = 0;
@@ -385,10 +385,10 @@
             ResetBtn.Dock = DockStyle.Right;
             ResetBtn.Image = (Image)resources.GetObject("ResetBtn.Image");
             ResetBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ResetBtn.Location = new Point(318, 0);
-            ResetBtn.Margin = new Padding(2, 2, 2, 2);
+            ResetBtn.Location = new Point(305, 0);
+            ResetBtn.Margin = new Padding(2);
             ResetBtn.Name = "ResetBtn";
-            ResetBtn.Size = new Size(88, 40);
+            ResetBtn.Size = new Size(101, 40);
             ResetBtn.TabIndex = 1;
             ResetBtn.Text = "Làm mới";
             ResetBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -400,9 +400,9 @@
             cbbTieuChi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTieuChi.FormattingEnabled = true;
             cbbTieuChi.Location = new Point(74, 5);
-            cbbTieuChi.Margin = new Padding(2, 2, 2, 2);
+            cbbTieuChi.Margin = new Padding(2);
             cbbTieuChi.Name = "cbbTieuChi";
-            cbbTieuChi.Size = new Size(241, 28);
+            cbbTieuChi.Size = new Size(227, 28);
             cbbTieuChi.TabIndex = 0;
             cbbTieuChi.SelectedIndexChanged += cbbTieuChi_SelectedIndexChanged;
             // 
@@ -411,7 +411,7 @@
             gridViewPanel.Controls.Add(phieuNhapGridView);
             gridViewPanel.Dock = DockStyle.Fill;
             gridViewPanel.Location = new Point(0, 210);
-            gridViewPanel.Margin = new Padding(2, 2, 2, 2);
+            gridViewPanel.Margin = new Padding(2);
             gridViewPanel.Name = "gridViewPanel";
             gridViewPanel.Size = new Size(835, 302);
             gridViewPanel.TabIndex = 5;

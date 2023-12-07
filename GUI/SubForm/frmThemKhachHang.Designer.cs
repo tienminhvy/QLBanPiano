@@ -96,7 +96,7 @@
             btnThoat.Location = new Point(284, 328);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(105, 31);
-            btnThoat.TabIndex = 8;
+            btnThoat.TabIndex = 6;
             btnThoat.Text = "Th&oát";
             btnThoat.UseVisualStyleBackColor = true;
             btnThoat.Click += btnThoat_Click;
@@ -107,7 +107,7 @@
             btnReset.Location = new Point(158, 328);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(105, 31);
-            btnReset.TabIndex = 7;
+            btnReset.TabIndex = 5;
             btnReset.Text = "&Reset";
             btnReset.UseVisualStyleBackColor = true;
             btnReset.Click += btnReset_Click;
@@ -118,7 +118,7 @@
             btnThem.Location = new Point(27, 328);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(104, 31);
-            btnThem.TabIndex = 6;
+            btnThem.TabIndex = 4;
             btnThem.Text = "T&hêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
@@ -128,14 +128,14 @@
             txtSoDienThoai.Location = new Point(158, 249);
             txtSoDienThoai.Name = "txtSoDienThoai";
             txtSoDienThoai.Size = new Size(231, 34);
-            txtSoDienThoai.TabIndex = 5;
+            txtSoDienThoai.TabIndex = 3;
             // 
             // txtDiaChi
             // 
             txtDiaChi.Location = new Point(158, 196);
             txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.Size = new Size(231, 34);
-            txtDiaChi.TabIndex = 4;
+            txtDiaChi.TabIndex = 2;
             // 
             // label8
             // 
@@ -162,14 +162,14 @@
             txtTen.Location = new Point(158, 148);
             txtTen.Name = "txtTen";
             txtTen.Size = new Size(231, 34);
-            txtTen.TabIndex = 3;
+            txtTen.TabIndex = 1;
             // 
             // txtHoLot
             // 
             txtHoLot.Location = new Point(158, 97);
             txtHoLot.Name = "txtHoLot";
             txtHoLot.Size = new Size(231, 34);
-            txtHoLot.TabIndex = 2;
+            txtHoLot.TabIndex = 0;
             // 
             // txtMaKH
             // 
@@ -216,6 +216,7 @@
             ClientSize = new Size(590, 491);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmThemKhachHang";
             Text = "Thêm khách hàng";
             panel1.ResumeLayout(false);

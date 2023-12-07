@@ -23,7 +23,7 @@ namespace QLBanPiano
         {
             InitializeComponent();
             Init();
-            pwdTextBox.TabStop = false;
+            // pwdTextBox.TabStop = false;
         }
         void Init()
         {
@@ -237,6 +237,11 @@ namespace QLBanPiano
             {
                 btnDangNhap_Click(sender, e);
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            new Msg("Vui lòng liên hệ bộ phận quản trị để biết thêm thông tin!");
         }
     }
 }

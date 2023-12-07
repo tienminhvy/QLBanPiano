@@ -36,6 +36,7 @@
             panel18 = new Panel();
             panel2 = new Panel();
             panel17 = new Panel();
+            label3 = new Label();
             panel4 = new Panel();
             pwdPanel = new Panel();
             panel10 = new Panel();
@@ -63,6 +64,7 @@
             formPanel.SuspendLayout();
             loginBtnPanel.SuspendLayout();
             panel19.SuspendLayout();
+            panel17.SuspendLayout();
             pwdPanel.SuspendLayout();
             panel10.SuspendLayout();
             panel5.SuspendLayout();
@@ -126,7 +128,8 @@
             btnDangNhap.BackColor = Color.SlateBlue;
             btnDangNhap.Dock = DockStyle.Fill;
             btnDangNhap.FlatStyle = FlatStyle.Flat;
-            btnDangNhap.Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDangNhap.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDangNhap.ForeColor = SystemColors.ButtonFace;
             btnDangNhap.Location = new Point(0, 0);
             btnDangNhap.Margin = new Padding(2);
             btnDangNhap.Name = "btnDangNhap";
@@ -156,12 +159,24 @@
             // 
             // panel17
             // 
+            panel17.Controls.Add(label3);
             panel17.Dock = DockStyle.Right;
             panel17.Location = new Point(297, 0);
             panel17.Margin = new Padding(2);
             panel17.Name = "panel17";
             panel17.Size = new Size(147, 56);
             panel17.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.DarkRed;
+            label3.Location = new Point(28, 2);
+            label3.Name = "label3";
+            label3.Size = new Size(116, 20);
+            label3.TabIndex = 0;
+            label3.Text = "Quên mật khẩu?";
+            label3.Click += label3_Click;
             // 
             // panel4
             // 
@@ -382,7 +397,7 @@
             rightPadding.Margin = new Padding(2);
             rightPadding.Name = "rightPadding";
             rightPadding.Size = new Size(184, 290);
-            rightPadding.TabIndex = 3;
+            rightPadding.TabIndex = 2;
             // 
             // leftPadding
             // 
@@ -433,6 +448,8 @@
             formPanel.ResumeLayout(false);
             loginBtnPanel.ResumeLayout(false);
             panel19.ResumeLayout(false);
+            panel17.ResumeLayout(false);
+            panel17.PerformLayout();
             pwdPanel.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
@@ -480,5 +497,6 @@
         private Panel leftPadding;
         private Panel botPadding;
         private Panel topPadding;
+        private Label label3;
     }
 }

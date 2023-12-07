@@ -154,7 +154,7 @@
             panel7.Controls.Add(ImportBtn);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 76);
-            panel7.Margin = new Padding(2, 2, 2, 2);
+            panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
             panel7.Size = new Size(358, 38);
             panel7.TabIndex = 12;
@@ -173,10 +173,10 @@
             // 
             ExportBtn.Image = (Image)resources.GetObject("ExportBtn.Image");
             ExportBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ExportBtn.Location = new Point(266, 0);
-            ExportBtn.Margin = new Padding(2, 2, 2, 2);
+            ExportBtn.Location = new Point(252, 0);
+            ExportBtn.Margin = new Padding(2);
             ExportBtn.Name = "ExportBtn";
-            ExportBtn.Size = new Size(91, 38);
+            ExportBtn.Size = new Size(105, 38);
             ExportBtn.TabIndex = 7;
             ExportBtn.Text = "   Xuất file";
             ExportBtn.UseVisualStyleBackColor = true;
@@ -187,10 +187,10 @@
             // 
             ImportBtn.Image = (Image)resources.GetObject("ImportBtn.Image");
             ImportBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ImportBtn.Location = new Point(170, 0);
-            ImportBtn.Margin = new Padding(2, 2, 2, 2);
+            ImportBtn.Location = new Point(134, 0);
+            ImportBtn.Margin = new Padding(2);
             ImportBtn.Name = "ImportBtn";
-            ImportBtn.Size = new Size(91, 38);
+            ImportBtn.Size = new Size(114, 38);
             ImportBtn.TabIndex = 6;
             ImportBtn.Text = "   Nhập file";
             ImportBtn.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@
             panel5.Controls.Add(resetBtn);
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(0, 124);
-            panel5.Margin = new Padding(2, 2, 2, 2);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
             panel5.Size = new Size(358, 38);
             panel5.TabIndex = 12;
@@ -222,8 +222,8 @@
             // 
             panel6.Controls.Add(hoaDonCountTxtBox);
             panel6.Dock = DockStyle.Right;
-            panel6.Location = new Point(131, 0);
-            panel6.Margin = new Padding(2, 2, 2, 2);
+            panel6.Location = new Point(116, 0);
+            panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
             panel6.Size = new Size(136, 38);
             panel6.TabIndex = 11;
@@ -232,10 +232,10 @@
             // 
             hoaDonCountTxtBox.Anchor = AnchorStyles.None;
             hoaDonCountTxtBox.Enabled = false;
-            hoaDonCountTxtBox.Location = new Point(3, 7);
+            hoaDonCountTxtBox.Location = new Point(17, 6);
             hoaDonCountTxtBox.Name = "hoaDonCountTxtBox";
             hoaDonCountTxtBox.ReadOnly = true;
-            hoaDonCountTxtBox.Size = new Size(130, 27);
+            hoaDonCountTxtBox.Size = new Size(114, 27);
             hoaDonCountTxtBox.TabIndex = 10;
             hoaDonCountTxtBox.TabStop = false;
             // 
@@ -244,10 +244,10 @@
             resetBtn.Dock = DockStyle.Right;
             resetBtn.Image = (Image)resources.GetObject("resetBtn.Image");
             resetBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            resetBtn.Location = new Point(267, 0);
-            resetBtn.Margin = new Padding(2, 2, 2, 2);
+            resetBtn.Location = new Point(252, 0);
+            resetBtn.Margin = new Padding(2);
             resetBtn.Name = "resetBtn";
-            resetBtn.Size = new Size(91, 38);
+            resetBtn.Size = new Size(106, 38);
             resetBtn.TabIndex = 12;
             resetBtn.Text = "    Làm mới";
             resetBtn.UseVisualStyleBackColor = true;
@@ -260,7 +260,7 @@
             panel4.Controls.Add(txtTieuChi);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 38);
-            panel4.Margin = new Padding(2, 2, 2, 2);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
             panel4.Size = new Size(358, 38);
             panel4.TabIndex = 1;
@@ -294,7 +294,7 @@
             panel3.Controls.Add(label10);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(358, 38);
             panel3.TabIndex = 0;
@@ -304,7 +304,7 @@
             cbbTieuChi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTieuChi.FormattingEnabled = true;
             cbbTieuChi.Location = new Point(71, 7);
-            cbbTieuChi.Margin = new Padding(2, 2, 2, 2);
+            cbbTieuChi.Margin = new Padding(2);
             cbbTieuChi.Name = "cbbTieuChi";
             cbbTieuChi.Size = new Size(219, 28);
             cbbTieuChi.TabIndex = 1;
