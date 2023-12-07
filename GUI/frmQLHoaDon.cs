@@ -97,7 +97,7 @@ namespace QLBanPiano.GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Không có giá trị trong dòng này ");
+                    new Msg("Không có giá trị trong dòng này ", "err");
                 }
 
             }
