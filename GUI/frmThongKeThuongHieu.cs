@@ -55,7 +55,7 @@ namespace QLBanPiano.GUI.SubForm
                 }
             }
 
-            
+
             plotModel.Series.Add(pieSeries);
             pvThuongHieu.Model = plotModel;
 
@@ -96,7 +96,7 @@ namespace QLBanPiano.GUI.SubForm
                     flag = true;
                 }
             }
-            
+
             plotModel.Series.Add(pieSeries);
             pvThuongHieu.Model = plotModel;
 

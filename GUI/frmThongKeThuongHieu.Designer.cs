@@ -50,7 +50,7 @@
             // 
             // pvThuongHieu
             // 
-            pvThuongHieu.Dock = DockStyle.Fill;
+            pvThuongHieu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pvThuongHieu.Enabled = false;
             pvThuongHieu.Location = new Point(0, 0);
             pvThuongHieu.Name = "pvThuongHieu";
@@ -72,7 +72,7 @@
             // 
             // lvThuongHieu
             // 
-            lvThuongHieu.Dock = DockStyle.Fill;
+            lvThuongHieu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lvThuongHieu.Location = new Point(0, 0);
             lvThuongHieu.Name = "lvThuongHieu";
             lvThuongHieu.Size = new Size(239, 637);
@@ -83,6 +83,7 @@
             // 
             // cbbChonThang
             // 
+            cbbChonThang.Anchor = AnchorStyles.Top;
             cbbChonThang.FormattingEnabled = true;
             cbbChonThang.Items.AddRange(new object[] { "Cả Năm", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" });
             cbbChonThang.Location = new Point(914, 6);
@@ -93,6 +94,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Location = new Point(820, 9);
             label2.Name = "label2";
@@ -102,6 +104,7 @@
             // 
             // cbbChonNam
             // 
+            cbbChonNam.Anchor = AnchorStyles.Top;
             cbbChonNam.FormattingEnabled = true;
             cbbChonNam.Location = new Point(661, 6);
             cbbChonNam.Name = "cbbChonNam";
@@ -111,6 +114,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Location = new Point(576, 9);
             label1.Name = "label1";
