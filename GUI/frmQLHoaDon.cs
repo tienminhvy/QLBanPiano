@@ -25,7 +25,7 @@ namespace QLBanPiano.GUI
         private IOFileBUS fileHandler = new();
         private DataTable exportTable = new();
         private HoaDonPdfExcelBUS exportBus = new();
-        private List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên", "Mã khách hàng", "Mã nhạc cụ","Đơn giá", "SL" };
+        private List<string> list = new List<string> { "ID", "Thời gian", "Mã nhân viên", "Mã khách hàng", "Mã nhạc cụ", "Đơn giá", "SL" };
         private bool imported = true;
         private NhacCuBUS nhacCuBus = new();
         public frmQLHoaDon()
@@ -38,7 +38,7 @@ namespace QLBanPiano.GUI
             ExportBtn.Visible = false;
             ImportBtn.Enabled = false;
             ImportBtn.Visible = false;
-            foreach(string quyen in frmChinh.dsQuyen)
+            foreach (string quyen in frmChinh.dsQuyen)
             {
                 if (quyen == "nhapXuat")
                 {
@@ -114,7 +114,7 @@ namespace QLBanPiano.GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Chọn quá nhiều mục" + ex.Message);
+                new Msg("Chọn quá nhiều mục" + ex.Message, "err");
             }
         }
 
@@ -173,7 +173,7 @@ namespace QLBanPiano.GUI
             }
             else
             {
-                MessageBox.Show("Vui lòng nhập nội dung cần tìm kiếm ");
+                new Msg("Vui lòng nhập nội dung cần tìm kiếm ", "err");
             }
         }
         void Loads(DataTable dt)
@@ -249,12 +249,12 @@ namespace QLBanPiano.GUI
                     string selectedFilePath = ofd.FileName;
                     List<string> temp = fileHandler.GetListHeader(selectedFilePath);
                     List<HoaDonPDFExcel> listImport = new();
-                    if(temp.SequenceEqual(list) == true)
+                    if (temp.SequenceEqual(list) == true)
                     {
                         DataTable raw = fileHandler.ImportFormExcelToDataTable(selectedFilePath);
                         DataTable rawClone = hoaDonBus.getClone(raw);
                         int rowCount = raw.Rows.Count;
-                        while(rowCount > 0)
+                        while (rowCount > 0)
                         {
                             string minId = rawClone.AsEnumerable().Min(row => row.Field<string>("ID"));
                             int min = int.Parse(minId);
@@ -275,7 +275,7 @@ namespace QLBanPiano.GUI
                             }
                             else
                             {
-                                MessageBox.Show("Định dạng excel không hợp lệ !");
+                                new Msg("Định dạng excel không hợp lệ !", "err");
                                 imported = false;
                                 break;
                             }
@@ -315,9 +315,10 @@ namespace QLBanPiano.GUI
                                         imported = false;
                                         break;
                                     }
-                                }catch(Exception ex)
+                                }
+                                catch (Exception ex)
                                 {
-                                    MessageBox.Show("Sai định dạng " +ex.Message);
+                                    new Msg("Sai định dạng " + ex.Message, "err");
                                     imported = false;
                                     break;
                                 }
@@ -325,28 +326,29 @@ namespace QLBanPiano.GUI
                         }
                         else
                         {
-                            MessageBox.Show("Thông tin import vào không hợp lệ !");
+                            new Msg("Thông tin import vào không hợp lệ !", "err");
                             imported = false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Format của file nhập không hợp lệ");
+                        new Msg("Format của file nhập không hợp lệ", "err");
                         imported = false;
                     }
                 }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    new Msg(ex.Message, "err");
                 }
             }
             else
             {
-                MessageBox.Show("Người dùng đã hủy việc chọn file.");
+                new Msg("Người dùng đã hủy việc chọn file.");
                 imported = false;
             }
-            if(imported)
+            if (imported)
             {
-                MessageBox.Show("Import file thành công");
+                new Msg("Import file thành công");
                 resetBtn_Click(sender, e);
                 Init();
             }
@@ -368,12 +370,12 @@ namespace QLBanPiano.GUI
                 bool return_val = fileHandler.ExportToExcel(export, filename);
                 if (return_val)
                 {
-                    MessageBox.Show("Export Excel thành công");
+                    new Msg("Export Excel thành công");
                     Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
                 }
                 else
                 {
-                    MessageBox.Show("Export thất bại !");
+                    new Msg("Export thất bại !", "err");
                 }
             }
         }

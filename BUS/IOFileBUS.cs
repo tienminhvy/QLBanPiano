@@ -64,7 +64,7 @@ namespace QLBanPiano.BUS
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Not fit !");
+                                    // MessageBox.Show("Not fit !");
                                 }
                             }
                             temp.Rows.Add(dataRow);
@@ -111,7 +111,7 @@ namespace QLBanPiano.BUS
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Not fit !");
+                                    // MessageBox.Show("Not fit !");
                                 }
                             }
                             temp.Rows.Add(dataRow);

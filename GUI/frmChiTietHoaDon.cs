@@ -59,7 +59,7 @@ namespace QLBanPiano.GUI
                     total += Convert.ToInt64(row["Tổng tiền"]);
                 }
                 export = datasource.Clone();
-                foreach(DataRow row in datasource.Rows)
+                foreach (DataRow row in datasource.Rows)
                 {
                     export.ImportRow(row);
                 }
@@ -129,6 +129,6 @@ namespace QLBanPiano.GUI
                 exportFileBtn_Click(sender, e);
             }
         }
-        
+
     }
 }

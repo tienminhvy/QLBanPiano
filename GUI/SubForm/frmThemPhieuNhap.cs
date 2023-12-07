@@ -61,13 +61,13 @@ namespace QLBanPiano.GUI
         public void Reset()
         {
             ChiTietPhieuNhapBUS chitietBus = new();
-            if(temp != null)
+            if (temp != null)
             {
                 DataTable table = chitietBus.convertToDataTable(temp);
                 LoadGridView(table);
                 //Init totalTextBox
                 int value = 0;
-                foreach(DataRow row in table.Rows)
+                foreach (DataRow row in table.Rows)
                 {
                     value += Convert.ToInt32(row["Đơn giá"]) * Convert.ToInt32(row["SL"]);
                 }
@@ -94,7 +94,7 @@ namespace QLBanPiano.GUI
             frmThemChiTietPhieuNhap themCtpn = new();
             themCtpn.ShowDialog();
             ChiTietPhieuNhap chitiet = themCtpn.getChiTiet();
-            if(chitiet != null)
+            if (chitiet != null)
             {
                 if (chitiet.phieunhap_Id != -1)
                     temp.Add(chitiet);
@@ -137,7 +137,7 @@ namespace QLBanPiano.GUI
                         dt = (DataTable)chiTietPhieuNhapGridView.DataSource;
                     }
                     phieunhap.PhieuNhapList = chitietBus.getListChiTiet(dt);
-                    if(phieunhapBus.AddPhieuNhap(phieunhap) == true)
+                    if (phieunhapBus.AddPhieuNhap(phieunhap) == true)
                     {
                         new Msg("Thêm phiếu nhập thành công");
                         this.Dispose();
@@ -147,7 +147,8 @@ namespace QLBanPiano.GUI
                         new Msg("Thêm thất bại !", "err");
                     }
 
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     new Msg("Lỗi : " + ex.Message, "err");
                 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemPhieuNhap));
             groupBox1 = new GroupBox();
+            txtIdNv = new TextBox();
             id_pnTextBox = new TextBox();
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
@@ -47,7 +48,6 @@
             chiTietPhieuNhapGridView = new DataGridView();
             panel3 = new Panel();
             ct_addBtn = new Button();
-            txtIdNv = new TextBox();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -64,19 +64,27 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(10, 10);
-            groupBox1.Margin = new Padding(2, 2, 2, 2);
+            groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2, 2, 2, 2);
+            groupBox1.Padding = new Padding(2);
             groupBox1.Size = new Size(441, 118);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin phiếu nhập";
             // 
+            // txtIdNv
+            // 
+            txtIdNv.Enabled = false;
+            txtIdNv.Location = new Point(170, 49);
+            txtIdNv.Name = "txtIdNv";
+            txtIdNv.Size = new Size(98, 27);
+            txtIdNv.TabIndex = 7;
+            // 
             // id_pnTextBox
             // 
             id_pnTextBox.Enabled = false;
             id_pnTextBox.Location = new Point(170, 83);
-            id_pnTextBox.Margin = new Padding(2, 2, 2, 2);
+            id_pnTextBox.Margin = new Padding(2);
             id_pnTextBox.Name = "id_pnTextBox";
             id_pnTextBox.ReadOnly = true;
             id_pnTextBox.Size = new Size(96, 27);
@@ -97,7 +105,7 @@
             // 
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Location = new Point(170, 17);
-            dateTimePicker1.Margin = new Padding(2, 2, 2, 2);
+            dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(267, 27);
             dateTimePicker1.TabIndex = 3;
@@ -130,7 +138,7 @@
             panel1.Controls.Add(ct_soLuongTextBox);
             panel1.Controls.Add(label4);
             panel1.Location = new Point(10, 363);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(443, 40);
             panel1.TabIndex = 2;
@@ -140,7 +148,7 @@
             CancelAddBtn.Image = (Image)resources.GetObject("CancelAddBtn.Image");
             CancelAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
             CancelAddBtn.Location = new Point(85, 0);
-            CancelAddBtn.Margin = new Padding(2, 2, 2, 2);
+            CancelAddBtn.Margin = new Padding(2);
             CancelAddBtn.Name = "CancelAddBtn";
             CancelAddBtn.Size = new Size(80, 40);
             CancelAddBtn.TabIndex = 1;
@@ -154,7 +162,7 @@
             confirmAddBtn.Image = (Image)resources.GetObject("confirmAddBtn.Image");
             confirmAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
             confirmAddBtn.Location = new Point(0, 0);
-            confirmAddBtn.Margin = new Padding(2, 2, 2, 2);
+            confirmAddBtn.Margin = new Padding(2);
             confirmAddBtn.Name = "confirmAddBtn";
             confirmAddBtn.Size = new Size(80, 40);
             confirmAddBtn.TabIndex = 0;
@@ -167,7 +175,7 @@
             // 
             ct_soLuongTextBox.Enabled = false;
             ct_soLuongTextBox.Location = new Point(307, 6);
-            ct_soLuongTextBox.Margin = new Padding(2, 2, 2, 2);
+            ct_soLuongTextBox.Margin = new Padding(2);
             ct_soLuongTextBox.Name = "ct_soLuongTextBox";
             ct_soLuongTextBox.ReadOnly = true;
             ct_soLuongTextBox.Size = new Size(134, 27);
@@ -188,7 +196,7 @@
             // 
             totalTextBox.Enabled = false;
             totalTextBox.Location = new Point(270, 8);
-            totalTextBox.Margin = new Padding(2, 2, 2, 2);
+            totalTextBox.Margin = new Padding(2);
             totalTextBox.Name = "totalTextBox";
             totalTextBox.ReadOnly = true;
             totalTextBox.Size = new Size(172, 27);
@@ -219,20 +227,23 @@
             // 
             panel2.Controls.Add(chiTietPhieuNhapGridView);
             panel2.Location = new Point(10, 132);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(441, 182);
             panel2.TabIndex = 4;
             // 
             // chiTietPhieuNhapGridView
             // 
+            chiTietPhieuNhapGridView.AllowUserToAddRows = false;
+            chiTietPhieuNhapGridView.AllowUserToDeleteRows = false;
             chiTietPhieuNhapGridView.BackgroundColor = Color.White;
             chiTietPhieuNhapGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             chiTietPhieuNhapGridView.Dock = DockStyle.Fill;
             chiTietPhieuNhapGridView.GridColor = Color.White;
             chiTietPhieuNhapGridView.Location = new Point(0, 0);
-            chiTietPhieuNhapGridView.Margin = new Padding(2, 2, 2, 2);
+            chiTietPhieuNhapGridView.Margin = new Padding(2);
             chiTietPhieuNhapGridView.Name = "chiTietPhieuNhapGridView";
+            chiTietPhieuNhapGridView.ReadOnly = true;
             chiTietPhieuNhapGridView.RowHeadersWidth = 62;
             chiTietPhieuNhapGridView.RowTemplate.Height = 33;
             chiTietPhieuNhapGridView.Size = new Size(441, 182);
@@ -245,7 +256,7 @@
             panel3.Controls.Add(totalTextBox);
             panel3.Controls.Add(label7);
             panel3.Location = new Point(10, 318);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(443, 40);
             panel3.TabIndex = 1;
@@ -255,7 +266,7 @@
             ct_addBtn.Image = (Image)resources.GetObject("ct_addBtn.Image");
             ct_addBtn.ImageAlign = ContentAlignment.MiddleLeft;
             ct_addBtn.Location = new Point(0, 0);
-            ct_addBtn.Margin = new Padding(2, 2, 2, 2);
+            ct_addBtn.Margin = new Padding(2);
             ct_addBtn.Name = "ct_addBtn";
             ct_addBtn.Size = new Size(165, 40);
             ct_addBtn.TabIndex = 1;
@@ -264,14 +275,6 @@
             ct_addBtn.UseVisualStyleBackColor = true;
             ct_addBtn.Click += ct_addBtn_Click;
             ct_addBtn.KeyPress += ct_addBtn_KeyPress;
-            // 
-            // txtIdNv
-            // 
-            txtIdNv.Enabled = false;
-            txtIdNv.Location = new Point(170, 49);
-            txtIdNv.Name = "txtIdNv";
-            txtIdNv.Size = new Size(98, 27);
-            txtIdNv.TabIndex = 7;
             // 
             // frmThemPhieuNhap
             // 
@@ -284,7 +287,7 @@
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             MaximumSize = new Size(484, 489);
             MinimumSize = new Size(484, 489);

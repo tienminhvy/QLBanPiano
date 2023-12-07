@@ -128,7 +128,7 @@ namespace QLBanPiano.GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Không có giá trị trong dòng này ");
+                    new Msg("Không có giá trị trong dòng này ", "err");
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace QLBanPiano.GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new Msg(ex.Message, "err");
             }
         }
 
@@ -201,7 +201,7 @@ namespace QLBanPiano.GUI
                     }
                     else
                     {
-                        MessageBox.Show("Vui lòng nhập nội dung cần tìm kiếm !");
+                        new Msg("Vui lòng nhập nội dung cần tìm kiếm !", "err");
                     }
                     searchClicked = false;
                     break;
@@ -213,7 +213,7 @@ namespace QLBanPiano.GUI
                     }
                     else
                     {
-                        MessageBox.Show("Vui lòng nhập nội dung cần tìm kiếm !");
+                        new Msg("Vui lòng nhập nội dung cần tìm kiếm !", "err");
                     }
                     searchClicked = false;
                     break;
@@ -225,7 +225,7 @@ namespace QLBanPiano.GUI
                     }
                     else
                     {
-                        MessageBox.Show("Vui lòng nhập nội dung cần tìm kiếm !");
+                        new Msg("Vui lòng nhập nội dung cần tìm kiếm !", "err");
                     }
                     searchClicked = false;
                     break;
@@ -237,7 +237,7 @@ namespace QLBanPiano.GUI
                     }
                     else
                     {
-                        MessageBox.Show("Vui lòng nhập nội dung cần tìm kiếm !");
+                        new Msg("Vui lòng nhập nội dung cần tìm kiếm !", "err");
                     }
                     searchClicked = false;
                     break;
@@ -285,7 +285,7 @@ namespace QLBanPiano.GUI
                             if (chiTietPhieuNhapBUS.ValidateList(ph.PhieuNhapList) == true)
                             {
                                 listImport.Add(ph);
-                                
+
                                 rowCount -= numberOfRowMin;
                                 while (numberOfRowMin > 0)
                                 {
@@ -295,14 +295,14 @@ namespace QLBanPiano.GUI
                             }
                             else
                             {
-                                MessageBox.Show("Định dạng excel không hợp lệ !");
+                                new Msg("Định dạng excel không hợp lệ !", "err");
                                 imported = false;
                                 break;
                             }
                         }
                         if (phieuNhapBUS.ValidateList(listImport))
                         {
-                            foreach(PhieuNhapExcel ph in listImport)
+                            foreach (PhieuNhapExcel ph in listImport)
                             {
                                 try
                                 {
@@ -325,40 +325,41 @@ namespace QLBanPiano.GUI
                                             nhacCuBUS.tangSL(Convert.ToInt32(row["Mã nhạc cụ"]), Convert.ToInt16(row["SL"]));
                                         }
                                     }
-                                }catch(Exception ex)
+                                }
+                                catch (Exception ex)
                                 {
                                     imported = false;
-                                    MessageBox.Show("Lỗi : " + ex.Message);
+                                    new Msg("Lỗi : " + ex.Message, "err");
                                 }
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Thông tin import vào không hợp lệ !");
+                            new Msg("Thông tin import vào không hợp lệ !", "err");
                             imported = false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Format của file nhập không hợp lệ");
+                        new Msg("Format của file nhập không hợp lệ", "err");
                         imported = false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Người dùng đã hủy việc chọn file.");
+                    new Msg("Người dùng đã hủy việc chọn file.", "err");
                     imported = false;
                 }
                 if (imported == true)
                 {
-                    MessageBox.Show("Import file thành công");
+                    new Msg("Import file thành công");
                     ResetBtn_Click(sender, e);
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new Msg(ex.Message);
             }
             Init();
         }
@@ -377,18 +378,18 @@ namespace QLBanPiano.GUI
                     DataTable table = phieuNhapBUS.formatToExport(phieuNhapBUS.convertDataTableToList(tableToExport));
                     if (fileHandler.ExportToExcel(table, filename))
                     {
-                        MessageBox.Show("Xuất file excel thành công");
+                        new Msg("Xuất file excel thành công");
                         Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
                     }
                     else
                     {
-                        MessageBox.Show(" Xuất file thất bại");
+                        new Msg("Xuất file thất bại", "err");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new Msg(ex.Message, "err");
             }
         }
 

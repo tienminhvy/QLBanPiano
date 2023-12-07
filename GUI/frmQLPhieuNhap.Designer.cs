@@ -81,15 +81,16 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1044, 96);
+            panel1.Size = new Size(835, 77);
             panel1.TabIndex = 1;
             // 
             // CalendarLabel
             // 
             CalendarLabel.AutoSize = true;
-            CalendarLabel.Location = new Point(3, 48);
+            CalendarLabel.Location = new Point(2, 38);
+            CalendarLabel.Margin = new Padding(2, 0, 2, 0);
             CalendarLabel.Name = "CalendarLabel";
-            CalendarLabel.Size = new Size(81, 25);
+            CalendarLabel.Size = new Size(68, 20);
             CalendarLabel.TabIndex = 6;
             CalendarLabel.Text = "Calendar";
             // 
@@ -97,8 +98,9 @@
             // 
             label9.AutoSize = true;
             label9.Location = new Point(0, 0);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(152, 25);
+            label9.Size = new Size(127, 20);
             label9.TabIndex = 5;
             label9.Text = "@quanlibanpiano";
             // 
@@ -108,15 +110,18 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkOrchid;
-            label1.Location = new Point(339, 25);
+            label1.Location = new Point(271, 20);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(384, 54);
+            label1.Size = new Size(322, 46);
             label1.TabIndex = 0;
             label1.Text = "Quản Lý Phiếu Nhập";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // phieuNhapGridView
             // 
+            phieuNhapGridView.AllowUserToAddRows = false;
+            phieuNhapGridView.AllowUserToDeleteRows = false;
             phieuNhapGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -130,9 +135,10 @@
             phieuNhapGridView.Location = new Point(0, 0);
             phieuNhapGridView.Margin = new Padding(2);
             phieuNhapGridView.Name = "phieuNhapGridView";
+            phieuNhapGridView.ReadOnly = true;
             phieuNhapGridView.RowHeadersWidth = 62;
             phieuNhapGridView.RowTemplate.Height = 33;
-            phieuNhapGridView.Size = new Size(1044, 378);
+            phieuNhapGridView.Size = new Size(835, 302);
             phieuNhapGridView.TabIndex = 0;
             phieuNhapGridView.CellClick += phieuNhapGridView_CellClick;
             phieuNhapGridView.CellDoubleClick += phieuNhapGridView_CellDoubleClick;
@@ -149,78 +155,87 @@
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
             panel3.Location = new Point(0, 2);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(525, 164);
+            panel3.Size = new Size(420, 131);
             panel3.TabIndex = 0;
             // 
             // nv_nameTextBox
             // 
             nv_nameTextBox.Enabled = false;
-            nv_nameTextBox.Location = new Point(322, 105);
+            nv_nameTextBox.Location = new Point(258, 84);
+            nv_nameTextBox.Margin = new Padding(2, 2, 2, 2);
             nv_nameTextBox.Name = "nv_nameTextBox";
             nv_nameTextBox.ReadOnly = true;
-            nv_nameTextBox.Size = new Size(183, 31);
+            nv_nameTextBox.Size = new Size(147, 27);
             nv_nameTextBox.TabIndex = 7;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(188, 108);
+            label5.Location = new Point(150, 86);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(128, 25);
+            label5.Size = new Size(106, 20);
             label5.TabIndex = 6;
             label5.Text = "Tên nhân viên :";
             // 
             // dateTimePicker
             // 
             dateTimePicker.Enabled = false;
-            dateTimePicker.Location = new Point(136, 62);
+            dateTimePicker.Location = new Point(109, 50);
+            dateTimePicker.Margin = new Padding(2, 2, 2, 2);
             dateTimePicker.Name = "dateTimePicker";
-            dateTimePicker.Size = new Size(369, 31);
+            dateTimePicker.Size = new Size(296, 27);
             dateTimePicker.TabIndex = 5;
             // 
             // idNhanVienTextBox
             // 
             idNhanVienTextBox.Enabled = false;
-            idNhanVienTextBox.Location = new Point(136, 105);
+            idNhanVienTextBox.Location = new Point(109, 84);
+            idNhanVienTextBox.Margin = new Padding(2, 2, 2, 2);
             idNhanVienTextBox.Name = "idNhanVienTextBox";
             idNhanVienTextBox.ReadOnly = true;
-            idNhanVienTextBox.Size = new Size(46, 31);
+            idNhanVienTextBox.Size = new Size(38, 27);
             idNhanVienTextBox.TabIndex = 4;
             // 
             // idPhieuNhapTxtBox
             // 
             idPhieuNhapTxtBox.Enabled = false;
-            idPhieuNhapTxtBox.Location = new Point(136, 20);
+            idPhieuNhapTxtBox.Location = new Point(109, 16);
+            idPhieuNhapTxtBox.Margin = new Padding(2, 2, 2, 2);
             idPhieuNhapTxtBox.Name = "idPhieuNhapTxtBox";
             idPhieuNhapTxtBox.ReadOnly = true;
-            idPhieuNhapTxtBox.Size = new Size(292, 31);
+            idPhieuNhapTxtBox.Size = new Size(234, 27);
             idPhieuNhapTxtBox.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 108);
+            label4.Location = new Point(2, 86);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(127, 25);
+            label4.Size = new Size(104, 20);
             label4.TabIndex = 2;
             label4.Text = "Mã nhân viên :";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(22, 67);
+            label3.Location = new Point(18, 54);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(108, 25);
+            label3.Size = new Size(88, 20);
             label3.TabIndex = 1;
             label3.Text = "Ngày nhập :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 20);
+            label2.Location = new Point(2, 16);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(140, 25);
+            label2.Size = new Size(115, 20);
             label2.TabIndex = 0;
             label2.Text = "Mã phiếu nhập :";
             // 
@@ -229,9 +244,10 @@
             panel2.Controls.Add(leftPanel);
             panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 96);
+            panel2.Location = new Point(0, 77);
+            panel2.Margin = new Padding(2, 2, 2, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1044, 166);
+            panel2.Size = new Size(835, 133);
             panel2.TabIndex = 4;
             // 
             // leftPanel
@@ -240,9 +256,10 @@
             leftPanel.Controls.Add(panel5);
             leftPanel.Controls.Add(panel7);
             leftPanel.Controls.Add(panel6);
-            leftPanel.Location = new Point(536, 2);
+            leftPanel.Location = new Point(429, 2);
+            leftPanel.Margin = new Padding(2, 2, 2, 2);
             leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(508, 161);
+            leftPanel.Size = new Size(406, 129);
             leftPanel.TabIndex = 18;
             // 
             // panel5
@@ -252,17 +269,19 @@
             panel5.Controls.Add(exportFileBtn);
             panel5.Controls.Add(addBtn);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 100);
+            panel5.Location = new Point(0, 80);
+            panel5.Margin = new Padding(2, 2, 2, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(508, 64);
+            panel5.Size = new Size(406, 51);
             panel5.TabIndex = 2;
             // 
             // ClockLabel
             // 
             ClockLabel.AutoSize = true;
-            ClockLabel.Location = new Point(6, 19);
+            ClockLabel.Location = new Point(5, 15);
+            ClockLabel.Margin = new Padding(2, 0, 2, 0);
             ClockLabel.Name = "ClockLabel";
-            ClockLabel.Size = new Size(55, 25);
+            ClockLabel.Size = new Size(45, 20);
             ClockLabel.TabIndex = 3;
             ClockLabel.Text = "Clock";
             // 
@@ -270,9 +289,10 @@
             // 
             importFileBtn.Image = (Image)resources.GetObject("importFileBtn.Image");
             importFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            importFileBtn.Location = new Point(158, 7);
+            importFileBtn.Location = new Point(126, 6);
+            importFileBtn.Margin = new Padding(2, 2, 2, 2);
             importFileBtn.Name = "importFileBtn";
-            importFileBtn.Size = new Size(114, 51);
+            importFileBtn.Size = new Size(91, 41);
             importFileBtn.TabIndex = 0;
             importFileBtn.Text = "  Nhập file";
             importFileBtn.UseVisualStyleBackColor = true;
@@ -282,9 +302,10 @@
             // 
             exportFileBtn.Image = (Image)resources.GetObject("exportFileBtn.Image");
             exportFileBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            exportFileBtn.Location = new Point(278, 6);
+            exportFileBtn.Location = new Point(222, 5);
+            exportFileBtn.Margin = new Padding(2, 2, 2, 2);
             exportFileBtn.Name = "exportFileBtn";
-            exportFileBtn.Size = new Size(114, 51);
+            exportFileBtn.Size = new Size(91, 41);
             exportFileBtn.TabIndex = 1;
             exportFileBtn.Text = "  Xuất file";
             exportFileBtn.UseVisualStyleBackColor = true;
@@ -294,9 +315,10 @@
             // 
             addBtn.Image = (Image)resources.GetObject("addBtn.Image");
             addBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            addBtn.Location = new Point(394, 6);
+            addBtn.Location = new Point(315, 5);
+            addBtn.Margin = new Padding(2, 2, 2, 2);
             addBtn.Name = "addBtn";
-            addBtn.Size = new Size(114, 51);
+            addBtn.Size = new Size(91, 41);
             addBtn.TabIndex = 2;
             addBtn.Text = "  Tạo mới";
             addBtn.UseVisualStyleBackColor = true;
@@ -307,26 +329,29 @@
             panel7.Controls.Add(searchTextBox);
             panel7.Controls.Add(searchBtn);
             panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 50);
+            panel7.Location = new Point(0, 40);
+            panel7.Margin = new Padding(2, 2, 2, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(508, 50);
+            panel7.Size = new Size(406, 40);
             panel7.TabIndex = 1;
             // 
             // searchTextBox
             // 
             searchTextBox.Anchor = AnchorStyles.None;
-            searchTextBox.Location = new Point(6, 10);
+            searchTextBox.Location = new Point(5, 8);
+            searchTextBox.Margin = new Padding(2, 2, 2, 2);
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(386, 31);
+            searchTextBox.Size = new Size(310, 27);
             searchTextBox.TabIndex = 0;
             // 
             // searchBtn
             // 
             searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
             searchBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            searchBtn.Location = new Point(398, 0);
+            searchBtn.Location = new Point(318, 0);
+            searchBtn.Margin = new Padding(2, 2, 2, 2);
             searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(110, 50);
+            searchBtn.Size = new Size(88, 40);
             searchBtn.TabIndex = 1;
             searchBtn.Text = "Tìm kiếm";
             searchBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -340,16 +365,18 @@
             panel6.Controls.Add(cbbTieuChi);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(2, 2, 2, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(508, 50);
+            panel6.Size = new Size(406, 40);
             panel6.TabIndex = 0;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(6, 14);
+            label6.Location = new Point(5, 11);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(80, 25);
+            label6.Size = new Size(67, 20);
             label6.TabIndex = 12;
             label6.Text = "Tiêu chí :";
             // 
@@ -358,9 +385,10 @@
             ResetBtn.Dock = DockStyle.Right;
             ResetBtn.Image = (Image)resources.GetObject("ResetBtn.Image");
             ResetBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            ResetBtn.Location = new Point(398, 0);
+            ResetBtn.Location = new Point(318, 0);
+            ResetBtn.Margin = new Padding(2, 2, 2, 2);
             ResetBtn.Name = "ResetBtn";
-            ResetBtn.Size = new Size(110, 50);
+            ResetBtn.Size = new Size(88, 40);
             ResetBtn.TabIndex = 1;
             ResetBtn.Text = "Làm mới";
             ResetBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -371,9 +399,10 @@
             // 
             cbbTieuChi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTieuChi.FormattingEnabled = true;
-            cbbTieuChi.Location = new Point(92, 6);
+            cbbTieuChi.Location = new Point(74, 5);
+            cbbTieuChi.Margin = new Padding(2, 2, 2, 2);
             cbbTieuChi.Name = "cbbTieuChi";
-            cbbTieuChi.Size = new Size(300, 33);
+            cbbTieuChi.Size = new Size(241, 28);
             cbbTieuChi.TabIndex = 0;
             cbbTieuChi.SelectedIndexChanged += cbbTieuChi_SelectedIndexChanged;
             // 
@@ -381,9 +410,10 @@
             // 
             gridViewPanel.Controls.Add(phieuNhapGridView);
             gridViewPanel.Dock = DockStyle.Fill;
-            gridViewPanel.Location = new Point(0, 262);
+            gridViewPanel.Location = new Point(0, 210);
+            gridViewPanel.Margin = new Padding(2, 2, 2, 2);
             gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(1044, 378);
+            gridViewPanel.Size = new Size(835, 302);
             gridViewPanel.TabIndex = 5;
             // 
             // Timer
@@ -393,9 +423,9 @@
             // 
             // frmQLPhieuNhap
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1044, 640);
+            ClientSize = new Size(835, 512);
             Controls.Add(gridViewPanel);
             Controls.Add(panel2);
             Controls.Add(panel1);
