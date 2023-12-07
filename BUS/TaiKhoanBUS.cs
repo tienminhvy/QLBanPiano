@@ -170,6 +170,37 @@ namespace QLBanPiano.BUS
                 new Msg("Tên đăng nhập không được để trống!", "err");
                 return false;
             }
+
+            if (matKhau == string.Empty)
+            {
+                new Msg("Mật khẩu không được để trống!", "err");
+                return false;
+            }
+            List<DoiTuong> list = LayDS("1=1");
+            foreach (DoiTuong dt in list)
+            {
+                TaiKhoan taiKhoan = (TaiKhoan)dt;
+                if (taiKhoan.TenDangNhap.Equals(tenDangNhap)) // ten dang nhap ton tai
+                {
+                    bool trangThai = (bool)db.GetColumn("taikhoan", "trangthai", "tenDangNhap = N'" + tenDangNhap + "'");
+                    if (!trangThai)
+                    {
+                        new Msg("Tài khoản đã bị khoá!", "err");
+                        return false;
+                    }
+                    if(!taiKhoan.MatKhau.Equals(matKhau))
+                    {
+                        new Msg("Sai mật khẩu!", "err");
+                        return false;
+                    }
+                    new Msg("Đăng nhập thành công!");
+                    return true;
+                }
+
+            }
+            new Msg("Không tồn tại tên đăng nhập!", "err");
+            return false;
+
             int count = db.GetCount("taikhoan", "tenDangNhap = N'" + tenDangNhap + "'");
             if (count > 0)
             {
