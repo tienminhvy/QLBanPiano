@@ -21,6 +21,8 @@ namespace QLBanPiano
             "Mô tả chi tiết", "Giá", "Hình Ảnh","Phân loại", "id Thương Hiệu" };
 
         private List<DoiTuong> danhSachDoiTuongPiano = new List<DoiTuong>();
+
+        private string linkHinhAnhSanPhamDangChon = "";
         public frmQLSanPham()
         {
             InitializeComponent();
@@ -78,7 +80,7 @@ namespace QLBanPiano
             }
             int id = int.Parse(txtIDSP.Text.Trim());
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa khách hàng có mã là: " + id + " không?", "Xác nhận", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa sản phẩm có mã là: " + id + " không?", "Xác nhận", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No)
             {
                 return;
@@ -192,21 +194,29 @@ namespace QLBanPiano
 
         private void dgvSanPham_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int rowIndex = dgvSanPham.SelectedRows[0].Index; // Lấy chỉ số của dòng được chọn đầu tiên nếu chọn nhiều dòng
-            DataGridViewRow selectedRow = dgvSanPham.Rows[rowIndex]; // Lấy dòng được chọn
-            string maDuocChon = selectedRow.Cells[0].Value.ToString();
-            if (maDuocChon.Equals("")) return; // chưa chọn sản phẩm
-            QLBanPiano.DTO.Piano SanPhamDuocChon = new QLBanPiano.DTO.Piano();
-            foreach (DoiTuong sanpham in danhSachDoiTuongPiano)
+            try
             {
-                QLBanPiano.DTO.Piano piano = new QLBanPiano.DTO.Piano();
-                piano = (QLBanPiano.DTO.Piano)sanpham;
-                if (piano.Ma.Equals(maDuocChon))
+                int rowIndex = dgvSanPham.SelectedRows[0].Index; // Lấy chỉ số của dòng được chọn đầu tiên nếu chọn nhiều dòng
+                DataGridViewRow selectedRow = dgvSanPham.Rows[rowIndex]; // Lấy dòng được chọn
+                string maDuocChon = selectedRow.Cells[0].Value.ToString();
+                if (maDuocChon.Equals("")) return; // chưa chọn sản phẩm
+                QLBanPiano.DTO.Piano SanPhamDuocChon = new QLBanPiano.DTO.Piano();
+                foreach (DoiTuong sanpham in danhSachDoiTuongPiano)
                 {
-                    SanPhamDuocChon = piano; // từ mã sản phẩm của dòng được chọn lấy ra sản phẩm piano tương ứng
+                    QLBanPiano.DTO.Piano piano = new QLBanPiano.DTO.Piano();
+                    piano = (QLBanPiano.DTO.Piano)sanpham;
+                    if (piano.Ma.Equals(maDuocChon))
+                    {
+                        SanPhamDuocChon = piano; // từ mã sản phẩm của dòng được chọn lấy ra sản phẩm piano tương ứng
+                    }
                 }
+                FillThongTinSanPhamDuocChon(SanPhamDuocChon);
             }
-            FillThongTinSanPhamDuocChon(SanPhamDuocChon);
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Có lỗi xảy ra khi chọn sản phẩm, vui lòng thực hiện lại", "Báo lỗi");
+            }
+
 
         }
 
@@ -224,6 +234,7 @@ namespace QLBanPiano
                 FileStream stream = new FileStream(imagelink, FileMode.Open, FileAccess.Read);
                 ptbAnh.Image = Image.FromStream(stream);
                 stream.Close();
+                linkHinhAnhSanPhamDangChon = piano.HinhAnh;
             }
             catch (Exception ex)
             {
@@ -335,7 +346,7 @@ namespace QLBanPiano
                     string thuongHieu = cbbThuongHieuSP.SelectedItem.ToString();
                     string moTa = txtMoTaSP.Text.Trim();
                     string dacDiem = txtDacDiemSP.Text.Trim();
-                    string hinhAnh = id + ".png";
+                    string hinhAnh = linkHinhAnhSanPhamDangChon;
                     if (!pianoBUS.ThongTinSanPhamChinhXac(id, ma, ten, gia, hinhAnh, loai, thuongHieu, dacDiem, moTa))
                     {
                         return;
@@ -430,6 +441,7 @@ namespace QLBanPiano
                 FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
                 ptbAnh.Image = Image.FromStream(stream);
                 stream.Close();
+                linkHinhAnhSanPhamDangChon = txtIDSP.Text + ".png";
             }
         }
 
@@ -446,6 +458,11 @@ namespace QLBanPiano
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
             pianoBUS.XuatFileExcel();
+        }
+
+        private void dgvSanPham_SelectionChanged(object sender, EventArgs e)
+        {
+            dgvSanPham_CellMouseClick(sender, null);
         }
     }
 

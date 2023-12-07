@@ -23,6 +23,7 @@ namespace QLBanPiano
         {
             InitializeComponent();
             Init();
+
         }
         void Init()
         {
@@ -34,6 +35,7 @@ namespace QLBanPiano
             //pwdTextBox.ForeColor = Piano.Cons.loginColor;
             userTextBox.KeyPress += frmDangNhap_KeyPress;
             pwdTextBox.KeyPress += frmDangNhap_KeyPress;
+
         }
         private void label1_Click(object sender, EventArgs e)
         {

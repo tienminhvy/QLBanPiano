@@ -583,6 +583,7 @@ namespace QLBanPiano.BUS
                 MessageBox.Show("Có lỗi xảy ra, vui lòng thực hiện đúng các bước", "Báo lỗi");
                 return false;
             }
+            
             if(!pianoCu.Ma.Equals(ma) || !pianoCu.Ten.Equals(ten) || pianoCu.Gia != gia || !pianoCu.HinhAnh.Equals(hinhAnh)
                 || !pianoCu.Phanloai.Equals(loai) || !pianoCu.ThuongHieu.Ten.Equals(thuongHieu) || !pianoCu.DacDiemNoiBat.Equals(dacDiem)
                 || !pianoCu.MoTaChiTiet.Equals(moTa))
@@ -626,6 +627,11 @@ namespace QLBanPiano.BUS
             if(moTa.Length < 5 || moTa.Length > 100)
             {
                 MessageBox.Show("Mô tả nhạc cụ phải từ 5 đến dưới 100 kí tự chữ và số, vui lòng nhập lại", "Thông báo");
+                return false;
+            }
+            if(hinhAnh.Length == 0)
+            {
+                MessageBox.Show("Vui lòng chọn lại hình ảnh", "Thông báo");
                 return false;
             }
             return true;

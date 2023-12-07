@@ -386,6 +386,7 @@
             dgvSanPham.Size = new Size(870, 595);
             dgvSanPham.TabIndex = 0;
             dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
+            dgvSanPham.SelectionChanged += dgvSanPham_SelectionChanged;
             // 
             // headerPanel
             // 
