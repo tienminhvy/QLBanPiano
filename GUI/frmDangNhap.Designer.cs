@@ -258,10 +258,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(22, 10);
+            label1.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(4, 12);
             label1.Name = "label1";
-            label1.Size = new Size(77, 24);
+            label1.Size = new Size(75, 19);
             label1.TabIndex = 4;
             label1.Text = "Mật khẩu";
             label1.Click += label1_Click;
@@ -351,10 +351,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(3, 10);
+            label2.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(4, 12);
             label2.Name = "label2";
-            label2.Size = new Size(119, 24);
+            label2.Size = new Size(119, 19);
             label2.TabIndex = 4;
             label2.Text = "Tên đăng nhập";
             // 

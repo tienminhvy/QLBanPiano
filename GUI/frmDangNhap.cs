@@ -26,11 +26,11 @@ namespace QLBanPiano
         }
         void Init()
         {
-            userTextBox.Text = Piano.Cons.userText;
-            userTextBox.Font = Piano.Cons.textBoxFont;
+            // userTextBox.Text = Piano.Cons.userText;
+            // userTextBox.Font = Piano.Cons.textBoxFont;
             //userTextBox.ForeColor = Piano.Cons.loginColor;
-            pwdTextBox.Text = Piano.Cons.pwdText;
-            pwdTextBox.Font = Piano.Cons.loginFont;
+            // pwdTextBox.Text = Piano.Cons.pwdText;
+            // pwdTextBox.Font = Piano.Cons.loginFont;
             //pwdTextBox.ForeColor = Piano.Cons.loginColor;
             userTextBox.KeyPress += frmDangNhap_KeyPress;
             pwdTextBox.KeyPress += frmDangNhap_KeyPress;

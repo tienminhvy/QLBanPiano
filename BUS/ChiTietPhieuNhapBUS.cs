@@ -62,7 +62,7 @@ namespace QLBanPiano.BUS
             {
                 DataRow row = dt.NewRow();
                 row["ID"] = obj.phieunhap_Id;
-                row["Mã nhạc cụ"] = obj.nhaccu_Id;
+                row["Mã nhạc cụ"] = obj.id;
                 row["Đơn giá"] = obj.DonGia;
                 row["SL"] = obj.SoLuong;
                 dt.Rows.Add(row);
