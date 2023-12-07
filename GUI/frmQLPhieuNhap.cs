@@ -253,6 +253,7 @@ namespace QLBanPiano.GUI
 
         private void importFileBtn_Click(object sender, EventArgs e)
         {
+            imported = true;
             try
             {
                 OpenFileDialog ofd = new();
@@ -352,7 +353,6 @@ namespace QLBanPiano.GUI
                 {
                     MessageBox.Show("Import file thành công");
                     ResetBtn_Click(sender, e);
-                    Init();
                 }
 
             }
@@ -360,6 +360,7 @@ namespace QLBanPiano.GUI
             {
                 MessageBox.Show(ex.Message);
             }
+            Init();
         }
 
         private void exportFileBtn_Click(object sender, EventArgs e)

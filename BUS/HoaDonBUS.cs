@@ -85,6 +85,24 @@ namespace QLBanPiano.BUS
             }
             return hoadonphieunhap;
         }
+        public HoaDonPDFExcel getHoaDonExcel(DataTable dt)
+        {
+            HoaDonPDFExcel hoadonphieunhap = new();
+            DataRow row = dt.Rows[0];
+            try
+            {
+                hoadonphieunhap.Id = Convert.ToInt32(row["ID"]);
+                hoadonphieunhap.NhanVien_id = Convert.ToInt32(row["Mã nhân viên"]);
+                hoadonphieunhap.ThoiGian = Convert.ToDateTime(row["Thời gian"]);
+                hoadonphieunhap.KhachHang_id = Convert.ToInt32(row["Mã khách hàng"]);
+                hoadonphieunhap.List = chitietBus.DatatableToListExcel(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi convert " + ex.Message);
+            }
+            return hoadonphieunhap;
+        }
         public bool Validates(HoaDonPDFExcel hoadonphieunhap)
         {
             string thisyear = "2014-01-01 00:00:00 AM";

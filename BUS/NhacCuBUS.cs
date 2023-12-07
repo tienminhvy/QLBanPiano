@@ -205,7 +205,7 @@ namespace QLBanPiano.BUS
         }
         public void tangSL(int id,short SL)
         {
-            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong + "+SL+" \r\nwhere id = "+id;
+            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong + "+SL+" \r\nwhere trangthai = 1 AND id = "+id;
             db.ExecuteNonQuery(sqlCmd);
         }
         public void giamSL(int id,short SL)
@@ -216,7 +216,7 @@ namespace QLBanPiano.BUS
             {
                 return; // so luong da bang 0
             }
-            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong - " + SL + " \r\nwhere id = " + id;
+            string sqlCmd = "UPDATE nhaccu\r\nSet soLuong = soLuong - " + SL + " \r\nwhere trangthai = 1 AND id = " + id;
             db.ExecuteNonQuery(sqlCmd);
         }
     }

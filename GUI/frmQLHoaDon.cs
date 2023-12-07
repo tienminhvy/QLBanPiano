@@ -260,7 +260,7 @@ namespace QLBanPiano.GUI
                             int min = int.Parse(minId);
                             DataTable processed = hoaDonBus.splitFromExcelTableById(rawClone, min);
                             HoaDonPDFExcel hoadon = new();
-                            hoadon = hoaDonBus.getHoaDon(processed);
+                            hoadon = hoaDonBus.getHoaDonExcel(processed);
                             int numberOfRowMin = fileHandler.returnIdCount(rawClone, min);
                             if (chitietBus.ValidateList(hoadon.List) == true)
                             {

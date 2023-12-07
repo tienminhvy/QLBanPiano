@@ -43,7 +43,7 @@ namespace QLBanPiano.BUS
                 dt.Columns.Add("Thời gian", typeof(DateTime));
                 dt.Columns.Add("Mã nhân viên", typeof(int));
                 dt.Columns.Add("Mã khách hàng", typeof(int));
-                dt.Columns.Add("Mã nhạc cụ", typeof(int));
+                dt.Columns.Add("Mã nhạc cụ", typeof(string));
                 dt.Columns.Add("Đơn giá", typeof(long));
                 dt.Columns.Add("SL", typeof(short));
                 //
@@ -56,7 +56,7 @@ namespace QLBanPiano.BUS
                         row["Thời gian"] = hoaDon.ThoiGian;
                         row["Mã nhân viên"] = hoaDon.NhanVien_id;
                         row["Mã khách hàng"] = hoaDon.KhachHang_id;
-                        row["Mã nhạc cụ"] = chitiet.nhaccu_Id;
+                        row["Mã nhạc cụ"] = chitiet.Ma_NhacCu;
                         row["Đơn giá"] = chitiet.DonGia;
                         row["SL"] = chitiet.SoLuong;
                         dt.Rows.Add(row);
@@ -88,7 +88,7 @@ namespace QLBanPiano.BUS
                 hoaDon.Id = Convert.ToInt32(row["ID"]);
                 hoaDon.NhanVien_id = Convert.ToInt32(row["Mã nhân viên"]);
                 hoaDon.KhachHang_id = Convert.ToInt32(row["Mã khách hàng"]);
-                hoaDon.List = chitietbus.DatatableToList(chitietbus.LayChiTietHoaDon(Convert.ToInt32(row["ID"])));
+                hoaDon.List = chitietbus.DatatableToListExcelExport(chitietbus.LayChiTietHoaDon(Convert.ToInt32(row["ID"])));
 
                 foreach (string format in dinhdang)
                 {

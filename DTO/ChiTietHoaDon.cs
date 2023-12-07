@@ -27,5 +27,8 @@ namespace QLBanPiano.DTO
         public int hoadon_Id { get { return hoadon_id; } set {  hoadon_id = value; } }
         public int SoLuong { get { return soLuong; } set { soLuong = value; } }
         public long DonGia { get {return donGia; } set { donGia = value; } }
+
+        private string ma_nhaccu;
+        public string Ma_NhacCu {  get { return ma_nhaccu; } set { ma_nhaccu = value; } }
     }
 }
