@@ -177,8 +177,8 @@ namespace QLBanPiano.BUS
         /////////////////////////////EXPORT///////////////////////////////
         public bool ExportHoaDonToPdf(HoaDonPDFExcel hoadon,string filename)
         {
-            
-            string linkLogo = @"D:\\_Development\\CSharp\\pianoLogo512.png";//Nhớ thay lịnk logo cho mỗi máy
+            string projectDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\"; // lấy dường dẫn tính tới folder QLBanPIano
+            string linkLogo = projectDirectory+"pianoLogo512.png";//Nhớ thay lịnk logo cho mỗi máy
             // Thiết lập font mặc định cho toàn bộ tài liệu
             try
             {

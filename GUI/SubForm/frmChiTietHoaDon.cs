@@ -107,7 +107,7 @@ namespace QLBanPiano.GUI
                 bool return_value = fileHandler.ExportHoaDonToPdf(hoaDon, filename);
                 if (return_value)
                 {
-                    MessageBox.Show("Xuất hóa đơn thành công !");
+                    new Msg("Xuất hóa đơn thành công!");
                     Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
                     this.Close();
                 }
