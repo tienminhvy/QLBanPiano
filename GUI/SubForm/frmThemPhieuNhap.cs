@@ -96,7 +96,8 @@ namespace QLBanPiano.GUI
             ChiTietPhieuNhap chitiet = themCtpn.getChiTiet();
             if(chitiet != null)
             {
-                temp.Add(chitiet);
+                if (chitiet.phieunhap_Id != -1)
+                    temp.Add(chitiet);
                 Reset();
             }
         }
@@ -105,16 +106,12 @@ namespace QLBanPiano.GUI
         {
             if (chiTietPhieuNhapGridView.RowCount > 0 && chiTietPhieuNhapGridView.ColumnCount > 0)
             {
-                DialogResult result = MessageBox.Show("Bạn muốn hủy bỏ quá trình ", "Xác nhận", MessageBoxButtons.YesNo);
+                DialogResult result = new Msg("Bạn muốn hủy bỏ quá trình ", "warn").Res;
 
-                if (result == DialogResult.Yes)
+                if (result == DialogResult.OK)
                 {
                     // Xử lý khi người dùng chọn "Yes"
                     this.Close();
-                }
-                else if (result == DialogResult.No)
-                {
-                    // Xử lý khi người dùng chọn "No"
                 }
 
             }
@@ -142,21 +139,22 @@ namespace QLBanPiano.GUI
                     phieunhap.PhieuNhapList = chitietBus.getListChiTiet(dt);
                     if(phieunhapBus.AddPhieuNhap(phieunhap) == true)
                     {
-                        MessageBox.Show("Thêm phiếu nhập thành công");
+                        new Msg("Thêm phiếu nhập thành công");
+                        this.Dispose();
                     }
                     else
                     {
-                        MessageBox.Show("Thêm thất bại !");
+                        new Msg("Thêm thất bại !", "err");
                     }
 
                 }catch(Exception ex)
                 {
-                    MessageBox.Show("Lỗi : " + ex.Message);
+                    new Msg("Lỗi : " + ex.Message, "err");
                 }
             }
             else
             {
-                MessageBox.Show("Không có dữ liệu");
+                new Msg("Không có dữ liệu", "err");
                 this.Close();
             }
         }
