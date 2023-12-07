@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System.Data;
 
 namespace QLBanPiano.BUS
@@ -83,7 +84,7 @@ namespace QLBanPiano.BUS
             if (hoLot.Equals("") || ten.Equals("") ||
                 ngayVaoLam == DateTime.MinValue || sdt.Equals("") || diaChi.Equals(""))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                new Msg("Vui lòng nhập đầy đủ thông tin!", "err");
                 return false;
             }
             
@@ -91,14 +92,14 @@ namespace QLBanPiano.BUS
             //kiem tra sdt cua nhan vien co du 10 so hay khong
             if (sdt.Length != 10)
             {
-                MessageBox.Show("Số điện thoại phải có 10 chữ số!");
+                new Msg("Số điện thoại phải có 10 chữ số!", "err");
                 return false;
             }
 
             //kiem tra co bi trung so dien thoai khong
             if (id == "-1" && db.GetCount("nhanvien", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
             {
-                MessageBox.Show("Số điện thoại đã tồn tại");
+                new Msg("Số điện thoại đã tồn tại", "err");
                 return false;
             }
 

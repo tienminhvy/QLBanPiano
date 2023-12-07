@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -170,14 +171,14 @@ namespace QLBanPiano.BUS
             //kiểm tra các trường thông tin có rỗng hay không
             if (hoLot.Equals("") || ten.Equals("") || diaChi.Equals("") || sdt.Equals(""))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                new Msg("Vui lòng nhập đầy đủ thông tin!", "err");
                 return false;
             }
             foreach (char kyTu in hoLot)
             {
                 if (!char.IsLetter(kyTu) && !kyTu.Equals(" "))
                 {
-                    MessageBox.Show("Họ lót chỉ được chứa kí tự chữ!");
+                    new Msg("Họ lót chỉ được chứa kí tự chữ!", "err");
                     return false;
                 }
             }
@@ -185,7 +186,7 @@ namespace QLBanPiano.BUS
             {
                 if (!char.IsLetter(kyTu) && !kyTu.Equals(" "))
                 {
-                    MessageBox.Show("Tên chỉ được chứa kí tự chữ!");
+                    new Msg("Tên chỉ được chứa kí tự chữ!", "err");
                     return false;
                 }
             }
@@ -193,7 +194,7 @@ namespace QLBanPiano.BUS
             {
                 if (!Char.IsDigit(kyTu))
                 {
-                    MessageBox.Show("Số điện thoại chỉ được chứa kí tự số!");
+                    new Msg("Số điện thoại chỉ được chứa kí tự số!", "err");
                     return false;
 
                 }
@@ -201,7 +202,7 @@ namespace QLBanPiano.BUS
             //kiểm tra số điện thoại của khách hàng có đủ 10 chữ số hay không và
             if (sdt.Length != 10)
             {
-                MessageBox.Show("Số điện thoại phải có 10 chữ số!");
+                new Msg("Số điện thoại phải có 10 chữ số!", "err");
                 return false;
             }
 
@@ -213,7 +214,7 @@ namespace QLBanPiano.BUS
             //kiểm tra số điện thoại đã tồn tại hay chưa khi tạo
             if (id == "-1" && db.GetCount("khachhang", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
             {
-                MessageBox.Show("Số điện thoại đã tồn tại");
+                new Msg("Số điện thoại đã tồn tại", "err");
                 return false;
             }
             return true;
