@@ -124,17 +124,22 @@ namespace QLBanPiano.GUI.SubForm
 
                 TaiKhoanBUS tkBUS = new TaiKhoanBUS();
 
-                string id_vai_tro = tkBUS.GiaTriTruong("vaitro_id", "nhanvien_id = " + id).ToString();
+                if (tkBUS.GiaTriTruong("vaitro_id", "nhanvien_id = " + id) != null)
+                {
+                    string id_vai_tro = tkBUS.GiaTriTruong("vaitro_id", "nhanvien_id = " + id).ToString();
 
-                if (id_vai_tro == "1" && frmChinh.vaitro_id != "1")
-                {
-                    btn_delete.Enabled = false;
-                    btn_update.Enabled = false;
-                } else
-                {
-                    btn_delete.Enabled = true;
-                    btn_update.Enabled = true;
+                    if (id_vai_tro == "1" && frmChinh.vaitro_id != "1")
+                    {
+                        btn_delete.Enabled = false;
+                        btn_update.Enabled = false;
+                    }
+                    else
+                    {
+                        btn_delete.Enabled = true;
+                        btn_update.Enabled = true;
+                    }
                 }
+                
             }
         }
 
