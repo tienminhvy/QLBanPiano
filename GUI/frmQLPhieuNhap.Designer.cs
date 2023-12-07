@@ -138,6 +138,7 @@
             phieuNhapGridView.ReadOnly = true;
             phieuNhapGridView.RowHeadersWidth = 62;
             phieuNhapGridView.RowTemplate.Height = 33;
+            phieuNhapGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             phieuNhapGridView.Size = new Size(835, 302);
             phieuNhapGridView.TabIndex = 0;
             phieuNhapGridView.CellClick += phieuNhapGridView_CellClick;

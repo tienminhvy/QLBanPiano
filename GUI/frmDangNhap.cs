@@ -23,6 +23,7 @@ namespace QLBanPiano
         {
             InitializeComponent();
             Init();
+            Icon = Properties.Resources.Logo;
             // pwdTextBox.TabStop = false;
         }
         void Init()

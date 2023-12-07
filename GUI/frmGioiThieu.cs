@@ -19,7 +19,14 @@ namespace QLBanPiano
             this.labelVersion.Text = String.Format("Version {0}", "v2023");
             this.labelCopyright.Text = "Thực hiện bởi nhóm 16 - bảo lưu mọi quyền";
             this.labelCompanyName.Text = "Học phần ngôn ngữ lập trình C#";
-            this.textBoxDescription.Text = "Đây là đồ án phần mềm quản lý bán Piano được thực hiện bởi nhóm 16, với ngôn ngữ lập trình C#";
+            this.textBoxDescription.Text = "Đây là đồ án phần mềm quản lý bán Piano được thực hiện bởi nhóm 16, với ngôn ngữ lập trình C#.\n " +
+                "Thành viên nhóm:\n " +
+                "Tiền Minh Vy\n, " +
+                "Phan Huỳnh Minh Tiến\n, " +
+                "Trần Đăng Nam\n, " +
+                "Huỳnh Ngọc Diễm Ly\n, " +
+                "Trần Trọng Phú.";
+            Icon = Properties.Resources.Logo;
         }
 
         #region Assembly Attribute Accessors

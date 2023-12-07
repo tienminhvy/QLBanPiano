@@ -6,7 +6,13 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>pianoLogo512.ico</ApplicationIcon>
+    <PackageIcon></PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="pianoLogo512.ico" />
+  </ItemGroup>
 
   <ItemGroup>
 	<Folder Include="DTO\" />

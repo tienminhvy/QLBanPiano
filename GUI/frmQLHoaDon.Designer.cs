@@ -475,6 +475,7 @@
             hoaDonGridView.ReadOnly = true;
             hoaDonGridView.RowHeadersWidth = 62;
             hoaDonGridView.RowTemplate.Height = 33;
+            hoaDonGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             hoaDonGridView.Size = new Size(870, 291);
             hoaDonGridView.TabIndex = 0;
             hoaDonGridView.TabStop = false;

@@ -20,6 +20,7 @@ namespace QLBanPiano
         public static List<string> dsQuyen;
         public frmChinh(frmDangNhap fLogin)
         {
+            Icon = Properties.Resources.Logo;
             this.fLogin = fLogin;
             InitializeComponent();
             foreach (string quyen in dsQuyen)

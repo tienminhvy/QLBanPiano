@@ -125,6 +125,7 @@
             cthdGridView.ReadOnly = true;
             cthdGridView.RowHeadersWidth = 62;
             cthdGridView.RowTemplate.Height = 33;
+            cthdGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             cthdGridView.Size = new Size(449, 166);
             cthdGridView.TabIndex = 0;
             cthdGridView.TabStop = false;
@@ -374,7 +375,7 @@
             MinimumSize = new Size(484, 633);
             Name = "frmChiTietHoaDon";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ChiTietHoaDon";
+            Text = "Chi tiết hoá đơn";
             panel1.ResumeLayout(false);
             hoadonIdPanel.ResumeLayout(false);
             hoadonIdPanel.PerformLayout();
