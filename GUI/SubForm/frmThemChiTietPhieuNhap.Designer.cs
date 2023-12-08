@@ -234,6 +234,7 @@
             Name = "frmThemChiTietPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Thêm chi tiết phiếu nhập";
+            KeyDown += frmThemChiTietPhieuNhap_KeyDown;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             panel1.ResumeLayout(false);

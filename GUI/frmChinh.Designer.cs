@@ -241,7 +241,7 @@
             MinimumSize = new Size(1366, 900);
             Name = "frmChinh";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Phần mềm quản lý bán nhạc cụ Piano";
+            Text = "Phần mềm quản lý và bán nhạc cụ Piano cũ";
             FormClosing += frmChinh_FormClosing;
             FormClosed += frmChinh_FormClosed;
             Load += frmChinh_Load;

@@ -42,5 +42,11 @@ namespace QLBanPiano.GUI.SubForm
                 Dispose();
             }
         }
+
+        private void frmThemVaiTro_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

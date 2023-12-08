@@ -64,5 +64,11 @@ namespace QLBanPiano.GUI
 
             }
         }
+
+        private void frmChiTietPhieuNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

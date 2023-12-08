@@ -70,6 +70,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmThemVaiTro";
             Text = "Thêm vai trò";
+            KeyDown += frmThemVaiTro_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

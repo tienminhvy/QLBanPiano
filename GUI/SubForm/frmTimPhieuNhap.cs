@@ -43,5 +43,11 @@ namespace QLBanPiano.GUI.SubForm
             parent.LoadDt(hdBUS.TimKiem(1, tieuChi));
             this.Dispose();
         }
+
+        private void frmTimPhieuNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

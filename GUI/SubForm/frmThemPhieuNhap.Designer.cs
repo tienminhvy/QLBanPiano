@@ -293,8 +293,9 @@
             MinimumSize = new Size(484, 489);
             Name = "frmThemPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ThemPhieuNhap";
+            Text = "Thêm phiếu nhập";
             Load += ThemPhieuNhap_Load;
+            KeyDown += frmThemPhieuNhap_KeyDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);

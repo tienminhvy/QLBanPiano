@@ -62,7 +62,8 @@ namespace QLBanPiano.GUI.SubForm
             DateTime tuNgay = dateTuNgay.Value;
             DateTime denNgay = dateDenNgay.Value;
 
-            if (tuNgay.Date > denNgay.Date) {
+            if (tuNgay.Date > denNgay.Date)
+            {
                 new Msg("Trường từ ngày phải trước giá trị trường đến ngày!", "err");
                 return;
             }
@@ -78,6 +79,12 @@ namespace QLBanPiano.GUI.SubForm
             HoaDonBUS hdBUS = new HoaDonBUS();
             parent.LoadDt(hdBUS.TimKiem(1, tieuChi));
             this.Dispose();
+        }
+
+        private void frmTimHoaDon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
         }
     }
 }

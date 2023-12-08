@@ -48,5 +48,13 @@ namespace QLBanPiano.GUI
                 new Msg("Đổi mật khẩu thành công!");
             }
         }
+
+        private void frmChinhSuaThongTin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

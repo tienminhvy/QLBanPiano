@@ -121,6 +121,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmChinhSuaThongTin";
             Text = "Cập nhật thông tin";
+            KeyDown += frmChinhSuaThongTin_KeyDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

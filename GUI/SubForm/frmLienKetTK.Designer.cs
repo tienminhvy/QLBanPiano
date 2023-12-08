@@ -180,6 +180,7 @@
             Name = "frmLienKetTK";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Liên kết tài khoản";
+            KeyDown += frmLienKetTK_KeyDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

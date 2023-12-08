@@ -107,6 +107,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmTimPhieuNhap";
             Text = "Tìm phiếu nhập";
+            KeyDown += frmTimPhieuNhap_KeyDown;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);

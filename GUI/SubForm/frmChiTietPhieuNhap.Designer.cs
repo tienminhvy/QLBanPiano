@@ -237,6 +237,7 @@
             Name = "frmChiTietPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Chi tiết phiếu nhập";
+            KeyDown += frmChiTietPhieuNhap_KeyDown;
             panel1.ResumeLayout(false);
             hoadonIdPanel.ResumeLayout(false);
             hoadonIdPanel.PerformLayout();

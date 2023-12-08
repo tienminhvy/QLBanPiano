@@ -195,5 +195,11 @@ namespace QLBanPiano.GUI.SubForm
             }
             return true;
         }
+
+        private void frmThemSanPham_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

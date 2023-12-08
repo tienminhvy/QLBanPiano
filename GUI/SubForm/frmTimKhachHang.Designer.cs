@@ -75,15 +75,16 @@
             txtTieuChi.Size = new Size(238, 27);
             txtTieuChi.TabIndex = 0;
             // 
-            // TimKhachHang
+            // frmTimKhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 152);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "TimKhachHang";
+            Name = "frmTimKhachHang";
             Text = "Tìm khách hàng";
+            KeyDown += frmTimKhachHang_KeyDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

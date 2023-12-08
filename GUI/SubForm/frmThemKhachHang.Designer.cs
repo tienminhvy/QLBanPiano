@@ -219,6 +219,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmThemKhachHang";
             Text = "Thêm khách hàng";
+            KeyDown += frmThemKhachHang_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox1.ResumeLayout(false);

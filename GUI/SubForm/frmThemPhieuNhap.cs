@@ -184,6 +184,10 @@ namespace QLBanPiano.GUI
             }
         }
 
-
+        private void frmThemPhieuNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

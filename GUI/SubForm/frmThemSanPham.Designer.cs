@@ -290,6 +290,7 @@
             Controls.Add(panel1);
             Name = "frmThemSanPham";
             Text = "Thêm nhạc cụ Piano";
+            KeyDown += frmThemSanPham_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptbAnh).EndInit();

@@ -144,5 +144,11 @@ namespace QLBanPiano.GUI
                 ct_priceTextBox.Text = nhacCuBUS.getPrice(id).ToString();
             }
         }
+
+        private void frmThemChiTietPhieuNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

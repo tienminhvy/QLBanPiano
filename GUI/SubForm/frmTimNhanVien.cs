@@ -46,5 +46,11 @@ namespace QLBanPiano.GUI.SubForm
             parent.HienThiDSNhanVien(DSKetQuaTimKiem);
             this.Dispose();
         }
+
+        private void frmTimNhanVien_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

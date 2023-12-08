@@ -376,6 +376,7 @@
             Name = "frmChiTietHoaDon";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Chi tiết hoá đơn";
+            KeyDown += frmChiTietHoaDon_KeyDown;
             panel1.ResumeLayout(false);
             hoadonIdPanel.ResumeLayout(false);
             hoadonIdPanel.PerformLayout();

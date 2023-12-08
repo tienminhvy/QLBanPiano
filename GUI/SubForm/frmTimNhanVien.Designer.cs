@@ -107,6 +107,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmTimNhanVien";
             Text = "Tìm nhân viên";
+            KeyDown += frmTimNhanVien_KeyDown;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);

@@ -16,5 +16,11 @@ namespace QLBanPiano.GUI.SubForm
         {
             InitializeComponent();
         }
+
+        private void frmTimKhachHang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

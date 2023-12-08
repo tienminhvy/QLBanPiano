@@ -188,5 +188,11 @@ namespace QLBanPiano.GUI.SubForm
         private void cbVaiTro_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+
+        private void frmLienKetTK_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }
