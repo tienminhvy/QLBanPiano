@@ -104,8 +104,8 @@ namespace QLBanPiano.GUI.SubForm
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            DialogResult dialogResult = new Msg("Bạn có muốn thoát không?").Res;
+            if (dialogResult == DialogResult.OK)
             {
                 this.Close();
             }
@@ -136,13 +136,13 @@ namespace QLBanPiano.GUI.SubForm
 
                     if (pianoBUS.Them(dsTruong))
                     {
-                        MessageBox.Show("Thêm thành công", "Thông báo");
+                        new Msg("Thêm thành công");
                         btnNhapLai_Click(null, null);
                         LoadTrangThaiComponents();
                     }
                     else
                     {
-                        MessageBox.Show("Thêm thất bại, vui lòng thực hiện đúng thao tác", "Thông báo");
+                        new Msg("Thêm thất bại, vui lòng thực hiện đúng thao tác", "err");
                     }
 
 
@@ -150,7 +150,7 @@ namespace QLBanPiano.GUI.SubForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi không mong muốn xảy ra, vui lòng thực hiện đúng thao tác", "Báo lỗi");
+                new Msg("Có lỗi không mong muốn xảy ra, vui lòng thực hiện đúng thao tác", "err");
                 return;
             }
         }
@@ -159,37 +159,37 @@ namespace QLBanPiano.GUI.SubForm
         {
             if (txtMa.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Vui lòng điền mã sản phẩm", "Thông báo");
+                new Msg("Vui lòng điền mã sản phẩm", "err");
                 txtMa.Focus();
                 return false;
             }
             if (txtTen.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Vui lòng điền tên sản phẩm", "Thông báo");
+                new Msg("Vui lòng điền tên sản phẩm", "err");
                 txtTen.Focus();
                 return false;
             }
             if (txtGia.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Vui lòng điền giá sản phẩm", "Thông báo");
+                new Msg("Vui lòng điền giá sản phẩm", "err");
                 txtGia.Focus();
                 return false;
             }
             if (txtDacDiem.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Vui lòng điền đặc điểm sản phẩm", "Thông báo");
+                new Msg("Vui lòng điền đặc điểm sản phẩm", "err");
                 txtDacDiem.Focus();
                 return false;
             }
             if (txtMoTa.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Vui lòng điền mô tả sản phẩm", "Thông báo");
+                new Msg("Vui lòng điền mô tả sản phẩm", "Thông báo");
                 txtMoTa.Focus();
                 return false;
             }
             if (ptbAnh.Image == null)
             {
-                MessageBox.Show("Vui lòng chọn hình ảnh sản phẩm, bấm vào khung ảnh", "Thông báo");
+                new Msg("Vui lòng chọn hình ảnh sản phẩm, bấm vào khung ảnh", "err");
                 ptbAnh.Focus();
                 return false;
             }

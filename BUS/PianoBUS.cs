@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -187,7 +188,7 @@ namespace QLBanPiano.BUS
 
             if (db.GetCount("nhaccu", "ma = '" + ma + "' AND trangthai = 1") > 0)
             {
-                MessageBox.Show("Mã nhạc cụ đã tồn tại");
+                new Msg("Mã nhạc cụ đã tồn tại");
                 return false;
             }
 
@@ -218,12 +219,12 @@ namespace QLBanPiano.BUS
                 bool return_val = iOFileBUS.ExportToExcel(export, filename);
                 if (return_val)
                 {
-                    MessageBox.Show("Export Excel thành công");
+                    new Msg("Export Excel thành công");
                     Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
                 }
                 else
                 {
-                    MessageBox.Show("Export thất bại !");
+                    new Msg("Export thất bại !");
                 }
             }
         }
@@ -379,38 +380,38 @@ namespace QLBanPiano.BUS
                             }
                             if (!ValidatesList(list))
                             {
-                                MessageBox.Show("Có trường dữ liệu không hợp lệ, vui lòng điền file đúng dữ liệu");
+                                new Msg("Có trường dữ liệu không hợp lệ, vui lòng điền file đúng dữ liệu");
                                 return false;
                             }
-                            MessageBox.Show(ThemDanhSachTuExcel(list));
+                            new Msg(ThemDanhSachTuExcel(list));
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Dữ liệu của file nhập không hợp lệ" + ex.Message);
+                            new Msg("Dữ liệu của file nhập không hợp lệ" + ex.Message);
                             imported = false;
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("Format của file nhập không hợp lệ");
+                        new Msg("Format của file nhập không hợp lệ");
                         imported = false;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Mở file thất bại: " + ex.Message);
+                    new Msg("Mở file thất bại: " + ex.Message);
                     imported = false;
                 }
             }
             else
             {
-                MessageBox.Show("Người dùng đã hủy việc chọn file.");
+                new Msg("Người dùng đã hủy việc chọn file.");
                 imported = false;
             }
             if (imported)
             {
-                MessageBox.Show("Import file thành công");
+                new Msg("Import file thành công");
             }
             return imported;
         }
@@ -580,7 +581,7 @@ namespace QLBanPiano.BUS
             QLBanPiano.DTO.Piano pianoCu = (QLBanPiano.DTO.Piano) LayDS("piano.id=" + id)[0];
             if(pianoCu == null)
             {
-                MessageBox.Show("Có lỗi xảy ra, vui lòng thực hiện đúng các bước", "Báo lỗi");
+                new Msg("Có lỗi xảy ra, vui lòng thực hiện đúng các bước", "Báo lỗi");
                 return false;
             }
             
@@ -601,37 +602,37 @@ namespace QLBanPiano.BUS
             list = LayDS("nhaccu.ma = '" + ma + "' AND nhaccu.trangThai = 1 AND piano.id != "+id); // lấy ra nhaccu có mã trùng, trạng thái =1 và có id khác spham
             if(list.Count > 0)
             {
-                MessageBox.Show("Mã nhạc cụ đã tồn tại, vui lòng nhập mã khác", "Thông báo");
+                new Msg("Mã nhạc cụ đã tồn tại, vui lòng nhập mã khác", "Thông báo");
                 return false;
             }
             if(ma.Length > 15 || ma.Length < 3)
             {
-                MessageBox.Show("Mã nhạc cụ phải từ 3 đến dưới 15 kí tự chữ và số, vui lòng nhập mã khác", "Thông báo");
+                new Msg("Mã nhạc cụ phải từ 3 đến dưới 15 kí tự chữ và số, vui lòng nhập mã khác", "Thông báo");
                 return false;
             }
             if (ten.Length > 20 || ten.Length < 3)
             {
-                MessageBox.Show("Tên nhạc cụ phải từ 3 đến dưới 20 kí tự chữ và số, vui lòng nhập tên khác", "Thông báo");
+                new Msg("Tên nhạc cụ phải từ 3 đến dưới 20 kí tự chữ và số, vui lòng nhập tên khác", "Thông báo");
                 return false;
             }
             if(gia<500000 || gia > 25000000000)
             {
-                MessageBox.Show("giá nhạc cụ phải từ 500.000đ đến dưới 25 tỷ đồng, vui lòng nhập giá khác", "Thông báo");
+                new Msg("giá nhạc cụ phải từ 500.000đ đến dưới 25 tỷ đồng, vui lòng nhập giá khác", "Thông báo");
                 return false;
             }
             if (dacDiem.Length < 5 || dacDiem.Length > 100) 
             {
-                MessageBox.Show("Đặc điểm nhạc cụ phải từ 5 đến dưới 100 kí tự chữ và số, vui lòng nhập lại", "Thông báo");
+                new Msg("Đặc điểm nhạc cụ phải từ 5 đến dưới 100 kí tự chữ và số, vui lòng nhập lại", "Thông báo");
                 return false;
             }
             if(moTa.Length < 5 || moTa.Length > 100)
             {
-                MessageBox.Show("Mô tả nhạc cụ phải từ 5 đến dưới 100 kí tự chữ và số, vui lòng nhập lại", "Thông báo");
+                new Msg("Mô tả nhạc cụ phải từ 5 đến dưới 100 kí tự chữ và số, vui lòng nhập lại", "Thông báo");
                 return false;
             }
             if(hinhAnh.Length == 0)
             {
-                MessageBox.Show("Vui lòng chọn lại hình ảnh", "Thông báo");
+                new Msg("Vui lòng chọn lại hình ảnh", "Thông báo");
                 return false;
             }
             return true;

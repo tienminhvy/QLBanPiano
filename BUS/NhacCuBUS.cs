@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Asn1.Mozilla;
 using QLBanPiano.DAL;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -121,7 +122,7 @@ namespace QLBanPiano.BUS
             string idNhacCu = db.GetColumn("nhaccu", "id", "id = " + id).ToString(); // kiểm tra id của nhạc cụ có tồn tại không
             if (idNhacCu == "-1")
             {
-                MessageBox.Show("Không tìm thấy mã nhạc cụ");
+                new Msg("Không tìm thấy mã nhạc cụ", "err");
                 return false; //id Nhạc Cụ Không Tồn Tại
             }
 
@@ -129,14 +130,14 @@ namespace QLBanPiano.BUS
             string idThuongHieuCheck = db.GetColumn("thuonghieu", "id", "id = " + idThuongHieu + "AND trangthai = 1 ").ToString(); // lấy id thương hiệu để kiểm tra thương hiệu có tồn tại k
             if (idThuongHieuCheck == "-1")
             {
-                MessageBox.Show("Không tìm thấy thương hiệu tương ứng");
+                new Msg("Không tìm thấy thương hiệu tương ứng", "err");
                 return false;// id thương hiệu không tồn tại
             }
 
             string trangThaiCuaMa  = db.GetColumn("nhaccu", "trangthai", "ma = " + ma + "and id !=" + id).ToString(); //Lấy trạng thái của mã nhạc cụ điền vào, nếu chưa tồn tại thì kq = null, nếu có tồn tại thì là True/false
             if (trangThaiCuaMa == "1") // cần kiểm tra xem có mã nhaccu nào trùng với nhạc cụ đang sửa và có id khác nhaccu đang sửa
             {
-                MessageBox.Show("Mã nhạc cụ đã tồn tại");
+                new Msg("Mã nhạc cụ đã tồn tại", "err");
                 return false; // mã đã tồn tại và nhạc cụ đó chưa bị xóa
             }
 
@@ -171,12 +172,12 @@ namespace QLBanPiano.BUS
 
             if (db.GetCount("nhaccu", "ma = '" + ma + "' AND trangthai = 1") == 0)
             {
-                MessageBox.Show("Mã nhạc cụ đã tồn tại");
+                new Msg("Mã nhạc cụ đã tồn tại", "err");
                 return false;
             }
             if (db.GetCount("thuonghieu", "ma = '" + idThuongHieu+ "' AND trangthai = 1") == 0)
             {
-                MessageBox.Show("Không tìm thấy thương hiệu tương ứng");
+                new Msg("Không tìm thấy thương hiệu tương ứng", "err");
                 return false;
             }
             string nhaccu_id = db.Insert(string.Format("INSERT INTO nhaccu " +
