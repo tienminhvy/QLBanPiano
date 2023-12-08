@@ -158,7 +158,7 @@
             // 
             cbbLoai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbLoai.FormattingEnabled = true;
-            cbbLoai.Items.AddRange(new object[] { "điện", "Upright", "Grand" });
+            cbbLoai.Items.AddRange(new object[] { "Điện", "Upright", "Grand" });
             cbbLoai.Location = new Point(232, 222);
             cbbLoai.Name = "cbbLoai";
             cbbLoai.Size = new Size(128, 28);

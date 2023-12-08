@@ -234,8 +234,9 @@
             // 
             // cbbLoaiSP
             // 
+            cbbLoaiSP.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbLoaiSP.FormattingEnabled = true;
-            cbbLoaiSP.Items.AddRange(new object[] { "điện", "Upright", "Grand" });
+            cbbLoaiSP.Items.AddRange(new object[] { "Điện", "Upright", "Grand" });
             cbbLoaiSP.Location = new Point(55, 215);
             cbbLoaiSP.Name = "cbbLoaiSP";
             cbbLoaiSP.Size = new Size(134, 28);
