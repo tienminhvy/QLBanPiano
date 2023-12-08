@@ -71,7 +71,7 @@ namespace QLBanPiano.BUS
             foreach (DataRow row in dt.Rows)
             {
                 int thang = int.Parse(row["Tháng"].ToString());
-                list[thang] = long.Parse(row["Tổng giá tiền"].ToString());
+                list[thang-1] = long.Parse(row["Tổng giá tiền"].ToString());
             }
             return list;
         }
@@ -105,7 +105,7 @@ namespace QLBanPiano.BUS
             foreach (DataRow row in dt.Rows)
             {
                 int ngay = int.Parse(row["Ngày"].ToString());
-                list[ngay] = long.Parse(row["Tổng giá tiền"].ToString());
+                list[ngay-1] = long.Parse(row["Tổng giá tiền"].ToString());
             }
             return list;
         }
@@ -123,7 +123,7 @@ namespace QLBanPiano.BUS
             foreach (DataRow row in dt.Rows)
             {
                 int ngay = int.Parse(row["Ngày"].ToString());
-                list[ngay] = long.Parse(row["Tổng giá tiền"].ToString());
+                list[ngay - 1] = long.Parse(row["Tổng giá tiền"].ToString());
             }
             return list;
         }

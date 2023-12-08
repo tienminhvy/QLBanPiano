@@ -40,10 +40,8 @@
             label7 = new Label();
             txtTen = new TextBox();
             txtHoLot = new TextBox();
-            txtMaKH = new TextBox();
             label6 = new Label();
             label5 = new Label();
-            label4 = new Label();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -78,14 +76,12 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(txtTen);
             groupBox1.Controls.Add(txtHoLot);
-            groupBox1.Controls.Add(txtMaKH);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
             groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(12, 100);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(564, 379);
+            groupBox1.Size = new Size(564, 299);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng";
@@ -93,7 +89,7 @@
             // btnThoat
             // 
             btnThoat.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThoat.Location = new Point(284, 328);
+            btnThoat.Location = new Point(279, 250);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(105, 31);
             btnThoat.TabIndex = 6;
@@ -104,7 +100,7 @@
             // btnReset
             // 
             btnReset.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnReset.Location = new Point(158, 328);
+            btnReset.Location = new Point(153, 250);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(105, 31);
             btnReset.TabIndex = 5;
@@ -115,7 +111,7 @@
             // btnThem
             // 
             btnThem.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThem.Location = new Point(27, 328);
+            btnThem.Location = new Point(22, 250);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(104, 31);
             btnThem.TabIndex = 4;
@@ -125,14 +121,14 @@
             // 
             // txtSoDienThoai
             // 
-            txtSoDienThoai.Location = new Point(158, 249);
+            txtSoDienThoai.Location = new Point(158, 185);
             txtSoDienThoai.Name = "txtSoDienThoai";
             txtSoDienThoai.Size = new Size(231, 34);
             txtSoDienThoai.TabIndex = 3;
             // 
             // txtDiaChi
             // 
-            txtDiaChi.Location = new Point(158, 196);
+            txtDiaChi.Location = new Point(158, 132);
             txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.Size = new Size(231, 34);
             txtDiaChi.TabIndex = 2;
@@ -141,7 +137,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(22, 261);
+            label8.Location = new Point(22, 197);
             label8.Name = "label8";
             label8.Size = new Size(125, 22);
             label8.TabIndex = 0;
@@ -151,7 +147,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(22, 208);
+            label7.Location = new Point(22, 144);
             label7.Name = "label7";
             label7.Size = new Size(79, 22);
             label7.TabIndex = 0;
@@ -159,31 +155,23 @@
             // 
             // txtTen
             // 
-            txtTen.Location = new Point(158, 148);
+            txtTen.Location = new Point(158, 84);
             txtTen.Name = "txtTen";
             txtTen.Size = new Size(231, 34);
             txtTen.TabIndex = 1;
             // 
             // txtHoLot
             // 
-            txtHoLot.Location = new Point(158, 97);
+            txtHoLot.Location = new Point(158, 33);
             txtHoLot.Name = "txtHoLot";
             txtHoLot.Size = new Size(231, 34);
             txtHoLot.TabIndex = 0;
-            // 
-            // txtMaKH
-            // 
-            txtMaKH.Location = new Point(158, 40);
-            txtMaKH.Name = "txtMaKH";
-            txtMaKH.ReadOnly = true;
-            txtMaKH.Size = new Size(127, 34);
-            txtMaKH.TabIndex = 1;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(22, 154);
+            label6.Location = new Point(22, 90);
             label6.Name = "label6";
             label6.Size = new Size(51, 22);
             label6.TabIndex = 0;
@@ -193,27 +181,17 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(22, 103);
+            label5.Location = new Point(22, 39);
             label5.Name = "label5";
             label5.Size = new Size(71, 22);
             label5.TabIndex = 0;
             label5.Text = "Họ lót: ";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(22, 46);
-            label4.Name = "label4";
-            label4.Size = new Size(80, 22);
-            label4.TabIndex = 0;
-            label4.Text = "Mã KH: ";
-            // 
             // frmThemKhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(590, 491);
+            ClientSize = new Size(590, 410);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -242,10 +220,8 @@
         private Label label7;
         private TextBox txtTen;
         private TextBox txtHoLot;
-        private TextBox txtMaKH;
         private Label label6;
         private Label label5;
-        private Label label4;
         private Button btnThoat;
         private Button btnReset;
         private Button btnThem;

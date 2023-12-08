@@ -70,17 +70,17 @@ namespace QLBanPiano.GUI
                     chitiet.DonGia = Convert.ToInt32(ct_priceTextBox.Text);
                     chitiet.SoLuong = Convert.ToInt16(ct_slTextBox.Text);
 
-                    MessageBox.Show("Thêm thành công");
+                    new Msg("Thêm thành công");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Xin hãy nhập đầy đủ thông tin");
+                    new Msg("Xin hãy nhập đầy đủ thông tin", "err");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new Msg(ex.Message);
             }
         }
         public ChiTietPhieuNhap getChiTiet()
@@ -115,7 +115,7 @@ namespace QLBanPiano.GUI
             if (ct_slTextBox.Text != string.Empty) quantity = Convert.ToInt32(ct_slTextBox.Text);
             if (quantity > 100)
             {
-                MessageBox.Show("Số lượng nhập tối đa 100 với 1 mặt hàng !");
+                new Msg("Số lượng nhập tối đa 100 với 1 mặt hàng!", "err");
                 ct_slTextBox.Text = string.Empty;
                 ct_slTextBox.Focus();
             }

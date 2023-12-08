@@ -47,7 +47,6 @@ namespace QLBanPiano.GUI.SubForm
             txtTen.Text = string.Empty;
             txtDiaChi.Text = string.Empty;
             txtSoDienThoai.Text = string.Empty;
-            txtMaKH.Text = string.Empty;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
