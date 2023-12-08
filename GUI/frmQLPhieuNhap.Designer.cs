@@ -122,6 +122,7 @@
             // 
             phieuNhapGridView.AllowUserToAddRows = false;
             phieuNhapGridView.AllowUserToDeleteRows = false;
+            phieuNhapGridView.BackgroundColor = SystemColors.Control;
             phieuNhapGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -139,7 +140,7 @@
             phieuNhapGridView.RowHeadersWidth = 62;
             phieuNhapGridView.RowTemplate.Height = 33;
             phieuNhapGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            phieuNhapGridView.Size = new Size(835, 302);
+            phieuNhapGridView.Size = new Size(835, 170);
             phieuNhapGridView.TabIndex = 0;
             phieuNhapGridView.CellClick += phieuNhapGridView_CellClick;
             phieuNhapGridView.CellDoubleClick += phieuNhapGridView_CellDoubleClick;
@@ -409,12 +410,12 @@
             // 
             // gridViewPanel
             // 
+            gridViewPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gridViewPanel.Controls.Add(phieuNhapGridView);
-            gridViewPanel.Dock = DockStyle.Fill;
             gridViewPanel.Location = new Point(0, 210);
             gridViewPanel.Margin = new Padding(2);
             gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(835, 302);
+            gridViewPanel.Size = new Size(835, 170);
             gridViewPanel.TabIndex = 5;
             // 
             // Timer

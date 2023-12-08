@@ -302,7 +302,7 @@
             dgvKhachHang.RowHeadersWidth = 51;
             dgvKhachHang.RowTemplate.Height = 29;
             dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvKhachHang.Size = new Size(1135, 310);
+            dgvKhachHang.Size = new Size(1135, 188);
             dgvKhachHang.TabIndex = 0;
             dgvKhachHang.SelectionChanged += dgvKhachHang_SelectionChanged;
             // 

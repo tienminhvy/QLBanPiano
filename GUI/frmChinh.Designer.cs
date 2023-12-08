@@ -216,7 +216,7 @@
             // 
             panel1.Controls.Add(statusStrip1);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 692);
+            panel1.Location = new Point(0, 824);
             panel1.Name = "panel1";
             panel1.Size = new Size(1348, 29);
             panel1.TabIndex = 2;
@@ -224,7 +224,7 @@
             // panel2
             // 
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 682);
+            panel2.Location = new Point(0, 814);
             panel2.Name = "panel2";
             panel2.Size = new Size(1348, 10);
             panel2.TabIndex = 3;
@@ -233,13 +233,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1348, 721);
+            ClientSize = new Size(1348, 853);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(mainPanel);
             Controls.Add(toolStrip1);
-            MinimumSize = new Size(1366, 768);
+            MinimumSize = new Size(1366, 900);
             Name = "frmChinh";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Phần mềm quản lý bán nhạc cụ Piano";
             FormClosing += frmChinh_FormClosing;
             FormClosed += frmChinh_FormClosed;

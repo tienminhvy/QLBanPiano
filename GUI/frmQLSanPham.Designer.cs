@@ -365,7 +365,7 @@
             panel1.Controls.Add(dgvSanPham);
             panel1.Location = new Point(0, 125);
             panel1.Name = "panel1";
-            panel1.Size = new Size(870, 595);
+            panel1.Size = new Size(870, 474);
             panel1.TabIndex = 1;
             // 
             // dgvSanPham
@@ -383,7 +383,7 @@
             dgvSanPham.RowHeadersWidth = 51;
             dgvSanPham.RowTemplate.Height = 29;
             dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSanPham.Size = new Size(870, 595);
+            dgvSanPham.Size = new Size(870, 474);
             dgvSanPham.TabIndex = 0;
             dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
             dgvSanPham.SelectionChanged += dgvSanPham_SelectionChanged;

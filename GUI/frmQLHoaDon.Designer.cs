@@ -455,11 +455,11 @@
             // 
             // gridViewPanel
             // 
+            gridViewPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gridViewPanel.Controls.Add(hoaDonGridView);
-            gridViewPanel.Dock = DockStyle.Fill;
-            gridViewPanel.Location = new Point(0, 239);
+            gridViewPanel.Location = new Point(2, 240);
             gridViewPanel.Name = "gridViewPanel";
-            gridViewPanel.Size = new Size(870, 291);
+            gridViewPanel.Size = new Size(867, 163);
             gridViewPanel.TabIndex = 2;
             // 
             // hoaDonGridView
@@ -476,7 +476,7 @@
             hoaDonGridView.RowHeadersWidth = 62;
             hoaDonGridView.RowTemplate.Height = 33;
             hoaDonGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            hoaDonGridView.Size = new Size(870, 291);
+            hoaDonGridView.Size = new Size(867, 163);
             hoaDonGridView.TabIndex = 0;
             hoaDonGridView.TabStop = false;
             hoaDonGridView.CellClick += hoaDonGridView_CellClick;
