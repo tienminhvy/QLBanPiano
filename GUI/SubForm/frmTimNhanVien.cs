@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLBanPiano.BUS;
+using QLBanPiano.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,37 @@ namespace QLBanPiano.GUI.SubForm
 {
     public partial class frmTimNhanVien : Form
     {
-        public frmTimNhanVien()
+        frmQLNhanVien parent;
+        public frmTimNhanVien(frmQLNhanVien parent)
         {
             InitializeComponent();
+            this.parent = parent;
+        }
+
+        private void btnTimTheoNgay_Click(object sender, EventArgs e)
+        {
+            DateTime tuNgay = dateTuNgay.Value;
+            DateTime denNgay = dateDenNgay.Value;
+
+            if (tuNgay.Date > denNgay.Date)
+            {
+                new Msg("Trường từ ngày phải trước giá trị trường đến ngày!", "err");
+                return;
+            }
+            if (tuNgay.Date == denNgay.Date)
+            {
+                denNgay = tuNgay.AddDays(1);
+            }
+
+            string strTuNgay = tuNgay.ToShortDateString();
+            string strDenNgay = denNgay.ToShortDateString();
+
+            string tieuChi = string.Format("{0},{1}", strTuNgay, strDenNgay);
+
+            NhanVienBUS nhanvien = new NhanVienBUS();
+            List<DoiTuong> DSKetQuaTimKiem = nhanvien.TimKiem("Ngày vào làm", tieuChi);
+            parent.HienThiDSNhanVien(DSKetQuaTimKiem);
+            this.Dispose();
         }
     }
 }

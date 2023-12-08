@@ -217,7 +217,7 @@
             cbbTypeSearch.DisplayMember = "ID";
             cbbTypeSearch.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbTypeSearch.FormattingEnabled = true;
-            cbbTypeSearch.Items.AddRange(new object[] { "Xem tất cả", "ID", "Họ lót", "Tên", "Địa chỉ", "SDT" });
+            cbbTypeSearch.Items.AddRange(new object[] { "Xem tất cả", "ID", "Họ lót", "Tên", "Địa chỉ", "SDT", "Ngày vào làm" });
             cbbTypeSearch.Location = new Point(129, 36);
             cbbTypeSearch.Name = "cbbTypeSearch";
             cbbTypeSearch.Size = new Size(182, 28);

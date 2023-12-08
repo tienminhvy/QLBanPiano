@@ -30,6 +30,10 @@ namespace QLBanPiano.GUI.SubForm
                 new Msg("Trường từ ngày phải trước giá trị trường đến ngày!", "err");
                 return;
             }
+            if (tuNgay.Date == denNgay.Date)
+            {
+                denNgay = tuNgay.AddDays(1);
+            }
 
             string strTuNgay = tuNgay.ToShortDateString();
             string strDenNgay = denNgay.ToShortDateString();

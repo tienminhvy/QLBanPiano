@@ -192,6 +192,12 @@ namespace QLBanPiano.BUS
                         dieuKien = "Upper(diaChi) LIKE N'%" + giaTri.ToUpper() + "%'";
                         break;
                     }
+                case "Ngày vào làm":
+                    {
+                        string[] ngay = giaTri.Split(",");
+                        dieuKien = string.Format("ngayvaolam BETWEEN '{0}' AND '{1}'", ngay[0], ngay[1]);
+                        break;
+                    }
             }
             if (dieuKien == string.Empty)
                 dieuKien = "1=1";

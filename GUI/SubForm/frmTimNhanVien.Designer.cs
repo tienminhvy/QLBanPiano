@@ -34,12 +34,7 @@
             label1 = new Label();
             dateTuNgay = new DateTimePicker();
             btnTimTheoNgay = new Button();
-            groupBox1 = new GroupBox();
-            btnTim = new Button();
-            cbbTieuChi = new ComboBox();
-            txtTieuChi = new TextBox();
             groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
@@ -49,12 +44,12 @@
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(dateTuNgay);
             groupBox2.Controls.Add(btnTimTheoNgay);
-            groupBox2.Location = new Point(12, 150);
+            groupBox2.Location = new Point(12, 12);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(314, 182);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Tìm theo ngày";
+            groupBox2.Text = "Tìm theo ngày vào làm";
             // 
             // dateDenNgay
             // 
@@ -101,61 +96,19 @@
             btnTimTheoNgay.TabIndex = 2;
             btnTimTheoNgay.Text = "Tìm";
             btnTimTheoNgay.UseVisualStyleBackColor = true;
+            btnTimTheoNgay.Click += btnTimTheoNgay_Click;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(btnTim);
-            groupBox1.Controls.Add(cbbTieuChi);
-            groupBox1.Controls.Add(txtTieuChi);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(314, 132);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Tìm theo tiêu chí";
-            // 
-            // btnTim
-            // 
-            btnTim.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnTim.Location = new Point(214, 97);
-            btnTim.Name = "btnTim";
-            btnTim.Size = new Size(94, 29);
-            btnTim.TabIndex = 2;
-            btnTim.Text = "Tìm";
-            btnTim.UseVisualStyleBackColor = true;
-            // 
-            // cbbTieuChi
-            // 
-            cbbTieuChi.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            cbbTieuChi.FormattingEnabled = true;
-            cbbTieuChi.Location = new Point(6, 26);
-            cbbTieuChi.Name = "cbbTieuChi";
-            cbbTieuChi.Size = new Size(302, 28);
-            cbbTieuChi.TabIndex = 1;
-            // 
-            // txtTieuChi
-            // 
-            txtTieuChi.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtTieuChi.Location = new Point(6, 60);
-            txtTieuChi.Name = "txtTieuChi";
-            txtTieuChi.PlaceholderText = "Nhập tiêu chí";
-            txtTieuChi.Size = new Size(302, 27);
-            txtTieuChi.TabIndex = 0;
-            // 
-            // TimNhanVien
+            // frmTimNhanVien
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(338, 341);
+            ClientSize = new Size(338, 205);
             Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "TimNhanVien";
+            Name = "frmTimNhanVien";
             Text = "Tìm nhân viên";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -167,9 +120,5 @@
         private Label label1;
         private DateTimePicker dateTuNgay;
         private Button btnTimTheoNgay;
-        private GroupBox groupBox1;
-        private Button btnTim;
-        private ComboBox cbbTieuChi;
-        private TextBox txtTieuChi;
     }
 }

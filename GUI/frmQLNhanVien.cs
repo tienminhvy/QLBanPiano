@@ -63,7 +63,7 @@ namespace QLBanPiano.GUI.SubForm
         }
         private static bool thaydoiND = false;
 
-        private void HienThiDSNhanVien(List<DoiTuong> danhSachNhanVien = null)
+        public void HienThiDSNhanVien(List<DoiTuong> danhSachNhanVien = null)
         {
             thaydoiND = true;
             if (danhSachNhanVien != null)
@@ -248,6 +248,14 @@ namespace QLBanPiano.GUI.SubForm
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string tieuChi = cbbTypeSearch.SelectedItem.ToString();
+
+            if (tieuChi == "Ngày vào làm")
+            {
+                frmTimNhanVien f = new frmTimNhanVien(this);
+                f.ShowDialog();
+                return;
+            }
+
             string giaTri = txtSearch.Text.Trim();
             if (giaTri == string.Empty && tieuChi != "Xem tất cả")
             {
@@ -262,7 +270,7 @@ namespace QLBanPiano.GUI.SubForm
         {
             if (cbbTypeSearch.SelectedIndex > -1)
             {
-                if (cbbTypeSearch.SelectedItem == "Xem tất cả")
+                if (cbbTypeSearch.SelectedItem == "Xem tất cả" || cbbTypeSearch.SelectedItem == "Ngày vào làm")
                 {
                     txtSearch.Enabled = false;
                 }
