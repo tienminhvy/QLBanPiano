@@ -15,6 +15,10 @@ namespace QLBanPiano.GUI.SubForm
     {
         private frmBanHang fBanHang;
         private KhachHangBUS khBUS = new KhachHangBUS();
+        public TextBox f_txtHoLot { get { return txtHoLot; } }
+        public TextBox f_txtTen { get { return txtTen; } }
+        public TextBox f_txtDiaChi { get { return txtDiaChi; } }
+        public TextBox f_txtSDT { get { return txtSoDienThoai; } }
         public frmThemKhachHang(Form fParent)
         {
             if (fParent is frmBanHang)
@@ -26,7 +30,7 @@ namespace QLBanPiano.GUI.SubForm
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (khBUS.Validate(txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "-1"))
+            if (khBUS.Validate(this, txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "-1"))
             {
                 if (khBUS.Them(txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text))
                 {

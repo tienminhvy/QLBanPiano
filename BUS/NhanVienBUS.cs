@@ -1,6 +1,7 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
 using QLBanPiano.GUI;
+using QLBanPiano.GUI.SubForm;
 using System.Data;
 
 namespace QLBanPiano.BUS
@@ -71,7 +72,7 @@ namespace QLBanPiano.BUS
         {
             return pianoBus.checkExist("nhanvien", id);
         }
-        public bool Validate(params string[] dsTruong)
+        public bool Validate(frmQLNhanVien f, params string[] dsTruong)
         {
             string hoLot = dsTruong[0];
             string ten = dsTruong[1];
@@ -87,11 +88,40 @@ namespace QLBanPiano.BUS
                 new Msg("Vui lòng nhập đầy đủ thông tin!", "err");
                 return false;
             }
-            
+
+            foreach (char kyTu in hoLot)
+            {
+                if (char.IsDigit(kyTu))
+                {
+                    new Msg("Họ lót chỉ được chứa kí tự chữ!", "err");
+                    f.txtHoLot.Focus();
+                    return false;
+                }
+            }
+            foreach (char kyTu in ten)
+            {
+                if (char.IsDigit(kyTu))
+                {
+                    new Msg("Tên chỉ được chứa kí tự chữ!", "err");
+                    f.txtTen.Focus();
+                    return false;
+                }
+            }
+            foreach (char kyTu in sdt)
+            {
+                if (!Char.IsDigit(kyTu))
+                {
+                    f.txtSDT.Focus();
+                    new Msg("Số điện thoại chỉ được chứa kí tự số!", "err");
+                    return false;
+
+                }
+            }
 
             //kiem tra sdt cua nhan vien co du 10 so hay khong
             if (sdt.Length != 10)
             {
+
                 new Msg("Số điện thoại phải có 10 chữ số!", "err");
                 return false;
             }
@@ -202,6 +232,11 @@ namespace QLBanPiano.BUS
             if (dieuKien == string.Empty)
                 dieuKien = "1=1";
             return LayDS(dieuKien);
+        }
+
+        public bool Validate(params string[] dsTruong)
+        {
+            throw new NotImplementedException();
         }
     }
 }

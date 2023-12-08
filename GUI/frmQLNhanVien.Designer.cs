@@ -1,4 +1,4 @@
-﻿namespace QLBanPiano.GUI.SubForm
+﻿namespace QLBanPiano.GUI
 {
     partial class frmQLNhanVien
     {

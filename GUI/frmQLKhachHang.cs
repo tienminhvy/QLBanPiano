@@ -15,6 +15,12 @@ namespace QLBanPiano.GUI
 {
     public partial class frmQLKhachHang : Form
     {
+
+        public TextBox f_txtHoLot { get { return txtHoLot; } }
+        public TextBox f_txtTen { get { return txtTen; } }
+        public TextBox f_txtDiaChi { get { return txtDiaChi; } }
+        public TextBox f_txtSDT { get { return txtSoDienThoai; } }
+
         KhachHangBUS khachhang = new KhachHangBUS();
         public frmQLKhachHang()
         {
@@ -117,6 +123,7 @@ namespace QLBanPiano.GUI
             else
             {
                 if (khachhang.Validate(
+                    this,
                     txtHoLot.Text,
                     txtTen.Text,
                     txtDiaChi.Text,
@@ -177,7 +184,7 @@ namespace QLBanPiano.GUI
             {
 
 
-                if (khachhang.Validate(txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "0"))
+                if (khachhang.Validate(this,txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "0"))
                 {
                     DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
                     string id = Cells[0].Value.ToString();
@@ -199,7 +206,6 @@ namespace QLBanPiano.GUI
                         HienDSKhachHang();
                     }
                 }
-                else new Msg("Sửa khách hàng thất bại!", "err");
             }
             else new Msg("Vui lòng chọn khách hàng để sửa!", "err");
         }

@@ -1,6 +1,7 @@
 ﻿using QLBanPiano.DAL;
 using QLBanPiano.DTO;
 using QLBanPiano.GUI;
+using QLBanPiano.GUI.SubForm;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -160,7 +161,39 @@ namespace QLBanPiano.BUS
          * <param name="dsTruong">gồm hoLot, ten, diaChi, soDienThoai theo thứ tự</param>
          * <returns>true/false</returns>
          */
-        public bool Validate(params string[] dsTruong)
+
+        public void FocusTextField(int Case, Form f)
+        {
+            switch (Case)
+            {
+                case 0: // holot
+                    if (f is frmQLKhachHang)
+                        ((frmQLKhachHang)f).f_txtHoLot.Focus();
+                    if (f is frmThemKhachHang)
+                        ((frmThemKhachHang)f).f_txtHoLot.Focus();
+                    break;
+                case 1: // ten
+                    if (f is frmQLKhachHang)
+                        ((frmQLKhachHang)f).f_txtTen.Focus();
+                    if (f is frmThemKhachHang)
+                        ((frmThemKhachHang)f).f_txtTen.Focus();
+                    break;
+                case 2: // diachi
+                    if (f is frmQLKhachHang)
+                        ((frmQLKhachHang)f).f_txtDiaChi.Focus();
+                    if (f is frmThemKhachHang)
+                        ((frmThemKhachHang)f).f_txtDiaChi.Focus();
+                    break;
+                case 3: // sdt
+                    if (f is frmQLKhachHang)
+                        ((frmQLKhachHang)f).f_txtSDT.Focus();
+                    if (f is frmThemKhachHang)
+                        ((frmThemKhachHang)f).f_txtSDT.Focus();
+                    break;
+            }
+        }
+
+        public bool Validate(Form f, params string[] dsTruong)
         {
             string hoLot = dsTruong[0];
             string ten = dsTruong[1];
@@ -178,6 +211,7 @@ namespace QLBanPiano.BUS
             {
                 if (char.IsDigit(kyTu))
                 {
+                    FocusTextField(0, f);
                     new Msg("Họ lót chỉ được chứa kí tự chữ!", "err");
                     return false;
                 }
@@ -186,6 +220,7 @@ namespace QLBanPiano.BUS
             {
                 if (char.IsDigit(kyTu))
                 {
+                    FocusTextField(1, f);
                     new Msg("Tên chỉ được chứa kí tự chữ!", "err");
                     return false;
                 }
@@ -194,26 +229,23 @@ namespace QLBanPiano.BUS
             {
                 if (!Char.IsDigit(kyTu))
                 {
+                    FocusTextField(3, f);
                     new Msg("Số điện thoại chỉ được chứa kí tự số!", "err");
                     return false;
-
                 }
             }
             //kiểm tra số điện thoại của khách hàng có đủ 10 chữ số hay không và
             if (sdt.Length != 10)
             {
+                FocusTextField(3, f);
                 new Msg("Số điện thoại phải có 10 chữ số!", "err");
                 return false;
             }
 
-            // kiểm tra xem tất cả các kí tự có phải là 10 chữ số hay không
-            
-            
-            
-
             //kiểm tra số điện thoại đã tồn tại hay chưa khi tạo
             if (id == "-1" && db.GetCount("khachhang", "sdt = N'" + sdt + "' AND trangthai = 1") > 0)
             {
+                FocusTextField(3, f);
                 new Msg("Số điện thoại đã tồn tại", "err");
                 return false;
             }
@@ -254,6 +286,11 @@ namespace QLBanPiano.BUS
                 "SET trangthai = 0 " +
                 "WHERE {0}", tieuChi));
             return true;
+        }
+
+        public bool Validate(params string[] dsTruong)
+        {
+            throw new NotImplementedException();
         }
     }
 }

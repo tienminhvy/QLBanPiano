@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.BUS;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI.SubForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanPiano.GUI.SubForm
+namespace QLBanPiano.GUI
 {
     public partial class frmQLNhanVien : Form
     {
         NhanVienBUS nhanvien = new NhanVienBUS();
+
+        public TextBox txtTen { get { return txt_name; } }
+        public MaskedTextBox txtSDT { get { return txt_sdt; } }
+        public TextBox txtHoLot { get { return txt_midName; } }
 
         public frmQLNhanVien()
         {
@@ -22,6 +27,7 @@ namespace QLBanPiano.GUI.SubForm
             HienThiDSNhanVien();
             btn_link_acc.Enabled = false;
             cbbTypeSearch.SelectedIndex = 0;
+
         }
 
         private void themCot()
@@ -165,7 +171,7 @@ namespace QLBanPiano.GUI.SubForm
             }
             else
             {
-                if (nhanvien.Validate(txt_midName.Text, txt_name.Text,
+                if (nhanvien.Validate(this, txt_midName.Text, txt_name.Text,
                      dtpNgayVaoLam.Value.ToShortDateString(), txt_sdt.Text, txt_address.Text, "-1"))
                 {
 
@@ -190,7 +196,7 @@ namespace QLBanPiano.GUI.SubForm
             {
                 DataGridViewCellCollection Cells = dgvNhanVien.SelectedRows[0].Cells;
                 string id = Cells[0].Value.ToString();
-                if (nhanvien.Validate(txt_midName.Text, txt_name.Text, dtpNgayVaoLam.Value.ToShortDateString()
+                if (nhanvien.Validate(this, txt_midName.Text, txt_name.Text, dtpNgayVaoLam.Value.ToShortDateString()
                     , txt_sdt.Text, txt_address.Text, id))
                 {
                     txt_id.Text = id;
@@ -199,7 +205,7 @@ namespace QLBanPiano.GUI.SubForm
                     string sdt = txt_sdt.Text;
                     string address = txt_address.Text;
 
-                    if (nhanvien.Validate(hoLot, ten, dtpNgayVaoLam.Value.ToShortDateString(), sdt, address, id))
+                    if (nhanvien.Validate(this, hoLot, ten, dtpNgayVaoLam.Value.ToShortDateString(), sdt, address, id))
                     {
                         if (nhanvien.Sua(hoLot, ten, dtpNgayVaoLam.Value.ToShortDateString(), sdt, address, id))
                             new Msg("Sửa nhân viên thành công!");
