@@ -113,5 +113,11 @@ namespace QLBanPiano
         {
             this.Close();
         }
+
+        private void frmGioiThieu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
     }
 }

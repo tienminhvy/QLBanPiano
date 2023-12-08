@@ -20,6 +20,7 @@ using Paragraph = iTextSharp.text.Paragraph;
 using Org.BouncyCastle.Utilities.Encoders;
 using DocumentFormat.OpenXml.Office2013.Excel;
 using System.Text.RegularExpressions;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 
 namespace QLBanPiano.BUS
 {
@@ -174,11 +175,14 @@ namespace QLBanPiano.BUS
             }
             return sortedTable;
         }
+        private byte[] ImageToByte(Bitmap img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
         /////////////////////////////EXPORT///////////////////////////////
         public bool ExportHoaDonToPdf(HoaDonPDFExcel hoadon,string filename)
         {
-            string projectDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\"; // lấy dường dẫn tính tới folder QLBanPIano
-            string linkLogo = projectDirectory+"pianoLogo512.png";//Nhớ thay lịnk logo cho mỗi máy
             // Thiết lập font mặc định cho toàn bộ tài liệu
             try
             {
@@ -224,7 +228,7 @@ namespace QLBanPiano.BUS
                 //LOGO
                 BaseFont bfLogo = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
                 Font fLogo = new Font(bfLogo, 20, Font.BOLD, BaseColor.BLACK);
-                Image img = Image.GetInstance(linkLogo);
+                Image img = Image.GetInstance(ImageToByte(Properties.Resources.Logo128));
                 img.ScaleAbsolute(32, 32);
                 Paragraph logoHeader = new();
                 Chunk logoChunk = new Chunk(img,0,-12);

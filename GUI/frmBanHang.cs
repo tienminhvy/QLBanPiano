@@ -134,7 +134,7 @@ namespace QLBanPiano
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new Msg(ex.Message, "err");
             }
 
         }
@@ -160,7 +160,7 @@ namespace QLBanPiano
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                new Msg(ex.Message, "err");
             }
 
 
@@ -282,7 +282,7 @@ namespace QLBanPiano
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra, vui lòng thực hiện đúng thao tác", "Báo lỗi");
+                new Msg("Có lỗi xảy ra, vui lòng thực hiện đúng thao tác", "err");
             }
         }
 
@@ -298,7 +298,7 @@ namespace QLBanPiano
             {
                 if (txtIDKH.Text.Length == 0)
                 {
-                    MessageBox.Show("Vui lòng chọn khách hàng trong danh sách trước khi khóa", "Thông bá0");
+                    new Msg("Vui lòng chọn khách hàng trong danh sách trước khi khóa", "Thông bá0");
                     return;
                 }
             }*/
@@ -307,7 +307,7 @@ namespace QLBanPiano
         {
             if (txtIDSP.Text.Length == 0)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm muốn mua trong danh sách trước khi khóa", "Thông báo");
+                new Msg("Vui lòng chọn sản phẩm muốn mua trong danh sách trước khi khóa", "err");
                 return;
             }
 
@@ -316,7 +316,7 @@ namespace QLBanPiano
             int soLuongCon = int.Parse(txtSoLuongCon.Text);
             if (soLuong > soLuongCon)
             {
-                MessageBox.Show("Số lượng sản phẩm muốn mua không còn đủ", "Thông báo");
+                new Msg("Số lượng sản phẩm muốn mua không còn đủ", "err");
                 return;
             }
 
@@ -373,7 +373,7 @@ namespace QLBanPiano
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra, vui lòng thực hiện đúng thao tác", "Báo lỗi");
+                new Msg("Có lỗi xảy ra, vui lòng thực hiện đúng thao tác", "err");
             }
         }
 
@@ -381,7 +381,7 @@ namespace QLBanPiano
         {
             if (lvSanPhamDaChon.SelectedItems.Count <= 0)
             {
-                MessageBox.Show("Chọn sản phẩm muốn xóa khỏi danh sách đã chọn", "Thông báo");
+                new Msg("Chọn sản phẩm muốn xóa khỏi danh sách đã chọn", "err");
                 return;
             }
             string idDuocChon = lvSanPhamDaChon.SelectedItems[0].SubItems[0].Text;
@@ -403,8 +403,8 @@ namespace QLBanPiano
 
         private void btnXoaHet_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tất cả sản phẩm đã chọn không?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
+            DialogResult dialogResult = new Msg("Bạn có muốn xóa tất cả sản phẩm đã chọn không?", "warn").Res;
+            if (dialogResult == DialogResult.Cancel)
             {
                 return;
             }
@@ -442,19 +442,19 @@ namespace QLBanPiano
         {
             if (txtIDKH.Text.Length == 0)
             {
-                MessageBox.Show("Chưa chọn khách hàng", "Thông báo");
+                new Msg("Chưa chọn khách hàng", "err");
                 return;
             }
             if (DSSanPhamDaChon.Count == 0)
             {
-                MessageBox.Show("Chưa chọn sản phẩm", "Thông báo");
+                new Msg("Chưa chọn sản phẩm", "err");
                 return;
             }
             try
             {
                 if (txtTongTienNhan.Text.Length == 0)
                 {
-                    MessageBox.Show("Nhập số tiền nhận vào", "Thông báo");
+                    new Msg("Nhập số tiền nhận vào", "err");
                     txtTongTienNhan.Focus();
                     return;
                 }
@@ -462,7 +462,7 @@ namespace QLBanPiano
                 long tienNhan = long.Parse(txtTongTienNhan.Text);
                 if (tienNhan < tongTien)
                 {
-                    MessageBox.Show("Tiền nhận chưa đủ, vui lòng nhập lại", "Thông báo");
+                    new Msg("Tiền nhận chưa đủ, vui lòng nhập lại", "err");
                     txtTongTienNhan.Focus();
                     return;
                 }
@@ -475,7 +475,7 @@ namespace QLBanPiano
                 int hoaDon_id = HoaDonBUS.TraVeID(dsTruongHoaDon);
                 if (hoaDon_id == -1)
                 {
-                    MessageBox.Show("Tạo hóa đơn thất bại, vui lòng thực hiện lại ", "Thông báo");
+                    new Msg("Tạo hóa đơn thất bại, vui lòng thực hiện lại ", "err");
                     return;
                 }
                 foreach (SanPhamDuocChon sanPham in DSSanPhamDaChon)
@@ -485,13 +485,13 @@ namespace QLBanPiano
 
                     if (!chiTietHoaDonBUS.Them(dsTruongChiTietHD))
                     {
-                        MessageBox.Show("Tạo chi tiết hóa đơn thất bại, vui lòng thực hiện lại ", "Thông báo");
+                        new Msg("Tạo chi tiết hóa đơn thất bại, vui lòng thực hiện lại ", "err");
                         return;
                     }
                     pianoBUS.SuaSoLuong(int.Parse(sanPham.IdSanPham), sanPham.SoLuong);
                 }
 
-                MessageBox.Show("Thanh toán thành công", "Thông báo");
+                new Msg("Thanh toán thành công");
 
                 frmChiTietHoaDon f = new(hoaDon_id);
                 f.ShowDialog();
@@ -502,8 +502,8 @@ namespace QLBanPiano
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("Có lỗi không mong muốn xảy ra, vui lòng thực hiện đúng thao tác", "Báo lỗi");
+                new Msg(ex.Message, "err");
+                new Msg("Có lỗi không mong muốn xảy ra, vui lòng thực hiện đúng thao tác", "err");
                 return;
             }
 
