@@ -86,8 +86,8 @@ namespace QLBanPiano.BUS
 
             foreach (DataRow row in dt.Rows)
             {
-                int thang = int.Parse(row["Tháng"].ToString());
-                list[thang] = long.Parse(row["Tổng giá tiền"].ToString());
+                int thang = int.Parse(row[0].ToString());
+                list[thang-1] = long.Parse(row[1].ToString());
             }
             return list;
         }

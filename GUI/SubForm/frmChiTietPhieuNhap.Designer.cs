@@ -55,7 +55,7 @@
             // 
             panel1.Controls.Add(hoadonIdPanel);
             panel1.Location = new Point(4, 10);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(449, 48);
             panel1.TabIndex = 1;
@@ -65,7 +65,7 @@
             hoadonIdPanel.Controls.Add(idPhieuNhap);
             hoadonIdPanel.Controls.Add(label1);
             hoadonIdPanel.Location = new Point(131, 10);
-            hoadonIdPanel.Margin = new Padding(2, 2, 2, 2);
+            hoadonIdPanel.Margin = new Padding(2);
             hoadonIdPanel.Name = "hoadonIdPanel";
             hoadonIdPanel.Size = new Size(191, 28);
             hoadonIdPanel.TabIndex = 0;
@@ -74,7 +74,7 @@
             // 
             idPhieuNhap.Enabled = false;
             idPhieuNhap.Location = new Point(83, 1);
-            idPhieuNhap.Margin = new Padding(2, 2, 2, 2);
+            idPhieuNhap.Margin = new Padding(2);
             idPhieuNhap.Name = "idPhieuNhap";
             idPhieuNhap.ReadOnly = true;
             idPhieuNhap.Size = new Size(106, 27);
@@ -94,20 +94,24 @@
             // 
             dgvPanel.Controls.Add(ctpnGridView);
             dgvPanel.Location = new Point(4, 62);
-            dgvPanel.Margin = new Padding(2, 2, 2, 2);
+            dgvPanel.Margin = new Padding(2);
             dgvPanel.Name = "dgvPanel";
             dgvPanel.Size = new Size(449, 304);
             dgvPanel.TabIndex = 2;
             // 
             // ctpnGridView
             // 
+            ctpnGridView.AllowUserToAddRows = false;
+            ctpnGridView.AllowUserToDeleteRows = false;
             ctpnGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ctpnGridView.Dock = DockStyle.Fill;
             ctpnGridView.Location = new Point(0, 0);
-            ctpnGridView.Margin = new Padding(2, 2, 2, 2);
+            ctpnGridView.Margin = new Padding(2);
             ctpnGridView.Name = "ctpnGridView";
+            ctpnGridView.ReadOnly = true;
             ctpnGridView.RowHeadersWidth = 62;
             ctpnGridView.RowTemplate.Height = 33;
+            ctpnGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ctpnGridView.Size = new Size(449, 304);
             ctpnGridView.TabIndex = 0;
             // 
@@ -122,7 +126,7 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label6);
             panel2.Location = new Point(4, 371);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(449, 138);
             panel2.TabIndex = 3;
@@ -131,7 +135,7 @@
             // 
             nv_nameTextBox.Enabled = false;
             nv_nameTextBox.Location = new Point(186, 36);
-            nv_nameTextBox.Margin = new Padding(2, 2, 2, 2);
+            nv_nameTextBox.Margin = new Padding(2);
             nv_nameTextBox.Name = "nv_nameTextBox";
             nv_nameTextBox.ReadOnly = true;
             nv_nameTextBox.Size = new Size(261, 27);
@@ -141,7 +145,7 @@
             // 
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Location = new Point(186, 96);
-            dateTimePicker1.Margin = new Padding(2, 2, 2, 2);
+            dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(261, 27);
             dateTimePicker1.TabIndex = 9;
@@ -170,7 +174,7 @@
             // 
             totalTextBox.Enabled = false;
             totalTextBox.Location = new Point(326, 7);
-            totalTextBox.Margin = new Padding(2, 2, 2, 2);
+            totalTextBox.Margin = new Padding(2);
             totalTextBox.Name = "totalTextBox";
             totalTextBox.ReadOnly = true;
             totalTextBox.Size = new Size(121, 27);
@@ -180,7 +184,7 @@
             // 
             nv_idTextBox.Enabled = false;
             nv_idTextBox.Location = new Point(278, 66);
-            nv_idTextBox.Margin = new Padding(2, 2, 2, 2);
+            nv_idTextBox.Margin = new Padding(2);
             nv_idTextBox.Name = "nv_idTextBox";
             nv_idTextBox.ReadOnly = true;
             nv_idTextBox.Size = new Size(170, 27);
@@ -225,7 +229,7 @@
             Controls.Add(panel2);
             Controls.Add(dgvPanel);
             Controls.Add(panel1);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             MaximumSize = new Size(484, 593);
             MinimizeBox = false;

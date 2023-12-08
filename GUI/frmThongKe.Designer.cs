@@ -74,7 +74,7 @@
             lvDoanhThu.Columns.AddRange(new ColumnHeader[] { Thang, TongThu, TongChi, LoiNhuan });
             lvDoanhThu.Location = new Point(3, 365);
             lvDoanhThu.Name = "lvDoanhThu";
-            lvDoanhThu.Size = new Size(1256, 305);
+            lvDoanhThu.Size = new Size(1256, 182);
             lvDoanhThu.TabIndex = 1;
             lvDoanhThu.UseCompatibleStateImageBehavior = false;
             lvDoanhThu.View = View.Details;
