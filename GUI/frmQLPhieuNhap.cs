@@ -1,5 +1,6 @@
 ﻿using QLBanPiano.BUS;
 using QLBanPiano.DTO;
+using QLBanPiano.GUI.SubForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -161,6 +162,7 @@ namespace QLBanPiano.GUI
 
         private void cbbTieuChi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            searchTextBox.Enabled = true;
             switch (cbbTieuChi.SelectedIndex)
             {
                 case 0:
@@ -168,9 +170,10 @@ namespace QLBanPiano.GUI
                     searchTextBox.PlaceholderText = "Nhập ID (VD: 2 )";
                     searchTextBox.ForeColor = Color.FromArgb(160, 160, 160);
                     break;
-                case 1:
+                case 1: // date
                     searchTextBox.Text = string.Empty;
-                    searchTextBox.PlaceholderText = "Nhập thời gian (VD: 2023-11-11 8:30:00 AM)";
+                    searchTextBox.Enabled = false;
+                    searchTextBox.PlaceholderText = "";
                     searchTextBox.ForeColor = Color.FromArgb(160, 160, 160);
                     break;
                 case 2:
@@ -186,7 +189,10 @@ namespace QLBanPiano.GUI
             }
         }
 
-
+        public void LoadDt(DataTable dt)
+        {
+            phieuNhapGridView.DataSource = dt;
+        }
         private void searchBtn_Click(object sender, EventArgs e)
         {
             searchClicked = true;
@@ -205,16 +211,10 @@ namespace QLBanPiano.GUI
                     }
                     searchClicked = false;
                     break;
-                case 1:
-                    if (searchTextBox.Text != string.Empty)
-                    {
-                        dt = phieuNhapBUS.TimKiem(cbbTieuChi.SelectedIndex, searchTextBox.Text);
-                        Load(dt);
-                    }
-                    else
-                    {
-                        new Msg("Vui lòng nhập nội dung cần tìm kiếm !", "err");
-                    }
+                case 1: // date
+                    // new frmT
+                    frmTimPhieuNhap f = new frmTimPhieuNhap(this);
+                    f.ShowDialog();
                     searchClicked = false;
                     break;
                 case 2:

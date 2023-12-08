@@ -51,6 +51,11 @@ namespace QLBanPiano.GUI
             }
 
         }
+
+        public void LoadDt(DataTable dt)
+        {
+            hoaDonGridView.DataSource = dt;
+        }
         void Init()
         {
             DataTable dt = hoaDonBus.LayToanBoDS();
@@ -125,14 +130,15 @@ namespace QLBanPiano.GUI
 
         private void cbbTieuChi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtTieuChi.Enabled = true;
             switch (cbbTieuChi.SelectedIndex)
             {
                 case 0:
                     txtTieuChi.PlaceholderText = "Nhập ID (VD: 0 )";
                     txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
                     break;
-                case 1:
-                    txtTieuChi.PlaceholderText = "Nhập thời gian (VD: 19-05-2023)";
+                case 1: // date
+                    txtTieuChi.Enabled = false;
                     txtTieuChi.ForeColor = Color.FromArgb(160, 160, 160);
                     break;
                 case 2:
@@ -166,6 +172,12 @@ namespace QLBanPiano.GUI
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            if (cbbTieuChi.SelectedIndex == 1)
+            {
+                frmTimHoaDon f = new frmTimHoaDon(this);
+                f.ShowDialog();
+                return;
+            }
             if (txtTieuChi.Text != string.Empty)
             {
                 searchResult = hoaDonBus.TimKiem(cbbTieuChi.SelectedIndex, txtTieuChi.Text);

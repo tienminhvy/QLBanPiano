@@ -136,9 +136,10 @@ namespace QLBanPiano.BUS
                     string dieukien0 = "cast(hoadonphieunhap.id as varchar) like '%"+ giatri +"%'";
                     dt = layDsDaTruyVan(dieukien0);
                     break;
-                case 1:
-                    string dieukien1 = "CONVERT(VARCHAR, thoiGian, 105) + ' ' + CONVERT(VARCHAR, thoiGian, 108) + ' ' + RIGHT(CONVERT(VARCHAR, thoiGian, 100), 2) LIKE '%"+giatri+"%'";
-                    dt = layDsDaTruyVan(dieukien1);
+                case 1: // date
+                    string[] ngay = giatri.Split(",");
+                    string dieuKien = string.Format("thoigian BETWEEN '{0}' AND '{1}'", ngay[0], ngay[1]);
+                    dt = layDsDaTruyVan(dieuKien);
                     break;
                 case 2:
                     string dieukien2 = "hoadonphieunhap.nhanvien_id like '%" + giatri +"%'";

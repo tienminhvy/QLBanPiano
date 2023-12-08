@@ -44,8 +44,9 @@ namespace QLBanPiano.BUS
                     dt = LayDsDaTruyVan(dieukien0);
                     break;
                 case 1:
-                    string dieukien1 = "CONVERT(VARCHAR, thoiGian, 105) + ' ' + CONVERT(VARCHAR, thoiGian, 108) + ' ' + RIGHT(CONVERT(VARCHAR, thoiGian, 100), 2) LIKE '%" + giatri + "%'";
-                    dt = LayDsDaTruyVan(dieukien1);
+                    string[] ngay = giatri.Split(",");
+                    string dieuKien = string.Format("thoigian BETWEEN '{0}' AND '{1}'", ngay[0], ngay[1]);
+                    dt = LayDsDaTruyVan(dieuKien);
                     break;
                 case 2:
                     string dieukien2 = "cast(hoadonphieunhap.nhanvien_id as varchar) like '%"+giatri+"%'";
