@@ -287,9 +287,11 @@
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Margin = new Padding(2);
             MaximizeBox = false;
             MaximumSize = new Size(484, 489);
+            MinimizeBox = false;
             MinimumSize = new Size(484, 489);
             Name = "frmThemPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;

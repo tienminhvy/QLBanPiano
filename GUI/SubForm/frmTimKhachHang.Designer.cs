@@ -81,8 +81,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 152);
             Controls.Add(groupBox1);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmTimKhachHang";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Tìm khách hàng";
             KeyDown += frmTimKhachHang_KeyDown;
             groupBox1.ResumeLayout(false);

@@ -75,14 +75,15 @@
             txtTieuChi.Size = new Size(288, 27);
             txtTieuChi.TabIndex = 0;
             // 
-            // TimNhacCu
+            // frmTimNhacCu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(324, 156);
             Controls.Add(groupBox1);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "TimNhacCu";
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            Name = "frmTimNhacCu";
             Text = "Tìm nhạc cụ Piano";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

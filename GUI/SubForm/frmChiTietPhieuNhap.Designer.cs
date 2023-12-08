@@ -229,6 +229,7 @@
             Controls.Add(panel2);
             Controls.Add(dgvPanel);
             Controls.Add(panel1);
+            KeyPreview = true;
             Margin = new Padding(2);
             MaximizeBox = false;
             MaximumSize = new Size(484, 593);

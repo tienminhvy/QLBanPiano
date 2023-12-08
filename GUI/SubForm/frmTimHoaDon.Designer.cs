@@ -105,7 +105,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(338, 209);
             Controls.Add(groupBox2);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmTimHoaDon";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Tìm hoá đơn";

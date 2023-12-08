@@ -177,6 +177,9 @@
             Controls.Add(btnCapNhat);
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmLienKetTK";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Liên kết tài khoản";

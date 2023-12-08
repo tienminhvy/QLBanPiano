@@ -217,7 +217,11 @@
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmThemKhachHang";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Thêm khách hàng";
             KeyDown += frmThemKhachHang_KeyDown;
             panel1.ResumeLayout(false);

@@ -118,8 +118,12 @@
             Controls.Add(btnCapNhat);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmChinhSuaThongTin";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Cập nhật thông tin";
             KeyDown += frmChinhSuaThongTin_KeyDown;
             groupBox1.ResumeLayout(false);

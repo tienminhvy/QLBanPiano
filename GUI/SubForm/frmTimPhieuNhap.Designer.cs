@@ -104,8 +104,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(338, 209);
             Controls.Add(groupBox2);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmTimPhieuNhap";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Tìm phiếu nhập";
             KeyDown += frmTimPhieuNhap_KeyDown;
             groupBox2.ResumeLayout(false);

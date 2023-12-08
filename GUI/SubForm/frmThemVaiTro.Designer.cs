@@ -67,8 +67,12 @@
             Controls.Add(btnThem);
             Controls.Add(txtTenVaiTro);
             Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmThemVaiTro";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Thêm vai trò";
             KeyDown += frmThemVaiTro_KeyDown;
             ResumeLayout(false);

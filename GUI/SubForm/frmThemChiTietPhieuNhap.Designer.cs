@@ -227,9 +227,12 @@
             Controls.Add(label8);
             Controls.Add(panel1);
             Controls.Add(groupBox2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
             Margin = new Padding(2);
             MaximizeBox = false;
             MaximumSize = new Size(484, 289);
+            MinimizeBox = false;
             MinimumSize = new Size(484, 289);
             Name = "frmThemChiTietPhieuNhap";
             StartPosition = FormStartPosition.CenterParent;

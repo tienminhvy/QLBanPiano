@@ -104,8 +104,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(338, 205);
             Controls.Add(groupBox2);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmTimNhanVien";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Tìm nhân viên";
             KeyDown += frmTimNhanVien_KeyDown;
             groupBox2.ResumeLayout(false);

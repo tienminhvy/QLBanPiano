@@ -288,7 +288,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(652, 460);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmThemSanPham";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Thêm nhạc cụ Piano";
             KeyDown += frmThemSanPham_KeyDown;
             panel1.ResumeLayout(false);
