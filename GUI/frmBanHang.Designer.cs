@@ -176,7 +176,7 @@
             btnXoaHet.Name = "btnXoaHet";
             btnXoaHet.Size = new Size(111, 48);
             btnXoaHet.TabIndex = 20;
-            btnXoaHet.Text = "Xóa Hết";
+            btnXoaHet.Text = "Xó&a Hết";
             btnXoaHet.UseVisualStyleBackColor = false;
             btnXoaHet.Click += btnXoaHet_Click;
             // 
@@ -188,7 +188,7 @@
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(111, 48);
             btnXoa.TabIndex = 19;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "&Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
@@ -200,7 +200,7 @@
             btnThanhToan.Name = "btnThanhToan";
             btnThanhToan.Size = new Size(155, 48);
             btnThanhToan.TabIndex = 18;
-            btnThanhToan.Text = "Thanh Toán";
+            btnThanhToan.Text = "Tha&nh Toán";
             btnThanhToan.UseVisualStyleBackColor = false;
             btnThanhToan.Click += btnThanhToan_Click;
             // 
@@ -492,7 +492,7 @@
             btnTimSanPham.Name = "btnTimSanPham";
             btnTimSanPham.Size = new Size(111, 48);
             btnTimSanPham.TabIndex = 17;
-            btnTimSanPham.Text = "Tìm";
+            btnTimSanPham.Text = "Tì&m";
             btnTimSanPham.UseVisualStyleBackColor = false;
             btnTimSanPham.Click += btnTimSanPham_Click;
             // 
@@ -542,7 +542,7 @@
             btnChonSanPham.Name = "btnChonSanPham";
             btnChonSanPham.Size = new Size(111, 48);
             btnChonSanPham.TabIndex = 12;
-            btnChonSanPham.Text = "Chọn";
+            btnChonSanPham.Text = "&Chọn";
             btnChonSanPham.UseVisualStyleBackColor = false;
             btnChonSanPham.Click += btnChonSanPham_Click;
             // 
@@ -694,7 +694,7 @@
             btnTimKhachHang.Name = "btnTimKhachHang";
             btnTimKhachHang.Size = new Size(111, 48);
             btnTimKhachHang.TabIndex = 17;
-            btnTimKhachHang.Text = "Tìm";
+            btnTimKhachHang.Text = "&Tìm";
             btnTimKhachHang.UseVisualStyleBackColor = false;
             btnTimKhachHang.Click += btnTimKhachHang_Click;
             // 
@@ -744,7 +744,7 @@
             btnThemKhachHang.Name = "btnThemKhachHang";
             btnThemKhachHang.Size = new Size(111, 48);
             btnThemKhachHang.TabIndex = 12;
-            btnThemKhachHang.Text = "Thêm Mới";
+            btnThemKhachHang.Text = "T&hêm Mới";
             btnThemKhachHang.UseVisualStyleBackColor = false;
             btnThemKhachHang.Click += btnThemKhachHang_Click;
             // 

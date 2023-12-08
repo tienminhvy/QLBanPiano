@@ -295,7 +295,7 @@
             importFileBtn.Name = "importFileBtn";
             importFileBtn.Size = new Size(105, 41);
             importFileBtn.TabIndex = 0;
-            importFileBtn.Text = "  Nhập file";
+            importFileBtn.Text = "  &Nhập file";
             importFileBtn.UseVisualStyleBackColor = true;
             importFileBtn.Click += importFileBtn_Click;
             // 
@@ -308,7 +308,7 @@
             exportFileBtn.Name = "exportFileBtn";
             exportFileBtn.Size = new Size(107, 41);
             exportFileBtn.TabIndex = 1;
-            exportFileBtn.Text = "  Xuất file";
+            exportFileBtn.Text = "  &Xuất file";
             exportFileBtn.UseVisualStyleBackColor = true;
             exportFileBtn.Click += exportFileBtn_Click;
             // 
@@ -321,7 +321,7 @@
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(101, 41);
             addBtn.TabIndex = 2;
-            addBtn.Text = "  Tạo mới";
+            addBtn.Text = "     &Tạo mới";
             addBtn.UseVisualStyleBackColor = true;
             addBtn.Click += addBtn_Click;
             // 
@@ -354,7 +354,7 @@
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(101, 40);
             searchBtn.TabIndex = 1;
-            searchBtn.Text = "Tìm kiếm";
+            searchBtn.Text = "Tì&m kiếm";
             searchBtn.TextAlign = ContentAlignment.MiddleRight;
             searchBtn.UseVisualStyleBackColor = true;
             searchBtn.Click += searchBtn_Click;
@@ -391,7 +391,7 @@
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new Size(101, 40);
             ResetBtn.TabIndex = 1;
-            ResetBtn.Text = "Làm mới";
+            ResetBtn.Text = "&Làm mới";
             ResetBtn.TextAlign = ContentAlignment.MiddleRight;
             ResetBtn.UseVisualStyleBackColor = true;
             ResetBtn.Click += ResetBtn_Click;

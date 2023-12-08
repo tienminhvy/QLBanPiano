@@ -49,7 +49,7 @@
             btnThaoTac.Location = new Point(374, 259);
             btnThaoTac.Name = "btnThaoTac";
             btnThaoTac.Size = new Size(143, 42);
-            btnThaoTac.TabIndex = 17;
+            btnThaoTac.TabIndex = 1;
             btnThaoTac.Text = "Khoá/Mở khoá";
             btnThaoTac.UseVisualStyleBackColor = true;
             btnThaoTac.Click += btnThaoTac_Click;
@@ -60,7 +60,7 @@
             btnCapNhat.Location = new Point(150, 259);
             btnCapNhat.Name = "btnCapNhat";
             btnCapNhat.Size = new Size(143, 42);
-            btnCapNhat.TabIndex = 16;
+            btnCapNhat.TabIndex = 0;
             btnCapNhat.Text = "Tạo/Cập nhật";
             btnCapNhat.UseVisualStyleBackColor = true;
             btnCapNhat.Click += btnCapNhat_Click;
@@ -149,7 +149,7 @@
             cbVaiTro.Location = new Point(188, 136);
             cbVaiTro.Name = "cbVaiTro";
             cbVaiTro.Size = new Size(193, 28);
-            cbVaiTro.TabIndex = 18;
+            cbVaiTro.TabIndex = 2;
             cbVaiTro.SelectedIndexChanged += cbVaiTro_SelectedIndexChanged;
             // 
             // txtMatKhau
@@ -158,14 +158,14 @@
             txtMatKhau.Name = "txtMatKhau";
             txtMatKhau.PasswordChar = '*';
             txtMatKhau.Size = new Size(193, 27);
-            txtMatKhau.TabIndex = 17;
+            txtMatKhau.TabIndex = 1;
             // 
             // txtTenDangNhap
             // 
             txtTenDangNhap.Location = new Point(188, 55);
             txtTenDangNhap.Name = "txtTenDangNhap";
             txtTenDangNhap.Size = new Size(193, 27);
-            txtTenDangNhap.TabIndex = 16;
+            txtTenDangNhap.TabIndex = 0;
             // 
             // frmLienKetTK
             // 

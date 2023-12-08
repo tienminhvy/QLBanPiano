@@ -86,7 +86,7 @@
             groupBox1.Location = new Point(12, 100);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(564, 379);
-            groupBox1.TabIndex = 1;
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng";
             // 

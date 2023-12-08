@@ -117,7 +117,7 @@
             txtId.Location = new Point(70, 26);
             txtId.Name = "txtId";
             txtId.Size = new Size(171, 27);
-            txtId.TabIndex = 6;
+            txtId.TabIndex = 0;
             // 
             // label3
             // 
@@ -142,8 +142,8 @@
             btnThem.Location = new Point(140, 181);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(94, 29);
-            btnThem.TabIndex = 9;
-            btnThem.Text = "Thêm";
+            btnThem.TabIndex = 4;
+            btnThem.Text = "T&hêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
@@ -152,8 +152,8 @@
             btnSua.Location = new Point(240, 181);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(94, 29);
-            btnSua.TabIndex = 10;
-            btnSua.Text = "Sửa";
+            btnSua.TabIndex = 5;
+            btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
             // 
@@ -162,8 +162,8 @@
             btnXoa.Location = new Point(340, 181);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(94, 29);
-            btnXoa.TabIndex = 11;
-            btnXoa.Text = "Xoá";
+            btnXoa.TabIndex = 6;
+            btnXoa.Text = "&Xoá";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
             // 
@@ -207,8 +207,8 @@
             btnTim.Location = new Point(214, 98);
             btnTim.Name = "btnTim";
             btnTim.Size = new Size(94, 29);
-            btnTim.TabIndex = 12;
-            btnTim.Text = "Tìm";
+            btnTim.TabIndex = 2;
+            btnTim.Text = "&Tìm";
             btnTim.UseVisualStyleBackColor = true;
             btnTim.Click += btnTim_Click;
             // 

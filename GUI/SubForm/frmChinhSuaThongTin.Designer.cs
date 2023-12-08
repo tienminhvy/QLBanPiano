@@ -85,7 +85,7 @@
             btnCapNhat.Location = new Point(162, 235);
             btnCapNhat.Name = "btnCapNhat";
             btnCapNhat.Size = new Size(94, 29);
-            btnCapNhat.TabIndex = 2;
+            btnCapNhat.TabIndex = 0;
             btnCapNhat.Text = "Cập nhật";
             btnCapNhat.UseVisualStyleBackColor = true;
             btnCapNhat.Click += btnCapNhat_Click;

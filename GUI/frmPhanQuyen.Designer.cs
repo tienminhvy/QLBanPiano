@@ -128,7 +128,7 @@
             btnTimTK.Name = "btnTimTK";
             btnTimTK.Size = new Size(80, 29);
             btnTimTK.TabIndex = 1;
-            btnTimTK.Text = "Tìm";
+            btnTimTK.Text = "&Tìm";
             btnTimTK.UseVisualStyleBackColor = true;
             // 
             // panel2
@@ -158,7 +158,7 @@
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(94, 29);
             btnXoa.TabIndex = 4;
-            btnXoa.Text = "Xoá vai trò";
+            btnXoa.Text = "&Xoá vai trò";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
             // 
@@ -168,7 +168,7 @@
             btnCapNhat.Name = "btnCapNhat";
             btnCapNhat.Size = new Size(94, 29);
             btnCapNhat.TabIndex = 1;
-            btnCapNhat.Text = "Cập nhật";
+            btnCapNhat.Text = "&Cập nhật";
             btnCapNhat.UseVisualStyleBackColor = true;
             btnCapNhat.Click += btnCapNhat_Click;
             // 
@@ -178,7 +178,7 @@
             btnTaoMoi.Name = "btnTaoMoi";
             btnTaoMoi.Size = new Size(104, 29);
             btnTaoMoi.TabIndex = 3;
-            btnTaoMoi.Text = "Thêm vai trò";
+            btnTaoMoi.Text = "T&hêm vai trò";
             btnTaoMoi.UseVisualStyleBackColor = true;
             btnTaoMoi.Click += btnTaoMoi_Click;
             // 

@@ -19,7 +19,7 @@ namespace QLBanPiano
     public partial class frmBanHang : Form
     {
         string projectDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\"; // lấy dường dẫn tính tới folder QLBanPIano
-        
+
         KhachHangBUS khachHangBUS = new KhachHangBUS();
         KhachHang khachHangDuocChon = new KhachHang();
         PianoBUS pianoBUS = new PianoBUS();
@@ -64,7 +64,7 @@ namespace QLBanPiano
 
             txtTongTienNhan.Text = "";
             txtTienThoiLai.Text = "";
-            
+
         }
         public void LoadDSSanPham(List<DoiTuong> danhSachSanPham)
         {
@@ -167,8 +167,8 @@ namespace QLBanPiano
         }
 
         public void fillThongTinKhachHang(KhachHang khachHang)
-        {   
-            if(khachHang!=null)
+        {
+            if (khachHang != null)
             {
                 txtIDKH.Text = khachHang.Id.ToString();
                 txtSDTKH.Text = khachHang.SoDienThoai;
@@ -184,12 +184,12 @@ namespace QLBanPiano
                 txtTenKH.Text = "";
                 txtDiaChiKH.Text = "";
             }
-           
+
         }
 
         public void fillThongTinSanPham(QLBanPiano.DTO.Piano piano)
         {
-            if(piano!=null)
+            if (piano != null)
             {
                 txtIDSP.Text = piano.Id.ToString();
                 txtMaSP.Text = piano.Ma;
@@ -224,7 +224,7 @@ namespace QLBanPiano
                 ptbAnh.Image = null;
                 cbbSoLuongMua.Items.Clear();
             }
-            
+
         }
 
         public void LoadDSSanPhamDaChon()
@@ -232,7 +232,7 @@ namespace QLBanPiano
             lvSanPhamDaChon.Items.Clear();
             long tongTien = 0;
             int tongSanPham = 0;
-            if(DSSanPhamDaChon != null)
+            if (DSSanPhamDaChon != null)
             {
                 foreach (SanPhamDuocChon sp in DSSanPhamDaChon)
                 {
@@ -249,7 +249,7 @@ namespace QLBanPiano
                     lvSanPhamDaChon.Items.Add(listViewItem);
                 }
             }
-            
+
             txtTongSoSP.Text = tongSanPham.ToString();
             txtTongTien.Text = tongTien.ToString();
         }
@@ -287,21 +287,21 @@ namespace QLBanPiano
         }
 
         private void btnThemKhachHang_Click(object sender, EventArgs e)
-        {   
+        {
             frmThemKhachHang frmKhachHang = new frmThemKhachHang(this);
             frmKhachHang.ShowDialog();
             danhSachKhachHang = khachHangBUS.LayDS("1=1");
             LoadDSKhachHang(danhSachKhachHang);
         }
 
-    /*    private void btnChonKhachHang_Click(object sender, EventArgs e)
-        {
-            if (txtIDKH.Text.Length == 0)
+        /*    private void btnChonKhachHang_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Vui lòng chọn khách hàng trong danh sách trước khi khóa", "Thông bá0");
-                return;
-            }
-        }*/
+                if (txtIDKH.Text.Length == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn khách hàng trong danh sách trước khi khóa", "Thông bá0");
+                    return;
+                }
+            }*/
 
         private void btnChonSanPham_Click(object sender, EventArgs e)
         {
@@ -471,19 +471,19 @@ namespace QLBanPiano
                 string strNow = now.ToString("yyyy-MM-dd HH:mm:ss tt");
                 string nhanVien_id = frmDangNhap.nhanVien_id;
                 string khachHang_id = txtIDKH.Text;
-                string[] dsTruongHoaDon  = {strNow,nhanVien_id,khachHang_id};
+                string[] dsTruongHoaDon = { strNow, nhanVien_id, khachHang_id };
                 int hoaDon_id = HoaDonBUS.TraVeID(dsTruongHoaDon);
-                if(hoaDon_id == -1)
+                if (hoaDon_id == -1)
                 {
                     MessageBox.Show("Tạo hóa đơn thất bại, vui lòng thực hiện lại ", "Thông báo");
                     return;
                 }
                 foreach (SanPhamDuocChon sanPham in DSSanPhamDaChon)
                 {
-                    QLBanPiano.DTO.Piano piano = (QLBanPiano.DTO.Piano) pianoBUS.LayDS("piano.id = " + sanPham.IdSanPham)[0];
-                    string[] dsTruongChiTietHD = {sanPham.IdSanPham,hoaDon_id.ToString(),piano.Gia.ToString(),sanPham.SoLuong.ToString()};
-                    
-                    if(!chiTietHoaDonBUS.Them(dsTruongChiTietHD))
+                    QLBanPiano.DTO.Piano piano = (QLBanPiano.DTO.Piano)pianoBUS.LayDS("piano.id = " + sanPham.IdSanPham)[0];
+                    string[] dsTruongChiTietHD = { sanPham.IdSanPham, hoaDon_id.ToString(), piano.Gia.ToString(), sanPham.SoLuong.ToString() };
+
+                    if (!chiTietHoaDonBUS.Them(dsTruongChiTietHD))
                     {
                         MessageBox.Show("Tạo chi tiết hóa đơn thất bại, vui lòng thực hiện lại ", "Thông báo");
                         return;
@@ -495,9 +495,9 @@ namespace QLBanPiano
 
                 frmChiTietHoaDon f = new(hoaDon_id);
                 f.ShowDialog();
-                
+
                 LoadLaiComponent();
-                
+
                 //---------------------------------------Code xuất pdf Hóa đơn-------------------------------------------------------------
             }
             catch (Exception ex)

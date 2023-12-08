@@ -66,7 +66,7 @@
             btn_link_acc.Name = "btn_link_acc";
             btn_link_acc.Size = new Size(160, 35);
             btn_link_acc.TabIndex = 15;
-            btn_link_acc.Text = "Liên kết tài khoản";
+            btn_link_acc.Text = "&Liên kết tài khoản";
             btn_link_acc.UseVisualStyleBackColor = true;
             btn_link_acc.Click += btn_link_acc_Click;
             // 
@@ -76,7 +76,7 @@
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(114, 35);
             btn_delete.TabIndex = 14;
-            btn_delete.Text = "Xoá";
+            btn_delete.Text = "&Xoá";
             btn_delete.UseVisualStyleBackColor = true;
             btn_delete.Click += btn_delete_Click;
             // 
@@ -86,7 +86,7 @@
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(114, 35);
             btn_update.TabIndex = 13;
-            btn_update.Text = "Sửa";
+            btn_update.Text = "&Sửa";
             btn_update.UseVisualStyleBackColor = true;
             btn_update.Click += btn_update_Click;
             // 
@@ -96,7 +96,7 @@
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(114, 35);
             btn_add.TabIndex = 12;
-            btn_add.Text = "Thêm";
+            btn_add.Text = "T&hêm";
             btn_add.UseVisualStyleBackColor = true;
             btn_add.Click += btn_add_Click;
             // 
@@ -208,7 +208,7 @@
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(129, 35);
             btnSearch.TabIndex = 4;
-            btnSearch.Text = "Tìm";
+            btnSearch.Text = "&Tìm";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 

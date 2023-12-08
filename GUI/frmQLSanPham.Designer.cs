@@ -128,7 +128,7 @@
             btnNhapFile.Name = "btnNhapFile";
             btnNhapFile.Size = new Size(105, 53);
             btnNhapFile.TabIndex = 23;
-            btnNhapFile.Text = "Nhập File";
+            btnNhapFile.Text = "&Nhập File";
             btnNhapFile.UseVisualStyleBackColor = false;
             btnNhapFile.Click += btnNhapFile_Click;
             // 
@@ -141,7 +141,7 @@
             btnXuatFile.Name = "btnXuatFile";
             btnXuatFile.Size = new Size(105, 53);
             btnXuatFile.TabIndex = 22;
-            btnXuatFile.Text = "Xuất File";
+            btnXuatFile.Text = "&Xuất File";
             btnXuatFile.UseVisualStyleBackColor = false;
             btnXuatFile.Click += btnXuatFile_Click;
             // 
@@ -154,7 +154,7 @@
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(105, 53);
             btnSua.TabIndex = 21;
-            btnSua.Text = "Sửa";
+            btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
             // 
@@ -167,7 +167,7 @@
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(105, 53);
             btnXoa.TabIndex = 20;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "Xó&a";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
@@ -179,7 +179,7 @@
             btnNhapLai.Name = "btnNhapLai";
             btnNhapLai.Size = new Size(105, 53);
             btnNhapLai.TabIndex = 19;
-            btnNhapLai.Text = "Nhập Lại";
+            btnNhapLai.Text = "N&hập Lại";
             btnNhapLai.UseVisualStyleBackColor = false;
             btnNhapLai.Click += btnNhapLai_Click;
             // 
@@ -192,7 +192,7 @@
             btnThemSP.Name = "btnThemSP";
             btnThemSP.Size = new Size(105, 53);
             btnThemSP.TabIndex = 18;
-            btnThemSP.Text = "Thêm";
+            btnThemSP.Text = "Thê&m";
             btnThemSP.UseVisualStyleBackColor = false;
             btnThemSP.Click += btnThemSP_Click;
             // 
@@ -416,7 +416,7 @@
             btnDatLai.Name = "btnDatLai";
             btnDatLai.Size = new Size(83, 37);
             btnDatLai.TabIndex = 21;
-            btnDatLai.Text = "Đặt Lại";
+            btnDatLai.Text = "Đặt &Lại";
             btnDatLai.UseVisualStyleBackColor = false;
             btnDatLai.Click += btnDatLai_Click;
             // 
@@ -429,7 +429,7 @@
             btnTim.Name = "btnTim";
             btnTim.Size = new Size(70, 37);
             btnTim.TabIndex = 20;
-            btnTim.Text = "Tìm";
+            btnTim.Text = "&Tìm";
             btnTim.UseVisualStyleBackColor = false;
             btnTim.Click += btnTim_Click;
             // 

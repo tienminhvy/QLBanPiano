@@ -142,7 +142,7 @@
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(449, 115);
-            panel2.TabIndex = 2;
+            panel2.TabIndex = 0;
             // 
             // label10
             // 
@@ -227,7 +227,7 @@
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(449, 161);
-            panel3.TabIndex = 3;
+            panel3.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
@@ -236,7 +236,7 @@
             dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(261, 27);
-            dateTimePicker1.TabIndex = 9;
+            dateTimePicker1.TabIndex = 0;
             dateTimePicker1.TabStop = false;
             // 
             // kh_idTextBox

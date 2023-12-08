@@ -269,7 +269,7 @@
             ct_addBtn.Margin = new Padding(2);
             ct_addBtn.Name = "ct_addBtn";
             ct_addBtn.Size = new Size(165, 40);
-            ct_addBtn.TabIndex = 1;
+            ct_addBtn.TabIndex = 0;
             ct_addBtn.Text = "       Thêm chi tiết ";
             ct_addBtn.TextAlign = ContentAlignment.MiddleLeft;
             ct_addBtn.UseVisualStyleBackColor = true;

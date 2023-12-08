@@ -135,7 +135,7 @@
             btnDangNhap.Name = "btnDangNhap";
             btnDangNhap.Size = new Size(150, 40);
             btnDangNhap.TabIndex = 0;
-            btnDangNhap.Text = "Đăng Nhập";
+            btnDangNhap.Text = "Đă&ng Nhập";
             btnDangNhap.UseVisualStyleBackColor = false;
             btnDangNhap.Click += btnDangNhap_Click;
             // 
@@ -175,7 +175,7 @@
             label3.Name = "label3";
             label3.Size = new Size(116, 20);
             label3.TabIndex = 0;
-            label3.Text = "Quên mật khẩu?";
+            label3.Text = "&Quên mật khẩu?";
             label3.Click += label3_Click;
             // 
             // panel4

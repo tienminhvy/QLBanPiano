@@ -178,7 +178,7 @@
             ExportBtn.Name = "ExportBtn";
             ExportBtn.Size = new Size(105, 38);
             ExportBtn.TabIndex = 7;
-            ExportBtn.Text = "   Xuất file";
+            ExportBtn.Text = "   &Xuất file";
             ExportBtn.UseVisualStyleBackColor = true;
             ExportBtn.Click += ExportBtn_Click;
             ExportBtn.KeyPress += ExportBtn_KeyPress;
@@ -192,7 +192,7 @@
             ImportBtn.Name = "ImportBtn";
             ImportBtn.Size = new Size(114, 38);
             ImportBtn.TabIndex = 6;
-            ImportBtn.Text = "   Nhập file";
+            ImportBtn.Text = "   &Nhập file";
             ImportBtn.UseVisualStyleBackColor = true;
             ImportBtn.Click += ImportBtn_Click;
             ImportBtn.KeyPress += ImportBtn_KeyPress;
@@ -249,7 +249,7 @@
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(106, 38);
             resetBtn.TabIndex = 12;
-            resetBtn.Text = "    Làm mới";
+            resetBtn.Text = "    &Làm mới";
             resetBtn.UseVisualStyleBackColor = true;
             resetBtn.Click += resetBtn_Click;
             resetBtn.KeyPress += resetBtn_KeyPress;

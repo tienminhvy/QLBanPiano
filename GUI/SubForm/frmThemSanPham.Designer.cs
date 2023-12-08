@@ -89,7 +89,7 @@
             btnThoat.Location = new Point(121, 387);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(105, 53);
-            btnThoat.TabIndex = 8;
+            btnThoat.TabIndex = 9;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = false;
             btnThoat.Click += btnThoat_Click;
@@ -101,7 +101,7 @@
             btnNhapLai.Location = new Point(255, 387);
             btnNhapLai.Name = "btnNhapLai";
             btnNhapLai.Size = new Size(105, 53);
-            btnNhapLai.TabIndex = 9;
+            btnNhapLai.TabIndex = 8;
             btnNhapLai.Text = "Nhập Lại";
             btnNhapLai.UseVisualStyleBackColor = false;
             btnNhapLai.Click += btnNhapLai_Click;
@@ -113,7 +113,7 @@
             btnThem.Location = new Point(385, 387);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(105, 53);
-            btnThem.TabIndex = 10;
+            btnThem.TabIndex = 7;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
@@ -124,7 +124,7 @@
             txtMoTa.Multiline = true;
             txtMoTa.Name = "txtMoTa";
             txtMoTa.Size = new Size(251, 94);
-            txtMoTa.TabIndex = 7;
+            txtMoTa.TabIndex = 6;
             txtMoTa.KeyPress += txtMoTa_KeyPress;
             // 
             // label9
@@ -142,7 +142,7 @@
             txtDacDiem.Multiline = true;
             txtDacDiem.Name = "txtDacDiem";
             txtDacDiem.Size = new Size(211, 94);
-            txtDacDiem.TabIndex = 6;
+            txtDacDiem.TabIndex = 5;
             txtDacDiem.KeyPress += txtDacDiem_KeyPress;
             // 
             // label8
@@ -162,7 +162,7 @@
             cbbLoai.Location = new Point(232, 222);
             cbbLoai.Name = "cbbLoai";
             cbbLoai.Size = new Size(128, 28);
-            cbbLoai.TabIndex = 5;
+            cbbLoai.TabIndex = 4;
             // 
             // label7
             // 
@@ -180,7 +180,7 @@
             cbbThuongHieu.Location = new Point(122, 179);
             cbbThuongHieu.Name = "cbbThuongHieu";
             cbbThuongHieu.Size = new Size(238, 28);
-            cbbThuongHieu.TabIndex = 3;
+            cbbThuongHieu.TabIndex = 2;
             // 
             // label6
             // 
@@ -208,7 +208,7 @@
             txtGia.MaxLength = 18;
             txtGia.Name = "txtGia";
             txtGia.Size = new Size(104, 27);
-            txtGia.TabIndex = 4;
+            txtGia.TabIndex = 3;
             txtGia.KeyPress += txtGia_KeyPress;
             // 
             // label5
@@ -225,7 +225,7 @@
             txtTen.Location = new Point(122, 133);
             txtTen.Name = "txtTen";
             txtTen.Size = new Size(238, 27);
-            txtTen.TabIndex = 2;
+            txtTen.TabIndex = 1;
             txtTen.KeyPress += txtTen_KeyPress;
             // 
             // label4
@@ -242,7 +242,7 @@
             txtMa.Location = new Point(234, 81);
             txtMa.Name = "txtMa";
             txtMa.Size = new Size(126, 27);
-            txtMa.TabIndex = 1;
+            txtMa.TabIndex = 0;
             txtMa.KeyPress += txtMa_KeyPress;
             // 
             // label3
