@@ -436,7 +436,9 @@
             ClientSize = new Size(815, 560);
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             MaximumSize = new Size(1557, 891);
+            MinimizeBox = false;
             MinimumSize = new Size(833, 607);
             Name = "frmDangNhap";
             StartPosition = FormStartPosition.CenterScreen;

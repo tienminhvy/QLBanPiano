@@ -51,7 +51,7 @@ namespace QLBanPiano.GUI
                 datasource.Columns.Remove("Mã khách hàng");
                 datasource.Columns.Remove("Tên khách hàng");
 
-                datasource.Columns.Add("Tổng tiền", typeof(int));
+                datasource.Columns.Add("Tổng tiền", typeof(long));
                 long total = 0;
                 foreach (DataRow row in datasource.Rows)
                 {
