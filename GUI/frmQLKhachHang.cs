@@ -184,7 +184,7 @@ namespace QLBanPiano.GUI
             {
 
 
-                if (khachhang.Validate(this,txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "0"))
+                if (khachhang.Validate(this, txtHoLot.Text, txtTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, "0"))
                 {
                     DataGridViewCellCollection Cells = dgvKhachHang.SelectedRows[0].Cells;
                     string id = Cells[0].Value.ToString();
@@ -235,6 +235,7 @@ namespace QLBanPiano.GUI
                 if (cbbTimKiem.SelectedItem == "Xem tất cả")
                 {
                     txtTimKiem.Enabled = false;
+                    txtTimKiem.Text = string.Empty;
                 }
                 else
                     txtTimKiem.Enabled = true;

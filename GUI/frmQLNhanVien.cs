@@ -279,6 +279,7 @@ namespace QLBanPiano.GUI
                 if (cbbTypeSearch.SelectedItem == "Xem tất cả" || cbbTypeSearch.SelectedItem == "Ngày vào làm")
                 {
                     txtSearch.Enabled = false;
+                    txtSearch.Text = string.Empty;
                 }
                 else
                     txtSearch.Enabled = true;
